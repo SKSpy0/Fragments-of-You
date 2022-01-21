@@ -4,29 +4,63 @@ using UnityEngine;
 
 public class PinkMovement : MonoBehaviour
 {
-    public float speed = 10;
-    public float jumpAmount = 10;
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private BoxCollider2D coll;
+    private SpriteRenderer sprite;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private LayerMask jumpableGround;
+
+    private float dirX = 0f;
+    [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] private float jumpForce = 14f;
+
+    private void Start()
     {
-        
+        // get component
+        rb = GetComponent<Rigidbody2D>();
+        coll = GetComponent<BoxCollider2D>();
+        sprite = GetComponent<SpriteRenderer>();
+
+        // freeze rotation
+        rb.freezeRotation = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        // Chracter move left and right using arrow keys
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        Move();
+        FlipPlayer();
 
-        rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
-
-        // Jump when space is pressed
-        if (Input.GetButton("Jump"))
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            rb.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
+            Jump();
+        }
+    }
+    
+    private void Move() 
+    {
+        // get input
+        dirX = Input.GetAxisRaw("Horizontal");
+        // modify velocity based on input
+        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+    }
+
+    private void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+    }
+
+    private void FlipPlayer()
+    {
+        if (rb.velocity.x < -0.1f)
+        {
+            sprite.flipX = true;
+        } else if (rb.velocity.x > 0.1f) {
+            sprite.flipX = false;
         }
     }
 }
-
