@@ -13,7 +13,7 @@ public class PinkMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -31,16 +31,20 @@ public class PinkMovement : MonoBehaviour
         }
     }
 
+    // sets repawnpoint taking vector 2 as input
+    // Note: not set by default.
     public void setRespawn(Vector2 newPoint)
     {
         respawnPoint = newPoint;
     }
 
+    // gets repawnpoint returning vector 2
     public Vector2 getRespawnPoint()
     {
         return respawnPoint;
     }
 
+    // teleports player back to respawnpoint and corrects any orientation
     public void respawnPlayer()
     {
         this.transform.SetPositionAndRotation(respawnPoint,new Quaternion(0,0,0,0));
