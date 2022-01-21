@@ -28,6 +28,7 @@ public class PinkMovement : MonoBehaviour
     private void Update()
     {
         Move();
+        FlipPlayer();
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -51,5 +52,15 @@ public class PinkMovement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+    }
+
+    private void FlipPlayer()
+    {
+        if (rb.velocity.x < -0.1f)
+        {
+            sprite.flipX = true;
+        } else if (rb.velocity.x > 0.1f) {
+            sprite.flipX = false;
+        }
     }
 }
