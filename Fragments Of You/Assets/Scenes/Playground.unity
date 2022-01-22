@@ -1047,7 +1047,7 @@ GameObject:
   - component: {fileID: 594871454}
   m_Layer: 0
   m_Name: Anchor Point
-  m_TagString: Untagged
+  m_TagString: Anchor
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1423,26 +1423,6 @@ DistanceJoint2D:
   m_AutoConfigureDistance: 0
   m_Distance: 1
   m_MaxDistanceOnly: 0
---- !u!231 &1652950780
-SpringJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652950772}
-  m_Enabled: 0
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 594871454}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 0
-  m_Distance: 1
-  m_DampingRatio: 0
-  m_Frequency: 2
 --- !u!1 &1951608311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,17 +1513,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1034688645069178492, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_ConnectedRigidBody
+      value: 
+      objectReference: {fileID: 594871454}
     - target: {fileID: 4914223996386738636, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: m_LinearDrag
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4914223996386738636, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: m_AngularDrag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4914223996386738636, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: m_GravityScale
-      value: 10
+      propertyPath: m_Mass
+      value: 0.4749528
       objectReference: {fileID: 0}
     - target: {fileID: 4914223996386738637, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_RootOrder
@@ -1593,13 +1569,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pink
       objectReference: {fileID: 0}
-    - target: {fileID: 4914223996386738639, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: jumpForce
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4914223996386738639, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: moveSpeed
-      value: 10
+    - target: {fileID: 6171390333046705397, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
