@@ -36,17 +36,21 @@ public class PinkMovement : MonoBehaviour
         }
     }
     
+    private void FixedUpdate() 
+    {
+        
+    }
     private void Move() 
     {
         // get input
         dirX = Input.GetAxisRaw("Horizontal");
         // modify velocity based on input
-        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        rb.AddForce(Vector2.right * dirX * moveSpeed, ForceMode2D.Force);
     }
 
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
     private bool IsGrounded()

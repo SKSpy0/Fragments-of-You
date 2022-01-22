@@ -1292,7 +1292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!231 &1151843908
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -1533,6 +1533,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4914223996386738636, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914223996386738636, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914223996386738636, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_GravityScale
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4914223996386738637, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1580,6 +1592,14 @@ PrefabInstance:
     - target: {fileID: 4914223996386738638, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Name
       value: Pink
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914223996386738639, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: jumpForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914223996386738639, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: moveSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
