@@ -25,6 +25,8 @@ public class PinkMovement : MonoBehaviour
 
         // freeze rotation
         rb.freezeRotation = true;
+
+        arm.enabled = false;
     }
 
     private void Update()
@@ -35,6 +37,11 @@ public class PinkMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             Jump();
+        }
+
+        if(FindValidAnchor() != null)
+        {
+            arm.connectedBody = FindValidAnchor().GetComponent<Rigidbody2D>();
         }
     }
     
