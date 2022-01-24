@@ -8,6 +8,7 @@ public class PinkMovement : MonoBehaviour
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
     private SpringJoint2D arm;
+    private Animator animator;
 
     [SerializeField] private LayerMask jumpableGround;
 
@@ -24,6 +25,7 @@ public class PinkMovement : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         arm = GetComponent<SpringJoint2D>();
+        animator = GetComponent<Animator>();
 
         // freeze rotation
         rb.freezeRotation = true;
@@ -39,50 +41,58 @@ public class PinkMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            if(IsGrounded())
+            if (IsGrounded())
             {
                 Jump();
             }
-            else if(IsAnyValidAnchor() && !isAnchored)
+            else if (IsAnyValidAnchor() && !isAnchored)
             {
                 Grapple();
-            } else if(isAnchored)
+            }
+            else if (isAnchored)
             {
                 GrappleOff();
             }
         }
 
-        if(IsAnyValidAnchor())
+        if (IsAnyValidAnchor())
         {
             arm.connectedBody = FindValidAnchor().GetComponent<Rigidbody2D>();
         }
         AnchorRadar();
     }
-    
-    private void FixedUpdate() 
+
+    private void FixedUpdate()
     {
-        
+
     }
-    private void Move() 
+    private void Move()
     {
         // get input
         dirX = Input.GetAxisRaw("Horizontal");
         // modify velocity based on input
-        rb.AddForce(Vector2.right * dirX * moveSpeed, ForceMode2D.Force);
+        rb.AddForce(Vector2.right * dirX * moveSpeed * (Time.deltaTime*250), ForceMode2D.Force);
+        // Play walk Animation
+        animator.SetFloat("Speed", Mathf.Abs(dirX));
     }
 
     private void Jump()
     {
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        rb.AddForce(Vector2.up * jumpForce * (Time.deltaTime*500), ForceMode2D.Impulse);
+        // Play Jump Animation
+        animator.SetBool("isJumping", true);
     }
 
     // Grapple
-    private void Grapple() {
+    private void Grapple()
+    {
         arm.enabled = true;
         isAnchored = true;
+        animator.SetBool("isJumping", true);
     }
     // Disengage Grapple
-    private void GrappleOff() {
+    private void GrappleOff()
+    {
         arm.enabled = false;
         isAnchored = false;
         rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
@@ -97,13 +107,15 @@ public class PinkMovement : MonoBehaviour
         if (rb.velocity.x < -0.1f)
         {
             sprite.flipX = true;
-        } else if (rb.velocity.x > 0.1f) {
+        }
+        else if (rb.velocity.x > 0.1f)
+        {
             sprite.flipX = false;
         }
     }
-    
+
     // Find Valid Anchor within anchorableDis
-    private GameObject FindValidAnchor() 
+    private GameObject FindValidAnchor()
     {
         GameObject[] anchors;
         anchors = GameObject.FindGameObjectsWithTag("Anchor");
@@ -123,7 +135,7 @@ public class PinkMovement : MonoBehaviour
         return valid;
     }
     // Return true if an anchor within range
-    private bool IsAnyValidAnchor() 
+    private bool IsAnyValidAnchor()
     {
         GameObject[] anchors;
         anchors = GameObject.FindGameObjectsWithTag("Anchor");
@@ -140,18 +152,29 @@ public class PinkMovement : MonoBehaviour
         }
         return false;
     }
-    
+
     private void AnchorRadar()
     {
         GameObject an = FindValidAnchor();
-        if(IsAnyValidAnchor()) {
-            if(isAnchored) {
+        if (IsAnyValidAnchor())
+        {
+            if (isAnchored)
+            {
                 Debug.DrawLine(transform.position, an.transform.position, Color.green);
-            } else 
+            }
+            else
             {
                 Debug.DrawLine(transform.position, an.transform.position, Color.red);
             }
-            
+
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        // When player land on the ground, stop the jumping animation
+        if (other.gameObject.CompareTag("Ground")){
+            animator.SetBool("isJumping", false);
         }
     }
 }
