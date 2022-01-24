@@ -11,6 +11,8 @@ public class PinkMovement : MonoBehaviour
 
     [SerializeField] private LayerMask jumpableGround;
 
+    private Vector2 respawnPoint;
+
     private float dirX = 0f;
     private bool isAnchored = false;
     [SerializeField] private float moveSpeed = 7f;
@@ -31,6 +33,7 @@ public class PinkMovement : MonoBehaviour
         arm.enabled = false;
         isAnchored = false;
     }
+
 
     private void Update()
     {
@@ -63,6 +66,7 @@ public class PinkMovement : MonoBehaviour
     {
         
     }
+
     private void Move() 
     {
         // get input
@@ -81,15 +85,37 @@ public class PinkMovement : MonoBehaviour
         arm.enabled = true;
         isAnchored = true;
     }
+
     // Disengage Grapple
     private void GrappleOff() {
         arm.enabled = false;
         isAnchored = false;
         rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
     }
+
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+    }
+
+    // sets repawnpoint taking vector 2 as input
+    // vector 3 can be converted to vector 2 implicitly
+    // Note: not set by default.
+    public void setRespawn(Vector2 newPoint)
+    {
+        respawnPoint = newPoint;
+    }
+
+    // gets repawnpoint returning vector 2
+    public Vector2 getRespawnPoint()
+    {
+        return respawnPoint;
+    }
+
+    // teleports player back to respawnpoint and corrects any orientation
+    public void respawnPlayer()
+    {
+        this.transform.SetPositionAndRotation(respawnPoint,new Quaternion(0,0,0,0));
     }
 
     private void FlipPlayer()
