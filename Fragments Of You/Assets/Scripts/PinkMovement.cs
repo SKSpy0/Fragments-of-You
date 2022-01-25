@@ -71,14 +71,14 @@ public class PinkMovement : MonoBehaviour
         // get input
         dirX = Input.GetAxisRaw("Horizontal");
         // modify velocity based on input
-        rb.AddForce(Vector2.right * dirX * moveSpeed * (Time.deltaTime*250), ForceMode2D.Force);
+        rb.AddForce(Vector2.right * dirX * moveSpeed, ForceMode2D.Force);
         // Play walk Animation
         animator.SetFloat("Speed", Mathf.Abs(dirX));
     }
 
     private void Jump()
     {
-        rb.AddForce(Vector2.up * jumpForce * (Time.deltaTime*500), ForceMode2D.Impulse);
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         // Play Jump Animation
         animator.SetBool("isJumping", true);
     }
