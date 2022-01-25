@@ -17,4 +17,6 @@ public class GameOver_Condition : MonoBehaviour
         GameOver_obj.SetActive(true);
         GameOverMenu.SetBool("Enter", true);
     }
+
+    
 }

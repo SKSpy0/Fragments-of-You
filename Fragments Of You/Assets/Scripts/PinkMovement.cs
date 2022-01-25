@@ -10,6 +10,8 @@ public class PinkMovement : MonoBehaviour
     private SpringJoint2D arm;
     private Animator animator;
 
+    public GameOver_Condition gameOver_Condition;
+
     [SerializeField] private LayerMask jumpableGround;
 
     private float dirX = 0f;
@@ -134,6 +136,7 @@ public class PinkMovement : MonoBehaviour
         }
         return valid;
     }
+
     // Return true if an anchor within range
     private bool IsAnyValidAnchor()
     {
@@ -175,6 +178,11 @@ public class PinkMovement : MonoBehaviour
         // When player land on the ground, stop the jumping animation
         if (other.gameObject.CompareTag("Ground")){
             animator.SetBool("isJumping", false);
+        }
+
+        // When player touch gameover box, show game over menu
+        if (other.gameObject.CompareTag("GameOver")){
+            gameOver_Condition.Game_Over();
         }
     }
 }

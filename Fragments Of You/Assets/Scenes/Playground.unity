@@ -1344,8 +1344,8 @@ GameObject:
   - component: {fileID: 523520144}
   - component: {fileID: 523520143}
   - component: {fileID: 523520142}
-  - component: {fileID: 523520147}
   - component: {fileID: 523520148}
+  - component: {fileID: 523520147}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1870,7 +1870,6 @@ GameObject:
   - component: {fileID: 782877509}
   - component: {fileID: 782877508}
   - component: {fileID: 782877507}
-  - component: {fileID: 782877511}
   - component: {fileID: 782877510}
   m_Layer: 0
   m_Name: Spike
@@ -1970,32 +1969,6 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!61 &782877511
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 782877506}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3350,19 +3323,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2979014762792046932, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.15
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 2979014762792046932, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.27
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 4914223996386738634, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.15
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 4914223996386738634, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.27
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 4914223996386738636, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Mass
