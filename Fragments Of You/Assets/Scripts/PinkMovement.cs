@@ -103,6 +103,11 @@ public class PinkMovement : MonoBehaviour
         animator.SetBool("isJumping", true);
     }
 
+    private bool IsGrounded()
+    {
+        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+    }
+
     // Grapple
     private void Grapple()
     {
@@ -223,5 +228,12 @@ public class PinkMovement : MonoBehaviour
             sprite.flipX = false;
         }
     }
-    
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        // When player land on the ground, stop the jumping animation
+        if (other.gameObject.CompareTag("Ground")){
+            animator.SetBool("isJumping", false);
+        }
+    }
 }
