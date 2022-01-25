@@ -2407,30 +2407,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542367296}
   m_CullTransparentMesh: 1
---- !u!1 &1652950772 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4914223996386738638, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-  m_PrefabInstance: {fileID: 4914223996067529550}
-  m_PrefabAsset: {fileID: 0}
---- !u!232 &1652950773
-DistanceJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652950772}
-  m_Enabled: 0
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 0
-  m_Distance: 1
-  m_MaxDistanceOnly: 0
 --- !u!1001 &1665296159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2900,6 +2876,10 @@ PrefabInstance:
     - target: {fileID: 4914223996386738638, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Name
       value: Pink
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914223996386738639, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: jumpForce
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6171390333046705397, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Enabled
