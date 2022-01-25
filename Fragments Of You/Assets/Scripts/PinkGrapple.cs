@@ -8,9 +8,10 @@ public class PinkGrapple : MonoBehaviour
     private BoxCollider2D coll;
     private SpringJoint2D arm;
     private Animator animator;
-
+    private GameObject arms;
     private bool isAnchored = false;
     public bool hasArms = true;
+    public bool advanceGrapple = true;
 
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float grappleJumpForce = 7f;
@@ -32,22 +33,30 @@ public class PinkGrapple : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && hasArms)
-            {
-                Grapple();
-            } else if(isAnchored)
-            {
-                GrappleOff();
-            }
-        }
+        if (!advanceGrapple) {
 
-        if(IsAnyValidAnchor())
-        {
-            arm.connectedBody = FindValidAnchor().GetComponent<Rigidbody2D>();
+            if (Input.GetButtonDown("Jump"))
+            {
+                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && hasArms)
+                {
+                    Grapple();
+                } else if(isAnchored)
+                {
+                    GrappleOff();
+                }
+            }
+
+            if(IsAnyValidAnchor())
+            {
+                arm.connectedBody = FindValidAnchor().GetComponent<Rigidbody2D>();
+            }
+            AnchorRadar();
         }
-        AnchorRadar();
+        else
+        {
+            
+        }
+        
     }
 
     // Ground Check

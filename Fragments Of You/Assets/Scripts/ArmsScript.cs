@@ -6,11 +6,11 @@ public class ArmsScript : MonoBehaviour
 {
     public Vector2 target;
     public Vector2 lockedPos;
-    public Vector2 home;
     public Quaternion rotation;
     public bool isFired = false;
     public bool isHit = false;
     public float anchorableDis = 14;
+    public GameObject player;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private GameObject bh;
     private Rigidbody2D rb;
@@ -21,8 +21,6 @@ public class ArmsScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-
-        home = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -56,9 +54,14 @@ public class ArmsScript : MonoBehaviour
         if(isHit && isFired)
         {
             LockPos(lockedPos);
-            SetRotation(GetRotation(transform.parent.position));
+            SetRotation(GetRotation(player.transform.position));
             Rotate();
             sprite.flipX = true;
+        }
+        
+        if(!(isFired || isHit))
+        {
+            transform.position = player.transform.position;
         }
 
         if(!isInRange())
@@ -106,7 +109,7 @@ public class ArmsScript : MonoBehaviour
     public void Reset()
     {
         isFired = false;
-        transform.localPosition = home;
+        transform.position = player.transform.position;
         isHit = false;
         sprite.flipX = false;
     }
@@ -125,7 +128,7 @@ public class ArmsScript : MonoBehaviour
 
     public bool isInRange()
     {
-        Vector2 diff = transform.parent.position - transform.position;
+        Vector2 diff = player.transform.position - transform.position;
         float curDistance = diff.sqrMagnitude;
         if (curDistance < anchorableDis)
         {
