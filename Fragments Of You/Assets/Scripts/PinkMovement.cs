@@ -13,13 +13,17 @@ public class PinkMovement : MonoBehaviour
     public GameOver_Condition gameOver_Condition;
 
     [SerializeField] private LayerMask jumpableGround;
-
+    private Vector2 respawnPoint;
     private float dirX = 0f;
     private bool isAnchored = false;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
     [SerializeField] private float grappleJumpForce = 7f;
     [SerializeField] private float anchorableDis = 14f;
+
+    private bool hasArms = true;
+    private bool hasLegs = true;
+
     private void Start()
     {
         // get component
@@ -34,41 +38,55 @@ public class PinkMovement : MonoBehaviour
 
         arm.enabled = false;
         isAnchored = false;
+
+        // set respawn to starting position
+        respawnPoint = this.transform.position;
     }
+
 
     private void Update()
     {
+        // basic left/right movement
+        // player should always have this
         Move();
         FlipPlayer();
-
+        
+        // start of abilities that can be lost
         if (Input.GetButtonDown("Jump"))
         {
-            if (IsGrounded())
+            if(IsGrounded() && hasLegs)
             {
                 Jump();
             }
-            else if (IsAnyValidAnchor() && !isAnchored)
+            else if(IsAnyValidAnchor() && !isAnchored && hasArms)
             {
                 Grapple();
-            }
-            else if (isAnchored)
+            } else if(isAnchored)
             {
                 GrappleOff();
             }
         }
 
-        if (IsAnyValidAnchor())
+        if(IsAnyValidAnchor())
         {
             arm.connectedBody = FindValidAnchor().GetComponent<Rigidbody2D>();
         }
         AnchorRadar();
-    }
 
-    private void FixedUpdate()
+        // if player falls off level respawn
+        if(this.transform.position.y < -8)
+        {
+            respawnPlayer();
+        }
+    }
+    
+    private void FixedUpdate() 
     {
-
+        
     }
-    private void Move()
+
+    // Movement functions start -------------------------------------------------------------------
+    private void Move() 
     {
         // get input
         dirX = Input.GetAxisRaw("Horizontal");
@@ -99,25 +117,9 @@ public class PinkMovement : MonoBehaviour
         isAnchored = false;
         rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
     }
-    private bool IsGrounded()
-    {
-        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
-    }
-
-    private void FlipPlayer()
-    {
-        if (rb.velocity.x < -0.1f)
-        {
-            sprite.flipX = true;
-        }
-        else if (rb.velocity.x > 0.1f)
-        {
-            sprite.flipX = false;
-        }
-    }
 
     // Find Valid Anchor within anchorableDis
-    private GameObject FindValidAnchor()
+    private GameObject FindValidAnchor() 
     {
         GameObject[] anchors;
         anchors = GameObject.FindGameObjectsWithTag("Anchor");
@@ -136,9 +138,8 @@ public class PinkMovement : MonoBehaviour
         }
         return valid;
     }
-
     // Return true if an anchor within range
-    private bool IsAnyValidAnchor()
+    private bool IsAnyValidAnchor() 
     {
         GameObject[] anchors;
         anchors = GameObject.FindGameObjectsWithTag("Anchor");
@@ -155,34 +156,72 @@ public class PinkMovement : MonoBehaviour
         }
         return false;
     }
-
+    
     private void AnchorRadar()
     {
         GameObject an = FindValidAnchor();
-        if (IsAnyValidAnchor())
-        {
-            if (isAnchored)
-            {
+        if(IsAnyValidAnchor()) {
+            if(isAnchored) {
                 Debug.DrawLine(transform.position, an.transform.position, Color.green);
-            }
-            else
+            } else 
             {
                 Debug.DrawLine(transform.position, an.transform.position, Color.red);
             }
-
+            
         }
     }
+    // Grapple functions end ----------------------------------------------------------------------
 
-    public void OnTriggerEnter2D(Collider2D other)
+    // Respawn functions start --------------------------------------------------------------------
+    // sets repawnpoint taking vector 2 as input
+    // vector 3 can be converted to vector 2 implicitly
+    // Note: not set by default.
+    public void setRespawn(Vector2 newPoint)
     {
-        // When player land on the ground, stop the jumping animation
-        if (other.gameObject.CompareTag("Ground")){
-            animator.SetBool("isJumping", false);
-        }
+        respawnPoint = newPoint;
+    }
 
-        // When player touch gameover box, show game over menu
-        if (other.gameObject.CompareTag("GameOver")){
-            gameOver_Condition.Game_Over();
+    // gets repawnpoint returning vector 2
+    public Vector2 getRespawnPoint()
+    {
+        return respawnPoint;
+    }
+
+    // teleports player back to respawnpoint and corrects any orientation
+    public void respawnPlayer()
+    {
+        this.transform.SetPositionAndRotation(respawnPoint,new Quaternion(0,0,0,0));
+    }
+    // Respawn functions end ----------------------------------------------------------------------
+
+    // State functions start ----------------------------------------------------------------------
+    // function to lose arms
+    public void loseArms()
+    {
+        hasArms = false;
+        // preform sprite switch here
+
+    }
+
+    // function to lose legs
+    public void loseLegs()
+    {
+        hasLegs = false;
+        // preform sprite switch here
+
+    }
+    // State functions end ------------------------------------------------------------------------
+
+    // Other helper functions start ---------------------------------------------------------------
+    // flips player sprit to maintain correct orientation.
+    private void FlipPlayer()
+    {
+        if (rb.velocity.x < -0.1f)
+        {
+            sprite.flipX = true;
+        } else if (rb.velocity.x > 0.1f) {
+            sprite.flipX = false;
         }
     }
+    
 }
