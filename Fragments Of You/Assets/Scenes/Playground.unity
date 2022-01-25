@@ -2817,6 +2817,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.32
       objectReference: {fileID: 0}
+    - target: {fileID: 3805249423637523035, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: moveSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4914223996386738634, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.32
@@ -2879,7 +2883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4914223996386738639, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: jumpForce
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6171390333046705397, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Enabled
