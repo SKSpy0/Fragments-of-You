@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArmsScript : MonoBehaviour
 {
     public Vector2 target;
+    public Vector2 home;
     public Quaternion rotation;
     public bool isFired = false;
     [SerializeField] private float moveSpeed = 7f;
@@ -15,6 +16,7 @@ public class ArmsScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        home = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class ArmsScript : MonoBehaviour
             }
             else
             {
-                //Reset();
+                Reset();
             }
             
         }
@@ -78,17 +80,23 @@ public class ArmsScript : MonoBehaviour
     {
         transform.rotation = rotation;
     }
-    public void Reset(Vector2 home)
+    public void Reset()
     {
         isFired = false;
-        transform.position = home;
+        transform.localPosition = home;
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Anchor")
+        if(other.tag == "Anchor")
         {
-            Debug.Log("Do something else here");
+            Debug.Log("Anchor attached");
+            Reset();
+        }
+        else if(other.tag != "Player")
+        {
+             Debug.Log("Reset needed");
+             Reset();
         }
     }
 }
