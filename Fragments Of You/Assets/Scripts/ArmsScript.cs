@@ -5,17 +5,22 @@ using UnityEngine;
 public class ArmsScript : MonoBehaviour
 {
     public Vector2 target;
+    public Vector2 lockedPos;
     public Vector2 home;
     public Quaternion rotation;
     public bool isFired = false;
+    public bool isHit = false;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private GameObject bh;
     private Rigidbody2D rb;
+    private SpriteRenderer sprite;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
+
         home = transform.localPosition;
     }
 
@@ -37,15 +42,23 @@ public class ArmsScript : MonoBehaviour
             }
             
         }
-        if (isFired)
+        if (isFired && !isHit)
         {
             MoveToTarget();
             Rotate();
-        } else {
+        } else if(!isHit)
+        {
             SetRotation(GetRotation(GetMousePosition()));
             Rotate();
         }
 
+        if(isHit)
+        {
+            LockPos(lockedPos);
+            SetRotation(GetRotation(GetMousePosition()));
+            Rotate();
+            sprite.flipX = true;
+        }
     }
 
     public Vector2 GetMousePosition()
@@ -76,6 +89,10 @@ public class ArmsScript : MonoBehaviour
     {
         rotation = r;
     }
+    public void SetOppositeRotation(Quaternion r)
+    {
+        rotation = Quaternion.Inverse(r);
+    }
     public void Rotate()
     {
         transform.rotation = rotation;
@@ -84,14 +101,27 @@ public class ArmsScript : MonoBehaviour
     {
         isFired = false;
         transform.localPosition = home;
+        isHit = false;
+        sprite.flipX = false;
     }
-
+    public void Hit()
+    {
+        if(!isHit)
+        {
+            lockedPos = transform.position;
+        }
+        isHit = true;
+    }
+    public void LockPos(Vector2 lp)
+    {
+        transform.position = lp;
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Anchor")
         {
             Debug.Log("Anchor attached");
-            Reset();
+            Hit();
         }
         else if(other.tag != "Player")
         {
