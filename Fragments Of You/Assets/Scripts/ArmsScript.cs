@@ -10,6 +10,7 @@ public class ArmsScript : MonoBehaviour
     public Quaternion rotation;
     public bool isFired = false;
     public bool isHit = false;
+    public float anchorableDis = 14;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private GameObject bh;
     private Rigidbody2D rb;
@@ -52,12 +53,17 @@ public class ArmsScript : MonoBehaviour
             Rotate();
         }
 
-        if(isHit)
+        if(isHit && isFired)
         {
             LockPos(lockedPos);
-            SetRotation(GetRotation(GetMousePosition()));
+            SetRotation(GetRotation(transform.parent.position));
             Rotate();
             sprite.flipX = true;
+        }
+
+        if(!isInRange())
+        {
+            Reset();
         }
     }
 
@@ -115,6 +121,17 @@ public class ArmsScript : MonoBehaviour
     public void LockPos(Vector2 lp)
     {
         transform.position = lp;
+    }
+
+    public bool isInRange()
+    {
+        Vector2 diff = transform.parent.position - transform.position;
+        float curDistance = diff.sqrMagnitude;
+        if (curDistance < anchorableDis)
+        {
+            return true;
+        }
+        return false;
     }
     void OnTriggerEnter2D(Collider2D other)
     {
