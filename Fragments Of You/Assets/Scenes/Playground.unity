@@ -2082,6 +2082,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &919306213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6189605323775650928, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
+  m_PrefabInstance: {fileID: 6189605322865824661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1151843907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2826,6 +2831,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1171361255}
+    - target: {fileID: 4805445766649799311, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: arms
+      value: 
+      objectReference: {fileID: 919306213}
     - target: {fileID: 4805445766649799311, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: grappleJumpForce
       value: 20
