@@ -149,4 +149,12 @@ public class PinkMovement : MonoBehaviour
             animator.SetBool("isJumping", false);
         }
     }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Spike"))
+        {
+            respawnPlayer();
+        }
+    }
 }
