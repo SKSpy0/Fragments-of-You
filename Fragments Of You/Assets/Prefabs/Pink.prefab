@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4914223996386738632}
   - component: {fileID: 1034688645069178492}
   - component: {fileID: 2979014762792046932}
+  - component: {fileID: 4805445766649799311}
   m_Layer: 0
   m_Name: Pink
   m_TagString: Player
@@ -70,13 +71,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac13b5938ce0466197c8a28b5d76fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver_Condition: {fileID: 0}
   jumpableGround:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 10
   jumpForce: 17
-  grappleJumpForce: 17
-  anchorableDis: 10
 --- !u!61 &4914223996386738634
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -219,3 +219,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1476995, y: 0.06542969}
   m_EdgeRadius: 0
+--- !u!114 &4805445766649799311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4914223996386738638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74d025a9047b4c719c6753bb72ae958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasArms: 1
+  advanceGrapple: 1
+  jumpableGround:
+    serializedVersion: 2
+    m_Bits: 8
+  grappleJumpForce: 17
+  anchorableDis: 10
