@@ -12,13 +12,12 @@ public class PinkMovement : MonoBehaviour
     public GameOver_Condition gameOver_Condition;
 
     [SerializeField] private LayerMask jumpableGround;
-    private Vector2 respawnPoint;
     private float dirX = 0f;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
 
-    //private bool hasArms = false;
-    private bool hasLegs = true;
+    private bool Arms = true;
+    private bool Legs = true;
 
     private void Start()
     {
@@ -32,7 +31,6 @@ public class PinkMovement : MonoBehaviour
         rb.freezeRotation = true;
 
         // set respawn to starting position
-        respawnPoint = this.transform.position;
     }
 
 
@@ -46,16 +44,10 @@ public class PinkMovement : MonoBehaviour
         // start of abilities that can be lost
         if (Input.GetButtonDown("Jump"))
         {
-            if(IsGrounded() && hasLegs)
+            if(IsGrounded() && hasLegs())
             {
                 Jump();
             }
-        }
-
-        // if player falls off level respawn
-        if(this.transform.position.y < -8)
-        {
-            respawnPlayer();
         }
     }
     
@@ -90,33 +82,11 @@ public class PinkMovement : MonoBehaviour
 
     // Grapple functions end ----------------------------------------------------------------------
 
-    // Respawn functions start --------------------------------------------------------------------
-    // sets repawnpoint taking vector 2 as input
-    // vector 3 can be converted to vector 2 implicitly
-    // Note: not set by default.
-    public void setRespawn(Vector2 newPoint)
-    {
-        respawnPoint = newPoint;
-    }
-
-    // gets repawnpoint returning vector 2
-    public Vector2 getRespawnPoint()
-    {
-        return respawnPoint;
-    }
-
-    // teleports player back to respawnpoint and corrects any orientation
-    public void respawnPlayer()
-    {
-        this.transform.SetPositionAndRotation(respawnPoint,new Quaternion(0,0,0,0));
-    }
-    // Respawn functions end ----------------------------------------------------------------------
-
     // State functions start ----------------------------------------------------------------------
     // function to lose arms
     public void loseArms()
     {
-        //hasArms = false;
+        Arms = false;
         // preform sprite switch here
 
     }
@@ -124,9 +94,19 @@ public class PinkMovement : MonoBehaviour
     // function to lose legs
     public void loseLegs()
     {
-        hasLegs = false;
+        Legs = false;
         // preform sprite switch here
 
+    }
+
+    public bool hasArms()
+    {
+        return Arms;
+    }
+
+    public bool hasLegs()
+    {
+        return Legs;
     }
     // State functions end ------------------------------------------------------------------------
 

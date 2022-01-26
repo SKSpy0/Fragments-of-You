@@ -10,8 +10,9 @@ public class PinkGrapple : MonoBehaviour
     private Animator animator;
     public GameObject arms;
     private bool isAnchored = false;
-    public bool hasArms = true;
     public bool advanceGrapple = true;
+
+    private PinkMovement pm;
 
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float grappleJumpForce = 7f;
@@ -28,6 +29,7 @@ public class PinkGrapple : MonoBehaviour
         // disable arm and anchor
         arm.enabled = false;
         isAnchored = false;
+        pm = this.GetComponent<PinkMovement>();
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class PinkGrapple : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && hasArms)
+                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
                 {
                     Grapple();
                 } else if(isAnchored)
@@ -55,7 +57,7 @@ public class PinkGrapple : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
-                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && hasArms)
+                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
                 {
                     ShootArms();
                 } 
