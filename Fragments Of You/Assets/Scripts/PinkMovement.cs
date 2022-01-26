@@ -13,8 +13,11 @@ public class PinkMovement : MonoBehaviour
 
     [SerializeField] private LayerMask jumpableGround;
     private float dirX = 0f;
-    [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float jumpForce = 14f;
+    private float moveSpeed;
+    [SerializeField] private float inAirMoveSpeed = 5f;
+    [SerializeField] private float groundedMoveSpeed = 7f;
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float gravity = 9.81f;
 
     private bool Arms = true;
     private bool Legs = true;
@@ -38,8 +41,17 @@ public class PinkMovement : MonoBehaviour
     {
         // basic left/right movement
         // player should always have this
+        if(!IsGrounded())
+        {
+            moveSpeed = inAirMoveSpeed;
+        }
+        else
+        {
+            moveSpeed = groundedMoveSpeed;
+        }
         Move();
         FlipPlayer();
+        
         
         // start of abilities that can be lost
         if (Input.GetButtonDown("Jump"))
@@ -48,6 +60,11 @@ public class PinkMovement : MonoBehaviour
             {
                 Jump();
             }
+        }
+
+        if(!IsGrounded())
+        {
+            rb.AddForce(Vector2.down * gravity, ForceMode2D.Force);
         }
     }
     
@@ -62,9 +79,13 @@ public class PinkMovement : MonoBehaviour
         // get input
         dirX = Input.GetAxisRaw("Horizontal");
         // modify velocity based on input
-        rb.AddForce(Vector2.right * dirX * moveSpeed, ForceMode2D.Force);
+        rb.AddForce(Vector2.right * dirX * moveSpeed * Time.deltaTime * 100, ForceMode2D.Force);
         // Play walk Animation
         animator.SetFloat("Speed", Mathf.Abs(dirX));
+        if(dirX==0 && IsGrounded())
+        {
+            rb.velocity *= 0.5f;
+        }
     }
 
     private void Jump()

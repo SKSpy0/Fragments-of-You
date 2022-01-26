@@ -2849,7 +2849,7 @@ PrefabInstance:
       objectReference: {fileID: 919306213}
     - target: {fileID: 4805445766649799311, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: grappleJumpForce
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4914223996386738634, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -2862,6 +2862,18 @@ PrefabInstance:
     - target: {fileID: 4914223996386738636, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Mass
       value: 0.53308606
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914223996386738636, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914223996386738636, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914223996386738636, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4914223996386738637, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_RootOrder
@@ -2910,6 +2922,14 @@ PrefabInstance:
     - target: {fileID: 4914223996386738638, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Name
       value: Pink
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914223996386738639, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: jumpForce
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914223996386738639, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: moveSpeed
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6171390333046705397, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Enabled

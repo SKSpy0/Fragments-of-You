@@ -15,7 +15,7 @@ public class PinkGrapple : MonoBehaviour
     private PinkMovement pm;
 
     [SerializeField] private LayerMask jumpableGround;
-    [SerializeField] private float grappleJumpForce = 7f;
+    [SerializeField] private float grappleJumpForce = 5f;
     [SerializeField] private float anchorableDis = 14f;
 
     // Start is called before the first frame update
