@@ -64,6 +64,15 @@ public class PinkGrapple : MonoBehaviour
                     ReleaseArms();
                 }
             }
+            if (arms.GetComponent<ArmsScript>().isHit)
+            {
+                Grapple();
+            }
+            if (!arms.GetComponent<ArmsScript>().isFired)
+            {
+                arm.enabled = false;
+                isAnchored = false;
+            }
         }
         AnchorRadar();
         
