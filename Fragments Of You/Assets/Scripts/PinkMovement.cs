@@ -42,20 +42,21 @@ public class PinkMovement : MonoBehaviour
         // start of abilities that can be lost
         if (Input.GetButtonDown("Jump"))
         {
-            if(IsGrounded() && hasLegs())
+            if (IsGrounded() && hasLegs())
             {
                 Jump();
             }
         }
 
         // if player falls off level respawn
-        if(this.transform.position.y < -8)
+        if (this.transform.position.y < -8)
         {
-            resp.respawnPlayer();
+            // resp.respawnPlayer();
+            StartCoroutine(PlayDeathAnim());
         }
     }
-    
-    private void FixedUpdate() 
+
+    private void FixedUpdate()
     {
         // basic left/right movement
         // player should always have this
@@ -64,7 +65,7 @@ public class PinkMovement : MonoBehaviour
     }
 
     // Movement functions start -------------------------------------------------------------------
-    private void Move() 
+    private void Move()
     {
         // get input
         dirX = Input.GetAxisRaw("Horizontal");
@@ -125,7 +126,9 @@ public class PinkMovement : MonoBehaviour
         if (rb.velocity.x < -0.1f)
         {
             sprite.flipX = true;
-        } else if (rb.velocity.x > 0.1f) {
+        }
+        else if (rb.velocity.x > 0.1f)
+        {
             sprite.flipX = false;
         }
     }
@@ -134,11 +137,25 @@ public class PinkMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Spike"))
         {
-            resp.respawnPlayer();
+            PlayerDeath();
         }
         // When player land on the ground, stop the jumping animation
-        if (other.gameObject.CompareTag("Ground")){
+        if (other.gameObject.CompareTag("Ground"))
+        {
             animator.SetBool("isJumping", false);
         }
+    }
+
+    private void PlayerDeath()
+    {
+        StartCoroutine(PlayDeathAnim());
+    }
+
+    IEnumerator PlayDeathAnim()
+    {
+        animator.SetBool("Dead", true);
+        animator.SetBool("Respawn", false);
+        yield return new WaitForSeconds(1f);
+        resp.respawnPlayer();
     }
 }

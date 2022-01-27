@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     {
          Debug.Log("loading....");
          LoadingAudioSettings();
-
     }
     
     // note: to import "sceneManagement" input library to work with LoadScence
