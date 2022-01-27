@@ -70,7 +70,6 @@ public class PinkGrapple : MonoBehaviour
             }
         }
         AnchorRadar();
-        
     }
 
     // Ground Check

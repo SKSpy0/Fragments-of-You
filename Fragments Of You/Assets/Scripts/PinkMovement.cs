@@ -38,11 +38,6 @@ public class PinkMovement : MonoBehaviour
 
     private void Update()
     {
-        // basic left/right movement
-        // player should always have this
-        Move();
-        FlipPlayer();
-        
         // start of abilities that can be lost
         if (Input.GetButtonDown("Jump"))
         {
@@ -61,7 +56,10 @@ public class PinkMovement : MonoBehaviour
     
     private void FixedUpdate() 
     {
-        
+        // basic left/right movement
+        // player should always have this
+        Move();
+        FlipPlayer();
     }
 
     // Movement functions start -------------------------------------------------------------------
