@@ -43,6 +43,7 @@ public class PinkGrapple : MonoBehaviour
                 if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
                 {
                     Grapple();
+                    // Sound effect for grapple should be here.
                 } else if(isAnchored)
                 {
                     GrappleOff();
@@ -56,6 +57,7 @@ public class PinkGrapple : MonoBehaviour
                 if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
                 {
                     ShootArms();
+                    // Sound effect for arm extensions should be here (It's a good idea).
                 } 
                 else if(isAnchored)
                 {
@@ -65,6 +67,7 @@ public class PinkGrapple : MonoBehaviour
             if (handsGameObject.GetComponent<Hands_Script>().isHit)
             {
                 Grapple();
+                // Anchor-hit sound effect here
             }
             if (!handsGameObject.GetComponent<Hands_Script>().isFired)
             {

@@ -13,8 +13,8 @@ public class PinkMovement : MonoBehaviour
 
     [SerializeField] private LayerMask jumpableGround;
     private float dirX = 0f;
-    [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float jumpForce = 14f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 12f;
 
     private bool Arms = true;
     private bool Legs = true;
@@ -79,6 +79,7 @@ public class PinkMovement : MonoBehaviour
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         // Play Jump Animation
         animator.SetBool("isJumping", true);
+        // Jump Sound Effect here: jump.play();
     }
 
     // GroundCheck
@@ -128,7 +129,7 @@ public class PinkMovement : MonoBehaviour
             sprite.flipX = false;
         }
     }
-
+    // First Environmental Collison - Death by spike
     public void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Spike"))

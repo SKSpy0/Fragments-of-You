@@ -39,6 +39,7 @@ public class Respawn : MonoBehaviour
     public void respawnPlayer()
     {
         pm.transform.SetPositionAndRotation(respawnPoint,new Quaternion(0,0,0,0));
+        // respawn animation and sound effect can be added here.
     }
     // Respawn functions end ----------------------------------------------------------------------
 }
