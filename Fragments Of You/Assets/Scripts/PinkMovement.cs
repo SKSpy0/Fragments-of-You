@@ -38,11 +38,6 @@ public class PinkMovement : MonoBehaviour
 
     private void Update()
     {
-        // basic left/right movement
-        // player should always have this
-        Move();
-        FlipPlayer();
-        
         // start of abilities that can be lost
         if (Input.GetButtonDown("Jump"))
         {
@@ -61,7 +56,10 @@ public class PinkMovement : MonoBehaviour
     
     private void FixedUpdate() 
     {
-        
+        // basic left/right movement
+        // player should always have this
+        Move();
+        FlipPlayer();
     }
 
     // Movement functions start -------------------------------------------------------------------
@@ -142,19 +140,15 @@ public class PinkMovement : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        // When player land on the ground, stop the jumping animation
-        if (other.gameObject.CompareTag("Ground")){
-            animator.SetBool("isJumping", false);
-        }
-    }
-
     public void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Spike"))
         {
             respawnPlayer();
+        }
+        // When player land on the ground, stop the jumping animation
+        if (other.gameObject.CompareTag("Ground")){
+            animator.SetBool("isJumping", false);
         }
     }
 }

@@ -21,6 +21,8 @@ public class Hands_Script : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+
+        sprite.enabled = false;
     }
 
     // Update is called once per frame
@@ -86,6 +88,7 @@ public class Hands_Script : MonoBehaviour
     public void Fire()
     {
         isFired = true;
+        sprite.enabled = true;
     }
     public Quaternion GetRotation(Vector3 position)
     {
@@ -108,6 +111,7 @@ public class Hands_Script : MonoBehaviour
     }
     public void Reset()
     {
+        sprite.enabled = false;
         isFired = false;
         transform.position = player.transform.position;
         isHit = false;
