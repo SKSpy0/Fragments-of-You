@@ -6,27 +6,30 @@ public class PinkGrapple : MonoBehaviour
 {
     private Rigidbody2D rb;
     private BoxCollider2D coll;
-    private SpringJoint2D arm;
     private Animator animator;
-    public GameObject arms;
+    public GameObject handsGameObject;
+    public GameObject firstArm;
+    public GameObject armPrefab;
     private bool isAnchored = false;
-    public bool hasArms = true;
     public bool advanceGrapple = true;
+    public bool generateRope = true;
 
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float grappleJumpForce = 7f;
     [SerializeField] private float anchorableDis = 14f;
+    [SerializeField] private int numberOfLinks = 7;
+
+    private PinkMovement pm;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
-        arm = GetComponent<SpringJoint2D>();
         animator = GetComponent<Animator>();
+        pm = GetComponent<PinkMovement>();
 
-        // disable arm and anchor
-        arm.enabled = false;
+        // disableanchor
         isAnchored = false;
     }
 
@@ -37,7 +40,7 @@ public class PinkGrapple : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && hasArms)
+                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
                 {
                     Grapple();
                 } else if(isAnchored)
@@ -45,17 +48,12 @@ public class PinkGrapple : MonoBehaviour
                     GrappleOff();
                 }
             }
-
-            if(IsAnyValidAnchor())
-            {
-                arm.connectedBody = FindValidAnchor().GetComponent<Rigidbody2D>();
-            }
         }
         else
         {
             if (Input.GetButtonDown("Jump"))
             {
-                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && hasArms)
+                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
                 {
                     ShootArms();
                 } 
@@ -64,18 +62,16 @@ public class PinkGrapple : MonoBehaviour
                     ReleaseArms();
                 }
             }
-            if (arms.GetComponent<ArmsScript>().isHit)
+            if (handsGameObject.GetComponent<Hands_Script>().isHit)
             {
                 Grapple();
             }
-            if (!arms.GetComponent<ArmsScript>().isFired)
+            if (!handsGameObject.GetComponent<Hands_Script>().isFired)
             {
-                arm.enabled = false;
                 isAnchored = false;
             }
         }
         AnchorRadar();
-        
     }
 
     // Ground Check
@@ -87,35 +83,37 @@ public class PinkGrapple : MonoBehaviour
     // Grapple
     private void Grapple()
     {
-        arm.enabled = true;
+        if(generateRope){
+            GenerateRope();
+            generateRope = false;
+        }
+        
         isAnchored = true;
         animator.SetBool("isJumping", true);
     }
     // Disengage Grapple
     private void GrappleOff()
     {
-        arm.enabled = false;
+        DestoryArmByTag();
+        generateRope = true;
         isAnchored = false;
         rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
     }
     private void ShootArms()
     {
-        arm.connectedBody = arms.GetComponent<Rigidbody2D>();
-        isAnchored = true;
-        animator.SetBool("isJumping", true);
         Vector3 target = FindValidAnchor().transform.position;
-        Quaternion targetRotation = arms.GetComponent<ArmsScript>().GetRotation(target);
-        arms.GetComponent<ArmsScript>().SetTarget(target);
-        arms.GetComponent<ArmsScript>().SetRotation(targetRotation);
-        arms.GetComponent<ArmsScript>().Fire();
-        arm.enabled = true;
+        Quaternion targetRotation = handsGameObject.GetComponent<Hands_Script>().GetRotation(target);
+        handsGameObject.GetComponent<Hands_Script>().SetTarget(target);
+        handsGameObject.GetComponent<Hands_Script>().SetRotation(targetRotation);
+        handsGameObject.GetComponent<Hands_Script>().Fire();
     }
     private void ReleaseArms()
     {
+        DestoryArmByTag();
+        generateRope = true;
         isAnchored = false;
-        arm.enabled = false;
         rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
-        arms.GetComponent<ArmsScript>().Reset();
+        handsGameObject.GetComponent<Hands_Script>().Reset();
     }
     private GameObject FindValidAnchor() 
     {
@@ -155,13 +153,14 @@ public class PinkGrapple : MonoBehaviour
         return false;
     }
     
+    // for debugging purposes to see valid anchors nearby player
     private void AnchorRadar()
     {
         GameObject an = FindValidAnchor();
         if(IsAnyValidAnchor()) {
             if(isAnchored) {
                 if(advanceGrapple) {
-                    Debug.DrawLine(transform.position, arms.transform.position, Color.yellow);
+                    Debug.DrawLine(transform.position, handsGameObject.transform.position, Color.yellow);
                 }
                 else
                 {
@@ -173,5 +172,40 @@ public class PinkGrapple : MonoBehaviour
             }
             
         }
+    }
+
+    //generate rope from anchor to player
+    void GenerateRope(){
+        Rigidbody2D previous_arm = firstArm.GetComponent<Rigidbody2D>();
+        for(int i = 0; i < numberOfLinks; i++){
+            GameObject arm = Instantiate(armPrefab, transform);
+            HingeJoint2D joint = arm.GetComponent<HingeJoint2D>();
+            joint.connectedBody = previous_arm;
+            
+            if(i < numberOfLinks - 1){
+                previous_arm = arm.GetComponent<Rigidbody2D>();
+            } else {
+                HingeJoint2D playerJoint = gameObject.AddComponent<HingeJoint2D>();
+                playerJoint.autoConfigureConnectedAnchor = false;
+                playerJoint.connectedBody = arm.GetComponent<Rigidbody2D>();
+                playerJoint.anchor = Vector2.zero;
+                playerJoint.connectedAnchor = new Vector2(0f, -0.3f);
+            }
+        }
+    }
+
+    //destroy rope
+    void DestroyRope(){
+        for(int i = 0; i < numberOfLinks; i++){
+            Destroy(transform.GetChild(i).gameObject);
+        }
+        Destroy(transform.GetComponent<HingeJoint2D>());
+    }
+
+    void DestoryArmByTag()
+    {
+        GameObject[] arms = GameObject.FindGameObjectsWithTag("Arm");
+        foreach(GameObject arm in arms)
+         GameObject.Destroy(arm);
     }
 }

@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmsScript : MonoBehaviour
+public class Hands_Script : MonoBehaviour
 {
     public Vector2 target;
     public Vector2 lockedPos;
     public Quaternion rotation;
+    public GameObject player;
+    public float armLength = 14;
     public bool isFired = false;
     public bool isHit = false;
-    public float anchorableDis = 14;
-    public GameObject player;
-    [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private GameObject bh;
+    [SerializeField] private float armSpeed = 7f;
+    [SerializeField] private GameObject bullet_head;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
 
@@ -21,6 +21,8 @@ public class ArmsScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+
+        sprite.enabled = false;
     }
 
     // Update is called once per frame
@@ -81,11 +83,12 @@ public class ArmsScript : MonoBehaviour
     }
     public void MoveToTarget() 
     {
-        transform.position = Vector2.MoveTowards(transform.position, bh.transform.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, bullet_head.transform.position, armSpeed * Time.deltaTime);
     }
     public void Fire()
     {
         isFired = true;
+        sprite.enabled = true;
     }
     public Quaternion GetRotation(Vector3 position)
     {
@@ -108,6 +111,7 @@ public class ArmsScript : MonoBehaviour
     }
     public void Reset()
     {
+        sprite.enabled = false;
         isFired = false;
         transform.position = player.transform.position;
         isHit = false;
@@ -130,7 +134,7 @@ public class ArmsScript : MonoBehaviour
     {
         Vector2 diff = player.transform.position - transform.position;
         float curDistance = diff.sqrMagnitude;
-        if (curDistance < anchorableDis)
+        if (curDistance < armLength)
         {
             return true;
         }
