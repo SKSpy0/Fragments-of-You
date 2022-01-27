@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2632065432075122508}
   - component: {fileID: 2632065432075122505}
   - component: {fileID: 2451209812896764937}
+  - component: {fileID: -1174008689622047029}
   m_Layer: 0
   m_Name: Pink
   m_TagString: Player
@@ -186,7 +187,6 @@ MonoBehaviour:
   handsGameObject: {fileID: 0}
   firstArm: {fileID: 0}
   armPrefab: {fileID: 0}
-  hasArms: 1
   advanceGrapple: 1
   generateRope: 1
   jumpableGround:
@@ -195,3 +195,15 @@ MonoBehaviour:
   grappleJumpForce: 12
   anchorableDis: 8
   numberOfLinks: 5
+--- !u!114 &-1174008689622047029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632065432075122504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4bd078ee797eba4ea0b56a627442833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

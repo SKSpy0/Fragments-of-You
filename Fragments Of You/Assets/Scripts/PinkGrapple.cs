@@ -11,7 +11,6 @@ public class PinkGrapple : MonoBehaviour
     public GameObject firstArm;
     public GameObject armPrefab;
     private bool isAnchored = false;
-    public bool hasArms = true;
     public bool advanceGrapple = true;
     public bool generateRope = true;
 
@@ -20,12 +19,15 @@ public class PinkGrapple : MonoBehaviour
     [SerializeField] private float anchorableDis = 14f;
     [SerializeField] private int numberOfLinks = 7;
 
+    private PinkMovement pm;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        pm = GetComponent<PinkMovement>();
 
         // disableanchor
         isAnchored = false;
@@ -38,7 +40,7 @@ public class PinkGrapple : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && hasArms)
+                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
                 {
                     Grapple();
                 } else if(isAnchored)
@@ -51,7 +53,7 @@ public class PinkGrapple : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
-                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && hasArms)
+                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
                 {
                     ShootArms();
                 } 
