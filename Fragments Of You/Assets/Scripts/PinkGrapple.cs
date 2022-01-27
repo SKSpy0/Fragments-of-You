@@ -92,15 +92,13 @@ public class PinkGrapple : MonoBehaviour
     // Disengage Grapple
     private void GrappleOff()
     {
-        DestroyRope();
+        DestoryArmByTag();
         generateRope = true;
         isAnchored = false;
         rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
     }
     private void ShootArms()
     {
-        isAnchored = true;
-        animator.SetBool("isJumping", true);
         Vector3 target = FindValidAnchor().transform.position;
         Quaternion targetRotation = handsGameObject.GetComponent<Hands_Script>().GetRotation(target);
         handsGameObject.GetComponent<Hands_Script>().SetTarget(target);
@@ -109,7 +107,7 @@ public class PinkGrapple : MonoBehaviour
     }
     private void ReleaseArms()
     {
-        DestroyRope();
+        DestoryArmByTag();
         generateRope = true;
         isAnchored = false;
         rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
@@ -200,5 +198,12 @@ public class PinkGrapple : MonoBehaviour
             Destroy(transform.GetChild(i).gameObject);
         }
         Destroy(transform.GetComponent<HingeJoint2D>());
+    }
+
+    void DestoryArmByTag()
+    {
+        GameObject[] arms = GameObject.FindGameObjectsWithTag("Arm");
+        foreach(GameObject arm in arms)
+         GameObject.Destroy(arm);
     }
 }
