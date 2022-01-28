@@ -8,6 +8,8 @@ public class PinkMovement : MonoBehaviour
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
     private Animator animator;
+    public AudioSource jumpSFX;
+    public AudioSource landedSFX;
 
     public GameOver_Condition gameOver_Condition;
 
@@ -80,7 +82,8 @@ public class PinkMovement : MonoBehaviour
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         // Play Jump Animation
         animator.SetBool("isJumping", true);
-        // Jump Sound Effect here: jump.play();
+        // Jump Sound Effect here
+        jumpSFX.Play();
     }
 
     // GroundCheck
@@ -132,7 +135,7 @@ public class PinkMovement : MonoBehaviour
             sprite.flipX = false;
         }
     }
-    // First Environmental Collison - Death by spike
+    // Environmental Collison's with player - Death by spike, Landing after jump, etc.
     public void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Spike"))
@@ -143,6 +146,8 @@ public class PinkMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             animator.SetBool("isJumping", false);
+             // landed sound effect
+              landedSFX.Play();
         }
     }
 

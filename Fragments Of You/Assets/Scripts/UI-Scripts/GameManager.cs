@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         // better volume management with exposed parameter - Mathematical formula used
         mixer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20);
         // Saves players last audio settings
-        PlayerPrefs.SetFloat("MasterVolume", sliderValue);
+        PlayerPrefs.SetFloat("SavedMasterVolume", sliderValue);
         // PlayerPrefs.Save();
         Debug.Log("Master Volume saved!");
     }
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
         // better volume management with exposed parameter - Mathematical formula used
         mixer.SetFloat("BGMVolume", Mathf.Log10(sliderValue) * 20);
         // Saves players last audio settings
-        PlayerPrefs.SetFloat("BGMVolume", sliderValue);
+        PlayerPrefs.SetFloat("SavedBGMVolume", sliderValue);
         // PlayerPrefs.Save();
         Debug.Log("Music Volume saved!");
     }
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
         // better volume management with exposed parameter - Mathematical formula used
         mixer.SetFloat("SFXVolume", Mathf.Log10(sliderValue) * 20);
         // Saves players last audio settings
-        PlayerPrefs.SetFloat("SFXVolume", sliderValue);
+        PlayerPrefs.SetFloat("SavedSFXVolume", sliderValue);
         // PlayerPrefs.Save();
         Debug.Log("Sound Effect Volume saved!");
     }

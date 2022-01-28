@@ -15,6 +15,8 @@ public class Hands_Script : MonoBehaviour
     [SerializeField] private GameObject bullet_head;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
+    public AudioSource grappleSFX;
+    public AudioSource anchorhitSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -89,6 +91,8 @@ public class Hands_Script : MonoBehaviour
     {
         isFired = true;
         sprite.enabled = true;
+        // Sound effect for grapple.
+         grappleSFX.Play();
     }
     public Quaternion GetRotation(Vector3 position)
     {
@@ -124,6 +128,8 @@ public class Hands_Script : MonoBehaviour
             lockedPos = transform.position;
         }
         isHit = true;
+        // Sound effect for anchor-hit with grapple.
+         anchorhitSFX.Play();
     }
     public void LockPos(Vector2 lp)
     {
