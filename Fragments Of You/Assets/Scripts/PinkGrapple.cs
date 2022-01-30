@@ -70,6 +70,7 @@ public class PinkGrapple : MonoBehaviour
             if (!handsGameObject.GetComponent<Hands_Script>().isFired)
             {
                 isAnchored = false;
+                DestoryArmByTag();
             }
         }
         AnchorRadar();
