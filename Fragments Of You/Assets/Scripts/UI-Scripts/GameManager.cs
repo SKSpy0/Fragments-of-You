@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Slider masterSlider;
     public Slider bgmSlider;
     public Slider sfxSlider;
+    public string LevelName;
 
     float savedValue1 = 1;
     float savedValue2 = 1;
@@ -28,6 +29,13 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene(scenceName);
 
+    }
+    // changes levels
+     public void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Player has collided with next level collider.");
+        //SceneManager.LoadScene(scenceName, LoadSceneMode.Single);
+        ChangeScence(LevelName);
     }
 
     // When player click play button, jump into games
