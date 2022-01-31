@@ -46,6 +46,7 @@ public class PinkGrapple : MonoBehaviour
                 } else if(isAnchored)
                 {
                     GrappleOff();
+                    handsGameObject.GetComponent<Hands_Script>().Reset();
                 }
             }
         }
@@ -89,7 +90,6 @@ public class PinkGrapple : MonoBehaviour
             GenerateRope();
             generateRope = false;
         }
-
         isAnchored = true;
         animator.SetBool("isJumping", true);
     }
@@ -208,6 +208,6 @@ public class PinkGrapple : MonoBehaviour
     {
         GameObject[] arms = GameObject.FindGameObjectsWithTag("Arm");
         foreach(GameObject arm in arms)
-         GameObject.Destroy(arm);
+            GameObject.Destroy(arm);
     }
 }
