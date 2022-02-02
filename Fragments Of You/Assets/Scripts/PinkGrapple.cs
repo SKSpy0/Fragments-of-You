@@ -91,7 +91,6 @@ public class PinkGrapple : MonoBehaviour
             generateRope = false;
         }
         isAnchored = true;
-        animator.SetBool("isJumping", true);
     }
     // Disengage Grapple
     private void GrappleOff()
@@ -108,6 +107,7 @@ public class PinkGrapple : MonoBehaviour
         handsGameObject.GetComponent<Hands_Script>().SetTarget(target);
         handsGameObject.GetComponent<Hands_Script>().SetRotation(targetRotation);
         handsGameObject.GetComponent<Hands_Script>().Fire();
+        animator.SetBool("isArmless", true);
     }
     private void ReleaseArms()
     {
@@ -116,6 +116,7 @@ public class PinkGrapple : MonoBehaviour
         isAnchored = false;
         rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
         handsGameObject.GetComponent<Hands_Script>().Reset();
+        animator.SetBool("isArmless", false);
     }
     private GameObject FindValidAnchor() 
     {
