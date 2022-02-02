@@ -2358,18 +2358,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2632065432075122504, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
   m_PrefabInstance: {fileID: 2041593258}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &843996444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843996436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4bd078ee797eba4ea0b56a627442833, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &896578084
 GameObject:
   m_ObjectHideFlags: 0
@@ -3205,10 +3193,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 158368023}
     - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: anchorableDis
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: handsGameObject
       value: 
       objectReference: {fileID: 1354394641}
@@ -3282,6 +3266,10 @@ PrefabInstance:
     - target: {fileID: 3343372299555211860, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
       propertyPath: m_Name
       value: Hands
+      objectReference: {fileID: 0}
+    - target: {fileID: 3343372299555211860, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3343372299555211867, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
       propertyPath: m_RootOrder

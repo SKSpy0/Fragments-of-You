@@ -20,6 +20,7 @@ public class PinkMovement : MonoBehaviour
 
     private bool Arms = true;
     private bool Legs = true;
+    private bool wallJumped = false;
 
     private Respawn resp;
 
@@ -34,6 +35,7 @@ public class PinkMovement : MonoBehaviour
 
         // freeze rotation
         rb.freezeRotation = true;
+        wallJumped = false;
 
         resp.setRespawn(this.transform.position);
     }
@@ -48,6 +50,11 @@ public class PinkMovement : MonoBehaviour
             {
                 Jump();
             }
+            if(isFacingWall() && !IsGrounded() && !wallJumped)
+            {
+                WallJump();
+                wallJumped = true;
+            }
         }
 
         // if player falls off level respawn
@@ -56,6 +63,13 @@ public class PinkMovement : MonoBehaviour
             // resp.respawnPlayer();
             StartCoroutine(PlayDeathAnim());
         }
+
+        
+        if (IsGrounded())
+        {
+            wallJumped = false;
+        }
+
     }
 
     private void FixedUpdate()
@@ -86,10 +100,40 @@ public class PinkMovement : MonoBehaviour
         jumpSFX.Play();
     }
 
+    private void WallJump()
+    {
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+        if(sprite.flipX == false)
+        {
+            rb.AddForce(Vector2.left * (jumpForce / 1.5f), ForceMode2D.Impulse);
+        }
+        else 
+        {
+            rb.AddForce(Vector2.right * (jumpForce / 1.5f), ForceMode2D.Impulse);
+        }
+
+        // Play Jump Animation
+        animator.SetBool("isJumping", true);
+        // Jump Sound Effect here
+        jumpSFX.Play();
+    }
     // GroundCheck
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+    }
+
+    private bool isFacingWall()
+    {
+        if(sprite.flipX == false)
+        {
+            return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.right, .1f, jumpableGround);
+        }
+        else 
+        {
+            return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.left, .1f, jumpableGround);
+        }
     }
 
     // Grapple functions end ----------------------------------------------------------------------
