@@ -6,12 +6,20 @@ public class PinkGrapple : MonoBehaviour
 {
     private Rigidbody2D rb;
     private BoxCollider2D coll;
+    private CapsuleCollider2D handColl;
     private Animator animator;
     public GameObject handsGameObject;
     public GameObject firstArm;
     public GameObject armPrefab;
-    private bool isAnchored = false;
+    public bool isAnchored = false;
+    private bool isFired = false;
+    private Vector3 targetPos;
+    private Quaternion targetRotat;
+    private float armSpeed = 7f;
+    private bool isHit = false;
     public bool generateRope = true;
+    public Hands_Script handsScript;
+    //
 
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float grappleJumpForce = 7f;
@@ -28,6 +36,8 @@ public class PinkGrapple : MonoBehaviour
         animator = GetComponent<Animator>();
         pm = GetComponent<PinkMovement>();
 
+        handColl = handsGameObject.GetComponent<CapsuleCollider2D>();
+
         // disableanchor
         isAnchored = false;
     }
@@ -39,24 +49,42 @@ public class PinkGrapple : MonoBehaviour
         {
             if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
             {
-                ShootArms();
+                ShootHands();
                 // Sound effect for arm extensions should be here (It's a good idea).
             } 
             else if(isAnchored)
             {
                 ReleaseArms();
+
             }
         }
-        if (handsGameObject.GetComponent<Hands_Script>().isHit)
+
+        AnchorRadar();
+
+        // Hand
+        if (!isFired) 
         {
-            Grapple();
-        }
-        if (!handsGameObject.GetComponent<Hands_Script>().isFired)
-        {
+            handsGameObject.transform.position = transform.position;
             isAnchored = false;
             DestoryArmByTag();
         }
-        AnchorRadar();
+        else
+        {
+            handsGameObject.transform.position = Vector2.MoveTowards(handsGameObject.transform.position, targetPos, armSpeed * Time.deltaTime);
+        }
+
+        isHit = handsScript.checkHit();
+
+        if(isHit && generateRope)
+        {
+            Grapple();
+            generateRope = false;
+        }
+
+        if(handsScript.checkReset())
+        {
+            isFired = false;
+        }
     }
 
     // Ground Check
@@ -70,26 +98,29 @@ public class PinkGrapple : MonoBehaviour
     {
         if(generateRope){
             GenerateRope();
-            generateRope = false;
+            //generateRope = false;
         }
         isAnchored = true;
     }
-    private void ShootArms()
+
+    private void ShootHands()
     {
-        Vector3 target = FindValidAnchor().transform.position;
-        Quaternion targetRotation = handsGameObject.GetComponent<Hands_Script>().GetRotation(target);
-        handsGameObject.GetComponent<Hands_Script>().SetTarget(target);
-        handsGameObject.GetComponent<Hands_Script>().SetRotation(targetRotation);
-        handsGameObject.GetComponent<Hands_Script>().Fire();
+        targetPos = FindValidAnchor().transform.position;
+        targetRotat = GetRotation(targetPos);
+
+        //handsGameObject.GetComponent<Hands_Script>().Fire();
+        isFired = true;
         animator.SetBool("isArmless", true);
     }
     private void ReleaseArms()
     {
+        isHit = false;
+        handsGameObject.transform.position = transform.position;
         DestoryArmByTag();
         generateRope = true;
         isAnchored = false;
         rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
-        handsGameObject.GetComponent<Hands_Script>().Reset();
+        isFired = false;
         animator.SetBool("isArmless", false);
     }
     private GameObject FindValidAnchor() 
@@ -178,5 +209,13 @@ public class PinkGrapple : MonoBehaviour
         GameObject[] arms = GameObject.FindGameObjectsWithTag("Arm");
         foreach(GameObject arm in arms)
             GameObject.Destroy(arm);
+    }
+
+    public Quaternion GetRotation(Vector3 position)
+    {
+        Vector3 difference = position - transform.position;
+        difference.Normalize();
+        float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        return Quaternion.Euler(0f, 0f, rotation_z + 0.1f);
     }
 }

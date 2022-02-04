@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class Hands_Script : MonoBehaviour
 {
+    /*
     public Vector2 target;
     public Vector2 lockedPos;
     public Quaternion rotation;
     public GameObject player;
     public float armLength = 14;
     public bool isFired = false;
-    public bool isHit = false;
     [SerializeField] private float armSpeed = 7f;
     [SerializeField] private GameObject bullet_head;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     public AudioSource grappleSFX;
     public AudioSource anchorhitSFX;
+    */
+    public bool isHit = false;
+    public bool isReset = false;
 
     // Start is called before the first frame update
+    /*
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -58,8 +62,11 @@ public class Hands_Script : MonoBehaviour
         {
             Reset();
         }
+        
     }
+    */
 
+    /*
     public Vector2 GetMousePosition()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -132,17 +139,36 @@ public class Hands_Script : MonoBehaviour
         }
         return false;
     }
+    */
+    
+    public bool checkHit()
+    {
+        return isHit;
+    }
+
+    public bool checkReset()
+    {
+        return isReset;
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Anchor")
         {
-            Debug.Log("Anchor attached");
-            Hit();
+            isHit = true;
+            //Hit();
         }
-        else if(other.tag != "Player")
+        else 
         {
-             Debug.Log("Reset needed");
-             Reset();
+            isHit = false;
+        }
+        
+        if(other.tag != "Player" && other.tag != "Anchor")
+        {
+            isReset = true;
+        }
+        else
+        {
+            isReset = false;
         }
     }
 }

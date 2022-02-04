@@ -3193,6 +3193,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 158368023}
     - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: handsScript
+      value: 
+      objectReference: {fileID: 2105997619}
+    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: handsGameObject
       value: 
       objectReference: {fileID: 1354394641}
@@ -3320,6 +3324,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 843996436}
     - target: {fileID: 6498023442715136866, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498023442715136866, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
       propertyPath: grappleSFX
       value: 
       objectReference: {fileID: 158368023}
@@ -3329,3 +3337,14 @@ PrefabInstance:
       objectReference: {fileID: 583229828}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
+--- !u!114 &2105997619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6498023442715136866, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
+  m_PrefabInstance: {fileID: 2105997618}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354394641}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86195c741642b4e8bb188e5f5c3ad71d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
