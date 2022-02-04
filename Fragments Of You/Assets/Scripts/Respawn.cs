@@ -5,15 +5,19 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
     private Vector2 respawnPoint;
+    private Vector2 increaseSpawnPoint;
 
     private PinkMovement pm;
     private Animator animator;
+
+     public AudioSource RespawnSFX;
 
     // Start is called before the first frame update
     void Start()
     {
         pm = GetComponent<PinkMovement>();
         animator = GetComponent<Animator>();
+        increaseSpawnPoint = new Vector2 (0.5f, 0.5f);
     }
 
     // Update is called once per frame
@@ -40,14 +44,16 @@ public class Respawn : MonoBehaviour
     // teleports player back to respawnpoint and corrects any orientation
     public void respawnPlayer()
     {
+        // Respawn sound effect can be added here.
+        RespawnSFX.Play();
         StartCoroutine(PlayRespawnAnim());
     }
     
     IEnumerator PlayRespawnAnim()
     {
-        pm.transform.SetPositionAndRotation(respawnPoint,new Quaternion(0,0,0,0));
+        pm.transform.SetPositionAndRotation(respawnPoint + increaseSpawnPoint,new Quaternion(0,0,0,0));
 
-        // respawn animation and sound effect can be added here.
+        // respawn animation
         animator.SetBool("Dead", false);
         yield return new WaitForSeconds(1f);
         animator.SetBool("Respawn", true);

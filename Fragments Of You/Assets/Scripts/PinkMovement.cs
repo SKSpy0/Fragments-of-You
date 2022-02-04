@@ -10,6 +10,11 @@ public class PinkMovement : MonoBehaviour
     private Animator animator;
     public AudioSource jumpSFX;
     public AudioSource landedSFX;
+    public AudioSource walkingSFX;
+    public AudioSource DeathSFX;
+
+    private float startingPitch = 2.8f;
+    private float startingVolume = 0.1f;
 
     public GameOver_Condition gameOver_Condition;
 
@@ -21,6 +26,8 @@ public class PinkMovement : MonoBehaviour
     private bool Arms = true;
     private bool Legs = true;
     private bool wallJumped = false;
+    // Detect when you use the toggle, ensures music isn’t played multiple times
+    private bool movementChange;
 
     private Respawn resp;
 
@@ -36,6 +43,11 @@ public class PinkMovement : MonoBehaviour
         // freeze rotation
         rb.freezeRotation = true;
         wallJumped = false;
+        movementChange = false;
+        //Initialize the pitch of walkingSFX
+        walkingSFX.pitch = startingPitch;
+        //Starting volume for walkingSFX
+        walkingSFX.volume = startingVolume;
 
         resp.setRespawn(this.transform.position);
     }
@@ -43,7 +55,9 @@ public class PinkMovement : MonoBehaviour
 
     private void Update()
     {
-        // start of abilities that can be lost
+        /*** Basic characater movement and start of the abilities that can be lost ***/
+        
+        // Jump input is set to - spacebar 
         if (Input.GetButtonDown("Jump"))
         {
             if (IsGrounded() && hasLegs())
@@ -57,8 +71,20 @@ public class PinkMovement : MonoBehaviour
             }
         }
 
-        // if player falls off level respawn
-        if (this.transform.position.y < -8)
+        // Good note*: Input.GetButtonDown() only returns true for the frame in which the button was pressed.
+        // Input.GetButton returns true always while holding down the key.
+         if (Input.GetButton("Horizontal") && movementChange){
+            if (IsGrounded() && hasLegs()){
+                if(!walkingSFX.isPlaying){
+              // Walking Sound Effect here
+                 walkingSFX.Play();
+                }
+            }
+            movementChange = false;
+        }
+
+        /***player falls off level respawn boundary ***/
+        if (this.transform.position.y < -7)
         {
             // resp.respawnPlayer();
             StartCoroutine(PlayDeathAnim());
@@ -68,13 +94,14 @@ public class PinkMovement : MonoBehaviour
         if (IsGrounded())
         {
             wallJumped = false;
+         
         }
 
     }
 
     private void FixedUpdate()
     {
-        // basic left/right movement
+        // basic main character movement left/right
         // player should always have this
         Move();
         FlipPlayer();
@@ -83,12 +110,14 @@ public class PinkMovement : MonoBehaviour
     // Movement functions start -------------------------------------------------------------------
     private void Move()
     {
-        // get input
+        // get input - Horizontal is set to 'a' and 'd' / left and right arrow keys.
         dirX = Input.GetAxisRaw("Horizontal");
         // modify velocity based on input
         rb.AddForce(Vector2.right * dirX * moveSpeed, ForceMode2D.Force);
         // Play walk Animation
         animator.SetFloat("Speed", Mathf.Abs(dirX));
+        // Play walking Sound Effect
+        movementChange = true;
     }
 
     private void Jump()
@@ -197,6 +226,8 @@ public class PinkMovement : MonoBehaviour
 
     private void PlayerDeath()
     {
+        FlipPlayer();
+         DeathSFX.Play();
         StartCoroutine(PlayDeathAnim());
     }
 

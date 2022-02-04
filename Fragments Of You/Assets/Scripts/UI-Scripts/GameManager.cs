@@ -13,11 +13,12 @@ public class GameManager : MonoBehaviour
     public Slider bgmSlider;
     public Slider sfxSlider;
     public string LevelName;
+    public AudioSource sceneSwitchSFX;
 
     float savedValue1 = 1;
     float savedValue2 = 1;
     float savedValue3 = 1;
-
+    
     void Start()
     {
          Debug.Log("loading....");
@@ -25,17 +26,17 @@ public class GameManager : MonoBehaviour
     }
     
     // note: to import "sceneManagement" input library to work with LoadScence
-    public void ChangeScence(string scenceName){
-
-        SceneManager.LoadScene(scenceName);
+    public void ChangeScene(string sceneName){
+        sceneSwitchSFX.Play();
+        SceneManager.LoadScene(sceneName);
 
     }
     // changes levels
      public void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Player has collided with next level collider.");
-        //SceneManager.LoadScene(scenceName, LoadSceneMode.Single);
-        ChangeScence(LevelName);
+        ChangeScene(LevelName);
+
     }
 
     // When player click play button, jump into games
