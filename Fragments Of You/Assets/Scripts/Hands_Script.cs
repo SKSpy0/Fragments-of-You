@@ -154,19 +154,26 @@ public class Hands_Script : MonoBehaviour
     {
         if(other.tag == "Anchor")
         {
+            Debug.Log("Anchor Collided!");
             isHit = true;
             //Hit();
-        }
-        else 
-        {
-            isHit = false;
         }
         
         if(other.tag != "Player" && other.tag != "Anchor")
         {
             isReset = true;
         }
-        else
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.tag == "Anchor")
+        {
+
+            isHit = false;
+        }
+
+        if(other.tag != "Player" && other.tag != "Anchor")
         {
             isReset = false;
         }

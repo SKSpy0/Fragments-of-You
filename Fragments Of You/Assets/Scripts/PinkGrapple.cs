@@ -11,15 +11,14 @@ public class PinkGrapple : MonoBehaviour
     public GameObject handsGameObject;
     public GameObject firstArm;
     public GameObject armPrefab;
-    public bool isAnchored = false;
-    private bool isFired = false;
+    public Hands_Script handsScript;
     private Vector3 targetPos;
     private Quaternion targetRotat;
     private float armSpeed = 7f;
-    private bool isHit = false;
-    public bool generateRope = true;
-    public Hands_Script handsScript;
-    //
+    [SerializeField] private bool isAnchored = false;
+    [SerializeField] private bool isFired = false;
+    [SerializeField] private bool generateRope = true;
+    
 
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float grappleJumpForce = 7f;
@@ -50,35 +49,32 @@ public class PinkGrapple : MonoBehaviour
             if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
             {
                 ShootHands();
-                // Sound effect for arm extensions should be here (It's a good idea).
+            // Sound effect for arm extensions should be here (It's a good idea).
             } 
-            else if(isAnchored)
+            else if(handsScript.checkHit())
             {
-                ReleaseArms();
-
+                isFired = false;
             }
         }
 
         AnchorRadar();
 
-        // Hand
+        // Hand and Arm Rope Conditionals
         if (!isFired) 
         {
             handsGameObject.transform.position = transform.position;
-            isAnchored = false;
-            DestoryArmByTag();
         }
         else
         {
             handsGameObject.transform.position = Vector2.MoveTowards(handsGameObject.transform.position, targetPos, armSpeed * Time.deltaTime);
         }
 
-        isHit = handsScript.checkHit();
-
-        if(isHit && generateRope)
+        if(handsScript.checkHit() && generateRope)
         {
             Grapple();
-            generateRope = false;
+        } else if (!handsScript.checkHit() && !generateRope && isAnchored)
+        {
+            ReleaseArms();
         }
 
         if(handsScript.checkReset())
@@ -96,9 +92,10 @@ public class PinkGrapple : MonoBehaviour
     // Grapple
     private void Grapple()
     {
+        Debug.Log("Grapple");
         if(generateRope){
             GenerateRope();
-            //generateRope = false;
+            generateRope = false;
         }
         isAnchored = true;
     }
@@ -107,19 +104,16 @@ public class PinkGrapple : MonoBehaviour
     {
         targetPos = FindValidAnchor().transform.position;
         targetRotat = GetRotation(targetPos);
-
-        //handsGameObject.GetComponent<Hands_Script>().Fire();
         isFired = true;
         animator.SetBool("isArmless", true);
     }
     private void ReleaseArms()
     {
-        isHit = false;
-        handsGameObject.transform.position = transform.position;
+        Debug.Log("ReleaseArms");
         DestoryArmByTag();
+        rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
         generateRope = true;
         isAnchored = false;
-        rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
         isFired = false;
         animator.SetBool("isArmless", false);
     }
@@ -197,13 +191,6 @@ public class PinkGrapple : MonoBehaviour
     }
 
     //destroy rope
-    void DestroyRope(){
-        for(int i = 0; i < numberOfLinks; i++){
-            Destroy(transform.GetChild(i).gameObject);
-        }
-        Destroy(transform.GetComponent<HingeJoint2D>());
-    }
-
     void DestoryArmByTag()
     {
         GameObject[] arms = GameObject.FindGameObjectsWithTag("Arm");
