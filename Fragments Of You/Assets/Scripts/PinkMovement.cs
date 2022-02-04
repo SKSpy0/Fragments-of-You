@@ -8,6 +8,7 @@ public class PinkMovement : MonoBehaviour
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
     private Animator animator;
+    private PinkGrapple grapple;
     public AudioSource jumpSFX;
     public AudioSource landedSFX;
 
@@ -15,8 +16,11 @@ public class PinkMovement : MonoBehaviour
 
     [SerializeField] private LayerMask jumpableGround;
     private float dirX = 0f;
+    [SerializeField] private float inAirMoveSpeed = 5f;
+    [SerializeField] private float groundedMoveSpeed = 7f;
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private float gravity = 9.81f;
 
     private bool Arms = true;
     private bool Legs = true;
@@ -32,6 +36,7 @@ public class PinkMovement : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         resp = GetComponent<Respawn>();
+        grapple = GetComponent<PinkGrapple>();
 
         // freeze rotation
         rb.freezeRotation = true;
@@ -70,12 +75,25 @@ public class PinkMovement : MonoBehaviour
             wallJumped = false;
         }
 
+        if(!IsGrounded() && !grapple.getAnchored())
+        {
+            rb.AddForce(Vector2.down * gravity, ForceMode2D.Force);
+        }
+
     }
 
     private void FixedUpdate()
     {
         // basic left/right movement
         // player should always have this
+        if(!IsGrounded())
+        {
+            moveSpeed = inAirMoveSpeed;
+        }
+        else
+        {
+            moveSpeed = groundedMoveSpeed;
+        }
         Move();
         FlipPlayer();
     }
@@ -85,10 +103,23 @@ public class PinkMovement : MonoBehaviour
     {
         // get input
         dirX = Input.GetAxisRaw("Horizontal");
-        // modify velocity based on input
-        rb.AddForce(Vector2.right * dirX * moveSpeed, ForceMode2D.Force);
-        // Play walk Animation
-        animator.SetFloat("Speed", Mathf.Abs(dirX));
+        if(dirX > 0.1 || dirX < -0.1)
+        {
+            // modify velocity based on input
+            rb.AddForce(Vector2.right * dirX * moveSpeed, ForceMode2D.Force);
+            // Play walk Animation
+            animator.SetFloat("Speed", Mathf.Abs(dirX));
+        }
+        else if(IsGrounded())
+        {
+            animator.SetFloat("Speed", Mathf.Abs(dirX));
+            rb.velocity = new Vector2(rb.velocity.x/4,rb.velocity.y);
+            if(rb.velocity.x < 0.1 || rb.velocity.x>-0.1)
+            {
+                rb.velocity = new Vector2(0,rb.velocity.y);
+            }
+        }
+
     }
 
     private void Jump()

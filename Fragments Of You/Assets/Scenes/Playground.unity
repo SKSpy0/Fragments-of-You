@@ -3193,9 +3193,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 158368023}
     - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: numberOfLinks
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: handsGameObject
       value: 
       objectReference: {fileID: 1354394641}
+    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: grappleJumpForce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122504, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Name
       value: Pink
@@ -3205,12 +3213,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 680438337}
     - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: jumpForce
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: landedSFX
       value: 
       objectReference: {fileID: 157949663}
     - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: gameOver_Condition
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632065432075122506, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632065432075122506, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122507, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_RootOrder

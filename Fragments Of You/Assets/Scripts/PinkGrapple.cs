@@ -211,4 +211,9 @@ public class PinkGrapple : MonoBehaviour
         foreach(GameObject arm in arms)
             GameObject.Destroy(arm);
     }
+
+    public bool getAnchored()
+    {
+        return isAnchored;
+    }
 }
