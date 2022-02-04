@@ -31,20 +31,6 @@ public class Hands_Script : MonoBehaviour
     void Update()
     {
         
-        if(Input.GetButtonDown("Fire1"))
-        {
-            if(!isFired)
-            {
-                SetTarget(GetMousePosition());
-                SetRotation(GetRotation(target));
-                Fire();
-            }
-            else
-            {
-                Reset();
-            }
-            
-        }
         if (isFired && !isHit)
         {
             MoveToTarget();
