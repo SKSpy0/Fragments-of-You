@@ -18,6 +18,7 @@ public class PinkMovement : MonoBehaviour
     private float dirX = 0f;
     [SerializeField] private float inAirMoveSpeed = 5f;
     [SerializeField] private float groundedMoveSpeed = 7f;
+    [SerializeField] private float grappledMoveSpeed = 10f;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float gravity = 9.81f;
@@ -86,15 +87,20 @@ public class PinkMovement : MonoBehaviour
     {
         // basic left/right movement
         // player should always have this
-        if(!IsGrounded())
-        {
-            moveSpeed = inAirMoveSpeed;
-        }
-        else
+        if(IsGrounded())
         {
             moveSpeed = groundedMoveSpeed;
         }
+        else if(!IsGrounded()&&grapple.getAnchored())
+        {
+            moveSpeed = grappledMoveSpeed;
+        }
+        else
+        {
+            moveSpeed = inAirMoveSpeed;
+        }
         Move();
+
         FlipPlayer();
     }
 
@@ -149,6 +155,7 @@ public class PinkMovement : MonoBehaviour
         // Jump Sound Effect here
         jumpSFX.Play();
     }
+
     // GroundCheck
     private bool IsGrounded()
     {
