@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public Animator pause_Anim;
+    public Animator menu_darken;
+    public Animator volumnMenuFade;
     public bool isPause;
     private GameObject pausemenu;
 
@@ -21,6 +23,7 @@ public class PauseMenu : MonoBehaviour
         pausemenu.SetActive(true);
         if (!pause_Anim.GetBool("Enter"))
         {
+            menu_darken.SetTrigger("Start");
             pause_Anim.SetBool("Enter", true);
         }
         else
@@ -28,28 +31,32 @@ public class PauseMenu : MonoBehaviour
             Resume();
         }
 
-        Debug.Log("Game Paused!");
-        // Resume();
         isPause = true;
         Time.timeScale = 0;
     }
 
     public void unpause()
     {
-        Debug.Log("Game UnPaused!");
-
         Resume();
         isPause = false;
         Time.timeScale = 1;
     }
 
-    public void Resume()
+    private void Resume()
     {
+        Time.timeScale = 1;
         StartCoroutine(ResumeTransition());
     }
 
     public void OptionMenu()
     {
+        volumnMenuFade.SetBool("Enter", true);
+    }
+
+    public void LeavevVolumnTransition()
+    {
+
+        Debug.Log("Here1");
         StartCoroutine(OptionMenuTransition());
     }
 
@@ -57,10 +64,12 @@ public class PauseMenu : MonoBehaviour
     {
         if (pause_Anim.GetBool("isPause"))
         {
+            menu_darken.SetBool("isFade", false);
             pause_Anim.SetBool("isPause", false);
         }
         else
         {
+            menu_darken.SetBool("isFade", true);
             pause_Anim.SetBool("isPause", true);
         }
 
@@ -70,15 +79,10 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator OptionMenuTransition()
     {
-        if (pause_Anim.GetBool("isPause"))
-        {
-            pause_Anim.SetBool("isPause", false);
-        }
-        else
-        {
-            pause_Anim.SetBool("isPause", true);
-        }
+        Debug.Log("Here2");
+        pause_Anim.SetBool("isPause", true);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(0.0001f);
+        pause_Anim.SetBool("isPause", false);
     }
 }

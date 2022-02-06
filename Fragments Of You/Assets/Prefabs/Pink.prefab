@@ -169,6 +169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpSFX: {fileID: 0}
   landedSFX: {fileID: 0}
+  walkingSFX: {fileID: 0}
+  DeathSFX: {fileID: 0}
   jumpableGround:
     serializedVersion: 2
     m_Bits: 8
@@ -209,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bd078ee797eba4ea0b56a627442833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RespawnSFX: {fileID: 0}
 --- !u!114 &466408375022657332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,3 +224,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f223d155cf264ca3c1d4ae685ce56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Pink_KeyInput : MonoBehaviour
 {
-    private PauseMenu pauseMenu;
+    public PauseMenu pauseMenu;
 
     // Start is called before the first frame update
     void Start()
     {
-        pauseMenu = GameObject.Find("Canvas").GetComponent<PauseMenu>();
+        pauseMenu.GetComponent<PauseMenu>();
     }
 
     // Update is called once per frame
