@@ -11,8 +11,6 @@ public class PinkMovement : MonoBehaviour
     public AudioSource jumpSFX;
     public AudioSource landedSFX;
 
-    public GameOver_Condition gameOver_Condition;
-
     [SerializeField] private LayerMask jumpableGround;
     private float dirX = 0f;
     [SerializeField] private float moveSpeed = 5f;

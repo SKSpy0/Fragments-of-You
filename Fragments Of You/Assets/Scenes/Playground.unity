@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 60954613}
   - component: {fileID: 60954612}
   - component: {fileID: 60954611}
-  - component: {fileID: 60954610}
   m_Layer: 5
   m_Name: MenuDarken
   m_TagString: Untagged
@@ -143,25 +142,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &60954610
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60954609}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 635b36a61bef7e44897a1c36623879ce, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!225 &60954611
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1545,7 +1525,7 @@ GameObject:
   - component: {fileID: 458311901}
   - component: {fileID: 458311902}
   m_Layer: 5
-  m_Name: GameOverMenu
+  m_Name: PauseMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1779,10 +1759,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 523520141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a51d7c96a2d010f4f902e77fdd01b38e, type: 3}
+  m_Script: {fileID: 11500000, guid: f2c150af96fc41a4c87059584960f520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvas_Darken: {fileID: 60954610}
+  pause_Anim: {fileID: 523520148}
+  isPause: 0
 --- !u!95 &523520148
 Animator:
   serializedVersion: 3
@@ -1793,9 +1774,9 @@ Animator:
   m_GameObject: {fileID: 523520141}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: db195c2865874314ab659249a7f24202, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9d043c1f40fdc7e428f8889b93c6a9cc, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -2245,7 +2226,7 @@ GameObject:
   - component: {fileID: 818986027}
   - component: {fileID: 818986026}
   m_Layer: 5
-  m_Name: MenuButton
+  m_Name: OptionMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2536,7 +2517,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Over
+  m_text: Pause
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f19b1d580423bc47a468189a08c0ee1, type: 2}
   m_sharedMaterial: {fileID: 2111730989329888554, guid: 0f19b1d580423bc47a468189a08c0ee1, type: 2}
@@ -2835,7 +2816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1800206653
 Rigidbody2D:
   serializedVersion: 4
@@ -2978,7 +2959,7 @@ GameObject:
   - component: {fileID: 1867385196}
   - component: {fileID: 1867385195}
   m_Layer: 5
-  m_Name: RetryButton
+  m_Name: ResumeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3047,7 +3028,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1867385196}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 523520147}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1867385196
 MonoBehaviour:
   m_ObjectHideFlags: 0

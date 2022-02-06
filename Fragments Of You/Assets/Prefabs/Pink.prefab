@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2632065432075122505}
   - component: {fileID: 2451209812896764937}
   - component: {fileID: -1174008689622047029}
+  - component: {fileID: 466408375022657332}
   m_Layer: 0
   m_Name: Pink
   m_TagString: Player
@@ -168,7 +169,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpSFX: {fileID: 0}
   landedSFX: {fileID: 0}
-  gameOver_Condition: {fileID: 0}
   jumpableGround:
     serializedVersion: 2
     m_Bits: 8
@@ -207,5 +207,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4bd078ee797eba4ea0b56a627442833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &466408375022657332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632065432075122504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 776f223d155cf264ca3c1d4ae685ce56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
