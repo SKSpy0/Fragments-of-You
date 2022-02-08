@@ -11,6 +11,8 @@ public class PinkGrapple : MonoBehaviour
     public GameObject handsGameObject;
     public GameObject firstArm;
     public GameObject armPrefab;
+    public AudioSource grappleSFX;
+    public AudioSource anchorhitSFX;
     public Hands_Script handsScript;
     private SpriteRenderer handsSprite;
     private Vector3 targetPos;
@@ -41,6 +43,8 @@ public class PinkGrapple : MonoBehaviour
 
         // disableanchor
         isAnchored = false;
+
+        handsSprite.enabled = false;
     }
 
     // Update is called once per frame
@@ -120,6 +124,7 @@ public class PinkGrapple : MonoBehaviour
         targetRotat = GetRotation(targetPos);
         isFired = true;
         animator.SetBool("isArmless", true);
+        handsSprite.enabled = true;
     }
     private void ReleaseArms()
     {
@@ -131,6 +136,7 @@ public class PinkGrapple : MonoBehaviour
         isFired = false;
         animator.SetBool("isArmless", false);
         handsSprite.flipX = false;
+        handsSprite.enabled = false;
     }
     private GameObject FindValidAnchor() 
     {
