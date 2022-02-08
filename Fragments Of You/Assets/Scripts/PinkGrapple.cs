@@ -78,6 +78,7 @@ public class PinkGrapple : MonoBehaviour
         if(handsScript.checkHit() && generateRope)
         {
             Grapple();
+            anchorhitSFX.Play();
         } else if (!handsScript.checkHit() && !generateRope && isAnchored)
         {
             ReleaseArms();
@@ -125,6 +126,7 @@ public class PinkGrapple : MonoBehaviour
         isFired = true;
         animator.SetBool("isArmless", true);
         handsSprite.enabled = true;
+        grappleSFX.Play();
     }
     private void ReleaseArms()
     {
