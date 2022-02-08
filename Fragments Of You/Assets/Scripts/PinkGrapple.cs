@@ -67,6 +67,7 @@ public class PinkGrapple : MonoBehaviour
         else
         {
             handsGameObject.transform.position = Vector2.MoveTowards(handsGameObject.transform.position, targetPos, armSpeed * Time.deltaTime);
+            handsGameObject.transform.rotation = targetRotat;
         }
 
         if(handsScript.checkHit() && generateRope)
