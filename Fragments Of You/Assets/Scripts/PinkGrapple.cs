@@ -241,4 +241,9 @@ public class PinkGrapple : MonoBehaviour
         float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         return Quaternion.Euler(0f, 0f, rotation_z + 0.1f);
     }
+
+    public bool getAnchored()
+    {
+        return isAnchored;
+    }
 }

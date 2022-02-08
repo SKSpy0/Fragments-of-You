@@ -8,6 +8,7 @@ public class PinkMovement : MonoBehaviour
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
     private Animator animator;
+    private PinkGrapple grapple;
     public AudioSource jumpSFX;
     public AudioSource landedSFX;
     public AudioSource walkingSFX;
@@ -18,8 +19,12 @@ public class PinkMovement : MonoBehaviour
 
     [SerializeField] private LayerMask jumpableGround;
     private float dirX = 0f;
+    [SerializeField] private float inAirMoveSpeed = 5f;
+    [SerializeField] private float groundedMoveSpeed = 7f;
+    [SerializeField] private float grappledMoveSpeed = 10f;
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private float gravity = 9.81f;
 
     private bool Arms = true;
     private bool Legs = true;
@@ -37,6 +42,7 @@ public class PinkMovement : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         resp = GetComponent<Respawn>();
+        grapple = GetComponent<PinkGrapple>();
 
         // freeze rotation
         rb.freezeRotation = true;
@@ -95,13 +101,31 @@ public class PinkMovement : MonoBehaviour
          
         }
 
+        if(!IsGrounded() && !grapple.getAnchored())
+        {
+            rb.AddForce(Vector2.down * gravity, ForceMode2D.Force);
+        }
+
     }
 
     private void FixedUpdate()
     {
         // basic main character movement left/right
         // player should always have this
+        if(IsGrounded())
+        {
+            moveSpeed = groundedMoveSpeed;
+        }
+        else if(!IsGrounded()&&grapple.getAnchored())
+        {
+            moveSpeed = grappledMoveSpeed;
+        }
+        else
+        {
+            moveSpeed = inAirMoveSpeed;
+        }
         Move();
+
         FlipPlayer();
     }
 
@@ -110,12 +134,27 @@ public class PinkMovement : MonoBehaviour
     {
         // get input - Horizontal is set to 'a' and 'd' / left and right arrow keys.
         dirX = Input.GetAxisRaw("Horizontal");
-        // modify velocity based on input
-        rb.AddForce(Vector2.right * dirX * moveSpeed, ForceMode2D.Force);
-        // Play walk Animation
-        animator.SetFloat("Speed", Mathf.Abs(dirX));
-        // Play walking Sound Effect
-        movementChange = true;
+
+
+
+        if(dirX > 0.1 || dirX < -0.1)
+        {
+            // modify velocity based on input
+            rb.AddForce(Vector2.right * dirX * moveSpeed, ForceMode2D.Force);
+            // Play walk Animation
+            animator.SetFloat("Speed", Mathf.Abs(dirX));
+            // Play walking Sound Effect
+            movementChange = true;
+        }
+        else if(IsGrounded())
+        {
+            animator.SetFloat("Speed", Mathf.Abs(dirX));
+            rb.velocity = new Vector2(rb.velocity.x/4,rb.velocity.y);
+            if(rb.velocity.x < 0.1 || rb.velocity.x>-0.1)
+            {
+                rb.velocity = new Vector2(0,rb.velocity.y);
+            }
+        }
     }
 
     private void Jump()
@@ -145,6 +184,7 @@ public class PinkMovement : MonoBehaviour
         // Jump Sound Effect here
         jumpSFX.Play();
     }
+
     // GroundCheck
     private bool IsGrounded()
     {
