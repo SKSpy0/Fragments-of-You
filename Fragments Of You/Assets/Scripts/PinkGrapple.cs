@@ -6,16 +6,27 @@ public class PinkGrapple : MonoBehaviour
 {
     private Rigidbody2D rb;
     private BoxCollider2D coll;
+    private CapsuleCollider2D handColl;
     private Animator animator;
     public GameObject handsGameObject;
     public GameObject firstArm;
     public GameObject armPrefab;
-    private bool isAnchored = false;
-    public bool advanceGrapple = true;
-    public bool generateRope = true;
+    public AudioSource grappleSFX;
+    public AudioSource anchorhitSFX;
+    public Hands_Script handsScript;
+    private SpriteRenderer handsSprite;
+    private Vector3 targetPos;
+    private Quaternion targetRotat;
+    private float dirX = 0f;
+    [SerializeField] private bool isAnchored = false;
+    [SerializeField] private bool isFired = false;
+    [SerializeField] private bool generateRope = true;
+    
 
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float grappleJumpForce = 7f;
+    [SerializeField] private float swingSpeed = 5f;
+    [SerializeField] private float armSpeed = 7f;
     [SerializeField] private float anchorableDis = 14f;
     [SerializeField] private int numberOfLinks = 7;
 
@@ -29,52 +40,69 @@ public class PinkGrapple : MonoBehaviour
         animator = GetComponent<Animator>();
         pm = GetComponent<PinkMovement>();
 
+        handColl = handsGameObject.GetComponent<CapsuleCollider2D>();
+        handsSprite = handsGameObject.GetComponent<SpriteRenderer>();
+
         // disableanchor
         isAnchored = false;
+
+        handsSprite.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!advanceGrapple) {
-
-            if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
+        {
+            if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
             {
-                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
-                {
-                    Grapple();
-                } else if(isAnchored)
-                {
-                    GrappleOff();
-                    handsGameObject.GetComponent<Hands_Script>().Reset();
-                }
+                ShootHands();
+            // Sound effect for arm extensions should be here (It's a good idea).
+            } 
+            else if(handsScript.checkHit())
+            {
+                isFired = false;
             }
+        }
+
+        AnchorRadar();
+
+        // Hand and Arm Rope Conditionals
+        if (!isFired) 
+        {
+            handsGameObject.transform.position = transform.position;
         }
         else
         {
-            if (Input.GetButtonDown("Jump"))
-            {
-                if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
-                {
-                    ShootArms();
-                    // Sound effect for arm extensions should be here (It's a good idea).
-                } 
-                else if(isAnchored)
-                {
-                    ReleaseArms();
-                }
-            }
-            if (handsGameObject.GetComponent<Hands_Script>().isHit)
-            {
-                Grapple();
-            }
-            if (!handsGameObject.GetComponent<Hands_Script>().isFired)
-            {
-                isAnchored = false;
-                DestoryArmByTag();
-            }
+            handsGameObject.transform.position = Vector2.MoveTowards(handsGameObject.transform.position, targetPos, armSpeed * Time.deltaTime);
         }
-        AnchorRadar();
+
+        if(handsScript.checkHit() && generateRope)
+        {
+            Grapple();
+            anchorhitSFX.Play();
+        } else if (!handsScript.checkHit() && !generateRope && isAnchored)
+        {
+            ReleaseArms();
+        }
+
+        if(isFired && !isAnchored)
+        {
+            handsGameObject.transform.rotation = targetRotat;
+        }
+
+        if(isAnchored)
+        {
+            targetRotat = GetRotation(transform.position);
+            handsGameObject.transform.rotation = targetRotat;
+            handsSprite.flipX = true;
+            //Swing();
+        }
+
+        if(handsScript.checkReset())
+        {
+            isFired = false;
+        }
     }
 
     // Ground Check
@@ -86,37 +114,34 @@ public class PinkGrapple : MonoBehaviour
     // Grapple
     private void Grapple()
     {
+        Debug.Log("Grapple");
         if(generateRope){
             GenerateRope();
             generateRope = false;
         }
         isAnchored = true;
     }
-    // Disengage Grapple
-    private void GrappleOff()
+
+    private void ShootHands()
     {
-        DestoryArmByTag();
-        generateRope = true;
-        isAnchored = false;
-        rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
-    }
-    private void ShootArms()
-    {
-        Vector3 target = FindValidAnchor().transform.position;
-        Quaternion targetRotation = handsGameObject.GetComponent<Hands_Script>().GetRotation(target);
-        handsGameObject.GetComponent<Hands_Script>().SetTarget(target);
-        handsGameObject.GetComponent<Hands_Script>().SetRotation(targetRotation);
-        handsGameObject.GetComponent<Hands_Script>().Fire();
+        targetPos = FindValidAnchor().transform.position;
+        targetRotat = GetRotation(targetPos);
+        isFired = true;
         animator.SetBool("isArmless", true);
+        handsSprite.enabled = true;
+        grappleSFX.Play();
     }
     private void ReleaseArms()
     {
+        Debug.Log("ReleaseArms");
         DestoryArmByTag();
+        rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
         generateRope = true;
         isAnchored = false;
-        rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
-        handsGameObject.GetComponent<Hands_Script>().Reset();
+        isFired = false;
         animator.SetBool("isArmless", false);
+        handsSprite.flipX = false;
+        handsSprite.enabled = false;
     }
     private GameObject FindValidAnchor() 
     {
@@ -155,6 +180,16 @@ public class PinkGrapple : MonoBehaviour
         }
         return false;
     }
+
+    private void Swing()
+    {
+        // get input
+        dirX = Input.GetAxisRaw("Horizontal");
+        // modify velocity based on input
+        rb.AddForce(Vector2.right * dirX * swingSpeed, ForceMode2D.Force);
+        // Play walk Animation
+        animator.SetFloat("Speed", Mathf.Abs(dirX));
+    }
     
     // for debugging purposes to see valid anchors nearby player
     private void AnchorRadar()
@@ -162,13 +197,7 @@ public class PinkGrapple : MonoBehaviour
         GameObject an = FindValidAnchor();
         if(IsAnyValidAnchor()) {
             if(isAnchored) {
-                if(advanceGrapple) {
-                    Debug.DrawLine(transform.position, handsGameObject.transform.position, Color.yellow);
-                }
-                else
-                {
-                    Debug.DrawLine(transform.position, an.transform.position, Color.green);
-                }
+                Debug.DrawLine(transform.position, handsGameObject.transform.position, Color.yellow);
             } else 
             {
                 Debug.DrawLine(transform.position, an.transform.position, Color.red);
@@ -198,17 +227,18 @@ public class PinkGrapple : MonoBehaviour
     }
 
     //destroy rope
-    void DestroyRope(){
-        for(int i = 0; i < numberOfLinks; i++){
-            Destroy(transform.GetChild(i).gameObject);
-        }
-        Destroy(transform.GetComponent<HingeJoint2D>());
-    }
-
     void DestoryArmByTag()
     {
         GameObject[] arms = GameObject.FindGameObjectsWithTag("Arm");
         foreach(GameObject arm in arms)
             GameObject.Destroy(arm);
+    }
+
+    public Quaternion GetRotation(Vector3 position)
+    {
+        Vector3 difference = position - handsGameObject.transform.position;
+        difference.Normalize();
+        float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        return Quaternion.Euler(0f, 0f, rotation_z + 0.1f);
     }
 }
