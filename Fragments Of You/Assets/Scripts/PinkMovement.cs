@@ -95,16 +95,7 @@ public class PinkMovement : MonoBehaviour
         }
 
         
-        if (IsGrounded())
-        {
-            wallJumped = false;
-         
-        }
 
-        if(!IsGrounded() && !grapple.getAnchored())
-        {
-            rb.AddForce(Vector2.down * gravity, ForceMode2D.Force);
-        }
 
     }
 
@@ -125,6 +116,17 @@ public class PinkMovement : MonoBehaviour
             moveSpeed = inAirMoveSpeed;
         }
         Move();
+
+        if (IsGrounded())
+        {
+            wallJumped = false;
+         
+        }
+
+        if(!IsGrounded() && !grapple.getAnchored())
+        {
+            rb.AddForce(Vector2.down * gravity, ForceMode2D.Force);
+        }
 
         FlipPlayer();
     }
