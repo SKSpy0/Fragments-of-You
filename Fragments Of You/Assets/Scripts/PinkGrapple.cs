@@ -12,6 +12,7 @@ public class PinkGrapple : MonoBehaviour
     public GameObject firstArm;
     public GameObject armPrefab;
     public Hands_Script handsScript;
+    private SpriteRenderer handsSprite;
     private Vector3 targetPos;
     private Quaternion targetRotat;
     private float armSpeed = 7f;
@@ -36,6 +37,7 @@ public class PinkGrapple : MonoBehaviour
         pm = GetComponent<PinkMovement>();
 
         handColl = handsGameObject.GetComponent<CapsuleCollider2D>();
+        handsSprite = handsGameObject.GetComponent<SpriteRenderer>();
 
         // disableanchor
         isAnchored = false;
@@ -67,7 +69,6 @@ public class PinkGrapple : MonoBehaviour
         else
         {
             handsGameObject.transform.position = Vector2.MoveTowards(handsGameObject.transform.position, targetPos, armSpeed * Time.deltaTime);
-            handsGameObject.transform.rotation = targetRotat;
         }
 
         if(handsScript.checkHit() && generateRope)
@@ -76,6 +77,18 @@ public class PinkGrapple : MonoBehaviour
         } else if (!handsScript.checkHit() && !generateRope && isAnchored)
         {
             ReleaseArms();
+        }
+
+        if(isFired && !isAnchored)
+        {
+            handsGameObject.transform.rotation = targetRotat;
+        }
+
+        if(isAnchored)
+        {
+            targetRotat = GetRotation(transform.position);
+            handsGameObject.transform.rotation = targetRotat;
+            handsSprite.flipX = true;
         }
 
         if(handsScript.checkReset())
@@ -117,6 +130,7 @@ public class PinkGrapple : MonoBehaviour
         isAnchored = false;
         isFired = false;
         animator.SetBool("isArmless", false);
+        handsSprite.flipX = false;
     }
     private GameObject FindValidAnchor() 
     {
@@ -201,7 +215,7 @@ public class PinkGrapple : MonoBehaviour
 
     public Quaternion GetRotation(Vector3 position)
     {
-        Vector3 difference = position - transform.position;
+        Vector3 difference = position - handsGameObject.transform.position;
         difference.Normalize();
         float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         return Quaternion.Euler(0f, 0f, rotation_z + 0.1f);
