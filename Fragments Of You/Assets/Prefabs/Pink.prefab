@@ -120,9 +120,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.53308594
-  m_LinearDrag: 2
+  m_LinearDrag: 1
   m_AngularDrag: 1
-  m_GravityScale: 7
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -172,8 +172,12 @@ MonoBehaviour:
   jumpableGround:
     serializedVersion: 2
     m_Bits: 8
-  moveSpeed: 25
-  jumpForce: 12
+  inAirMoveSpeed: 5
+  groundedMoveSpeed: 7
+  grappledMoveSpeed: 10
+  moveSpeed: 5
+  jumpForce: 7
+  gravity: 9.81
 --- !u!114 &2451209812896764937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +198,7 @@ MonoBehaviour:
   jumpableGround:
     serializedVersion: 2
     m_Bits: 8
-  grappleJumpForce: 12
+  grappleJumpForce: 5
   anchorableDis: 7
   numberOfLinks: 5
 --- !u!114 &-1174008689622047029
