@@ -6853,6 +6853,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3343372299555211860, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
   m_PrefabInstance: {fileID: 8900219365190585691}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6189605321902802704 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6498023442715136866, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
+  m_PrefabInstance: {fileID: 8900219365190585691}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6189605321902802703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86195c741642b4e8bb188e5f5c3ad71d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6968244141961866011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6876,6 +6887,18 @@ PrefabInstance:
       propertyPath: armPrefab
       value: 
       objectReference: {fileID: 6319490153112307902, guid: d293b52ff238d0d4ea74f69ef9186da2, type: 3}
+    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: grappleSFX
+      value: 
+      objectReference: {fileID: 1951388639}
+    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: handsScript
+      value: 
+      objectReference: {fileID: 6189605321902802704}
+    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: anchorhitSFX
+      value: 
+      objectReference: {fileID: 729717720}
     - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: numberOfLinks
       value: 5
