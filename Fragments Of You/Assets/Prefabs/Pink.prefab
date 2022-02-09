@@ -194,13 +194,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handsGameObject: {fileID: 0}
   firstArm: {fileID: 0}
-  armPrefab: {fileID: 0}
-  advanceGrapple: 1
+  armPrefab: {fileID: 6319490153112307902, guid: d293b52ff238d0d4ea74f69ef9186da2, type: 3}
+  grappleSFX: {fileID: 0}
+  anchorhitSFX: {fileID: 0}
+  handsScript: {fileID: 0}
+  isAnchored: 0
+  isFired: 0
   generateRope: 1
   jumpableGround:
     serializedVersion: 2
     m_Bits: 8
   grappleJumpForce: 5
+  swingSpeed: 5
+  armSpeed: 7
   anchorableDis: 7
   numberOfLinks: 5
 --- !u!114 &-1174008689622047029
