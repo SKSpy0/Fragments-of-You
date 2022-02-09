@@ -53,6 +53,12 @@ public class PauseMenu : MonoBehaviour
         volumnMenuFade.SetBool("Enter", true);
     }
 
+    public void PauseQuit()
+    {
+        Debug.Log("Quit!");
+        Application.Quit();
+    }
+
     public void LeavevVolumnTransition()
     {
 
