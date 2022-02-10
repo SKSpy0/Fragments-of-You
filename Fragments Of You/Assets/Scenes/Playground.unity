@@ -1564,10 +1564,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1174008689622047029, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: DeathSFX
-      value: 
-      objectReference: {fileID: 324552146}
-    - target: {fileID: -1174008689622047029, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: RespawnSFX
       value: 
       objectReference: {fileID: 1939235217}
@@ -1579,10 +1575,6 @@ PrefabInstance:
       propertyPath: firstArm
       value: 
       objectReference: {fileID: 910872144}
-    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: grappleSFX
       value: 
@@ -1599,10 +1591,6 @@ PrefabInstance:
       propertyPath: handsGameObject
       value: 
       objectReference: {fileID: 1354394641}
-    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: grappleJumpForce
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122504, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Name
       value: Pink
@@ -1616,37 +1604,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 324552146}
     - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: jumpForce
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: landedSFX
       value: 
       objectReference: {fileID: 157949663}
     - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: walkingSFX
       value: 
       objectReference: {fileID: 1790890642}
-    - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: grappledMoveSpeed
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: gameOver_Condition
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632065432075122506, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: m_LinearDrag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2632065432075122506, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122507, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1679,17 +1643,19 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2808030261197767620, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: firstArm
-      value: 
+    - target: {fileID: 2632065432075122507, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2808030261197767620, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: armPrefab
-      value: 
-      objectReference: {fileID: 6319490153112307902, guid: d293b52ff238d0d4ea74f69ef9186da2, type: 3}
-    m_RemovedComponents:
-    - {fileID: 587141046093430501, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-    - {fileID: 2808030261197767620, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+    - target: {fileID: 2632065432075122507, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632065432075122507, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
 --- !u!1001 &2105997618
 PrefabInstance:
