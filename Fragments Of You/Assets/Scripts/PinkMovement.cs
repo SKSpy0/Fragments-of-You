@@ -93,10 +93,6 @@ public class PinkMovement : MonoBehaviour
             // resp.respawnPlayer();
             StartCoroutine(PlayDeathAnim());
         }
-
-        
-
-
     }
 
     private void FixedUpdate()
@@ -107,9 +103,11 @@ public class PinkMovement : MonoBehaviour
         {
             moveSpeed = groundedMoveSpeed;
         }
-        else if(!IsGrounded()&&grapple.getAnchored())
+        else if(!IsGrounded() && grapple.getAnchored())
         {
             moveSpeed = grappledMoveSpeed;
+            rb.AddForce(Vector2.down * 200f, ForceMode2D.Force);
+
         }
         else
         {

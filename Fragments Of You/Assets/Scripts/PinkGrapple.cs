@@ -17,7 +17,6 @@ public class PinkGrapple : MonoBehaviour
     private SpriteRenderer handsSprite;
     private Vector3 targetPos;
     private Quaternion targetRotat;
-    private float dirX = 0f;
     [SerializeField] private bool isAnchored = false;
     [SerializeField] private bool isFired = false;
     [SerializeField] private bool generateRope = true;
@@ -25,6 +24,7 @@ public class PinkGrapple : MonoBehaviour
 
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float grappleJumpForce = 7f;
+
     [SerializeField] private float armSpeed = 7f;
     [SerializeField] private float anchorableDis = 14f;
     [SerializeField] private int numberOfLinks = 7;

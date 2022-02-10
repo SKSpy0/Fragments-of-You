@@ -1601,7 +1601,7 @@ PrefabInstance:
       objectReference: {fileID: 1354394641}
     - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: grappleJumpForce
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122504, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Name
@@ -1631,6 +1631,10 @@ PrefabInstance:
       propertyPath: walkingSFX
       value: 
       objectReference: {fileID: 1790890642}
+    - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: grappledMoveSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: gameOver_Condition
       value: 
