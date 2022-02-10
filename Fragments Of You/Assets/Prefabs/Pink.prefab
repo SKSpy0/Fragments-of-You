@@ -176,7 +176,8 @@ MonoBehaviour:
     m_Bits: 8
   inAirMoveSpeed: 5
   groundedMoveSpeed: 7
-  grappledMoveSpeed: 10
+  swingSpeed: 100
+  swingTension: 200
   moveSpeed: 5
   jumpForce: 7
   gravity: 9.81
@@ -204,8 +205,7 @@ MonoBehaviour:
   jumpableGround:
     serializedVersion: 2
     m_Bits: 8
-  grappleJumpForce: 5
-  swingSpeed: 5
+  grappleJumpForce: 7
   armSpeed: 7
   anchorableDis: 7
   numberOfLinks: 5

@@ -9,6 +9,7 @@ public class Respawn : MonoBehaviour
 
     private PinkMovement pm;
     private Animator animator;
+    private Rigidbody2D rb;
 
      public AudioSource RespawnSFX;
 
@@ -16,6 +17,7 @@ public class Respawn : MonoBehaviour
     void Start()
     {
         pm = GetComponent<PinkMovement>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         increaseSpawnPoint = new Vector2 (0.5f, 0.5f);
     }
@@ -57,6 +59,8 @@ public class Respawn : MonoBehaviour
         animator.SetBool("Dead", false);
         yield return new WaitForSeconds(1f);
         animator.SetBool("Respawn", true);
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     // Respawn functions end ----------------------------------------------------------------------
 }
