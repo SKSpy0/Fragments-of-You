@@ -25,7 +25,6 @@ public class PinkGrapple : MonoBehaviour
 
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float grappleJumpForce = 7f;
-    [SerializeField] private float swingSpeed = 5f;
     [SerializeField] private float armSpeed = 7f;
     [SerializeField] private float anchorableDis = 14f;
     [SerializeField] private int numberOfLinks = 7;
@@ -180,17 +179,6 @@ public class PinkGrapple : MonoBehaviour
         }
         return false;
     }
-
-    private void Swing()
-    {
-        // get input
-        dirX = Input.GetAxisRaw("Horizontal");
-        // modify velocity based on input
-        rb.AddForce(Vector2.right * dirX * swingSpeed, ForceMode2D.Force);
-        // Play walk Animation
-        animator.SetFloat("Speed", Mathf.Abs(dirX));
-    }
-    
     // for debugging purposes to see valid anchors nearby player
     private void AnchorRadar()
     {
