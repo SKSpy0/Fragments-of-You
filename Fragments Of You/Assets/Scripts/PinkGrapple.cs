@@ -17,7 +17,6 @@ public class PinkGrapple : MonoBehaviour
     private SpriteRenderer handsSprite;
     private Vector3 targetPos;
     private Quaternion targetRotat;
-    private float dirX = 0f;
     [SerializeField] private bool isAnchored = false;
     [SerializeField] private bool isFired = false;
     [SerializeField] private bool generateRope = true;
@@ -25,7 +24,7 @@ public class PinkGrapple : MonoBehaviour
 
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float grappleJumpForce = 7f;
-    [SerializeField] private float swingSpeed = 5f;
+
     [SerializeField] private float armSpeed = 7f;
     [SerializeField] private float anchorableDis = 14f;
     [SerializeField] private int numberOfLinks = 7;
@@ -143,6 +142,15 @@ public class PinkGrapple : MonoBehaviour
         handsSprite.flipX = false;
         handsSprite.enabled = false;
     }
+
+    private void GrappleJump()
+    {
+        rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
+        if(rb.velocity.x < 0.1 || rb.velocity.x>-0.1)
+        {
+            rb.AddForce(Vector2.right * rb.velocity.x, ForceMode2D.Impulse);
+        }
+    }
     private GameObject FindValidAnchor() 
     {
         GameObject[] anchors;
@@ -180,17 +188,6 @@ public class PinkGrapple : MonoBehaviour
         }
         return false;
     }
-
-    private void Swing()
-    {
-        // get input
-        dirX = Input.GetAxisRaw("Horizontal");
-        // modify velocity based on input
-        rb.AddForce(Vector2.right * dirX * swingSpeed, ForceMode2D.Force);
-        // Play walk Animation
-        animator.SetFloat("Speed", Mathf.Abs(dirX));
-    }
-    
     // for debugging purposes to see valid anchors nearby player
     private void AnchorRadar()
     {
