@@ -142,6 +142,15 @@ public class PinkGrapple : MonoBehaviour
         handsSprite.flipX = false;
         handsSprite.enabled = false;
     }
+
+    private void GrappleJump()
+    {
+        rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
+        if(rb.velocity.x < 0.1 || rb.velocity.x>-0.1)
+        {
+            rb.AddForce(Vector2.right * rb.velocity.x, ForceMode2D.Impulse);
+        }
+    }
     private GameObject FindValidAnchor() 
     {
         GameObject[] anchors;
