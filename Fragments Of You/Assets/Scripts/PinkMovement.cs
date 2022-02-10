@@ -268,13 +268,15 @@ public class PinkMovement : MonoBehaviour
 
     private void PlayerDeath()
     {
+        Debug.Log("Dead");
         FlipPlayer();
-         DeathSFX.Play();
+        DeathSFX.Play();
         StartCoroutine(PlayDeathAnim());
     }
 
     IEnumerator PlayDeathAnim()
     {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         animator.SetBool("Dead", true);
         animator.SetBool("Respawn", false);
         yield return new WaitForSeconds(1f);
