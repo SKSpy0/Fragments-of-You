@@ -1295,6 +1295,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2632065432075122504, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
   m_PrefabInstance: {fileID: 2041593258}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &843996437 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2632065432075122510, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+  m_PrefabInstance: {fileID: 2041593258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &896578084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,6 +1366,58 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3343372299555211860, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
   m_PrefabInstance: {fileID: 2105997618}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1390345208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390345210}
+  - component: {fileID: 1390345209}
+  m_Layer: 0
+  m_Name: TimelineDirector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!320 &1390345209
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390345208}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: ecec8f7f00d7bff468838ed1dc9d3a0f, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 1651632661124395633, guid: ecec8f7f00d7bff468838ed1dc9d3a0f, type: 2}
+    value: {fileID: 843996437}
+  - key: {fileID: 7484964605125976170, guid: ecec8f7f00d7bff468838ed1dc9d3a0f, type: 2}
+    value: {fileID: 843996437}
+  m_ExposedReferences:
+    m_References: []
+--- !u!4 &1390345210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390345208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.78817594, y: -0.4507201, z: -3.3950806}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1659576255 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3979536660878172118, guid: 3bde42bf094901c4284e6873a2d0cdbd, type: 3}
