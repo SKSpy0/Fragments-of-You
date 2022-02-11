@@ -256,19 +256,39 @@ public class PinkMovement : MonoBehaviour
             sprite.flipX = false;
         }
     }
-    // Environmental Collison's with player - Death by spike, Landing after jump, etc.
+
     public void OnCollisionEnter2D(Collision2D other)
     {
+         // Environmental Collison's with player - Death by spike, Landing after jump, etc.
         if (other.gameObject.CompareTag("Spike"))
         {
             PlayerDeath();
         }
+
         // When player land on the ground, stop the jumping animation
         if (other.gameObject.CompareTag("Ground"))
         {
             animator.SetBool("isJumping", false);
              // landed sound effect
               landedSFX.Play();
+        }
+
+        // Fix player postion on the movingplatforms
+        if (other.gameObject.CompareTag("movingPlatform"))
+        {
+            animator.SetBool("isJumping", false);
+             // landed sound effect
+              landedSFX.Play();
+            this.gameObject.transform.parent = other.gameObject.transform;
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        // When player leave moving platform, move freely
+        if (other.gameObject.CompareTag("movingPlatform"))
+        {
+            this.gameObject.transform.parent = null;
         }
     }
 
