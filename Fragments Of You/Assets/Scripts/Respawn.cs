@@ -11,7 +11,8 @@ public class Respawn : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
 
-     public AudioSource RespawnSFX;
+    public AudioSource RespawnSFX;
+    //public AudioSource FastRespawnSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,15 @@ public class Respawn : MonoBehaviour
         RespawnSFX.Play();
         StartCoroutine(PlayRespawnAnim());
     }
+
+    // teleports player back to respawnpoint and corrects any orientation
+   /* public void faster_respawnPlayer()
+    {
+        // Respawn sound effect can be added here.
+        FastRespawnSFX.Play();
+        StartCoroutine(PlayRespawnAnim());
+    } */
+    
     
     IEnumerator PlayRespawnAnim()
     {

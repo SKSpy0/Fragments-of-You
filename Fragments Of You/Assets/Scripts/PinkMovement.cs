@@ -88,12 +88,6 @@ public class PinkMovement : MonoBehaviour
             movementChange = false;
         }
 
-        /***player falls off level respawn boundary ***/
-        if (this.transform.position.y < -7)
-        {
-            // resp.respawnPlayer();
-            StartCoroutine(PlayDeathAnim());
-        }
     }
 
     private void FixedUpdate()
@@ -257,6 +251,7 @@ public class PinkMovement : MonoBehaviour
         }
     }
 
+/*** Environmental Collison's with player ***/ 
     public void OnCollisionEnter2D(Collision2D other)
     {
          // Environmental Collison's with player - Death by spike, Landing after jump, etc.
@@ -280,6 +275,12 @@ public class PinkMovement : MonoBehaviour
              // landed sound effect
               landedSFX.Play();
             this.gameObject.transform.parent = other.gameObject.transform;
+        }
+
+        /***Player dies - falls off level respawn boundary ***/
+        if (other.gameObject.CompareTag("FallDeath")){
+            Debug.Log("FallThreshold met");
+            PlayerDeath();
         }
     }
 
