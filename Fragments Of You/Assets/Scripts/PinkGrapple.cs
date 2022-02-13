@@ -9,14 +9,16 @@ public class PinkGrapple : MonoBehaviour
     private CapsuleCollider2D handColl;
     private Animator animator;
     public GameObject handsGameObject;
-    public GameObject firstArm;
-    public GameObject armPrefab;
+    //public GameObject firstArm;
+    //public GameObject armPrefab;
     public AudioSource grappleSFX;
     public AudioSource anchorhitSFX;
     public Hands_Script handsScript;
     private SpriteRenderer handsSprite;
     private Vector3 targetPos;
     private Quaternion targetRotat;
+    public PointClass[] points;
+    public StickClass[] sticks;
     [SerializeField] private bool isAnchored = false;
     [SerializeField] private bool isFired = false;
     [SerializeField] private bool generateRope = true;
@@ -25,11 +27,26 @@ public class PinkGrapple : MonoBehaviour
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float grappleJumpForce = 7f;
 
+    [SerializeField] private float gravity = 9.81f;
+    [SerializeField] public float numIterationOfRopeSimulation = 10f;
+    [SerializeField] public float lengthOfSticks = 3f;
     [SerializeField] private float armSpeed = 7f;
     [SerializeField] private float anchorableDis = 14f;
     [SerializeField] private int numberOfLinks = 7;
 
     private PinkMovement pm;
+
+    //points between segments of rope
+    public class PointClass {
+        public Vector2 position, prevPosition;
+        public bool locked;
+    }
+
+    //connections between points
+    public class StickClass {
+        public PointClass pointA, pointB;
+        public float length;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +100,10 @@ public class PinkGrapple : MonoBehaviour
         } else if (!handsScript.checkHit() && !generateRope && isAnchored)
         {
             ReleaseArms();
+        }
+
+        if(!generateRope){
+            SimulateRope();
         }
 
         if(isFired && !isAnchored)
@@ -205,20 +226,40 @@ public class PinkGrapple : MonoBehaviour
 
     //generate rope from anchor to player
     void GenerateRope(){
-        Rigidbody2D previous_arm = firstArm.GetComponent<Rigidbody2D>();
-        for(int i = 0; i < numberOfLinks; i++){
-            GameObject arm = Instantiate(armPrefab, transform);
-            HingeJoint2D joint = arm.GetComponent<HingeJoint2D>();
-            joint.connectedBody = previous_arm;
-            
-            if(i < numberOfLinks - 1){
-                previous_arm = arm.GetComponent<Rigidbody2D>();
-            } else {
-                HingeJoint2D playerJoint = gameObject.AddComponent<HingeJoint2D>();
-                playerJoint.autoConfigureConnectedAnchor = false;
-                playerJoint.connectedBody = arm.GetComponent<Rigidbody2D>();
-                playerJoint.anchor = Vector2.zero;
-                playerJoint.connectedAnchor = new Vector2(0f, -0.3f);
+        //create a new set of arrays for points and sticks
+        points = new PointClass[numberOfLinks];
+        sticks = new StickClass[numberOfLinks - 1];
+        //assign the 2 locked points (player and hand positions)
+        points[0].position = new Vector2(transform.position.x, transform.position.y);
+        points[0].locked = true;
+        points[numberOfLinks].position = new Vector2(handsGameObject.transform.position.x, handsGameObject.transform.position.y);
+        points[numberOfLinks].locked = true;
+
+        //assign points to the stick array
+        for(int i = 0; i < numberOfLinks - 1; i++){
+            sticks[i].pointA = points[i];
+            sticks[i].pointB = points[i + 1];
+        }
+    }
+    
+    //this will simulate the rope physics
+    void SimulateRope(){
+        // each point will be moving to the position it needs to go to to keep the rope intact
+        foreach(PointClass p in points){
+            if(!p.locked){
+                Vector2 positionBeforeUpdate = p.position;
+                p.position += p.position - p.prevPosition;
+                p.position += Vector2.down * gravity * Time.deltaTime * Time.deltaTime;
+                p.prevPosition = positionBeforeUpdate;
+            }
+        }
+
+        for(int i = 0; i < numIterationOfRopeSimulation; i++){
+            foreach(StickClass stick in sticks){
+                Vector2 stickCenter = (stick.pointA.position + stick.pointB.position) / 2;
+                Vector2 stickDir = (stick.pointA.position - stick.pointB.position).normalized;
+                if(!stick.pointA.locked) stick.pointA.position = stickCenter + stickDir * stick.length / 2;
+                if(!stick.pointB.locked) stick.pointB.position = stickCenter - stickDir  * stick.length / 2;
             }
         }
     }
