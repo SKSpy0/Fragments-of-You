@@ -19,6 +19,7 @@ public class PinkGrapple : MonoBehaviour
     private Quaternion targetRotat;
     public PointClass[] points;
     public StickClass[] sticks;
+    public GameObject pointObject;
     [SerializeField] private bool isAnchored = false;
     [SerializeField] private bool isFired = false;
     [SerializeField] private bool generateRope = true;
@@ -39,6 +40,7 @@ public class PinkGrapple : MonoBehaviour
     //points between segments of rope
     public class PointClass {
         public Vector2 position, prevPosition;
+        public GameObject joint;
         public bool locked;
     }
 
@@ -63,6 +65,7 @@ public class PinkGrapple : MonoBehaviour
         isAnchored = false;
 
         handsSprite.enabled = false;
+
     }
 
     // Update is called once per frame
@@ -229,12 +232,33 @@ public class PinkGrapple : MonoBehaviour
         //create a new set of arrays for points and sticks
         points = new PointClass[numberOfLinks];
         sticks = new StickClass[numberOfLinks - 1];
+
+        // Init points and sticks
+        for(int i = 0; i < numberOfLinks; i++)
+        {
+            var p = new PointClass();
+            p.locked = false;
+            points[i] = p;
+            Debug.Log("Init Point: " + i);
+        }
+
+        for(int i = 0; i < numberOfLinks-1; i++)
+        {
+            var s = new StickClass();
+            s.length = lengthOfSticks;
+            sticks[i] = s;
+        }
+
         //assign the 2 locked points (player and hand positions)
         points[0].position = new Vector2(transform.position.x, transform.position.y);
-        points[0].locked = true;
-        points[numberOfLinks].position = new Vector2(handsGameObject.transform.position.x, handsGameObject.transform.position.y);
-        points[numberOfLinks].locked = true;
+        points[0].locked = false;
+        points[numberOfLinks - 1].position = new Vector2(handsGameObject.transform.position.x, handsGameObject.transform.position.y);
+        points[numberOfLinks - 1].locked = true;
 
+        foreach(PointClass p in points)
+        {
+            p.joint = Instantiate(pointObject, p.position, Quaternion.Euler(0,0,0));
+        }
         //assign points to the stick array
         for(int i = 0; i < numberOfLinks - 1; i++){
             sticks[i].pointA = points[i];
@@ -252,14 +276,17 @@ public class PinkGrapple : MonoBehaviour
                 p.position += Vector2.down * gravity * Time.deltaTime * Time.deltaTime;
                 p.prevPosition = positionBeforeUpdate;
             }
+            p.joint.transform.position = p.position;
         }
 
         for(int i = 0; i < numIterationOfRopeSimulation; i++){
             foreach(StickClass stick in sticks){
                 Vector2 stickCenter = (stick.pointA.position + stick.pointB.position) / 2;
                 Vector2 stickDir = (stick.pointA.position - stick.pointB.position).normalized;
-                if(!stick.pointA.locked) stick.pointA.position = stickCenter + stickDir * stick.length / 2;
-                if(!stick.pointB.locked) stick.pointB.position = stickCenter - stickDir  * stick.length / 2;
+                if(!stick.pointA.locked)
+                    stick.pointA.position = stickCenter + stickDir * stick.length / 2;
+                if(!stick.pointB.locked)
+                    stick.pointB.position = stickCenter - stickDir  * stick.length / 2;
             }
         }
     }
