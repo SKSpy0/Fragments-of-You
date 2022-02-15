@@ -69,10 +69,9 @@ public class PinkMovement : MonoBehaviour
             {
                 Jump();
             }
-            if(isFacingWall() && !IsGrounded() && !wallJumped)
+            if(isFacingWall() && !IsGrounded())
             {
                 WallJump();
-                wallJumped = true;
             }
         }
 
@@ -109,12 +108,6 @@ public class PinkMovement : MonoBehaviour
             moveSpeed = inAirMoveSpeed;
         }
         Move();
-
-        if (IsGrounded())
-        {
-            wallJumped = false;
-         
-        }
 
         if(!IsGrounded() && !grapple.getAnchored())
         {
