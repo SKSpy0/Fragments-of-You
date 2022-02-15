@@ -166,11 +166,8 @@ public class PinkMovement : MonoBehaviour
 
         //float wallJumpForce  = jumpForce / 1.5f;
         float wallJumpForce  = jumpForce;
-        
-        if(rb.velocity.y > 0.1)
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y / 3);
-        }
+
+        rb.velocity = new Vector2(0,0);
 
         rb.AddForce(Vector2.up * wallJumpForce, ForceMode2D.Impulse);
 
