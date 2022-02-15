@@ -26,10 +26,12 @@ public class PinkMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float gravity = 9.81f;
+    [SerializeField] private float maxXVelocity = 8.5f; // does nothing!!!!!
+
+    private float wallcoyote = 0f;
 
     private bool Arms = true;
     private bool Legs = true;
-    private bool wallJumped = false;
     // Detect when you use the toggle, ensures music isn’t played multiple times
     private bool movementChange;
 
@@ -47,7 +49,6 @@ public class PinkMovement : MonoBehaviour
 
         // freeze rotation
         rb.freezeRotation = true;
-        wallJumped = false;
         movementChange = false;
         //Initialize the pitch of walkingSFX
         walkingSFX.pitch = startingPitch;
@@ -69,10 +70,23 @@ public class PinkMovement : MonoBehaviour
             {
                 Jump();
             }
-            if(isFacingWall() && !IsGrounded())
+            if(!IsGrounded() && isFacingWall())
             {
                 WallJump();
             }
+            if(!IsGrounded() && wallcoyote>0 && !isFacingWall())
+            {
+                if(sprite.flipX)
+                {
+                    sprite.flipX = false;
+                }
+                else
+                {
+                    sprite.flipX = true;
+                }
+                WallJump();
+            }
+
         }
 
         // Good note*: Input.GetButtonDown() only returns true for the frame in which the button was pressed.
@@ -108,6 +122,11 @@ public class PinkMovement : MonoBehaviour
             moveSpeed = inAirMoveSpeed;
         }
         Move();
+        if(isFacingWall() && !IsGrounded() && rb.velocity.y < 0)
+        {
+            wallcoyote = 0.3f;
+            rb.velocity = new Vector2(rb.velocity.x,rb.velocity.y/1.8f);
+        }
 
         if(!IsGrounded() && !grapple.getAnchored())
         {
@@ -115,6 +134,11 @@ public class PinkMovement : MonoBehaviour
         }
 
         FlipPlayer();
+        if(wallcoyote>0)
+        {
+            wallcoyote -= Time.deltaTime;
+        }
+
     }
 
     // Movement functions start -------------------------------------------------------------------
