@@ -1295,124 +1295,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2632065432075122504, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
   m_PrefabInstance: {fileID: 2041593258}
   m_PrefabAsset: {fileID: 0}
---- !u!120 &843996437
-LineRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843996436}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 2, z: 1}
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.12088013
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 0.9843138, g: 0.8431373, b: 0.91372555, a: 1}
-      key1: {r: 0.9843137, g: 0.84313726, b: 0.9137255, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    numCornerVertices: 10
-    numCapVertices: 10
-    alignment: 0
-    textureMode: 0
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_UseWorldSpace: 1
-  m_Loop: 0
---- !u!231 &843996438
-SpringJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843996436}
-  m_Enabled: 0
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 1354394643}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 0
-  m_Distance: 2
-  m_DampingRatio: 1
-  m_Frequency: 2
 --- !u!1 &896578084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,11 +1340,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &910872144 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4779151919162894787, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
-  m_PrefabInstance: {fileID: 2105997618}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1352767258 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3979536660034688883, guid: 3bde42bf094901c4284e6873a2d0cdbd, type: 3}
@@ -1690,18 +1567,14 @@ PrefabInstance:
       propertyPath: RespawnSFX
       value: 
       objectReference: {fileID: 1939235217}
+    - target: {fileID: 843996438, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_ConnectedRigidBody
+      value: 
+      objectReference: {fileID: 1354394643}
     - target: {fileID: 466408375022657332, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 523520147}
-    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: gravity
-      value: 9.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: firstArm
-      value: 
-      objectReference: {fileID: 910872144}
     - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: grappleSFX
       value: 
@@ -1711,33 +1584,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2105997619}
     - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: lengthOfArm
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: pointObject
-      value: 
-      objectReference: {fileID: 1135438104913860570, guid: 4b5859e13cdae46a6bf301e8ca6b8a73, type: 3}
-    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: anchorhitSFX
       value: 
       objectReference: {fileID: 583229828}
     - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: numberOfLinks
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: lengthOfSticks
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: handsGameObject
       value: 
       objectReference: {fileID: 1354394641}
-    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: grappleJumpForce
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122504, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Name
       value: Pink
@@ -1754,10 +1607,6 @@ PrefabInstance:
       propertyPath: landedSFX
       value: 
       objectReference: {fileID: 157949663}
-    - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
-      propertyPath: swingSpeed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: walkingSFX
       value: 

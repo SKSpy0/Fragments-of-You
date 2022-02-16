@@ -19,10 +19,12 @@ public class PinkGrapple : MonoBehaviour
     private SpriteRenderer handsSprite;
     private Vector3 targetPos;
     private Quaternion targetRotat;
+    private float currentLength;
     public PointClass[] points;
     public StickClass[] sticks;
     [SerializeField] private bool isAnchored = false;
     [SerializeField] private bool isFired = false;
+    private bool isRelaxed = false;
     [SerializeField] private bool generateRope = true;
     
 
@@ -32,6 +34,7 @@ public class PinkGrapple : MonoBehaviour
     [SerializeField] private float gravity = 9.81f;
     [SerializeField] public float numIterationOfRopeSimulation = 10f;
     [SerializeField] public float lengthOfArm = 3f;
+    [SerializeField] public float lengthOfJoint = 1.7f;
     private float lengthOfSticks;
     [SerializeField] private float armSpeed = 7f;
     [SerializeField] private float anchorableDis = 14f;
@@ -68,6 +71,9 @@ public class PinkGrapple : MonoBehaviour
         isAnchored = false;
         armJoint.enabled = false;
         handsSprite.enabled = false;
+        lr.enabled = false;
+
+        armJoint.distance = lengthOfJoint;
 
         GenerateRope();
 
@@ -78,7 +84,7 @@ public class PinkGrapple : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms())
+            if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms() && !isRelaxed)
             {
                 ShootHands();
             // Sound effect for arm extensions should be here (It's a good idea).
@@ -90,16 +96,23 @@ public class PinkGrapple : MonoBehaviour
         }
 
         AnchorRadar();
-        Debug.Log(IsGrounded());
+        //Debug.Log(IsGrounded());
 
         // Hand and Arm Rope Conditionals
-        if (!isFired) 
+        if (!isFired && !isRelaxed) 
         {
             handsGameObject.transform.position = transform.position;
         }
-        else
+        else if (!isRelaxed)
         {
             handsGameObject.transform.position = Vector2.MoveTowards(handsGameObject.transform.position, targetPos, armSpeed * Time.deltaTime);
+        }
+        else if (isRelaxed)
+        {
+            handsGameObject.transform.position = points[0].position;
+            targetRotat = GetRotation(transform.position);
+            handsGameObject.transform.rotation = targetRotat;
+            handsSprite.flipX = true;
         }
 
         if(handsScript.checkHit() && generateRope)
@@ -138,6 +151,21 @@ public class PinkGrapple : MonoBehaviour
         UpdateEndPoint();
     }
 
+    void FixedUpdate()
+    {
+        if(isRelaxed) {
+            if(currentLength > 0.5f) {
+                SetArmLength(currentLength - 0.15f);
+            }
+            else
+            {
+                isRelaxed = false;
+                ArmReset();
+                //points[0].locked = true;
+            }
+            
+        }
+    }
     // Ground Check
     private bool IsGrounded()
     {
@@ -151,7 +179,7 @@ public class PinkGrapple : MonoBehaviour
         if(generateRope){
             //GenerateRope();
             armJoint.enabled = true;
-            SetArmLength(2);
+            SetArmLength(lengthOfJoint);
             generateRope = false;
         }
         isAnchored = true;
@@ -164,22 +192,32 @@ public class PinkGrapple : MonoBehaviour
         isFired = true;
         animator.SetBool("isArmless", true);
         handsSprite.enabled = true;
+        lr.enabled = true;
         grappleSFX.Play();
         SetArmLength(lengthOfArm);
+        isRelaxed = false;
+        //points[0].locked = true;
     }
     private void ReleaseArms()
     {
         Debug.Log("ReleaseArms");
         //DestoryArmByTag();
         armJoint.enabled = false;
-        
-        generateRope = true;
         isAnchored = false;
+        isRelaxed = true;
+        //points[0].locked = false;
+        //SetArmLength(lengthOfArm);
+    }
+
+    private void ArmReset()
+    {
+        Debug.Log("reset");
+        generateRope = true;
         isFired = false;
         animator.SetBool("isArmless", false);
         handsSprite.flipX = false;
         handsSprite.enabled = false;
-        SetArmLength(0.5f);
+        lr.enabled = false;
     }
 
     private void GrappleJump()
@@ -274,7 +312,7 @@ public class PinkGrapple : MonoBehaviour
             p.position = new Vector2(handsGameObject.transform.position.x, handsGameObject.transform.position.y);
         }
 
-        points[0].locked = true;
+        //points[0].locked = true;
         points[numberOfLinks - 1].locked = true;  
         points[numberOfLinks - 1].position = transform.position;
               
@@ -289,6 +327,7 @@ public class PinkGrapple : MonoBehaviour
 
     void SetArmLength(float length)
     {
+        currentLength = length;
         lengthOfSticks = length / numberOfLinks;
         foreach(StickClass s in sticks)
         {
@@ -324,7 +363,10 @@ public class PinkGrapple : MonoBehaviour
 
     void UpdateEndPoint()
     {
-        points[0].position = handsGameObject.transform.position;
+        
+        if(!isRelaxed) {
+            points[0].position = handsGameObject.transform.position;
+        }
         points[numberOfLinks - 1].position = transform.position;
     }
     void SetUpRope()
