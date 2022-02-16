@@ -29,7 +29,8 @@ public class PinkGrapple : MonoBehaviour
     
 
     [SerializeField] private LayerMask jumpableGround;
-    [SerializeField] private float grappleJumpForce = 7f;
+    [SerializeField] private float grappleJumpForceVertical = 7f;
+    //[SerializeField] private float grappleJumpForceHorizontal = 7f;
 
     [SerializeField] private float gravity = 9.81f;
     [SerializeField] public float numIterationOfRopeSimulation = 10f;
@@ -71,7 +72,7 @@ public class PinkGrapple : MonoBehaviour
         isAnchored = false;
         armJoint.enabled = false;
         handsSprite.enabled = false;
-        //lr.enabled = false;
+        lr.enabled = false;
 
         armJoint.distance = lengthOfJoint;
 
@@ -202,6 +203,8 @@ public class PinkGrapple : MonoBehaviour
     {
         Debug.Log("ReleaseArms");
         //DestoryArmByTag();
+        handsSprite.enabled = false;
+        lr.enabled = false;
         armJoint.enabled = false;
         isAnchored = false;
         isRelaxed = true;
@@ -222,11 +225,11 @@ public class PinkGrapple : MonoBehaviour
 
     private void GrappleJump()
     {
-        rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
-        if(rb.velocity.x < 0.1 || rb.velocity.x>-0.1)
+        rb.AddForce(Vector2.up * grappleJumpForceVertical, ForceMode2D.Impulse);
+        /*if(rb.velocity.x < 0.1 || rb.velocity.x>-0.1)
         {
-            //rb.AddForce(Vector2.right * rb.velocity.x / 2, ForceMode2D.Impulse);
-        }
+            rb.AddForce(Vector2.right * grappleJumpForceHorizontal, ForceMode2D.Impulse);
+        }*/
     }
     
     private GameObject FindValidAnchor() 

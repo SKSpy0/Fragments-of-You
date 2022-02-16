@@ -321,6 +321,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86195c741642b4e8bb188e5f5c3ad71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &152135396 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 3343372299555211865, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
+  m_PrefabInstance: {fileID: 152135393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &202710320
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +945,10 @@ PrefabInstance:
       propertyPath: RespawnSFX
       value: 
       objectReference: {fileID: 983555950}
+    - target: {fileID: 843996438, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_ConnectedRigidBody
+      value: 
+      objectReference: {fileID: 152135396}
     - target: {fileID: 466408375022657332, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: pauseMenu
       value: 
@@ -964,6 +973,10 @@ PrefabInstance:
       propertyPath: handsGameObject
       value: 
       objectReference: {fileID: 853596213}
+    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: grappleJumpForceVertical
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122504, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Name
       value: Pink
@@ -990,7 +1003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122507, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.83
+      value: -8.22
       objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122507, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2799,7 +2812,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076727119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.58463, y: 2.1100984, z: 0}
+  m_LocalPosition: {x: -7.22, y: 2.1100984, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
