@@ -35,6 +35,7 @@ public class Respawn : MonoBehaviour
     // Note: not set by default.
     public void setRespawn(Vector2 newPoint)
     {
+        Debug.Log("RespawnHere");
         respawnPoint = newPoint;
     }
 

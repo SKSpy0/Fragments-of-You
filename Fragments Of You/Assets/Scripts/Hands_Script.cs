@@ -34,7 +34,6 @@ public class Hands_Script : MonoBehaviour
     {
         if(other.tag == "Anchor")
         {
-
             isHit = false;
         }
 

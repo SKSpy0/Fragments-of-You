@@ -36,16 +36,14 @@ public class GameManager : MonoBehaviour
     // note: to import "sceneManagement" input library to work with LoadScence
     public void ChangeScene(string sceneName){
         SceneManager.LoadScene(sceneName);
-
     }
     // changes levels
-     public void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Player has collided with next level collider.");
         // plays screen swipe sfx and changes the scene. This will play on awake.
         sceneSwitchSFX.Play();
         ChangeScene(LevelName);
-
     }
 
     // When player click play button, jump into games
