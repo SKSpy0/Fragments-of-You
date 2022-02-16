@@ -26,7 +26,8 @@ public class PinkMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float gravity = 9.81f;
-    [SerializeField] private float maxXVelocity = 8.5f; // does nothing!!!!!
+    /**set maxVelocity commented out for now**/
+    // [SerializeField] private float maxXVelocity = 8.5f; does nothing!!!!!
 
     private float wallcoyote = 0f;
 
