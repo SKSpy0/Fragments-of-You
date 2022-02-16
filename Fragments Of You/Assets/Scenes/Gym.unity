@@ -1392,6 +1392,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4779151919162894787, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
   m_PrefabInstance: {fileID: 1129342302}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &1129342306 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 3343372299555211865, guid: e04659b469b464f5e9604acfbe0c1645, type: 3}
+  m_PrefabInstance: {fileID: 1129342302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1259916329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1571,6 +1576,10 @@ PrefabInstance:
       propertyPath: RespawnSFX
       value: 
       objectReference: {fileID: 1259916332}
+    - target: {fileID: 843996438, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_ConnectedRigidBody
+      value: 
+      objectReference: {fileID: 1129342306}
     - target: {fileID: 466408375022657332, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: pauseMenu
       value: 
