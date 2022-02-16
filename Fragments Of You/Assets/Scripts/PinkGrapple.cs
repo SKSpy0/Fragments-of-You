@@ -8,6 +8,7 @@ public class PinkGrapple : MonoBehaviour
     private BoxCollider2D coll;
     private LineRenderer lr;
     private CapsuleCollider2D handColl;
+    private SpringJoint2D armJoint;
     private Animator animator;
     public GameObject handsGameObject;
     //public GameObject firstArm;
@@ -20,7 +21,6 @@ public class PinkGrapple : MonoBehaviour
     private Quaternion targetRotat;
     public PointClass[] points;
     public StickClass[] sticks;
-    public GameObject pointObject;
     [SerializeField] private bool isAnchored = false;
     [SerializeField] private bool isFired = false;
     [SerializeField] private bool generateRope = true;
@@ -59,13 +59,14 @@ public class PinkGrapple : MonoBehaviour
         animator = GetComponent<Animator>();
         pm = GetComponent<PinkMovement>();
         lr = GetComponent<LineRenderer>();
+        armJoint = GetComponent<SpringJoint2D>();
 
         handColl = handsGameObject.GetComponent<CapsuleCollider2D>();
         handsSprite = handsGameObject.GetComponent<SpriteRenderer>();
 
         // disableanchor
         isAnchored = false;
-
+        armJoint.enabled = false;
         handsSprite.enabled = false;
 
         GenerateRope();
@@ -89,6 +90,7 @@ public class PinkGrapple : MonoBehaviour
         }
 
         AnchorRadar();
+        Debug.Log(IsGrounded());
 
         // Hand and Arm Rope Conditionals
         if (!isFired) 
@@ -104,9 +106,14 @@ public class PinkGrapple : MonoBehaviour
         {
             Grapple();
             anchorhitSFX.Play();
-        } else if (!handsScript.checkHit() && !generateRope && isAnchored)
+        } 
+        else if (!handsScript.checkHit() && !generateRope && isAnchored)
         {
             ReleaseArms();
+            if(!IsGrounded())
+            {
+                GrappleJump();
+            }
         }
 
         if(isFired && !isAnchored)
@@ -143,6 +150,8 @@ public class PinkGrapple : MonoBehaviour
         Debug.Log("Grapple");
         if(generateRope){
             //GenerateRope();
+            armJoint.enabled = true;
+            SetArmLength(2);
             generateRope = false;
         }
         isAnchored = true;
@@ -162,7 +171,8 @@ public class PinkGrapple : MonoBehaviour
     {
         Debug.Log("ReleaseArms");
         //DestoryArmByTag();
-        rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
+        armJoint.enabled = false;
+        
         generateRope = true;
         isAnchored = false;
         isFired = false;
@@ -177,9 +187,10 @@ public class PinkGrapple : MonoBehaviour
         rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
         if(rb.velocity.x < 0.1 || rb.velocity.x>-0.1)
         {
-            rb.AddForce(Vector2.right * rb.velocity.x, ForceMode2D.Impulse);
+            //rb.AddForce(Vector2.right * rb.velocity.x / 2, ForceMode2D.Impulse);
         }
     }
+    
     private GameObject FindValidAnchor() 
     {
         GameObject[] anchors;
