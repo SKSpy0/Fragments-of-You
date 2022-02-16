@@ -6,6 +6,7 @@ public class PinkGrapple : MonoBehaviour
 {
     private Rigidbody2D rb;
     private BoxCollider2D coll;
+    private LineRenderer lr;
     private CapsuleCollider2D handColl;
     private Animator animator;
     public GameObject handsGameObject;
@@ -57,6 +58,7 @@ public class PinkGrapple : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         pm = GetComponent<PinkMovement>();
+        lr = GetComponent<LineRenderer>();
 
         handColl = handsGameObject.GetComponent<CapsuleCollider2D>();
         handsSprite = handsGameObject.GetComponent<SpriteRenderer>();
@@ -239,7 +241,6 @@ public class PinkGrapple : MonoBehaviour
             var p = new PointClass();
             p.locked = false;
             points[i] = p;
-            Debug.Log("Init Point: " + i);
         }
 
         for(int i = 0; i < numberOfLinks-1; i++)
@@ -254,16 +255,19 @@ public class PinkGrapple : MonoBehaviour
         points[0].locked = false;
         points[numberOfLinks - 1].position = new Vector2(handsGameObject.transform.position.x, handsGameObject.transform.position.y);
         points[numberOfLinks - 1].locked = true;
-
-        foreach(PointClass p in points)
+        
+        foreach(PointClass p in points) 
         {
             p.joint = Instantiate(pointObject, p.position, Quaternion.Euler(0,0,0));
         }
+        
         //assign points to the stick array
         for(int i = 0; i < numberOfLinks - 1; i++){
             sticks[i].pointA = points[i];
             sticks[i].pointB = points[i + 1];
         }
+
+        SetUpRope();
     }
     
     //this will simulate the rope physics
@@ -288,6 +292,19 @@ public class PinkGrapple : MonoBehaviour
                 if(!stick.pointB.locked)
                     stick.pointB.position = stickCenter - stickDir  * stick.length / 2;
             }
+        }
+
+        RenderRope();
+    }
+
+    void SetUpRope()
+    {
+        lr.positionCount = numberOfLinks;
+    }
+    void RenderRope()
+    {
+        for(int i = 0; i < numberOfLinks; i++){
+            lr.SetPosition(i, points[i].position);
         }
     }
 
