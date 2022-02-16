@@ -71,7 +71,7 @@ public class PinkGrapple : MonoBehaviour
         isAnchored = false;
         armJoint.enabled = false;
         handsSprite.enabled = false;
-        lr.enabled = false;
+        //lr.enabled = false;
 
         armJoint.distance = lengthOfJoint;
 

@@ -27,6 +27,7 @@ public class PinkMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float gravity = 9.81f;
+    [SerializeField] private float maxVelocityY = 20;
 
     private bool Arms = true;
     private bool Legs = true;
@@ -94,6 +95,11 @@ public class PinkMovement : MonoBehaviour
         {
             // resp.respawnPlayer();
             StartCoroutine(PlayDeathAnim());
+        }
+
+        if(rb.velocity.y > maxVelocityY)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, maxVelocityY);;
         }
     }
 

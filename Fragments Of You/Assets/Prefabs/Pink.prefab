@@ -182,6 +182,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 7
   gravity: 9.81
+  maxVelocityY: 25
 --- !u!114 &2451209812896764937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +246,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2632065432075122504}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
