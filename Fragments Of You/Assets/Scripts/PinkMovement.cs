@@ -21,8 +21,6 @@ public class PinkMovement : MonoBehaviour
     private float dirX = 0f;
     [SerializeField] private float inAirMoveSpeed = 5f;
     [SerializeField] private float groundedMoveSpeed = 7f;
-    [SerializeField] private float swingSpeed = 100f;
-    [SerializeField] private float swingTension = 200f;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float gravity = 9.81f;
@@ -111,12 +109,6 @@ public class PinkMovement : MonoBehaviour
         if(IsGrounded())
         {
             moveSpeed = groundedMoveSpeed;
-        }
-        else if(!IsGrounded() && grapple.getAnchored())
-        {
-            moveSpeed = swingSpeed;
-            rb.AddForce(Vector2.down * swingTension, ForceMode2D.Force);
-
         }
         else
         {
