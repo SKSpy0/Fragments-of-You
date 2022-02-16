@@ -31,7 +31,8 @@ public class PinkGrapple : MonoBehaviour
 
     [SerializeField] private float gravity = 9.81f;
     [SerializeField] public float numIterationOfRopeSimulation = 10f;
-    [SerializeField] public float lengthOfSticks = 3f;
+    [SerializeField] public float lengthOfArm = 3f;
+    private float lengthOfSticks;
     [SerializeField] private float armSpeed = 7f;
     [SerializeField] private float anchorableDis = 14f;
     [SerializeField] private int numberOfLinks = 7;
@@ -41,7 +42,6 @@ public class PinkGrapple : MonoBehaviour
     //points between segments of rope
     public class PointClass {
         public Vector2 position, prevPosition;
-        public GameObject joint;
         public bool locked;
     }
 
@@ -67,6 +67,8 @@ public class PinkGrapple : MonoBehaviour
         isAnchored = false;
 
         handsSprite.enabled = false;
+
+        GenerateRope();
 
     }
 
@@ -107,10 +109,6 @@ public class PinkGrapple : MonoBehaviour
             ReleaseArms();
         }
 
-        if(!generateRope){
-            SimulateRope();
-        }
-
         if(isFired && !isAnchored)
         {
             handsGameObject.transform.rotation = targetRotat;
@@ -128,6 +126,9 @@ public class PinkGrapple : MonoBehaviour
         {
             isFired = false;
         }
+
+        SimulateRope();
+        UpdateEndPoint();
     }
 
     // Ground Check
@@ -141,7 +142,7 @@ public class PinkGrapple : MonoBehaviour
     {
         Debug.Log("Grapple");
         if(generateRope){
-            GenerateRope();
+            //GenerateRope();
             generateRope = false;
         }
         isAnchored = true;
@@ -155,11 +156,12 @@ public class PinkGrapple : MonoBehaviour
         animator.SetBool("isArmless", true);
         handsSprite.enabled = true;
         grappleSFX.Play();
+        SetArmLength(lengthOfArm);
     }
     private void ReleaseArms()
     {
         Debug.Log("ReleaseArms");
-        DestoryArmByTag();
+        //DestoryArmByTag();
         rb.AddForce(Vector2.up * grappleJumpForce, ForceMode2D.Impulse);
         generateRope = true;
         isAnchored = false;
@@ -167,6 +169,7 @@ public class PinkGrapple : MonoBehaviour
         animator.SetBool("isArmless", false);
         handsSprite.flipX = false;
         handsSprite.enabled = false;
+        SetArmLength(0.5f);
     }
 
     private void GrappleJump()
@@ -235,6 +238,8 @@ public class PinkGrapple : MonoBehaviour
         points = new PointClass[numberOfLinks];
         sticks = new StickClass[numberOfLinks - 1];
 
+        
+
         // Init points and sticks
         for(int i = 0; i < numberOfLinks; i++)
         {
@@ -246,21 +251,22 @@ public class PinkGrapple : MonoBehaviour
         for(int i = 0; i < numberOfLinks-1; i++)
         {
             var s = new StickClass();
-            s.length = lengthOfSticks;
+            //s.length = lengthOfSticks;
             sticks[i] = s;
         }
 
+        SetArmLength(0.5f);
+
         //assign the 2 locked points (player and hand positions)
-        points[0].position = new Vector2(transform.position.x, transform.position.y);
-        points[0].locked = false;
-        points[numberOfLinks - 1].position = new Vector2(handsGameObject.transform.position.x, handsGameObject.transform.position.y);
-        points[numberOfLinks - 1].locked = true;
-        
         foreach(PointClass p in points) 
         {
-            p.joint = Instantiate(pointObject, p.position, Quaternion.Euler(0,0,0));
+            p.position = new Vector2(handsGameObject.transform.position.x, handsGameObject.transform.position.y);
         }
-        
+
+        points[0].locked = true;
+        points[numberOfLinks - 1].locked = true;  
+        points[numberOfLinks - 1].position = transform.position;
+              
         //assign points to the stick array
         for(int i = 0; i < numberOfLinks - 1; i++){
             sticks[i].pointA = points[i];
@@ -268,6 +274,15 @@ public class PinkGrapple : MonoBehaviour
         }
 
         SetUpRope();
+    }
+
+    void SetArmLength(float length)
+    {
+        lengthOfSticks = length / numberOfLinks;
+        foreach(StickClass s in sticks)
+        {
+            s.length = lengthOfSticks;
+        }
     }
     
     //this will simulate the rope physics
@@ -280,7 +295,6 @@ public class PinkGrapple : MonoBehaviour
                 p.position += Vector2.down * gravity * Time.deltaTime * Time.deltaTime;
                 p.prevPosition = positionBeforeUpdate;
             }
-            p.joint.transform.position = p.position;
         }
 
         for(int i = 0; i < numIterationOfRopeSimulation; i++){
@@ -297,6 +311,11 @@ public class PinkGrapple : MonoBehaviour
         RenderRope();
     }
 
+    void UpdateEndPoint()
+    {
+        points[0].position = handsGameObject.transform.position;
+        points[numberOfLinks - 1].position = transform.position;
+    }
     void SetUpRope()
     {
         lr.positionCount = numberOfLinks;

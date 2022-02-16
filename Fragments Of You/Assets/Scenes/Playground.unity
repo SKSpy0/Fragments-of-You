@@ -1686,6 +1686,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2105997619}
     - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: lengthOfArm
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: pointObject
       value: 
       objectReference: {fileID: 1135438104913860570, guid: 4b5859e13cdae46a6bf301e8ca6b8a73, type: 3}
@@ -1693,6 +1697,10 @@ PrefabInstance:
       propertyPath: anchorhitSFX
       value: 
       objectReference: {fileID: 583229828}
+    - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: numberOfLinks
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2451209812896764937, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: lengthOfSticks
       value: 0.5
@@ -1717,6 +1725,10 @@ PrefabInstance:
       propertyPath: landedSFX
       value: 
       objectReference: {fileID: 157949663}
+    - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: swingSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: walkingSFX
       value: 
