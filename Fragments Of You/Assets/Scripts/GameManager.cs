@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public Slider sfxSlider;
     public string LevelName;
     public AudioSource sceneSwitchSFX;
+    public AudioSource buttonSelectionSFX;
+    public AudioSource testingSFX;
+    private bool sfxSaved;
 
     float savedValue1 = 1;
     float savedValue2 = 1;
@@ -23,11 +26,15 @@ public class GameManager : MonoBehaviour
     {
          Debug.Log("loading....");
          LoadingAudioSettings();
+         sfxSaved = true;
+    }
+     public void ButtonSelection(){
+        // play's button selection sound effect
+        buttonSelectionSFX.Play();
     }
     
     // note: to import "sceneManagement" input library to work with LoadScence
     public void ChangeScene(string sceneName){
-        sceneSwitchSFX.Play();
         SceneManager.LoadScene(sceneName);
 
     }
@@ -35,6 +42,8 @@ public class GameManager : MonoBehaviour
      public void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Player has collided with next level collider.");
+        // plays screen swipe sfx and changes the scene. This will play on awake.
+        sceneSwitchSFX.Play();
         ChangeScene(LevelName);
 
     }
@@ -42,6 +51,8 @@ public class GameManager : MonoBehaviour
     // When player click play button, jump into games
     public void PlayGame()
     {
+        // play's button selection sound effect
+        buttonSelectionSFX.Play();
         StartCoroutine(PlayGameTransition());
     }
 
@@ -55,6 +66,7 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Quit!");
+        buttonSelectionSFX.Play();
         Application.Quit();
     }
 
@@ -73,7 +85,21 @@ public class GameManager : MonoBehaviour
        sfxSlider.value = PlayerPrefs.GetFloat("SavedSFXVolume", 0.90f);
     }
 
-    // Options to set different volumes
+    // Options to set different volumes and here audio
+
+    public void loopingTestSFX(){
+        if(sfxSaved && !testingSFX.isPlaying){
+             // play looping testing effect if sound effects slider is moved
+           testingSFX.Play();
+           sfxSaved = false;
+        }
+        else{
+               sfxSaved = true;
+        }
+        // stops looping testing effect if sound effects slider is saved already
+          // testingSFX.Stop();
+    }
+
     public void SetMasterVolume(float sliderValue)
     {
         // better volume management with exposed parameter - Mathematical formula used

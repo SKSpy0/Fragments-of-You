@@ -10,12 +10,18 @@ public class PauseMenu : MonoBehaviour
     public Animator volumnMenuFade;
     public bool isPause;
     private GameObject pausemenu;
+    public AudioSource buttonSelectionSFX;
 
 
     void Start()
     {
         pausemenu = GameObject.Find("PauseMenu");
         pausemenu.SetActive(false);
+    }
+
+      public void ButtonSelection(){
+        // play's button selection sound effect
+        buttonSelectionSFX.Play();
     }
 
     public void pause()

@@ -22,16 +22,17 @@ public class PinkMovement : MonoBehaviour
     [SerializeField] private float inAirMoveSpeed = 5f;
     [SerializeField] private float groundedMoveSpeed = 7f;
     [SerializeField] private float swingSpeed = 100f;
-
-    //[SerializeField] private float swingTension = 200f;
+    [SerializeField] private float swingTension = 200f;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float gravity = 9.81f;
-    [SerializeField] private float maxVelocityY = 20;
+    /**set maxVelocity commented out for now**/
+    // [SerializeField] private float maxXVelocity = 8.5f; does nothing!!!!!
+
+    private float wallcoyote = 0f;
 
     private bool Arms = true;
     private bool Legs = true;
-    private bool wallJumped = false;
     // Detect when you use the toggle, ensures music isn’t played multiple times
     private bool movementChange;
 
@@ -49,7 +50,6 @@ public class PinkMovement : MonoBehaviour
 
         // freeze rotation
         rb.freezeRotation = true;
-        wallJumped = false;
         movementChange = false;
         //Initialize the pitch of walkingSFX
         walkingSFX.pitch = startingPitch;
@@ -71,11 +71,23 @@ public class PinkMovement : MonoBehaviour
             {
                 Jump();
             }
-            if(isFacingWall() && !IsGrounded() && !wallJumped)
+            if(!IsGrounded() && isFacingWall())
             {
                 WallJump();
-                wallJumped = true;
             }
+            if(!IsGrounded() && wallcoyote>0 && !isFacingWall())
+            {
+                if(sprite.flipX)
+                {
+                    sprite.flipX = false;
+                }
+                else
+                {
+                    sprite.flipX = true;
+                }
+                WallJump();
+            }
+
         }
 
         // Good note*: Input.GetButtonDown() only returns true for the frame in which the button was pressed.
@@ -90,17 +102,6 @@ public class PinkMovement : MonoBehaviour
             movementChange = false;
         }
 
-        /***player falls off level respawn boundary ***/
-        if (this.transform.position.y < -7)
-        {
-            // resp.respawnPlayer();
-            StartCoroutine(PlayDeathAnim());
-        }
-
-        if(rb.velocity.y > maxVelocityY)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, maxVelocityY);;
-        }
     }
 
     private void FixedUpdate()
@@ -114,6 +115,7 @@ public class PinkMovement : MonoBehaviour
         else if(!IsGrounded() && grapple.getAnchored())
         {
             moveSpeed = swingSpeed;
+            rb.AddForce(Vector2.down * swingTension, ForceMode2D.Force);
 
         }
         else
@@ -121,11 +123,10 @@ public class PinkMovement : MonoBehaviour
             moveSpeed = inAirMoveSpeed;
         }
         Move();
-
-        if (IsGrounded())
+        if(isFacingWall() && !IsGrounded() && rb.velocity.y < 0)
         {
-            wallJumped = false;
-         
+            wallcoyote = 0.3f;
+            rb.velocity = new Vector2(rb.velocity.x,rb.velocity.y/1.8f);
         }
 
         if(!IsGrounded() && !grapple.getAnchored())
@@ -134,6 +135,11 @@ public class PinkMovement : MonoBehaviour
         }
 
         FlipPlayer();
+        if(wallcoyote>0)
+        {
+            wallcoyote -= Time.deltaTime;
+        }
+
     }
 
     // Movement functions start -------------------------------------------------------------------
@@ -178,11 +184,8 @@ public class PinkMovement : MonoBehaviour
 
         //float wallJumpForce  = jumpForce / 1.5f;
         float wallJumpForce  = jumpForce;
-        
-        if(rb.velocity.y > 0.1)
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y / 3);
-        }
+
+        rb.velocity = new Vector2(0,0);
 
         rb.AddForce(Vector2.up * wallJumpForce, ForceMode2D.Impulse);
 
@@ -263,6 +266,7 @@ public class PinkMovement : MonoBehaviour
         }
     }
 
+/*** Environmental Collison's with player ***/ 
     public void OnCollisionEnter2D(Collision2D other)
     {
          // Environmental Collison's with player - Death by spike, Landing after jump, etc.
@@ -286,6 +290,12 @@ public class PinkMovement : MonoBehaviour
              // landed sound effect
               landedSFX.Play();
             this.gameObject.transform.parent = other.gameObject.transform;
+        }
+
+        /***Player dies - falls off level respawn boundary ***/
+        if (other.gameObject.CompareTag("FallDeath")){
+            Debug.Log("FallThreshold met");
+            PlayerDeath();
         }
     }
 
