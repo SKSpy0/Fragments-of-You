@@ -12,6 +12,7 @@ public class Respawn : MonoBehaviour
     private Rigidbody2D rb;
 
     public AudioSource RespawnSFX;
+    private GameObject[] gm;
     //public AudioSource FastRespawnSFX;
 
     // Start is called before the first frame update
@@ -20,7 +21,7 @@ public class Respawn : MonoBehaviour
         pm = GetComponent<PinkMovement>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        increaseSpawnPoint = new Vector2 (0.5f, 0.5f);
+        gm = GameObject.FindGameObjectsWithTag("GameManager");
     }
 
     // Update is called once per frame
@@ -35,8 +36,8 @@ public class Respawn : MonoBehaviour
     // Note: not set by default.
     public void setRespawn(Vector2 newPoint)
     {
-        Debug.Log("RespawnHere");
         respawnPoint = newPoint;
+        Debug.Log("resP: "+respawnPoint);
     }
 
     // gets repawnpoint returning vector 2
@@ -49,6 +50,7 @@ public class Respawn : MonoBehaviour
     public void respawnPlayer()
     {
         // Respawn sound effect can be added here.
+        gm[0].GetComponent<BoxHandler>().resetAllBoxes();
         RespawnSFX.Play();
         StartCoroutine(PlayRespawnAnim());
     }
@@ -64,7 +66,7 @@ public class Respawn : MonoBehaviour
     
     IEnumerator PlayRespawnAnim()
     {
-        pm.transform.SetPositionAndRotation(respawnPoint + increaseSpawnPoint,new Quaternion(0,0,0,0));
+        pm.transform.SetPositionAndRotation(respawnPoint,new Quaternion(0,0,0,0));
 
         // respawn animation
         animator.SetBool("Dead", false);
