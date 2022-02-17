@@ -278,20 +278,26 @@ public class PinkMovement : MonoBehaviour
               landedSFX.Play();
         }
 
-        // When player land on the ground, stop the jumping animation
+        // When player land on box fix player to box
         if (other.gameObject.CompareTag("Box"))
         {
-            animator.SetBool("isJumping", false);
-             // landed sound effect
-              landedSFX.Play();
+            if(other.transform.position.y < this.transform.position.y &&
+                other.transform.position.x < this.transform.position.x + 0.6f &&
+                other.transform.position.x > this.transform.position.x - 0.6f)
+            {
+                animator.SetBool("isJumping", false);
+                // landed sound effect
+                landedSFX.Play();
+                this.gameObject.transform.parent = other.gameObject.transform;
+            }
         }
 
         // Fix player postion on the movingplatforms
         if (other.gameObject.CompareTag("movingPlatform"))
         {
             animator.SetBool("isJumping", false);
-             // landed sound effect
-              landedSFX.Play();
+            // landed sound effect
+            landedSFX.Play();
             this.gameObject.transform.parent = other.gameObject.transform;
         }
 
@@ -304,10 +310,23 @@ public class PinkMovement : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D other)
     {
+        Debug.Log("playerleave: "+ other.tag);
         // When player leave moving platform, move freely
         if (other.gameObject.CompareTag("movingPlatform"))
         {
+            Debug.Log("leaving platform");
             this.gameObject.transform.parent = null;
+        }
+        // When player no longer interacting with box
+        if (other.gameObject.CompareTag("Box"))
+        {
+            if(other.transform.position.y < this.transform.position.y &&
+                other.transform.position.x < this.transform.position.x + 0.6f &&
+                other.transform.position.x > this.transform.position.x - 0.6f)
+            {
+                Debug.Log("leaving box");
+                this.gameObject.transform.parent = null;
+            }
         }
     }
 
