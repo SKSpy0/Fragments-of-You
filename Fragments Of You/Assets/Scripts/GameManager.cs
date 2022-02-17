@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
          LoadingAudioSettings();
          sfxSaved = true;
     }
+
      public void ButtonSelection(){
         // play's button selection sound effect
         buttonSelectionSFX.Play();
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     public void ChangeScene(string sceneName){
         SceneManager.LoadScene(sceneName);
     }
+
     // changes levels
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -74,9 +76,9 @@ public class GameManager : MonoBehaviour
         // Updates UI-Element
         masterSlider.value = PlayerPrefs.GetFloat("SavedMasterVolume", 0.90f); 
     /****************************Background music***********************************/
-        savedValue2 = PlayerPrefs.GetFloat("SavedMusicVolume");
-        // Updates UI-Element
-        bgmSlider.value =  PlayerPrefs.GetFloat("SavedMusicVolume", 0.90f);
+        savedValue2 = PlayerPrefs.GetFloat("SavedBGMVolume");
+        // Updates UI-Element - SavedMusicVolume
+        bgmSlider.value =  PlayerPrefs.GetFloat("SavedBGMVolume", 0.90f);
     /***************************Sound Effects**************************************/
        savedValue3 =  PlayerPrefs.GetFloat("SavedSFXVolume");
        // Updates UI-Element
@@ -94,35 +96,30 @@ public class GameManager : MonoBehaviour
         else{
                sfxSaved = true;
         }
-        // stops looping testing effect if sound effects slider is saved already
-          // testingSFX.Stop();
     }
 
     public void SetMasterVolume(float sliderValue)
     {
         // better volume management with exposed parameter - Mathematical formula used
         mixer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20);
-        // Saves players last audio settings
+        // Saves players last master volume audio settings
         PlayerPrefs.SetFloat("SavedMasterVolume", sliderValue);
-        // PlayerPrefs.Save();
         Debug.Log("Master Volume saved!");
     }
     public void SetBGMVolume(float sliderValue)
     {
         // better volume management with exposed parameter - Mathematical formula used
         mixer.SetFloat("BGMVolume", Mathf.Log10(sliderValue) * 20);
-        // Saves players last audio settings
+        // Saves players last background music audio settings
         PlayerPrefs.SetFloat("SavedBGMVolume", sliderValue);
-        // PlayerPrefs.Save();
         Debug.Log("Music Volume saved!");
     }
     public void SetSFXVolume(float sliderValue)
     {
         // better volume management with exposed parameter - Mathematical formula used
         mixer.SetFloat("SFXVolume", Mathf.Log10(sliderValue) * 20);
-        // Saves players last audio settings
+        // Saves players last sound effect settings
         PlayerPrefs.SetFloat("SavedSFXVolume", sliderValue);
-        // PlayerPrefs.Save();
         Debug.Log("Sound Effect Volume saved!");
     }
 }
