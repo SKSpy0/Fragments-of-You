@@ -55,6 +55,7 @@ public class PinkMovement : MonoBehaviour
         walkingSFX.volume = startingVolume;
 
         resp.setRespawn(this.transform.position);
+        Debug.Log("pos: "+this.transform.position);
     }
 
 
@@ -194,6 +195,8 @@ public class PinkMovement : MonoBehaviour
         animator.SetBool("isJumping", true);
         // Jump Sound Effect here
         jumpSFX.Play();
+
+        wallcoyote = 0;
     }
 
     // GroundCheck

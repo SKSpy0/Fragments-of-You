@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8606661465038839676}
   - component: {fileID: 8606661465038839677}
+  - component: {fileID: -8622070458862248053}
   - component: {fileID: 8606661465038839554}
   - component: {fileID: 8606661465038839555}
   - component: {fileID: 8606661465038839552}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,6 +53,20 @@ MonoBehaviour:
   sfxSlider: {fileID: 0}
   LevelName: AssetTestground
   sceneSwitchSFX: {fileID: 0}
+  buttonSelectionSFX: {fileID: 0}
+  testingSFX: {fileID: 0}
+--- !u!114 &-8622070458862248053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8606661465038839553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 162faa76ac5787f4b8578a651edb493a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &8606661465038839554
 SpriteRenderer:
   m_ObjectHideFlags: 0
