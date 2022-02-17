@@ -278,6 +278,14 @@ public class PinkMovement : MonoBehaviour
               landedSFX.Play();
         }
 
+        // When player land on the ground, stop the jumping animation
+        if (other.gameObject.CompareTag("Box"))
+        {
+            animator.SetBool("isJumping", false);
+             // landed sound effect
+              landedSFX.Play();
+        }
+
         // Fix player postion on the movingplatforms
         if (other.gameObject.CompareTag("movingPlatform"))
         {
