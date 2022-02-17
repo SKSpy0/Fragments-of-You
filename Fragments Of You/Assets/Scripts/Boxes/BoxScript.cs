@@ -61,12 +61,31 @@ public class BoxScript : MonoBehaviour
         // When box leave other boxes, move freely
         if (other.gameObject.CompareTag("Box"))
         {
-            if(other.transform.position.y < this.transform.position.y &&
-                other.transform.position.x < this.transform.position.x + 0.6f &&
-                other.transform.position.x > this.transform.position.x - 0.6f)
+            if(other.transform.position.y > this.transform.position.y)
             {
-                Debug.Log("Leaving box");
+                Debug.Log("Leaving box, msg from lower box");
+                other.gameObject.transform.parent = null;
+                if(other.gameObject.transform.position.x>this.gameObject.transform.position.x)
+                {
+                    other.gameObject.transform.position = new Vector2(other.gameObject.transform.position.x + 0.1f,other.gameObject.transform.position.y);
+                }
+                if(other.gameObject.transform.position.x<this.gameObject.transform.position.x)
+                {
+                    other.gameObject.transform.position = new Vector2(other.gameObject.transform.position.x - 0.1f,other.gameObject.transform.position.y);
+                }
+            }
+            else if(other.transform.position.y < this.transform.position.y)
+            {
+                Debug.Log("Leaving box, msg from upper box");
                 this.gameObject.transform.parent = null;
+                // if(this.gameObject.transform.position.x>other.gameObject.transform.position.x)
+                // {
+                //     this.gameObject.transform.position = new Vector2(other.gameObject.transform.position.x + 0.82f,this.gameObject.transform.position.y);
+                // }
+                // if(this.gameObject.transform.position.x<other.gameObject.transform.position.x)
+                // {
+                //     this.gameObject.transform.position = new Vector2(other.gameObject.transform.position.x - 0.82f,this.gameObject.transform.position.y);
+                // }
             }
         }
     }
