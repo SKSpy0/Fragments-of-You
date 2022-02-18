@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class breakPlatManager : MonoBehaviour {
 
+	public float respawnCD;
 	public static breakPlatManager Instance = null;
 
 	[SerializeField]
@@ -19,7 +20,7 @@ public class breakPlatManager : MonoBehaviour {
 
 	IEnumerator SpawnPlatform(Vector2 spawnPosition)
 	{
-		yield return new WaitForSeconds (2f);
+		yield return new WaitForSeconds (respawnCD);
 		Instantiate (platformPrefab, spawnPosition, platformPrefab.transform.rotation);
 	}
 

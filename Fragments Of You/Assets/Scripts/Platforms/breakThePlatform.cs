@@ -5,7 +5,7 @@ using UnityEngine;
 public class breakThePlatform : MonoBehaviour
 {
     // Declare variables
-    public float timer;
+    public float breakTimer;
     public GameObject prefab;
     public GameObject Left;
     public GameObject Center;
@@ -41,9 +41,9 @@ public class breakThePlatform : MonoBehaviour
         {
             // Decrease the timer also make the joins slowly 
             // become transparent.
-            if (timer > 0)
+            if (breakTimer > 0)
             {
-                timer -= Time.deltaTime;
+                breakTimer -= Time.deltaTime;
                 colorAlpha -= Time.deltaTime * 0.8f;
                 LeftJoinColor.color = new Color(1, 1, 1, colorAlpha);
                 CenterJoinColor.color = new Color(1, 1, 1, colorAlpha);
@@ -64,7 +64,7 @@ public class breakThePlatform : MonoBehaviour
 					new Vector2 (transform.position.x, transform.position.y));
 
                 // // Destory the old platform obj
-                Destroy(this.gameObject, timer + 2f);
+                Destroy(this.gameObject, breakTimer + 2f);
             }
         }
     }
