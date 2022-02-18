@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6256780650277949667}
+  - component: {fileID: 5380578837504509404}
   - component: {fileID: 7664972142594401803}
   - component: {fileID: 4838238020282314583}
   - component: {fileID: 9137918439364648106}
-  - component: {fileID: 5380578837504509404}
   - component: {fileID: 7148068699084101395}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +35,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5380578837504509404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8799552373233154592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4df066d29e6754e960199a7f069b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: {fileID: 21300000, guid: b2d4b0f028ea0b74c85780db2d397775, type: 3}
+  down: {fileID: 21300000, guid: 8b27cbcd413de5b4e848730074051b0c, type: 3}
+  signal: 0
 --- !u!60 &7664972142594401803
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -141,20 +156,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5380578837504509404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8799552373233154592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a4df066d29e6754e960199a7f069b71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  up: {fileID: 21300000, guid: b2d4b0f028ea0b74c85780db2d397775, type: 3}
-  down: {fileID: 21300000, guid: 8b27cbcd413de5b4e848730074051b0c, type: 3}
 --- !u!50 &7148068699084101395
 Rigidbody2D:
   serializedVersion: 4
