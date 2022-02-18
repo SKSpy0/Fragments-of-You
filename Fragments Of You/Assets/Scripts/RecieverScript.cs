@@ -11,9 +11,10 @@ public class RecieverScript : MonoBehaviour
 
     // make sure you override Start(), Update(), press(), release()
     // these 4 functions must be overwritten even if they do nothing
-    
+
     public virtual void Start()
     {
+        // start always needs this to work.
         searchForSignal();
     }
 
