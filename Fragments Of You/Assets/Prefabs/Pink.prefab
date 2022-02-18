@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2473378661505500908, guid: b0a94d78f6e9a4f52b3e4ac195a01688, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -178,11 +178,9 @@ MonoBehaviour:
     m_Bits: 8
   inAirMoveSpeed: 5
   groundedMoveSpeed: 7
-  swingSpeed: 5
   moveSpeed: 5
   jumpForce: 7
   gravity: 9.81
-  maxVelocityY: 25
 --- !u!114 &2451209812896764937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +204,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   grappleJumpForceVertical: 4
-  grappleJumpForceHorizontal: 7
   gravity: 9.81
   numIterationOfRopeSimulation: 10
   lengthOfArm: 5
