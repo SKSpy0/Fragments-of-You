@@ -76,13 +76,14 @@ public class PinkMovement : MonoBehaviour
             }
             if(!IsGrounded() && wallcoyote>0 && !isFacingWall())
             {
+
                 if(sprite.flipX)
                 {
-                    sprite.flipX = false;
+                    //sprite.flipX = false;
                 }
                 else
                 {
-                    sprite.flipX = true;
+                    //sprite.flipX = true;
                 }
                 WallJump();
             }
@@ -120,6 +121,10 @@ public class PinkMovement : MonoBehaviour
         {
             wallcoyote = 0.3f;
             rb.velocity = new Vector2(rb.velocity.x,rb.velocity.y/1.8f);
+            animator.SetBool("isWallSlide", true);
+        }
+        else {
+            animator.SetBool("isWallSlide", false);
         }
 
         if(!IsGrounded() && !grapple.getAnchored())
@@ -251,14 +256,18 @@ public class PinkMovement : MonoBehaviour
     // flips player sprit to maintain correct orientation.
     private void FlipPlayer()
     {
-        if (rb.velocity.x < -0.1f)
+        if(!(isFacingWall() && !IsGrounded() && rb.velocity.y < 0))
         {
-            sprite.flipX = true;
+            if (rb.velocity.x < -0.1f)
+            {
+                sprite.flipX = true;
+            }
+            else if (rb.velocity.x > 0.1f)
+            {
+                sprite.flipX = false;
+            }
         }
-        else if (rb.velocity.x > 0.1f)
-        {
-            sprite.flipX = false;
-        }
+            
     }
 
 /*** Environmental Collison's with player ***/ 
