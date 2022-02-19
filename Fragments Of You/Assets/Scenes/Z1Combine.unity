@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 53981997}
   m_Layer: 2
   m_Name: Section2 Range
-  m_TagString: Untagged
+  m_TagString: CameraBound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1739,7 +1739,7 @@ GameObject:
   - component: {fileID: 559678394}
   m_Layer: 2
   m_Name: Section1 Range
-  m_TagString: Untagged
+  m_TagString: CameraBound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5353,6 +5353,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1770782118026919834, guid: e9008411e9f532d4593acb6c80ed7040, type: 3}
   m_PrefabInstance: {fileID: 1545988298}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1562783263
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1927192173}
+    m_Modifications:
+    - target: {fileID: 5699935330992802392, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699935330992802392, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -38.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699935330992802392, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6847436
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699935330992802392, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 22.241575
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699935330992802392, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699935330992802392, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699935330992802392, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699935330992802392, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699935330992802392, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699935330992802392, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699935330992802392, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699935330992802394, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+      propertyPath: m_Name
+      value: Anchor Point (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+--- !u!4 &1562783264 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5699935330992802392, guid: f2fb47ddaaabd438da93bd39da4f4d8f, type: 3}
+  m_PrefabInstance: {fileID: 1562783263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1572799407
 GameObject:
   m_ObjectHideFlags: 0
@@ -6962,7 +7024,7 @@ GameObject:
   - component: {fileID: 1927192171}
   m_Layer: 2
   m_Name: Section3 Range
-  m_TagString: Untagged
+  m_TagString: CameraBound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7032,6 +7094,7 @@ Transform:
   - {fileID: 451572870}
   - {fileID: 1497655133}
   - {fileID: 370165589}
+  - {fileID: 1562783264}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7110,7 +7173,7 @@ GameObject:
   - component: {fileID: 1944352342}
   m_Layer: 2
   m_Name: Section4 Range
-  m_TagString: Untagged
+  m_TagString: CameraBound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

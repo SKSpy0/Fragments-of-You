@@ -23,7 +23,7 @@ public class PinkGrapple : MonoBehaviour
     public PointClass[] points;
     public StickClass[] sticks;
     [SerializeField] private bool isAnchored = false;
-    [SerializeField] private bool isFired = false;
+    public bool isFired = false;
     private bool isRelaxed = false;
     [SerializeField] private bool generateRope = true;
     
@@ -93,6 +93,7 @@ public class PinkGrapple : MonoBehaviour
             else if(handsScript.checkHit())
             {
                 isFired = false;
+                Debug.Log("Line 96");
             }
         }
 
@@ -146,6 +147,7 @@ public class PinkGrapple : MonoBehaviour
         if(handsScript.checkReset())
         {
             isFired = false;
+            Debug.Log("Line 150");
         }
 
         SimulateRope();
@@ -215,6 +217,7 @@ public class PinkGrapple : MonoBehaviour
     private void ArmReset()
     {
         Debug.Log("reset");
+        Debug.Log("Line 219");
         generateRope = true;
         isFired = false;
         animator.SetBool("isArmless", false);

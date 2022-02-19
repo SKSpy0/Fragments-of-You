@@ -24,9 +24,10 @@ public class Hands_Script : MonoBehaviour
             isHit = true;
         }
         
-        if(other.tag != "Player" && other.tag != "Anchor")
+        if(other.tag != "Player" && other.tag != "Anchor" && other.tag != "CameraBound")
         {
             isReset = true;
+            Debug.Log("name: " + other.name);
         }
     }
 
