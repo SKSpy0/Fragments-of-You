@@ -50,12 +50,12 @@ public class BoxScript : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("BoxLeave: " + other.tag);
+        //Debug.Log("BoxLeave: " + other.tag);
         // if interaction is below then do the thing else don't
         // When box leave moving platform, move freely
         if (other.gameObject.CompareTag("movingPlatform"))
         {
-            Debug.Log("Leaving platform");
+            //Debug.Log("Leaving platform");
             this.gameObject.transform.parent = null;
         }
         // When box leave other boxes, move freely
@@ -63,7 +63,7 @@ public class BoxScript : MonoBehaviour
         {
             if(other.transform.position.y > this.transform.position.y)
             {
-                Debug.Log("Leaving box, msg from lower box");
+                //Debug.Log("Leaving box, msg from lower box");
                 other.gameObject.transform.parent = null;
                 if(other.gameObject.transform.position.x>this.gameObject.transform.position.x)
                 {
@@ -76,7 +76,7 @@ public class BoxScript : MonoBehaviour
             }
             else if(other.transform.position.y < this.transform.position.y)
             {
-                Debug.Log("Leaving box, msg from upper box");
+                //Debug.Log("Leaving box, msg from upper box");
                 this.gameObject.transform.parent = null;
                 // if(this.gameObject.transform.position.x>other.gameObject.transform.position.x)
                 // {
