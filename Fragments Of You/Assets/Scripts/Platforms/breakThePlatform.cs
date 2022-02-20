@@ -51,12 +51,15 @@ public class breakThePlatform : MonoBehaviour
             }
             else // When time is up, disconnect the join and explode
             {
-                LeftJoin.breakForce = 0;
-                Left.GetComponent<Rigidbody2D>().AddForce(transform.right * -500, ForceMode2D.Impulse);
-                CenterJoin.breakForce = 0;
-                Center.GetComponent<Rigidbody2D>().AddForce(transform.up * -500, ForceMode2D.Impulse);
-                RightJoin.breakForce = 0;
-                Right.GetComponent<Rigidbody2D>().AddForce(transform.right * 500, ForceMode2D.Impulse);
+                if (LeftJoin != null)
+                {
+                    LeftJoin.breakForce = 0;
+                    Left.GetComponent<Rigidbody2D>().AddForce(transform.right * -500, ForceMode2D.Impulse);
+                    CenterJoin.breakForce = 0;
+                    Center.GetComponent<Rigidbody2D>().AddForce(transform.up * -500, ForceMode2D.Impulse);
+                    RightJoin.breakForce = 0;
+                    Right.GetComponent<Rigidbody2D>().AddForce(transform.right * 500, ForceMode2D.Impulse);
+                }
                 // Kill the update
                 playerOn = false;
 
