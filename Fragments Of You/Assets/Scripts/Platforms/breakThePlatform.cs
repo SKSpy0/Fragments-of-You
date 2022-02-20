@@ -64,7 +64,7 @@ public class breakThePlatform : MonoBehaviour
                 playerOn = false;
 
                 breakPlatManager.Instance.StartCoroutine("SpawnPlatform",
-					new Vector2 (transform.position.x, transform.position.y));
+                    new Vector2(transform.position.x, transform.position.y));
 
                 // // Destory the old platform obj
                 Destroy(this.gameObject, breakTimer + 2f);

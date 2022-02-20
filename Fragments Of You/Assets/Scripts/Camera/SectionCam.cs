@@ -18,7 +18,7 @@ public class SectionCam : MonoBehaviour
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             virtualCam.SetActive(true);
-            resp.setRespawn(other.transform.position);
+            resp.setRespawn(new Vector2(other.transform.position.x + 1f, other.transform.position.y));
         }
     }
 

@@ -19,7 +19,8 @@ public class PauseMenu : MonoBehaviour
         pausemenu.SetActive(false);
     }
 
-      public void ButtonSelection(){
+    public void ButtonSelection()
+    {
         // play's button selection sound effect
         buttonSelectionSFX.Play();
     }
@@ -59,6 +60,12 @@ public class PauseMenu : MonoBehaviour
         volumnMenuFade.SetBool("Enter", true);
     }
 
+    public void BackToMenu()
+    {
+        Time.timeScale = 1;
+        StartCoroutine(BackToMenuTransition());
+    }
+
     public void PauseQuit()
     {
         Debug.Log("Quit!");
@@ -67,8 +74,6 @@ public class PauseMenu : MonoBehaviour
 
     public void LeavevVolumnTransition()
     {
-
-        Debug.Log("Here1");
         StartCoroutine(OptionMenuTransition());
     }
 
@@ -91,10 +96,26 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator OptionMenuTransition()
     {
-        Debug.Log("Here2");
         pause_Anim.SetBool("isPause", true);
 
         yield return new WaitForSecondsRealtime(0.0001f);
         pause_Anim.SetBool("isPause", false);
+    }
+
+    IEnumerator BackToMenuTransition()
+    {
+        if (pause_Anim.GetBool("isPause"))
+        {
+            menu_darken.SetBool("isFade", false);
+            pause_Anim.SetBool("isPause", false);
+        }
+        else
+        {
+            menu_darken.SetBool("isFade", true);
+            pause_Anim.SetBool("isPause", true);
+        }
+
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("MainMenu");
     }
 }
