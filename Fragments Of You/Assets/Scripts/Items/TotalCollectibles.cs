@@ -10,7 +10,7 @@ public class TotalCollectibles : MonoBehaviour
     public static int collectible;
 
     void Update(){
-        collectibleText.GetComponent<Text>().text = "Hearts: " + collectible;
+        collectibleText.GetComponent<Text>().text = "Memories: " + collectible;
     }
 
 }
