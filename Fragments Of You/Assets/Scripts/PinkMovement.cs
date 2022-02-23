@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PinkMovement : MonoBehaviour
 {
+
+    [SerializeField] private int zone = 1;
     private Rigidbody2D rb;
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
@@ -56,6 +58,17 @@ public class PinkMovement : MonoBehaviour
 
         resp.setRespawn(this.transform.position);
         Debug.Log("pos: "+this.transform.position);
+
+        if(zone>1)
+        {
+            loseArms();
+            animator.SetBool("isArmless", true);
+        }
+        if(zone>2)
+        {
+            loseLegs();
+            animator.SetBool("isLegless", true);
+        }
     }
 
 
@@ -77,14 +90,14 @@ public class PinkMovement : MonoBehaviour
             if(!IsGrounded() && wallcoyote>0 && !isFacingWall())
             {
 
-                if(sprite.flipX)
-                {
-                    //sprite.flipX = false;
-                }
-                else
-                {
-                    //sprite.flipX = true;
-                }
+                // if(sprite.flipX)
+                // {
+                //     //sprite.flipX = false;
+                // }
+                // else
+                // {
+                //     //sprite.flipX = true;
+                // }
                 WallJump();
             }
 
