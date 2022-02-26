@@ -69,6 +69,7 @@ public class Respawn : MonoBehaviour
         pm.transform.SetPositionAndRotation(respawnPoint,new Quaternion(0,0,0,0));
 
         // respawn animation
+        pm.gameObject.transform.parent = null;
         animator.SetBool("Dead", false);
         yield return new WaitForSeconds(1f);
         animator.SetBool("Respawn", true);

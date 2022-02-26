@@ -42,10 +42,13 @@ public class GameManager : MonoBehaviour
     // changes levels
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Player has collided with next level collider.");
-        // plays screen swipe sfx and changes the scene. This will play on awake.
-        sceneSwitchSFX.Play();
-        ChangeScene(LevelName);
+        if(other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player has collided with next level collider.");
+            // plays screen swipe sfx and changes the scene. This will play on awake.
+            sceneSwitchSFX.Play();
+            ChangeScene(LevelName);
+        }
     }
 
     // When player click play button, jump into games
