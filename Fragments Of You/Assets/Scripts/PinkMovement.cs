@@ -291,6 +291,11 @@ public class PinkMovement : MonoBehaviour
         {
             PlayerDeath();
         }
+        // Environmental Collison with player - Death by laser.
+        if (other.gameObject.CompareTag("LaserTrap"))
+        {
+            PlayerDeath();
+        }
 
         // When player land on the ground, stop the jumping animation
         if (other.gameObject.CompareTag("Ground"))
