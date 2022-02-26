@@ -34,7 +34,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2632065432075122504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.28, y: -2.44, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac13b5938ce0466197c8a28b5d76fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zone: 1
   jumpSFX: {fileID: 0}
   landedSFX: {fileID: 0}
   walkingSFX: {fileID: 0}
