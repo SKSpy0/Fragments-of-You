@@ -73,6 +73,10 @@ public class BoxScript : MonoBehaviour
             Debug.Log("Player Enter!");
             couldPickup = true;
         }
+        if(other.gameObject.CompareTag("FallDeath"))
+        {
+            respawn();
+        }
         // if interaction is below then do the thing else don't
         if(other.transform.position.y < this.transform.position.y)
         {
