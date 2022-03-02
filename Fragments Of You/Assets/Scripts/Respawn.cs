@@ -80,6 +80,9 @@ public class Respawn : MonoBehaviour
         animator.SetBool("Respawn", true);
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        if(!pinkGrapple.generateRope){
+            pinkGrapple.ReleaseArms();
+        }
     }
     // Respawn functions end ----------------------------------------------------------------------
 }
