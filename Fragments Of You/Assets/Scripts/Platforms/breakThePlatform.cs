@@ -5,6 +5,7 @@ using UnityEngine;
 public class breakThePlatform : MonoBehaviour
 {
     // Declare variables
+    public breakPlatManager breakPlatManager;
     public float breakTimer;
     public GameObject prefab;
     public GameObject Left;
@@ -31,6 +32,8 @@ public class breakThePlatform : MonoBehaviour
         LeftJoinColor = Left.GetComponent<SpriteRenderer>();
         CenterJoinColor = Center.GetComponent<SpriteRenderer>();
         RightJoinColor = Right.GetComponent<SpriteRenderer>();
+
+        breakPlatManager = GameObject.Find("BreakPlatManager").GetComponent<breakPlatManager>();
     }
 
     void Update()
@@ -51,6 +54,9 @@ public class breakThePlatform : MonoBehaviour
             }
             else // When time is up, disconnect the join and explode
             {
+                GetComponent<BoxCollider2D>().enabled = false;
+                GetComponent<PolygonCollider2D>().enabled = false;
+
                 if (LeftJoin != null)
                 {
                     LeftJoin.breakForce = 0;
@@ -62,12 +68,12 @@ public class breakThePlatform : MonoBehaviour
                 }
                 // Kill the update
                 playerOn = false;
-
+                Debug.Log("Respawn Breakable Platform");
                 breakPlatManager.Instance.StartCoroutine("SpawnPlatform",
                     new Vector2(transform.position.x, transform.position.y));
 
-                // // Destory the old platform obj
-                Destroy(this.gameObject, breakTimer + 2f);
+                // Destory the old platform obj
+                Destroy(this.gameObject, breakPlatManager.respawnCD);
             }
         }
     }
@@ -77,7 +83,6 @@ public class breakThePlatform : MonoBehaviour
         // Start break the platform when player jump on it.
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player Land");
             playerOn = true;
         }
     }
