@@ -25,7 +25,7 @@ public class PinkGrapple : MonoBehaviour
     [SerializeField] private bool isAnchored = false;
     public bool isFired = false;
     private bool isRelaxed = false;
-    [SerializeField] private bool generateRope = true;
+    public bool generateRope = true;
     
 
     [SerializeField] private LayerMask jumpableGround;
@@ -201,7 +201,7 @@ public class PinkGrapple : MonoBehaviour
         isRelaxed = false;
         //points[0].locked = true;
     }
-    private void ReleaseArms()
+    public void ReleaseArms()
     {
         Debug.Log("ReleaseArms");
         //DestoryArmByTag();

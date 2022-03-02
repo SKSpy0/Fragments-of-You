@@ -10,6 +10,7 @@ public class Respawn : MonoBehaviour
     private PinkMovement pm;
     private Animator animator;
     private Rigidbody2D rb;
+    private PinkGrapple pinkGrapple;
 
     public AudioSource RespawnSFX;
     private GameObject[] gm;
@@ -22,6 +23,7 @@ public class Respawn : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gm = GameObject.FindGameObjectsWithTag("GameManager");
+        pinkGrapple = GetComponent<PinkGrapple>();
     }
 
     // Update is called once per frame
@@ -52,6 +54,9 @@ public class Respawn : MonoBehaviour
         // Respawn sound effect can be added here.
         gm[0].GetComponent<BoxHandler>().resetAllBoxes();
         RespawnSFX.Play();
+        if(!pinkGrapple.generateRope){
+            pinkGrapple.ReleaseArms();
+        }
         StartCoroutine(PlayRespawnAnim());
     }
 
