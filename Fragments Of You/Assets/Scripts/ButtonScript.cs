@@ -11,6 +11,8 @@ public class ButtonScript : MonoBehaviour
     [SerializeField] private int signal = 0;
     private List<GameObject> recievers;
 
+    public AudioSource PathUnlockedSFX;
+
     void Awake()
     {
         recievers = new List<GameObject>();
@@ -26,11 +28,21 @@ public class ButtonScript : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Box") || other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             if(!pressed)
             {
                 press();
+            }
+            pressed = true;
+            SR.sprite = down;
+        }
+
+        if(other.gameObject.CompareTag("Box")){
+            if(!pressed)
+            {
+                press();
+                 PathUnlockedSFX.Play();
             }
             pressed = true;
             SR.sprite = down;

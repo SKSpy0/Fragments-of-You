@@ -221,6 +221,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa62c3c5a12fd4dd5aa7e23a3b26b4a0, type: 3}
+--- !u!82 &54398317 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4219791376289446913, guid: aa62c3c5a12fd4dd5aa7e23a3b26b4a0, type: 3}
+  m_PrefabInstance: {fileID: 54398316}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &54398318 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4907080071053351871, guid: aa62c3c5a12fd4dd5aa7e23a3b26b4a0, type: 3}
+  m_PrefabInstance: {fileID: 54398316}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &54398319 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3079180276677328967, guid: aa62c3c5a12fd4dd5aa7e23a3b26b4a0, type: 3}
+  m_PrefabInstance: {fileID: 54398316}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &54398320 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6571641420196572914, guid: aa62c3c5a12fd4dd5aa7e23a3b26b4a0, type: 3}
+  m_PrefabInstance: {fileID: 54398316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &55878403 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 5183055749864858651, guid: aa62c3c5a12fd4dd5aa7e23a3b26b4a0, type: 3}
@@ -311,6 +331,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 226268535}
     m_Modifications:
+    - target: {fileID: 950267495035335896, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.012000084
+      objectReference: {fileID: 0}
     - target: {fileID: 950267495035335908, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -323,6 +347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakablePlatform
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496836733646, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: PlatformBreakingSFX
+      value: 
+      objectReference: {fileID: 54398319}
     - target: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -367,6 +395,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496851376977, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.46799946
+      objectReference: {fileID: 0}
     - target: {fileID: 950267496851376989, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -374,6 +406,10 @@ PrefabInstance:
     - target: {fileID: 950267496851376989, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayerID
       value: -1342633133
+      objectReference: {fileID: 0}
+    - target: {fileID: 950267497009691554, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.48799992
       objectReference: {fileID: 0}
     - target: {fileID: 950267497009691566, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
@@ -759,7 +795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalScale.x
@@ -775,7 +811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.48
+      value: 2.29
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -999,7 +1035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 83.126884
+      value: 83.188
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1901,6 +1937,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6510382096252065467, guid: 300aadfd797c1554d8f8f56719fd9a6a, type: 3}
+      propertyPath: RockPushedSFX
+      value: 
+      objectReference: {fileID: 54398317}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 300aadfd797c1554d8f8f56719fd9a6a, type: 3}
 --- !u!4 &407392931 stripped
@@ -2117,6 +2157,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 453474435}
     m_Modifications:
+    - target: {fileID: 950267495035335896, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.012001038
+      objectReference: {fileID: 0}
+    - target: {fileID: 950267495035335896, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.015000105
+      objectReference: {fileID: 0}
     - target: {fileID: 950267495035335908, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -2129,6 +2177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakablePlatform
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496836733646, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: PlatformBreakingSFX
+      value: 
+      objectReference: {fileID: 54398319}
     - target: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -2173,6 +2225,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496851376977, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.46800232
+      objectReference: {fileID: 0}
+    - target: {fileID: 950267496851376977, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.015000105
+      objectReference: {fileID: 0}
     - target: {fileID: 950267496851376989, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -2180,6 +2240,14 @@ PrefabInstance:
     - target: {fileID: 950267496851376989, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayerID
       value: -1342633133
+      objectReference: {fileID: 0}
+    - target: {fileID: 950267497009691554, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.48799896
+      objectReference: {fileID: 0}
+    - target: {fileID: 950267497009691554, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.015000105
       objectReference: {fileID: 0}
     - target: {fileID: 950267497009691566, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
@@ -7895,6 +7963,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6661823826035746899, guid: a868c438365bd0e4d83ea9f06a32b2ed, type: 3}
+      propertyPath: JumpPadSFX
+      value: 
+      objectReference: {fileID: 54398318}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a868c438365bd0e4d83ea9f06a32b2ed, type: 3}
 --- !u!1001 &676826158
@@ -7904,6 +7976,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1590419757}
     m_Modifications:
+    - target: {fileID: 5380578837504509404, guid: af62f1bb10f727141aa785d62ed7dc44, type: 3}
+      propertyPath: PathUnlockedSFX
+      value: 
+      objectReference: {fileID: 54398320}
     - target: {fileID: 6256780650277949667, guid: af62f1bb10f727141aa785d62ed7dc44, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -8801,11 +8877,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 82.25688
+      value: 82.282
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.41
+      value: 2.242
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9442,7 +9518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 950267495035335896, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.015000105
+      value: 0.014999986
       objectReference: {fileID: 0}
     - target: {fileID: 950267495035335908, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
@@ -9456,9 +9532,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakablePlatform (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496836733646, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: PlatformBreakingSFX
+      value: 
+      objectReference: {fileID: 54398319}
     - target: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9506,7 +9586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 950267496851376977, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.015000105
+      value: 0.014999986
       objectReference: {fileID: 0}
     - target: {fileID: 950267496851376989, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
@@ -9522,7 +9602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 950267497009691554, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.015000105
+      value: 0.014999986
       objectReference: {fileID: 0}
     - target: {fileID: 950267497009691566, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
@@ -11275,7 +11355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.25
+      value: 2.297
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11488,9 +11568,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.00011406094
+    y: 0
     width: 1
-    height: 0.9997719
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -12021,6 +12101,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 453474435}
     m_Modifications:
+    - target: {fileID: 950267495035335896, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.012001038
+      objectReference: {fileID: 0}
+    - target: {fileID: 950267495035335896, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0149998665
+      objectReference: {fileID: 0}
     - target: {fileID: 950267495035335908, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -12033,6 +12121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakablePlatform (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496836733646, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: PlatformBreakingSFX
+      value: 
+      objectReference: {fileID: 54398319}
     - target: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -12077,6 +12169,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496851376977, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.46800232
+      objectReference: {fileID: 0}
+    - target: {fileID: 950267496851376977, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0149998665
+      objectReference: {fileID: 0}
     - target: {fileID: 950267496851376989, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -12084,6 +12184,14 @@ PrefabInstance:
     - target: {fileID: 950267496851376989, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayerID
       value: -1342633133
+      objectReference: {fileID: 0}
+    - target: {fileID: 950267497009691554, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.48799896
+      objectReference: {fileID: 0}
+    - target: {fileID: 950267497009691554, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0149998665
       objectReference: {fileID: 0}
     - target: {fileID: 950267497009691566, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
@@ -12240,7 +12348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalScale.x
@@ -12256,7 +12364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2547436
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12678,6 +12786,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1342633133
       objectReference: {fileID: 0}
+    - target: {fileID: 8769933380533154642, guid: ce6ab2e245333cd4aaad4a9e67d67252, type: 3}
+      propertyPath: DoorOpeningSFX
+      value: 
+      objectReference: {fileID: 1758984481}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce6ab2e245333cd4aaad4a9e67d67252, type: 3}
 --- !u!1001 &1686576547
@@ -12820,6 +12932,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.x
       value: 0.012001038
       objectReference: {fileID: 0}
+    - target: {fileID: 950267495035335896, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.015000105
+      objectReference: {fileID: 0}
     - target: {fileID: 950267495035335908, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -12832,6 +12948,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakablePlatform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496836733646, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: PlatformBreakingSFX
+      value: 
+      objectReference: {fileID: 54398319}
     - target: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -12880,6 +13000,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.x
       value: -0.46800232
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496851376977, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.015000105
+      objectReference: {fileID: 0}
     - target: {fileID: 950267496851376989, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -12891,6 +13015,10 @@ PrefabInstance:
     - target: {fileID: 950267497009691554, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0.48799896
+      objectReference: {fileID: 0}
+    - target: {fileID: 950267497009691554, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.015000105
       objectReference: {fileID: 0}
     - target: {fileID: 950267497009691566, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
@@ -13226,6 +13354,133 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
   m_PrefabInstance: {fileID: 1758036376}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1758984479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1758984480}
+  - component: {fileID: 1758984481}
+  m_Layer: 0
+  m_Name: DoorOpeningSFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1758984480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758984479}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.370633e+32, y: 3.7485072e+30, z: 1.8559733e+16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2097015051}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1758984481
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758984479}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -924288048071051621, guid: ff8d5f8c9e653ab4f89149ee0c76da29, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 758c67831357ade4a886bf76193aacba, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1768042168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13235,11 +13490,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 950267495035335896, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.012001038
+      value: 0.011997223
       objectReference: {fileID: 0}
     - target: {fileID: 950267495035335896, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.015000105
+      value: 0.0149998665
       objectReference: {fileID: 0}
     - target: {fileID: 950267495035335908, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
@@ -13253,9 +13508,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakablePlatform (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496836733646, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: PlatformBreakingSFX
+      value: 
+      objectReference: {fileID: 54398319}
     - target: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13299,11 +13558,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 950267496851376977, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.4679985
+      value: -0.46800232
       objectReference: {fileID: 0}
     - target: {fileID: 950267496851376977, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.015000105
+      value: 0.0149998665
       objectReference: {fileID: 0}
     - target: {fileID: 950267496851376989, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
@@ -13315,11 +13574,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 950267497009691554, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.48800278
+      value: 0.48799896
       objectReference: {fileID: 0}
     - target: {fileID: 950267497009691554, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.015000105
+      value: 0.0149998665
       objectReference: {fileID: 0}
     - target: {fileID: 950267497009691566, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
@@ -13507,6 +13766,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 453474435}
     m_Modifications:
+    - target: {fileID: 950267495035335896, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.012001038
+      objectReference: {fileID: 0}
     - target: {fileID: 950267495035335908, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -13519,6 +13782,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakablePlatform (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496836733646, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: PlatformBreakingSFX
+      value: 
+      objectReference: {fileID: 54398319}
     - target: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -13563,6 +13830,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496851376977, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.46800232
+      objectReference: {fileID: 0}
     - target: {fileID: 950267496851376989, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -13570,6 +13841,10 @@ PrefabInstance:
     - target: {fileID: 950267496851376989, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayerID
       value: -1342633133
+      objectReference: {fileID: 0}
+    - target: {fileID: 950267497009691554, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.48799896
       objectReference: {fileID: 0}
     - target: {fileID: 950267497009691566, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
@@ -13918,7 +14193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalScale.x
@@ -13994,6 +14269,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 226268535}
     m_Modifications:
+    - target: {fileID: 950267495035335896, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.012000084
+      objectReference: {fileID: 0}
     - target: {fileID: 950267495035335908, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -14006,6 +14285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakablePlatform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496836733646, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: PlatformBreakingSFX
+      value: 
+      objectReference: {fileID: 54398319}
     - target: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -14050,6 +14333,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496851376977, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.46799946
+      objectReference: {fileID: 0}
     - target: {fileID: 950267496851376989, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -14057,6 +14344,10 @@ PrefabInstance:
     - target: {fileID: 950267496851376989, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayerID
       value: -1342633133
+      objectReference: {fileID: 0}
+    - target: {fileID: 950267497009691554, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.48799992
       objectReference: {fileID: 0}
     - target: {fileID: 950267497009691566, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_SortingLayer
@@ -14091,6 +14382,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakablePlatform (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496836733646, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: PlatformBreakingSFX
+      value: 
+      objectReference: {fileID: 54398319}
     - target: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -14476,9 +14771,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakablePlatform (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 950267496836733646, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
+      propertyPath: PlatformBreakingSFX
+      value: 
+      objectReference: {fileID: 54398319}
     - target: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14675,6 +14974,7 @@ Transform:
   - {fileID: 760747013}
   - {fileID: 1535938787}
   - {fileID: 1580062295}
+  - {fileID: 1758984480}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14700,7 +15000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 83.196884
+      value: 83.141
       objectReference: {fileID: 0}
     - target: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
       propertyPath: m_LocalPosition.y

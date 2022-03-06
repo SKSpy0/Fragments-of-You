@@ -11,6 +11,7 @@ public class BoxScript : MonoBehaviour
     private GameObject player;
 
     private Rigidbody2D rb;
+    public AudioSource RockPushedSFX;
     private SpriteRenderer playerSprite;
 
     // Start is called before the first frame update
@@ -71,6 +72,8 @@ public class BoxScript : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player Enter!");
+            // Rock being pushed sfx plays 
+                RockPushedSFX.Play();
             couldPickup = true;
         }
         if(other.gameObject.CompareTag("FallDeath"))
@@ -111,6 +114,8 @@ public class BoxScript : MonoBehaviour
             {
                 couldPickup = false;
             }
+            // Rock being pushed sfx stops 
+                RockPushedSFX.Stop();
         }
         //Debug.Log("BoxLeave: " + other.tag);
         // if interaction is below then do the thing else don't

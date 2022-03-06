@@ -21,6 +21,8 @@ public class breakThePlatform : MonoBehaviour
     private SpriteRenderer RightJoinColor;
     private float colorAlpha = 1;
 
+    public AudioSource PlatformBreakingSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +85,8 @@ public class breakThePlatform : MonoBehaviour
         // Start break the platform when player jump on it.
         if (other.gameObject.CompareTag("Player"))
         {
+            // plays platform breaking sound effect
+            PlatformBreakingSFX.Play();
             playerOn = true;
         }
     }
