@@ -23,6 +23,7 @@ public class breakThePlatform : MonoBehaviour
 
     public AudioSource PlatformBreakingSFX;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,8 +74,7 @@ public class breakThePlatform : MonoBehaviour
                 Debug.Log("Respawn Breakable Platform");
                 breakPlatManager.Instance.StartCoroutine("SpawnPlatform",
                     new Vector2(transform.position.x, transform.position.y));
-
-                // Destory the old platform obj
+                // Destroy the old platform obj
                 Destroy(this.gameObject, breakPlatManager.respawnCD);
             }
         }
