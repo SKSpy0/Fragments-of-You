@@ -15,6 +15,7 @@ public class PinkMovement : MonoBehaviour
     public AudioSource landedSFX;
     public AudioSource walkingSFX;
     public AudioSource DeathSFX;
+    public SFXPrompt sfxPrompt;
 
     private float startingPitch = 2.8f;
     private float startingVolume = 0.1f;
@@ -188,6 +189,7 @@ public class PinkMovement : MonoBehaviour
         animator.SetBool("isJumping", true);
         // Jump Sound Effect here
         jumpSFX.Play();
+        sfxPrompt.NewSfxPrompt("Jumping");
     }
 
     private void WallJump()
@@ -303,6 +305,7 @@ public class PinkMovement : MonoBehaviour
             animator.SetBool("isJumping", false);
              // landed sound effect
               landedSFX.Play();
+              sfxPrompt.NewSfxPrompt("Landing");
         }
 
         // When player land on box fix player to box
@@ -315,6 +318,7 @@ public class PinkMovement : MonoBehaviour
                 animator.SetBool("isJumping", false);
                 // landed sound effect
                 landedSFX.Play();
+                sfxPrompt.NewSfxPrompt("Landing");
                 this.gameObject.transform.parent = other.gameObject.transform;
             }
         }
@@ -325,6 +329,7 @@ public class PinkMovement : MonoBehaviour
             animator.SetBool("isJumping", false);
              // landed sound effect
               landedSFX.Play();
+              sfxPrompt.NewSfxPrompt("Landing");
         }
 
         // When player land on the ground, stop the jumping animation
@@ -333,6 +338,7 @@ public class PinkMovement : MonoBehaviour
             animator.SetBool("isJumping", false);
              // landed sound effect
               landedSFX.Play();
+              sfxPrompt.NewSfxPrompt("Landing");
         }
 
         // Fix player postion on the movingplatforms
@@ -341,6 +347,7 @@ public class PinkMovement : MonoBehaviour
             animator.SetBool("isJumping", false);
             // landed sound effect
             landedSFX.Play();
+            sfxPrompt.NewSfxPrompt("Landing");
             this.gameObject.transform.parent = other.gameObject.transform;
         }
 
@@ -378,6 +385,7 @@ public class PinkMovement : MonoBehaviour
         Debug.Log("Dead");
         FlipPlayer();
         DeathSFX.Play();
+        sfxPrompt.NewSfxPrompt("Death");
         StartCoroutine(PlayDeathAnim());
     }
 

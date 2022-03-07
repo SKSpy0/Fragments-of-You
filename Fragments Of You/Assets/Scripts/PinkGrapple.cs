@@ -16,6 +16,7 @@ public class PinkGrapple : MonoBehaviour
     public AudioSource grappleSFX;
     public AudioSource anchorhitSFX;
     public Hands_Script handsScript;
+    public SFXPrompt sfxPrompt;
     private SpriteRenderer handsSprite;
     private Vector3 targetPos;
     private Quaternion targetRotat;
@@ -120,6 +121,7 @@ public class PinkGrapple : MonoBehaviour
         if(handsScript.checkHit() && generateRope)
         {
             Grapple();
+            sfxPrompt.NewSfxPrompt("Anchor hit");
             anchorhitSFX.Play();
         } 
         else if (!handsScript.checkHit() && !generateRope && isAnchored)
@@ -196,6 +198,7 @@ public class PinkGrapple : MonoBehaviour
         animator.SetBool("isArmless", true);
         handsSprite.enabled = true;
         lr.enabled = true;
+        sfxPrompt.NewSfxPrompt("Grapple Fired");
         grappleSFX.Play();
         SetArmLength(lengthOfArm);
         isRelaxed = false;

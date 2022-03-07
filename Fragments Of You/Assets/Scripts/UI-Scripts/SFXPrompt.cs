@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class SFXPrompt : MonoBehaviour
 {
     public Text sfxPrompt;
-    public Image backgroundImage;
+    public Text sfxPrompt1;
+    public Text sfxPrompt2;
     private string[] prompts = new string[3];
 
     private int messageCounter = 0;
@@ -21,6 +22,10 @@ public class SFXPrompt : MonoBehaviour
     void Update()
     {
         sfxPrompt.text = prompts[0];
+
+        sfxPrompt1.text = prompts[1];
+
+        sfxPrompt2.text = prompts[2];
     }
 
     public void NewSfxPrompt(string message) {
