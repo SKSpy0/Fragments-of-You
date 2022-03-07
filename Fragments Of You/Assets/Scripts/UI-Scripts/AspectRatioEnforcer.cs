@@ -118,7 +118,6 @@ public class AspectRatioEnforcer : MonoBehaviour
         {
             Mask.ClearBox();
         }
-
         DrawMask();
     }
 

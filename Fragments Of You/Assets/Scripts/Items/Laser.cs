@@ -7,6 +7,7 @@ public class Laser : MonoBehaviour
     public SpriteRenderer LaserSprite;
     public AudioSource LaserSFX;
     public BoxCollider2D LaserCollider;
+    public float TimerInSeconds;
 
     void Start(){
 
@@ -20,22 +21,24 @@ public class Laser : MonoBehaviour
         LaserSFX.Play();
         LaserSprite.enabled = true;
         LaserCollider.enabled = true;
-        StartCoroutine(TurnOffLaser(9.0f));
+        StartCoroutine(TurnOffLaser(TimerInSeconds));
     }
 
     // every 9 seconds turn off laser
     IEnumerator TurnOffLaser(float waitTime)
     {
+        waitTime = TimerInSeconds;
            yield return new WaitForSeconds(waitTime);
              LaserSprite.enabled = false;
              LaserCollider.enabled = false;
                Debug.Log("Laser is off");
-               StartCoroutine(TurnOnLaser(9.0f));       
+               StartCoroutine(TurnOnLaser(waitTime));       
     }
 
     // every 9 seconds turn on laser
     IEnumerator TurnOnLaser(float waitTime)
     {
+           waitTime = TimerInSeconds;
            yield return new WaitForSeconds(waitTime);
             LaserTimer();
     }

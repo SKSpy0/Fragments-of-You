@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     public Animator pause_Anim;
     public Animator menu_darken;
     public Animator volumnMenuFade;
+    public Animator quitMenuFade;
     public bool isPause;
     private GameObject pausemenu;
     public AudioSource buttonSelectionSFX;
@@ -58,6 +59,11 @@ public class PauseMenu : MonoBehaviour
     public void OptionMenu()
     {
         volumnMenuFade.SetBool("Enter", true);
+    }
+
+    public void QuitMenu()
+    {
+        quitMenuFade.SetBool("Enter", true);
     }
 
     public void BackToMenu()

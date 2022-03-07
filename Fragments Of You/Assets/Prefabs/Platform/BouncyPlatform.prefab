@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3911515091526880127}
   - component: {fileID: 3911515091526880124}
   - component: {fileID: 3911515091526880125}
+  - component: {fileID: 6661823826035746899}
   m_Layer: 3
   m_Name: BouncyPlatform
   m_TagString: Untagged
@@ -69,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1342633133
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.9786383, g: 1, b: 0.5990566, a: 1}
@@ -109,3 +110,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8444437, y: 0.78258824}
   m_EdgeRadius: 0
+--- !u!114 &6661823826035746899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3911515091526880002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9f0b9ccdcff49479bdbd14a30ccaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounce: 1
+  JumpPadSFX: {fileID: 0}

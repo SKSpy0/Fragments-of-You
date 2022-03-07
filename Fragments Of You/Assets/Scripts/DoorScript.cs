@@ -7,6 +7,7 @@ public class DoorScript : RecieverScript
     // make sure it inherits from reciever script
     public Transform closePos, openPos;
     private Vector2 destination;
+    public AudioSource DoorOpeningSFX;
 
     public override void Start()
     {
@@ -34,6 +35,8 @@ public class DoorScript : RecieverScript
     void open()
     {
         destination = openPos.position;
+        // Door opening sound effect plays when door is opened
+        DoorOpeningSFX.Play();
         this.GetComponent<BoxCollider2D>().enabled = false;
     }
 

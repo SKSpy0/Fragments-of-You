@@ -9,9 +9,11 @@ public class MainMenuAnimation : MonoBehaviour
     public Animator titleLogo;
     public Animator clickToStart;
     public Animator playButtonFade;
-    public Animator optionButtonFade;
-    public Animator quitButtonFade;
+    public Animator moreButtonFade;
     public Animator volumnMenuFade;
+    public Animator creditMenuFade;
+    public Animator quitMenuFade;
+    public Animator interfaceFade;
     public Animator DarkTransition;
     public GameObject clickToStartObj;
     public GameObject playButton;
@@ -31,9 +33,17 @@ public class MainMenuAnimation : MonoBehaviour
 
     public void LeavevVolumnTransition()
     {
-        playButtonFade.SetBool("Enter", true);
-        optionButtonFade.SetBool("Enter", true);
-        quitButtonFade.SetBool("Enter", true);
+        interfaceFade.SetBool("Enter", true);
+    }
+
+    public void QuitTransition()
+    {
+        quitMenuFade.SetBool("Enter", true);
+    }
+
+    public void CreditsTransition()
+    {
+        creditMenuFade.SetBool("Enter", true);
     }
 
     public void GameStart()
@@ -53,19 +63,14 @@ public class MainMenuAnimation : MonoBehaviour
         quitButton.SetActive(true);
 
         yield return new WaitForSeconds(transitionTime);
-        playButtonFade.SetBool("Enter", true);
-        optionButtonFade.SetBool("Enter", true);
-        quitButtonFade.SetBool("Enter", true);
+        interfaceFade.SetBool("Enter", true);
     }
 
     IEnumerator GameStartTransition()
     {
-        optionButtonFade.SetBool("Play", true);
-        quitButtonFade.SetBool("Play", true);
+        moreButtonFade.SetBool("Play", true);
         playButtonFade.SetBool("Play", true);
 
-        // yield return new WaitForSeconds(0.5f);
-        // playButton.GetComponent<Image>().enabled = false;
         yield return new WaitForSeconds(1.0f);
         DarkTransition.SetBool("Enter", true);
     }
