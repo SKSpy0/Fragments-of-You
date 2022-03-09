@@ -12153,9 +12153,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.00034915656
+    y: 0
     width: 1
-    height: 0.9993017
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -20852,6 +20852,10 @@ PrefabInstance:
     - target: {fileID: 2632065432075122504, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_Name
       value: Pink
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: zone
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: jumpSFX
