@@ -5,8 +5,8 @@ using UnityEngine;
 public class BoxScript : MonoBehaviour
 {
     private Vector2 spawnPoint;
-    private bool isPickup;
-    private bool couldPickup;
+    // private bool isPickup;
+    // private bool couldPickup;
     private GameObject[] players;
     private GameObject player;
 
@@ -25,42 +25,42 @@ public class BoxScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerSprite = player.GetComponent<SpriteRenderer>();
         spawnPoint = this.transform.position;
-        isPickup = false;
-        couldPickup = false;
+        // isPickup = false;
+        // couldPickup = false;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.F))
-        {
-            if(isPickup) {
-                isPickup = false;
-                couldPickup = false;
-                rb.simulated  = true;
+    // void Update()
+    // {
+    //     if(Input.GetKeyUp(KeyCode.F))
+    //     {
+    //         if(isPickup) {
+    //             isPickup = false;
+    //             couldPickup = false;
+    //             rb.simulated  = true;
 
-                if(playerSprite.flipX == false)
-                {
-                    rb.AddForce(Vector2.right * 2f, ForceMode2D.Impulse);
-                    rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
-                }
-                else
-                {
-                    rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
-                    rb.AddForce(Vector2.left * 2f, ForceMode2D.Impulse);
-                }
-            } else {
-                isPickup = true;
-            }
+    //             if(playerSprite.flipX == false)
+    //             {
+    //                 rb.AddForce(Vector2.right * 2f, ForceMode2D.Impulse);
+    //                 rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
+    //             }
+    //             else
+    //             {
+    //                 rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
+    //                 rb.AddForce(Vector2.left * 2f, ForceMode2D.Impulse);
+    //             }
+    //         } else {
+    //             isPickup = true;
+    //         }
             
-        }
-        if (couldPickup == true && isPickup)
-        { 
-            Vector2 target = new Vector2(player.transform.position.x, player.transform.position.y + 1f);
-            this.transform.position = target;
-            rb.simulated  = false;
-        }
-    }
+    //     }
+    //     if (couldPickup == true && isPickup)
+    //     { 
+    //         Vector2 target = new Vector2(player.transform.position.x, player.transform.position.y + 1f);
+    //         this.transform.position = target;
+    //         rb.simulated  = false;
+    //     }
+    // }
 
     public void respawn()
     {
@@ -74,7 +74,7 @@ public class BoxScript : MonoBehaviour
             Debug.Log("Player Enter!");
             // Rock being pushed sfx plays 
                 RockPushedSFX.Play();
-            couldPickup = true;
+            // couldPickup = true;
         }
         if(other.gameObject.CompareTag("FallDeath"))
         {
@@ -110,10 +110,10 @@ public class BoxScript : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player Exist!");
-            if(!isPickup)
-            {
-                couldPickup = false;
-            }
+            // if(!isPickup)
+            // {
+            //     couldPickup = false;
+            // }
             // Rock being pushed sfx stops 
                 RockPushedSFX.Stop();
         }
