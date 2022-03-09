@@ -19,7 +19,7 @@ public class Collectible : MonoBehaviour
     {
          if(collected){
             collectiblePickup.Play();
-              Debug.Log("Collectible collected!");
+            Debug.Log("Collectible collected!");
             // destroy's object
             Destroy(this.gameObject);
         }

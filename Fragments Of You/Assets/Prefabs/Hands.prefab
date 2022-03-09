@@ -166,15 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86195c741642b4e8bb188e5f5c3ad71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 0, y: 0}
-  lockedPos: {x: 0, y: 0}
-  rotation: {x: 0, y: 0, z: 0, w: 0}
-  player: {fileID: 0}
-  armLength: 14
-  isFired: 0
   isHit: 0
-  armSpeed: 7
-  bullet_head: {fileID: 3343372298382443916}
+  isReset: 0
 --- !u!1 &4779151919162894787
 GameObject:
   m_ObjectHideFlags: 0
