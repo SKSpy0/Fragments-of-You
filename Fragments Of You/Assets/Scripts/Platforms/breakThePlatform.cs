@@ -5,7 +5,7 @@ using UnityEngine;
 public class breakThePlatform : MonoBehaviour
 {
     // Declare variables
-    public breakPlatManager breakPlatManager;
+    private breakPlatManager breakPlatManager;
     public float breakTimer;
     public GameObject prefab;
     public GameObject Left;
@@ -50,7 +50,7 @@ public class breakThePlatform : MonoBehaviour
             if (breakTimer > 0)
             {
                 breakTimer -= Time.deltaTime;
-                colorAlpha -= Time.deltaTime * 0.8f;
+                colorAlpha -= Time.deltaTime * 0.6f;
                 LeftJoinColor.color = new Color(1, 1, 1, colorAlpha);
                 CenterJoinColor.color = new Color(1, 1, 1, colorAlpha);
                 RightJoinColor.color = new Color(1, 1, 1, colorAlpha);
