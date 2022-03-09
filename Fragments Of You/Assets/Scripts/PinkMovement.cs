@@ -132,8 +132,8 @@ public class PinkMovement : MonoBehaviour
         Move();
         if(isFacingWall() && !IsGrounded() && rb.velocity.y < 0)
         {
-            wallcoyote = 0.3f;
-            rb.velocity = new Vector2(rb.velocity.x,rb.velocity.y/1.8f);
+            wallcoyote = 0.1f;
+            rb.velocity = new Vector2(rb.velocity.x,rb.velocity.y/1.3f);
             animator.SetBool("isWallSlide", true);
         }
         else {
