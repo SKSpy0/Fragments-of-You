@@ -147,7 +147,7 @@ public class PinkGrapple : MonoBehaviour
         if(handsScript.checkReset())
         {
             isFired = false;
-            Debug.Log("Line 150");
+          //  Debug.Log("Line 150");
         }
 
         SimulateRope();

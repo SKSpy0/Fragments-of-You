@@ -39,6 +39,13 @@ public class GameManager : MonoBehaviour
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        if(sceneName == "Z1Tutorial"){
+                Destroy(GameObject.Find("MenuMusic"));
+            }
+        if(sceneName == "LoseArms_Cutscene"){
+                Destroy(GameObject.Find("BGM_Music"));
+            }   
+
     }
 
     // changes levels

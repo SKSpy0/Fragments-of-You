@@ -542,6 +542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 37887971}
   - component: {fileID: 37887972}
+  - component: {fileID: 37887973}
   m_Layer: 0
   m_Name: MenuMusic
   m_TagString: Untagged
@@ -659,6 +660,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &37887973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37887970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5b9090714591443a1d28d22f45e7df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGM: {fileID: 37887972}
 --- !u!1 &205901106
 GameObject:
   m_ObjectHideFlags: 0
