@@ -44,6 +44,7 @@ public class MainMenuAnimation : MonoBehaviour
     public void CreditsTransition()
     {
         creditMenuFade.SetBool("Enter", true);
+        creditMenuFade.SetBool("Rolling", true);
     }
 
     public void GameStart()

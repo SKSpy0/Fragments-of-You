@@ -1224,7 +1224,6 @@ GameObject:
   - component: {fileID: 604816302}
   - component: {fileID: 604816301}
   - component: {fileID: 604816300}
-  - component: {fileID: 604816299}
   m_Layer: 5
   m_Name: Tutorial Button
   m_TagString: Untagged
@@ -1252,25 +1251,6 @@ RectTransform:
   m_AnchoredPosition: {x: -2.5, y: 21.5}
   m_SizeDelta: {x: 105.733, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &604816299
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604816297}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b525a0e3d83598e48952aa1cc55dcca5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &604816300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2665,7 +2645,6 @@ GameObject:
   - component: {fileID: 1372397109}
   - component: {fileID: 1372397108}
   - component: {fileID: 1372397107}
-  - component: {fileID: 1372397106}
   m_Layer: 5
   m_Name: Play_Story Button
   m_TagString: Untagged
@@ -2693,25 +2672,6 @@ RectTransform:
   m_AnchoredPosition: {x: -2.499981, y: 41.5}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1372397106
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372397104}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b525a0e3d83598e48952aa1cc55dcca5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1372397107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3039,7 +2999,6 @@ GameObject:
   - component: {fileID: 1397009426}
   - component: {fileID: 1397009425}
   - component: {fileID: 1397009424}
-  - component: {fileID: 1397009423}
   m_Layer: 5
   m_Name: Level1-1Button
   m_TagString: Untagged
@@ -3067,25 +3026,6 @@ RectTransform:
   m_AnchoredPosition: {x: -2.5, y: 2.3}
   m_SizeDelta: {x: 105.733, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1397009423
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397009421}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b525a0e3d83598e48952aa1cc55dcca5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1397009424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3267,9 +3207,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.00022483617
+    y: 0.00006376952
     width: 1
-    height: 0.99955034
+    height: 0.99987245
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
