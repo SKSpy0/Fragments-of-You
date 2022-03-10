@@ -115,7 +115,8 @@ public class BoxScript : MonoBehaviour
             //     couldPickup = false;
             // }
             // Rock being pushed sfx stops 
-                RockPushedSFX.Stop();
+            RockPushedSFX.Stop();
+            other.gameObject.transform.parent = null;
         }
         //Debug.Log("BoxLeave: " + other.tag);
         // if interaction is below then do the thing else don't
