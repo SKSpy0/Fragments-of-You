@@ -123,5 +123,6 @@ public class PauseMenu : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("MainMenu");
+        Destroy(GameObject.Find("BGM_Music"));
     }
 }
