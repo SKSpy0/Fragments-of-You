@@ -1576,6 +1576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476376116}
   parallaxEffect: 0.6
+  enableY: 0
 --- !u!212 &297505135
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1897,6 +1898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476376116}
   parallaxEffect: 0.3
+  enableY: 0
 --- !u!212 &374402524
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9989,6 +9991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476376116}
   parallaxEffect: 1
+  enableY: 0
 --- !u!212 &1075146468
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10548,6 +10551,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1342633133
       objectReference: {fileID: 0}
+    - target: {fileID: 3123227666397353732, guid: ea15aaea37dc33e438ad7d5e6d130f60, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea15aaea37dc33e438ad7d5e6d130f60, type: 3}
 --- !u!4 &1188361068 stripped
@@ -11094,6 +11101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476376116}
   parallaxEffect: 0.8
+  enableY: 0
 --- !u!212 &1330728139
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11227,6 +11235,10 @@ PrefabInstance:
     - target: {fileID: 3123227666397353731, guid: ea15aaea37dc33e438ad7d5e6d130f60, type: 3}
       propertyPath: speed
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123227666397353732, guid: ea15aaea37dc33e438ad7d5e6d130f60, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea15aaea37dc33e438ad7d5e6d130f60, type: 3}
@@ -11879,6 +11891,10 @@ PrefabInstance:
       value: 1.8515878
       objectReference: {fileID: 0}
     - target: {fileID: 3123227666397353732, guid: ea15aaea37dc33e438ad7d5e6d130f60, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3875
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123227666397353732, guid: ea15aaea37dc33e438ad7d5e6d130f60, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.63
       objectReference: {fileID: 0}
@@ -11970,9 +11986,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: -0.00012599677
     y: 0
-    width: 1
+    width: 1.000252
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -12086,6 +12102,10 @@ PrefabInstance:
     - target: {fileID: 3123227666397353729, guid: ea15aaea37dc33e438ad7d5e6d130f60, type: 3}
       propertyPath: m_SortingLayerID
       value: -1342633133
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123227666397353732, guid: ea15aaea37dc33e438ad7d5e6d130f60, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea15aaea37dc33e438ad7d5e6d130f60, type: 3}
