@@ -3919,9 +3919,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: -0.00012599677
+    x: -0.00017531589
     y: 0
-    width: 1.000252
+    width: 1.0003506
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -7804,6 +7804,10 @@ PrefabInstance:
       propertyPath: LaserSFX
       value: 
       objectReference: {fileID: 1477239988}
+    - target: {fileID: 7936538342217918504, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
+      propertyPath: TimerInSeconds
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
 --- !u!1 &530673353
@@ -12952,7 +12956,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302710526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.02, y: 0, z: 0}
+  m_LocalPosition: {x: 25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 408556458}
@@ -13501,6 +13505,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2511684527281348470, guid: a68a8c8e79abe4f6ab40c955821fe933, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -73
+      objectReference: {fileID: 0}
+    - target: {fileID: 2511684527281348470, guid: a68a8c8e79abe4f6ab40c955821fe933, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -51.229004
+      objectReference: {fileID: 0}
     - target: {fileID: 2511684527568996177, guid: a68a8c8e79abe4f6ab40c955821fe933, type: 3}
       propertyPath: m_Name
       value: AccessibilitySFXPrompt
@@ -13588,6 +13600,14 @@ PrefabInstance:
     - target: {fileID: 2511684527568996178, guid: a68a8c8e79abe4f6ab40c955821fe933, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2511684527672776336, guid: a68a8c8e79abe4f6ab40c955821fe933, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -73
+      objectReference: {fileID: 0}
+    - target: {fileID: 2511684528615138597, guid: a68a8c8e79abe4f6ab40c955821fe933, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -67.28662
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a68a8c8e79abe4f6ab40c955821fe933, type: 3}
@@ -14074,6 +14094,10 @@ PrefabInstance:
       propertyPath: LaserSFX
       value: 
       objectReference: {fileID: 1477239988}
+    - target: {fileID: 7936538342217918504, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
+      propertyPath: TimerInSeconds
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
 --- !u!1 &1480197119
@@ -17501,6 +17525,10 @@ PrefabInstance:
       value: Pink
       objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: zone
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: jumpSFX
       value: 
       objectReference: {fileID: 823744171}
@@ -17526,11 +17554,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122507, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 39.77
+      value: -8.75
       objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122507, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.22
+      value: 4.67
       objectReference: {fileID: 0}
     - target: {fileID: 2632065432075122507, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_LocalPosition.z
