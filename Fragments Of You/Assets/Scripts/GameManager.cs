@@ -35,20 +35,31 @@ public class GameManager : MonoBehaviour
         buttonSelectionSFX.Play();
     }
 
-    // note: to import "sceneManagement" input library to work with LoadScence
+    // Note: to import "sceneManagement" input library to work with LoadScence
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        /*** Handles level music transitions ***/
+        // Going back to main menu screen from pause menu
         if(sceneName == "Z1Tutorial"){
                 Destroy(GameObject.Find("MenuMusic"));
             }
+        if(sceneName == "Z1M1"){
+                Destroy(GameObject.Find("MenuMusic"));
+            }
+        if(sceneName == "Z1M2"){
+                Destroy(GameObject.Find("MenuMusic"));
+            }
+        if(sceneName == "Z2M1"){
+                Destroy(GameObject.Find("MenuMusic"));
+            }
+        // first cutscene        
         if(sceneName == "LoseArms_Cutscene"){
                 Destroy(GameObject.Find("BGM_Music"));
             }   
-
     }
 
-    // changes levels
+    // changes levels when player hits collider.
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))

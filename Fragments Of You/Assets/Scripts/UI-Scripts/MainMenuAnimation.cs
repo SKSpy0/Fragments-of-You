@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +10,7 @@ public class MainMenuAnimation : MonoBehaviour
     public Animator playButtonFade;
     public Animator moreButtonFade;
     public Animator volumnMenuFade;
+    public Animator accessbilityMenuFade;
     public Animator creditMenuFade;
     public Animator quitMenuFade;
     public Animator interfaceFade;
@@ -36,14 +36,19 @@ public class MainMenuAnimation : MonoBehaviour
         interfaceFade.SetBool("Enter", true);
     }
 
-    public void QuitTransition()
+    public void AccessbilityTransition()
     {
-        quitMenuFade.SetBool("Enter", true);
+        accessbilityMenuFade.SetBool("Enter", true);
     }
 
     public void CreditsTransition()
     {
-        creditMenuFade.SetBool("Enter", true);
+        StartCoroutine(CreditsTransitionWait());
+    }
+
+    public void QuitTransition()
+    {
+        quitMenuFade.SetBool("Enter", true);
     }
 
     public void GameStart()
@@ -64,6 +69,15 @@ public class MainMenuAnimation : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
         interfaceFade.SetBool("Enter", true);
+    }
+
+    IEnumerator CreditsTransitionWait()
+    {
+        creditMenuFade.SetBool("Enter", true);
+
+        yield return new WaitForSeconds(1.0f);
+
+        creditMenuFade.SetBool("Rolling", true);
     }
 
     IEnumerator GameStartTransition()
