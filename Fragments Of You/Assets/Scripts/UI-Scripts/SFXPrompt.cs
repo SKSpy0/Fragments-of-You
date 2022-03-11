@@ -8,6 +8,7 @@ public class SFXPrompt : MonoBehaviour
     public Text sfxPrompt;
     public Text sfxPrompt1;
     public Text sfxPrompt2;
+    public GameManager gameManager;
     private string[] prompts = new string[3];
 
     private int messageCounter = 0;
@@ -21,11 +22,19 @@ public class SFXPrompt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sfxPrompt.text = prompts[0];
+        if(gameManager.LoadingButtonSettings("SFXPToggle")) 
+        {
+            sfxPrompt.text = "";
+            sfxPrompt1.text = "";
+            sfxPrompt2.text = "";
 
-        sfxPrompt1.text = prompts[1];
-
-        sfxPrompt2.text = prompts[2];
+        } 
+        else 
+        {
+            sfxPrompt.text = prompts[0];
+            sfxPrompt1.text = prompts[1];
+            sfxPrompt2.text = prompts[2];
+        }
     }
 
     public void NewSfxPrompt(string message) {
