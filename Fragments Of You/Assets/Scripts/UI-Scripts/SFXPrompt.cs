@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SFXPrompt : MonoBehaviour
 {
-    public Text sfxPrompt;
-    public Text sfxPrompt1;
-    public Text sfxPrompt2;
+    public TextMeshProUGUI sfxPrompt;
+    public TextMeshProUGUI sfxPrompt1;
+    public TextMeshProUGUI sfxPrompt2;
     public GameManager gameManager;
     public GameObject background;
     private string[] prompts = new string[3];
