@@ -9,6 +9,7 @@ public class SFXPrompt : MonoBehaviour
     public Text sfxPrompt1;
     public Text sfxPrompt2;
     public GameManager gameManager;
+    public GameObject background;
     private string[] prompts = new string[3];
 
     private int messageCounter = 0;
@@ -22,18 +23,19 @@ public class SFXPrompt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameManager.LoadingButtonSettings("SFXPToggle")) 
+        if(!gameManager.LoadingButtonSettings("SFXPToggle")) 
         {
             sfxPrompt.text = "";
             sfxPrompt1.text = "";
             sfxPrompt2.text = "";
-
+            background.SetActive(false);
         } 
         else 
         {
             sfxPrompt.text = prompts[0];
             sfxPrompt1.text = prompts[1];
             sfxPrompt2.text = prompts[2];
+            background.SetActive(true);
         }
     }
 

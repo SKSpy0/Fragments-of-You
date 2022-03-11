@@ -10706,7 +10706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9584b13392518ae4baeeff3af4919c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 318602945}
   parallaxEffect: 0.6
   enableY: 0
 --- !u!212 &800583128
@@ -13022,7 +13022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9584b13392518ae4baeeff3af4919c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 318602945}
   parallaxEffect: 0.1
   enableY: 0
 --- !u!212 &961888384
@@ -14247,7 +14247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9584b13392518ae4baeeff3af4919c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 318602945}
   parallaxEffect: 0.9
   enableY: 0
 --- !u!212 &1176489194
@@ -15588,6 +15588,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -51.229004
       objectReference: {fileID: 0}
+    - target: {fileID: 2511684527568996174, guid: a68a8c8e79abe4f6ab40c955821fe933, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1589580622}
     - target: {fileID: 2511684527568996177, guid: a68a8c8e79abe4f6ab40c955821fe933, type: 3}
       propertyPath: m_Name
       value: AccessibilitySFXPrompt
@@ -17434,7 +17438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9584b13392518ae4baeeff3af4919c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 318602945}
   parallaxEffect: 0.3
   enableY: 0
 --- !u!212 &1649091842
@@ -19468,7 +19472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9584b13392518ae4baeeff3af4919c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 318602945}
   parallaxEffect: 1
   enableY: 0
 --- !u!212 &2054740193

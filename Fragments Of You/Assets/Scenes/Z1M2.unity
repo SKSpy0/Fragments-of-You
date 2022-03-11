@@ -12006,9 +12006,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: -0.000117480755
     y: 0
-    width: 1
+    width: 1.000235
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -13725,6 +13725,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2511684527568996174, guid: a68a8c8e79abe4f6ab40c955821fe933, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1910707821}
     - target: {fileID: 2511684527568996177, guid: a68a8c8e79abe4f6ab40c955821fe933, type: 3}
       propertyPath: m_Name
       value: AccessibilitySFXPrompt
