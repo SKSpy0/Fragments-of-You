@@ -6310,7 +6310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6877675655324266919, guid: db02c4470ee7b89438ceacfb69b6e169, type: 3}
       propertyPath: bounce
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6877675655324266920, guid: db02c4470ee7b89438ceacfb69b6e169, type: 3}
       propertyPath: m_Name
@@ -7830,7 +7830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6877675655324266919, guid: db02c4470ee7b89438ceacfb69b6e169, type: 3}
       propertyPath: bounce
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6877675655324266920, guid: db02c4470ee7b89438ceacfb69b6e169, type: 3}
       propertyPath: m_Name
@@ -14345,6 +14345,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 371228669}
     m_Modifications:
+    - target: {fileID: 3097151762656657267, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
+      propertyPath: BypassReverbZones
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4416197316018626083, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
       propertyPath: m_Size.x
       value: 4.050317
@@ -16063,7 +16067,7 @@ PrefabInstance:
       objectReference: {fileID: 99538438}
     - target: {fileID: 7936538342217918504, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
       propertyPath: TimerInSeconds
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
@@ -17373,11 +17377,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6877675655324266919, guid: db02c4470ee7b89438ceacfb69b6e169, type: 3}
       propertyPath: bounce
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6877675655324266920, guid: db02c4470ee7b89438ceacfb69b6e169, type: 3}
       propertyPath: m_Name
       value: jumpPad (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877675655711821761, guid: db02c4470ee7b89438ceacfb69b6e169, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.42
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db02c4470ee7b89438ceacfb69b6e169, type: 3}
@@ -20883,7 +20891,7 @@ PrefabInstance:
       objectReference: {fileID: 99538438}
     - target: {fileID: 7936538342217918504, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
       propertyPath: TimerInSeconds
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
@@ -21746,7 +21754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6877675655324266919, guid: db02c4470ee7b89438ceacfb69b6e169, type: 3}
       propertyPath: bounce
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6877675655324266920, guid: db02c4470ee7b89438ceacfb69b6e169, type: 3}
       propertyPath: m_Name
@@ -24401,7 +24409,7 @@ PrefabInstance:
       objectReference: {fileID: 99538438}
     - target: {fileID: 7936538342217918504, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
       propertyPath: TimerInSeconds
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}

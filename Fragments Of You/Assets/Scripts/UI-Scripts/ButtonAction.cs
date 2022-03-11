@@ -47,6 +47,7 @@ public class ButtonAction : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         ButtonSound();
+        Destroy(GameObject.Find("BGM_Music"));
         SceneManager.LoadScene("MainMenu");
     }
 }
