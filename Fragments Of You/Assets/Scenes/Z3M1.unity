@@ -1055,6 +1055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476376116}
   parallaxEffect: 0.6
+  enableY: 0
 --- !u!212 &297505135
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1431,6 +1432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476376116}
   parallaxEffect: 0.3
+  enableY: 0
 --- !u!212 &374402524
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1894,7 +1896,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1930,6 +1932,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &549477381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 549477382}
+  - component: {fileID: 549477383}
+  m_Layer: 0
+  m_Name: Force Camera Ratios
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &549477382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549477381}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -71.852844, y: -0.28684902, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1476376120}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &549477383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549477381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e188ee899633d0b49870a5ae38b7359d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ratio: {x: 16, y: 9}
+  forceRatioOnAwake: 1
+  listenForWindowChanges: 1
+  createCameraForLetterBoxRendering: 1
+  findCamerasAutomatically: 1
+  letterBoxCameraColor: {r: 0, g: 0, b: 0, a: 1}
+  cameras: []
+  letterBoxCamera: {fileID: 0}
 --- !u!1 &549987208
 GameObject:
   m_ObjectHideFlags: 3
@@ -10754,17 +10807,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8869051917615234723, guid: b08ad9ac671696c4682f56900488179d, type: 3}
   m_PrefabInstance: {fileID: 1955051677}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1011409862 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8869051917615234721, guid: b08ad9ac671696c4682f56900488179d, type: 3}
-  m_PrefabInstance: {fileID: 1955051677}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1035309537 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5869759417413749780, guid: aa62c3c5a12fd4dd5aa7e23a3b26b4a0, type: 3}
@@ -10824,6 +10866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476376116}
   parallaxEffect: 1
+  enableY: 0
 --- !u!212 &1075146468
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11535,6 +11578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476376116}
   parallaxEffect: 0.8
+  enableY: 0
 --- !u!212 &1330728139
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11938,7 +11982,7 @@ PrefabInstance:
     - target: {fileID: 522731092245505325, guid: 74559dfe0bee39147ab2cb5bd604476b, type: 3}
       propertyPath: collectibleText
       value: 
-      objectReference: {fileID: 1011409862}
+      objectReference: {fileID: 0}
     - target: {fileID: 522731092245505326, guid: 74559dfe0bee39147ab2cb5bd604476b, type: 3}
       propertyPath: m_Name
       value: Collectible Controller
@@ -11957,7 +12001,6 @@ GameObject:
   - component: {fileID: 1476376119}
   - component: {fileID: 1476376118}
   - component: {fileID: 1476376117}
-  - component: {fileID: 1476376121}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -12027,9 +12070,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.0003246814
+    y: 0
     width: 1
-    height: 0.99935067
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -12062,24 +12105,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 653083030}
+  - {fileID: 549477382}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1476376121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476376116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0cce4781eec617428387668a57f190c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _previewInEditMode: 1
-  _maskColor: {r: 0, g: 0, b: 0, a: 1}
-  _aspectRatio: 1.7777778
 --- !u!1001 &1483377527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13636,7 +13665,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.75}
+    oldSize: {x: 0.9142857, y: 0.9142857}
     newSize: {x: 0.24, y: 0.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
