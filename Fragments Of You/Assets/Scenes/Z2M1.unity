@@ -5866,18 +5866,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 2.001
       objectReference: {fileID: 0}
-    - target: {fileID: 4416197317215082563, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
-      propertyPath: m_Color.b
-      value: 0.93333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 4416197317215082563, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
-      propertyPath: m_Color.g
-      value: 0.58504283
-      objectReference: {fileID: 0}
-    - target: {fileID: 4416197317215082563, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
-      propertyPath: m_Color.r
-      value: 0.22352937
-      objectReference: {fileID: 0}
     - target: {fileID: 7936538342217918504, guid: 40d183e24f747d640b9cb71ddf1b263e, type: 3}
       propertyPath: LaserSFX
       value: 
@@ -15348,7 +15336,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185188280}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.1, z: 8}
+  m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1465142325}
@@ -15370,7 +15358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1141459696}
   parallaxEffect: 0.1
-  enableY: 1
+  enableY: 0
 --- !u!212 &1185188283
 SpriteRenderer:
   m_ObjectHideFlags: 0
