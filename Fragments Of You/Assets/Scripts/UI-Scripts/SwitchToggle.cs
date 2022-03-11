@@ -13,7 +13,11 @@ public class SwitchToggle : MonoBehaviour {
 
    Toggle toggle ;
 
-   Vector2 handlePosition ;
+   bool savedToggle;
+
+   Vector2 handlePosition;
+
+   GameManager gameManager;
 
    void Awake ( ) {
       toggle = GetComponent <Toggle> ( ) ;
@@ -28,8 +32,28 @@ public class SwitchToggle : MonoBehaviour {
 
       toggle.onValueChanged.AddListener (OnSwitch) ;
 
+      gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+      toggle.isOn = gameManager.LoadingButtonSettings(this.gameObject.name);
+      savedToggle = toggle.isOn;
+
       if (toggle.isOn)
          OnSwitch (true) ;
+   }
+
+   public void toggleSFXP()
+   {
+      if (savedToggle == true)
+      {
+         OnSwitch (false);
+         PlayerPrefs.SetFloat(this.gameObject.name, 0);
+      }
+        
+      if (savedToggle == false)
+      {
+         OnSwitch (true);
+         PlayerPrefs.SetFloat(this.gameObject.name, 1);
+      }
    }
 
    void OnSwitch (bool on) {
@@ -43,7 +67,7 @@ public class SwitchToggle : MonoBehaviour {
       handleImage.DOColor (on ? handleActiveColor : handleDefaultColor, .4f) ;
    }
 
-   void OnDestroy ( ) {
+   void OnDestroy () {
       toggle.onValueChanged.RemoveListener (OnSwitch) ;
    }
 }

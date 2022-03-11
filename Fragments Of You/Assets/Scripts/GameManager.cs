@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public AudioSource testingSFX;
     private bool sfxSaved;
 
+    private bool ToggleIsOn;
+    private bool thisToggleOn;
+
     float savedValue1 = 1;
     float savedValue2 = 1;
     float savedValue3 = 1;
@@ -26,9 +29,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("loading....");
         LoadingAudioSettings();
         sfxSaved = true;
+<<<<<<< HEAD
         if(SceneManager.GetActiveScene().ToString() == "Z2M1"){
             PinkGrapple.Level2 = true;
         }
+=======
+        Debug.Log("The toggle set to " + PlayerPrefs.GetFloat("SFXPToggle"));
+>>>>>>> d762e8275e0672d46b217be020a9940baa5d4b98
     }
 
     public void ButtonSelection()
@@ -43,23 +50,27 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         /*** Handles level music transitions ***/
         // Going back to main menu screen from pause menu
-        if(sceneName == "Z1Tutorial"){
-                Destroy(GameObject.Find("MenuMusic"));
-            }
-        if(sceneName == "Z1M1"){
-                Destroy(GameObject.Find("MenuMusic"));
-            }
-        if(sceneName == "Z1M2"){
-                Destroy(GameObject.Find("MenuMusic"));
-            }
-        if(sceneName == "Z2M1"){
-                PinkGrapple.Level2 = true;
-                Destroy(GameObject.Find("MenuMusic"));
-            }
+        if (sceneName == "Z1Tutorial")
+        {
+            Destroy(GameObject.Find("MenuMusic"));
+        }
+        if (sceneName == "Z1M1")
+        {
+            Destroy(GameObject.Find("MenuMusic"));
+        }
+        if (sceneName == "Z1M2")
+        {
+            Destroy(GameObject.Find("MenuMusic"));
+        }
+        if (sceneName == "Z2M1")
+        {
+            Destroy(GameObject.Find("MenuMusic"));
+        }
         // first cutscene        
-        if(sceneName == "LoseArms_Cutscene"){
-                Destroy(GameObject.Find("BGM_Music"));
-            }   
+        if (sceneName == "LoseArms_Cutscene")
+        {
+            Destroy(GameObject.Find("BGM_Music"));
+        }
     }
 
     // changes levels when player hits collider.
@@ -110,6 +121,21 @@ public class GameManager : MonoBehaviour
         savedValue3 = PlayerPrefs.GetFloat("SavedSFXVolume");
         // Updates UI-Element
         sfxSlider.value = PlayerPrefs.GetFloat("SavedSFXVolume", 0.90f);
+    }
+
+    public bool LoadingButtonSettings(string ButtonName)
+    {
+        if (PlayerPrefs.GetFloat(ButtonName) == 1)
+        {
+            thisToggleOn = true;
+        }
+
+        if (PlayerPrefs.GetFloat(ButtonName) == 0)
+        {
+            thisToggleOn = false;
+        }
+
+        return thisToggleOn;
     }
 
     // Options to set different volumes and here audio
