@@ -86,7 +86,7 @@ public class PinkGrapple : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms() && !isRelaxed)
+            if(!IsGrounded() && IsAnyValidAnchor() && !isAnchored && pm.hasArms() && !isRelaxed && !pm.isFacingWall())
             {
                 ShootHands();
             // Sound effect for arm extensions should be here (It's a good idea).

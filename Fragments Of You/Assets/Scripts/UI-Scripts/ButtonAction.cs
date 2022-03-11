@@ -1,16 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 
 public class ButtonAction : MonoBehaviour
 {
     public Animator Canvas_Darken;
-    public Camera cam1;
-    public Camera cam2;
-    public Camera cam3;
-
+    public AudioSource buttonSelectionSFX;
 
     public void Next()
     {
@@ -32,35 +27,26 @@ public class ButtonAction : MonoBehaviour
         StartCoroutine(MenuTransition());
     }
 
+    private void ButtonSound()
+    {
+        buttonSelectionSFX.Play();
+    }
+
     IEnumerator RetryTransition()
     {
-        Canvas_Darken.SetTrigger("Start");
-        if (Canvas_Darken.GetBool("Transitioning"))
-        {
-            Canvas_Darken.SetBool("Transitioning", false);
-        }
-        else
-        {
-            Canvas_Darken.SetBool("Transitioning", true);
-        }
+        Canvas_Darken.SetBool("Enter", true);
 
         yield return new WaitForSeconds(1f);
+        ButtonSound();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     IEnumerator MenuTransition()
     {
-        Canvas_Darken.SetTrigger("Start");
-        if (Canvas_Darken.GetBool("Transitioning"))
-        {
-            Canvas_Darken.SetBool("Transitioning", false);
-        }
-        else
-        {
-            Canvas_Darken.SetBool("Transitioning", true);
-        }
+        Canvas_Darken.SetBool("Enter", true);
 
         yield return new WaitForSeconds(1f);
+        ButtonSound();
         SceneManager.LoadScene("MainMenu");
     }
 }
