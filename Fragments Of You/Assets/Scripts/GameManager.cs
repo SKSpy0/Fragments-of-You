@@ -29,13 +29,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("loading....");
         LoadingAudioSettings();
         sfxSaved = true;
-<<<<<<< HEAD
-        if(SceneManager.GetActiveScene().ToString() == "Z2M1"){
-            PinkGrapple.Level2 = true;
-        }
-=======
         Debug.Log("The toggle set to " + PlayerPrefs.GetFloat("SFXPToggle"));
->>>>>>> d762e8275e0672d46b217be020a9940baa5d4b98
     }
 
     public void ButtonSelection()
