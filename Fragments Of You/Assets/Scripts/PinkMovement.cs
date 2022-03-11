@@ -19,6 +19,7 @@ public class PinkMovement : MonoBehaviour
 
     private float startingPitch = 2.8f;
     private float startingVolume = 0.1f;
+    private float previousDir = 0f;
 
     [SerializeField] private LayerMask jumpableGround;
     private float dirX = 0f;
@@ -160,16 +161,26 @@ public class PinkMovement : MonoBehaviour
         // get input - Horizontal is set to 'a' and 'd' / left and right arrow keys.
         dirX = Input.GetAxisRaw("Horizontal");
 
-
-
         if(dirX > 0.1 || dirX < -0.1)
         {
-            // modify velocity based on input
-            rb.AddForce(Vector2.right * dirX * moveSpeed, ForceMode2D.Force);
-            // Play walk Animation
-            animator.SetFloat("Speed", Mathf.Abs(dirX));
-            // Play walking Sound Effect
-            movementChange = true;
+            if((dirX > 0 && previousDir > 0) || (dirX < 0 && previousDir < 0))
+            {
+                // modify velocity based on input
+                rb.AddForce(Vector2.right * dirX * moveSpeed, ForceMode2D.Force);
+                // Play walk Animation
+                animator.SetFloat("Speed", Mathf.Abs(dirX));
+                // Play walking Sound Effect
+                movementChange = true;
+            }
+            else
+            {
+                animator.SetFloat("Speed", Mathf.Abs(dirX));
+                rb.velocity = new Vector2(rb.velocity.x/4,rb.velocity.y);
+                if(rb.velocity.x < 0.1 || rb.velocity.x>-0.1)
+                {
+                    rb.velocity = new Vector2(0,rb.velocity.y);
+                }
+            }
         }
         else if(IsGrounded())
         {
@@ -180,6 +191,7 @@ public class PinkMovement : MonoBehaviour
                 rb.velocity = new Vector2(0,rb.velocity.y);
             }
         }
+        previousDir = dirX;
     }
 
     private void Jump()
