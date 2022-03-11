@@ -133,8 +133,8 @@ public class PinkMovement : MonoBehaviour
         Move();
         if(isFacingWall() && !IsGrounded() && rb.velocity.y < 0)
         {
-            wallcoyote = 0.3f;
-            rb.velocity = new Vector2(rb.velocity.x,rb.velocity.y/1.8f);
+            wallcoyote = 0.1f;
+            rb.velocity = new Vector2(rb.velocity.x,rb.velocity.y/1.3f);
             animator.SetBool("isWallSlide", true);
         }
         else {
@@ -358,6 +358,21 @@ public class PinkMovement : MonoBehaviour
         }
     }
 
+    public void OnCollisionStay2D(Collision2D other){
+        // When player land on box fix player to box
+        if (other.gameObject.CompareTag("Box"))
+        {
+            if(other.transform.position.y < this.transform.position.y &&
+                other.transform.position.x < this.transform.position.x + 0.6f &&
+                other.transform.position.x > this.transform.position.x - 0.6f)
+            {
+                animator.SetBool("isJumping", false);
+                // landed sound effect
+                this.gameObject.transform.parent = other.gameObject.transform;
+            }
+        }
+    }
+
     public void OnTriggerExit2D(Collider2D other)
     {
         Debug.Log("playerleave: "+ other.tag);
@@ -371,12 +386,28 @@ public class PinkMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Box"))
         {
             if(other.transform.position.y < this.transform.position.y &&
-                other.transform.position.x < this.transform.position.x + 0.6f &&
-                other.transform.position.x > this.transform.position.x - 0.6f)
+                other.transform.position.x < this.transform.position.x + 0.8f &&
+                other.transform.position.x > this.transform.position.x - 0.8f)
             {
                 Debug.Log("leaving box");
-                this.gameObject.transform.parent = null;
+                
             }
+            this.gameObject.transform.parent = null;
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D other){
+        // When player no longer interacting with box
+        if (other.gameObject.CompareTag("Box"))
+        {
+            if(other.transform.position.y < this.transform.position.y &&
+                other.transform.position.x < this.transform.position.x + 0.8f &&
+                other.transform.position.x > this.transform.position.x - 0.8f)
+            {
+                Debug.Log("leaving box");
+                
+            }
+            this.gameObject.transform.parent = null;
         }
     }
 

@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using System;
 
 public class Collectible : MonoBehaviour
 {
+
+    public static event Action CollectiblePickedUp = delegate {};
+
     bool collected;
     public AudioSource collectiblePickup;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +24,7 @@ public class Collectible : MonoBehaviour
     {
          if(collected){
             collectiblePickup.Play();
-              Debug.Log("Collectible collected!");
+            Debug.Log("Collectible collected!");
             // destroy's object
             Destroy(this.gameObject);
         }
@@ -30,7 +35,7 @@ public class Collectible : MonoBehaviour
         if(other.gameObject.CompareTag("Player")){
             collected = true;
               // collectible items increased
-             TotalCollectibles.collectible += 1;
+            CollectiblePickedUp();
         }
     }
 }
