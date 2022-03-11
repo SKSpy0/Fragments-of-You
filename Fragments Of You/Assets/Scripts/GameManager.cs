@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("loading....");
         LoadingAudioSettings();
         sfxSaved = true;
+        if(SceneManager.GetActiveScene().ToString() == "Z2M1"){
+            PinkGrapple.Level2 = true;
+        }
     }
 
     public void ButtonSelection()
@@ -51,6 +54,7 @@ public class GameManager : MonoBehaviour
                 Destroy(GameObject.Find("MenuMusic"));
             }
         if(sceneName == "Z2M1"){
+                PinkGrapple.Level2 = true;
                 Destroy(GameObject.Find("MenuMusic"));
             }
         // first cutscene        
