@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PinkMovement : MonoBehaviour
 {
-
+    
     [SerializeField] private int zone = 1;
     private Rigidbody2D rb;
     private BoxCollider2D coll;
@@ -305,6 +305,7 @@ public class PinkMovement : MonoBehaviour
         {
             PlayerDeath();
         }
+       
         // Environmental Collison with player - Death by laser.
         if (other.gameObject.CompareTag("LaserTrap"))
         {
@@ -385,6 +386,15 @@ public class PinkMovement : MonoBehaviour
         }
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("LaserTrigger"))
+        {
+            Laser.LaserTrigger = true; 
+            Debug.Log("Laser Triggered.");
+        }
+    }
+
     public void OnTriggerExit2D(Collider2D other)
     {
         Debug.Log("playerleave: "+ other.tag);
@@ -408,6 +418,7 @@ public class PinkMovement : MonoBehaviour
         }
     }
 
+   
     public void OnCollisionExit2D(Collision2D other){
         // When player no longer interacting with box
         if (other.gameObject.CompareTag("Box"))
