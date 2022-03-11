@@ -172,7 +172,7 @@ public class PinkMovement : MonoBehaviour
                 // Play walking Sound Effect
                 movementChange = true;
             }
-            else
+            else if(IsGrounded())
             {
                 animator.SetFloat("Speed", Mathf.Abs(dirX));
                 rb.velocity = new Vector2(rb.velocity.x/4,rb.velocity.y);
