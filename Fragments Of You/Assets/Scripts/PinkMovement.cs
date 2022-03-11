@@ -225,7 +225,7 @@ public class PinkMovement : MonoBehaviour
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 
-    private bool isFacingWall()
+    public bool isFacingWall()
     {
         if(sprite.flipX == false)
         {
