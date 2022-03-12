@@ -73,7 +73,10 @@ public class BoxScript : MonoBehaviour
         {
             Debug.Log("Player Enter!");
             // Rock being pushed sfx plays 
-            RockPushedSFX.Play();
+            if(player.transform.position.y<this.transform.position.y+0.3f && player.transform.position.y>this.transform.position.y-0.3f)
+            {
+                RockPushedSFX.Play();
+            }
             // couldPickup = true;
         }
         if(other.gameObject.CompareTag("FallDeath"))
