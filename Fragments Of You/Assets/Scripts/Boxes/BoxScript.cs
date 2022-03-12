@@ -65,6 +65,7 @@ public class BoxScript : MonoBehaviour
     public void respawn()
     {
         this.transform.position = spawnPoint;
+        this.transform.parent = null;
     }
 
     public void OnCollisionEnter2D(Collision2D other)
