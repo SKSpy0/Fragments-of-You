@@ -70,14 +70,17 @@ public class BoxScript : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D other)
     {
+        // one method to fix box audio
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player Enter!");
+            /*
             // Rock being pushed sfx plays 
             if(player.transform.position.y<this.transform.position.y+0.3f && player.transform.position.y>this.transform.position.y-0.3f)
             {
                 RockPushedSFX.Play();
             }
+            */
             // couldPickup = true;
         }
         if(other.gameObject.CompareTag("FallDeath"))
@@ -106,6 +109,15 @@ public class BoxScript : MonoBehaviour
         }
         
     }
+
+    // Current method used to play rock_pushed sound effect
+      public void OnTriggerEnter2D(Collider2D other){
+        if(other.gameObject.CompareTag("Player"))
+        {
+             RockPushedSFX.Play();
+            
+        }
+      }
 
     
 
