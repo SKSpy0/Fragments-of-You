@@ -18,7 +18,7 @@ public class PinkMovement : MonoBehaviour
     public SFXPrompt sfxPrompt;
 
     private float startingPitch = 2.8f;
-    private float startingVolume = 0.1f;
+    private float startingVolume = 0.3f;
     private float previousDir = 0f;
 
     [SerializeField] private LayerMask jumpableGround;

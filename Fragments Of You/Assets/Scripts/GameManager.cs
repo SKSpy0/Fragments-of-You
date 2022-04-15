@@ -106,15 +106,15 @@ public class GameManager : MonoBehaviour
         // Loads previously saved audio setting
         savedValue1 = PlayerPrefs.GetFloat("SavedMasterVolume");
         // Updates UI-Element
-        masterSlider.value = PlayerPrefs.GetFloat("SavedMasterVolume", 0.90f);
+        masterSlider.value = PlayerPrefs.GetFloat("SavedMasterVolume", 0.70f);
         /****************************Background music***********************************/
         savedValue2 = PlayerPrefs.GetFloat("SavedBGMVolume");
         // Updates UI-Element - SavedMusicVolume
-        bgmSlider.value = PlayerPrefs.GetFloat("SavedBGMVolume", 0.90f);
+        bgmSlider.value = PlayerPrefs.GetFloat("SavedBGMVolume", 0.70f);
         /***************************Sound Effects**************************************/
         savedValue3 = PlayerPrefs.GetFloat("SavedSFXVolume");
         // Updates UI-Element
-        sfxSlider.value = PlayerPrefs.GetFloat("SavedSFXVolume", 0.90f);
+        sfxSlider.value = PlayerPrefs.GetFloat("SavedSFXVolume", 0.70f);
     }
 
     public bool LoadingButtonSettings(string ButtonName)

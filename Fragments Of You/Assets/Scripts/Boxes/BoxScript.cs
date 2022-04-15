@@ -12,7 +12,10 @@ public class BoxScript : MonoBehaviour
 
     private Rigidbody2D rb;
     public AudioSource RockPushedSFX;
+    public AudioSource RockLandedSFX;
     private SpriteRenderer playerSprite;
+
+    bool singleton_check = false;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +69,7 @@ public class BoxScript : MonoBehaviour
     {
         this.transform.position = spawnPoint;
         this.transform.parent = null;
+         singleton_check = false;
     }
 
     public void OnCollisionEnter2D(Collision2D other)
@@ -74,12 +78,13 @@ public class BoxScript : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player Enter!");
-            /*
-            // Rock being pushed sfx plays 
-            if(player.transform.position.y<this.transform.position.y+0.3f && player.transform.position.y>this.transform.position.y-0.3f)
-            {
-                RockPushedSFX.Play();
-            }
+            /* 
+               Another solution to play rock pushed audio:
+               // Rock being pushed sfx plays 
+               if(player.transform.position.y<this.transform.position.y+0.3f && player.transform.position.y>this.transform.position.y-0.3f)
+               {
+                   RockPushedSFX.Play();
+               }
             */
             // couldPickup = true;
         }
@@ -117,12 +122,22 @@ public class BoxScript : MonoBehaviour
              RockPushedSFX.Play();
             
         }
+        if(other.gameObject.CompareTag("Rock_Landed"))
+        {
+            // play sound effect only once.
+            if(!singleton_check){
+
+             RockLandedSFX.Play();
+             singleton_check = true;
+            }
+        }
       }
 
     
 
     public void OnTriggerExit2D(Collider2D other)
     {
+        
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player Exist!");
@@ -141,6 +156,11 @@ public class BoxScript : MonoBehaviour
         {
             //Debug.Log("Leaving platform");
             this.gameObject.transform.parent = null;
+        }
+        // Reset's singleton check if rock leaves the ground
+        if(other.gameObject.CompareTag("Ground"))
+        {
+                singleton_check = false;
         }
         // When box leave other boxes, move freely
         if (other.gameObject.CompareTag("Box"))
