@@ -11,7 +11,7 @@ public class Laser : MonoBehaviour
     public static bool LaserTrigger;
    
 
-    private float startingVolume = 0.1f;
+    private float startingVolume = 0.01f;
 
 
     void Start(){
