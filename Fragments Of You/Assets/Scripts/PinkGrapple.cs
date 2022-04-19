@@ -232,6 +232,9 @@ public class PinkGrapple : MonoBehaviour
     private void GrappleJump()
     {
         rb.AddForce(Vector2.up * grappleJumpForceVertical, ForceMode2D.Impulse);
+        // Generate Particle effects
+        pm.CreateFeetParticles();
+
         /*if(rb.velocity.x < 0.1 || rb.velocity.x>-0.1)
         {
             rb.AddForce(Vector2.right * grappleJumpForceHorizontal, ForceMode2D.Impulse);

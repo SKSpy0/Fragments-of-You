@@ -11,6 +11,8 @@ public class PinkMovement : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator animator;
     private PinkGrapple grapple;
+    public ParticleSystem feetParticles;
+    public ParticleSystem sideParticles;
     public AudioSource jumpSFX;
     public AudioSource landedSFX;
     public AudioSource walkingSFX;
@@ -37,6 +39,7 @@ public class PinkMovement : MonoBehaviour
     private bool Legs = true;
     // Detect when you use the toggle, ensures music isn’t played multiple times
     private bool movementChange;
+    // Check for sprite flipping particle effects
 
     private Respawn resp;
 
@@ -116,7 +119,6 @@ public class PinkMovement : MonoBehaviour
             }
             movementChange = false;
         }
-
     }
 
     private void FixedUpdate()
@@ -137,6 +139,8 @@ public class PinkMovement : MonoBehaviour
             wallcoyote = 0.1f;
             rb.velocity = new Vector2(rb.velocity.x,rb.velocity.y/1.3f);
             animator.SetBool("isWallSlide", true);
+            //Create particles on side of player
+            CreateSideParticles();
         }
         else {
             animator.SetBool("isWallSlide", false);
@@ -202,6 +206,8 @@ public class PinkMovement : MonoBehaviour
         // Jump Sound Effect here
         jumpSFX.Play();
         sfxPrompt.NewSfxPrompt("Jumping");
+        // Generate Particle effects
+        CreateFeetParticles();
     }
 
     private void WallJump()
@@ -227,6 +233,9 @@ public class PinkMovement : MonoBehaviour
         animator.SetBool("isJumping", true);
         // Jump Sound Effect here
         jumpSFX.Play();
+
+        // Generate Particle effects
+        CreateFeetParticles();
 
         wallcoyote = 0;
     }
@@ -450,5 +459,13 @@ public class PinkMovement : MonoBehaviour
         animator.SetBool("Respawn", false);
         yield return new WaitForSeconds(1f);
         resp.respawnPlayer();
+    }
+
+    public void CreateFeetParticles(){
+        feetParticles.Play();
+    }
+
+    public void CreateSideParticles(){
+        sideParticles.Play();
     }
 }
