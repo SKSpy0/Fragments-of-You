@@ -56,6 +56,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(GameObject.Find("MenuMusic"));
         }
+         if (sceneName == "Z1M3")
+        {
+            Destroy(GameObject.Find("MenuMusic"));
+        }
         if (sceneName == "Z2M1")
         {
             Destroy(GameObject.Find("MenuMusic"));
