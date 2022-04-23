@@ -1072,6 +1072,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
   m_PrefabInstance: {fileID: 93863613}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &152998287 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6892281397216437114, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+  m_PrefabInstance: {fileID: 1686576547}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &153387944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18289,6 +18294,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1342633133
       objectReference: {fileID: 0}
+    - target: {fileID: 843996437, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e07265e02f309124d92afd0204e10e6d, type: 2}
     - target: {fileID: 843996438, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_ConnectedRigidBody
       value: 
@@ -18357,6 +18366,14 @@ PrefabInstance:
       propertyPath: walkingSFX
       value: 
       objectReference: {fileID: 622372918}
+    - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: feetParticles
+      value: 
+      objectReference: {fileID: 152998287}
+    - target: {fileID: 2632065432075122505, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+      propertyPath: sideParticles
+      value: 
+      objectReference: {fileID: 2043957940}
     - target: {fileID: 2632065432075122507, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -20217,6 +20234,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
   m_PrefabInstance: {fileID: 1073643675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2043957940 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 965105328502152568, guid: dabbc0ecea2dd4185b72d8b44a352f37, type: 3}
+  m_PrefabInstance: {fileID: 1686576547}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2048098593 stripped
 Transform:
