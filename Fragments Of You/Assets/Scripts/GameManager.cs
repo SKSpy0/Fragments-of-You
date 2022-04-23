@@ -25,15 +25,19 @@ public class GameManager : MonoBehaviour
     float savedValue2 = 1;
     float savedValue3 = 1;
 
+    StartTransition startTransition;
+
     void Start()
     {
         Debug.Log("loading....");
         LoadingAudioSettings();
         sfxSaved = true;
         Debug.Log("The toggle set to " + PlayerPrefs.GetFloat("SFXPToggle"));
+        startTransition = GameObject.Find("Transition").GetComponent<StartTransition>();
+        ;
     }
 
-     public void StartButtonPress()
+    public void StartButtonPress()
     {
         // play's start button sound effect
         startButtonSFX.Play();
@@ -63,7 +67,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(GameObject.Find("MenuMusic"));
         }
-         if (sceneName == "Z1M3")
+        if (sceneName == "Z1M3")
         {
             Destroy(GameObject.Find("MenuMusic"));
         }
@@ -86,7 +90,18 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player has collided with next level collider.");
             // plays screen swipe sfx and changes the scene. This will play on awake.
             sceneSwitchSFX.Play();
-            ChangeScene(LevelName);
+            startTransition.StartFadeIn();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (startTransition.Stopwait)
+            {
+                ChangeScene(LevelName);
+            }
         }
     }
 
