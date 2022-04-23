@@ -390,7 +390,6 @@ public class PinkMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("LaserTrigger"))
         {
-            Laser.LaserTrigger = true; 
             Debug.Log("Laser Triggered.");
         }
     }

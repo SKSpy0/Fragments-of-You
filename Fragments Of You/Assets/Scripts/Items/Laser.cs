@@ -8,28 +8,30 @@ public class Laser : MonoBehaviour
     public AudioSource LaserSFX;
     public BoxCollider2D LaserCollider;
     public float TimerInSeconds;
-    public static bool LaserTrigger;
+    bool EndTimer = false;
    
 
-    private float startingVolume = 0.01f;
-
+    private float startingVolume = 1f;
 
     void Start(){
         // Starting volume for LaserSFX
         LaserSFX.volume = startingVolume;
-       // LaserTrigger = false;
-        LaserTimer();
     }
 
-
-
-    private void LaserTimer()
+     public void LaserTimer()
     {
-       Debug.Log("Laser is on");
+     //  Debug.Log("Laser is on");
         LaserSFX.Play();
         LaserSprite.enabled = true;
         LaserCollider.enabled = true;
         StartCoroutine(TurnOffLaser(TimerInSeconds));
+    }
+
+    public void LaserStop()
+    {
+        LaserSprite.enabled = false;
+        LaserCollider.enabled = false;
+        EndTimer = true;
     }
 
     // every certain amount of seconds turn off laser
@@ -39,7 +41,8 @@ public class Laser : MonoBehaviour
            yield return new WaitForSeconds(waitTime);
              LaserSprite.enabled = false;
              LaserCollider.enabled = false;
-            Debug.Log("Laser is off");
+           // Debug.Log("Laser is off");
+           LaserSFX.Stop();
                StartCoroutine(TurnOnLaser(waitTime));       
     }
 
@@ -47,8 +50,14 @@ public class Laser : MonoBehaviour
     IEnumerator TurnOnLaser(float waitTime)
     {
            waitTime = TimerInSeconds;
-           yield return new WaitForSeconds(waitTime);
-            LaserTimer();
+
+           if(EndTimer){
+               yield break;
+           }
+           else{
+              yield return new WaitForSeconds(waitTime);
+              LaserTimer();
+           }
     }
 
 }
