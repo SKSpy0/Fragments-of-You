@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public string LevelName;
     public AudioSource sceneSwitchSFX;
     public AudioSource buttonSelectionSFX;
+    [SerializeField] private AudioSource startButtonSFX;
     public AudioSource testingSFX;
     private bool sfxSaved;
 
@@ -30,6 +31,12 @@ public class GameManager : MonoBehaviour
         LoadingAudioSettings();
         sfxSaved = true;
         Debug.Log("The toggle set to " + PlayerPrefs.GetFloat("SFXPToggle"));
+    }
+
+     public void StartButtonPress()
+    {
+        // play's start button sound effect
+        startButtonSFX.Play();
     }
 
     public void ButtonSelection()
@@ -53,6 +60,10 @@ public class GameManager : MonoBehaviour
             Destroy(GameObject.Find("MenuMusic"));
         }
         if (sceneName == "Z1M2")
+        {
+            Destroy(GameObject.Find("MenuMusic"));
+        }
+         if (sceneName == "Z1M3")
         {
             Destroy(GameObject.Find("MenuMusic"));
         }
