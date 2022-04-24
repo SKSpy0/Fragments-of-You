@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
         sfxSaved = true;
         Debug.Log("The toggle set to " + PlayerPrefs.GetFloat("SFXPToggle"));
         startTransition = GameObject.Find("Transition").GetComponent<StartTransition>();
-        ;
     }
 
     public void StartButtonPress()
