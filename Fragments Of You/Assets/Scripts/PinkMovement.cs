@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PinkMovement : MonoBehaviour
 {
-    
+
     [SerializeField] private int zone = 1;
     private Rigidbody2D rb;
     private BoxCollider2D coll;
@@ -62,14 +62,14 @@ public class PinkMovement : MonoBehaviour
         walkingSFX.volume = startingVolume;
 
         resp.setRespawn(this.transform.position);
-        Debug.Log("pos: "+this.transform.position);
+        Debug.Log("pos: " + this.transform.position);
 
-        if(zone>1)
+        if (zone > 1)
         {
             loseArms();
             animator.SetBool("isArmless", true);
         }
-        if(zone>2)
+        if (zone > 2)
         {
             loseLegs();
             animator.SetBool("isLegless", true);
@@ -80,7 +80,7 @@ public class PinkMovement : MonoBehaviour
     private void Update()
     {
         /*** Basic characater movement and start of the abilities that can be lost ***/
-        
+
         // Jump input is set to - spacebar 
         if (Input.GetButtonDown("Jump"))
         {
@@ -88,11 +88,11 @@ public class PinkMovement : MonoBehaviour
             {
                 Jump();
             }
-            if(!IsGrounded() && isFacingWall())
+            if (!IsGrounded() && isFacingWall())
             {
                 WallJump();
             }
-            if(!IsGrounded() && wallcoyote>0 && !isFacingWall())
+            if (!IsGrounded() && wallcoyote > 0 && !isFacingWall())
             {
 
                 // if(sprite.flipX)
@@ -110,11 +110,14 @@ public class PinkMovement : MonoBehaviour
 
         // Good note*: Input.GetButtonDown() only returns true for the frame in which the button was pressed.
         // Input.GetButton returns true always while holding down the key.
-         if (Input.GetButton("Horizontal") && movementChange){
-            if (IsGrounded() && hasLegs()){
-                if(!walkingSFX.isPlaying){
-              // Walking Sound Effect here
-                 walkingSFX.Play();
+        if (Input.GetButton("Horizontal") && movementChange)
+        {
+            if (IsGrounded() && hasLegs())
+            {
+                if (!walkingSFX.isPlaying)
+                {
+                    // Walking Sound Effect here
+                    walkingSFX.Play();
                 }
             }
             movementChange = false;
@@ -125,7 +128,7 @@ public class PinkMovement : MonoBehaviour
     {
         // basic main character movement left/right
         // player should always have this
-        if(IsGrounded())
+        if (IsGrounded())
         {
             moveSpeed = groundedMoveSpeed;
         }
@@ -134,25 +137,26 @@ public class PinkMovement : MonoBehaviour
             moveSpeed = inAirMoveSpeed;
         }
         Move();
-        if(isFacingWall() && !IsGrounded() && rb.velocity.y < 0)
+        if (isFacingWall() && !IsGrounded() && rb.velocity.y < 0)
         {
             wallcoyote = 0.1f;
-            rb.velocity = new Vector2(rb.velocity.x,rb.velocity.y/1.3f);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 1.3f);
             animator.SetBool("isWallSlide", true);
             //Create particles on side of player
             CreateSideParticles();
         }
-        else {
+        else
+        {
             animator.SetBool("isWallSlide", false);
         }
 
-        if(!IsGrounded() && !grapple.getAnchored())
+        if (!IsGrounded() && !grapple.getAnchored())
         {
             rb.AddForce(Vector2.down * gravity, ForceMode2D.Force);
         }
 
         FlipPlayer();
-        if(wallcoyote>0)
+        if (wallcoyote > 0)
         {
             wallcoyote -= Time.deltaTime;
         }
@@ -165,9 +169,9 @@ public class PinkMovement : MonoBehaviour
         // get input - Horizontal is set to 'a' and 'd' / left and right arrow keys.
         dirX = Input.GetAxisRaw("Horizontal");
 
-        if(dirX > 0.1 || dirX < -0.1)
+        if (dirX > 0.1 || dirX < -0.1)
         {
-            if((dirX > 0 && previousDir > 0) || (dirX < 0 && previousDir < 0))
+            if ((dirX > 0 && previousDir > 0) || (dirX < 0 && previousDir < 0))
             {
                 // modify velocity based on input
                 rb.AddForce(Vector2.right * dirX * moveSpeed, ForceMode2D.Force);
@@ -176,23 +180,23 @@ public class PinkMovement : MonoBehaviour
                 // Play walking Sound Effect
                 movementChange = true;
             }
-            else if(IsGrounded())
+            else if (IsGrounded())
             {
                 animator.SetFloat("Speed", Mathf.Abs(dirX));
-                rb.velocity = new Vector2(rb.velocity.x/4,rb.velocity.y);
-                if(rb.velocity.x < 0.1 || rb.velocity.x>-0.1)
+                rb.velocity = new Vector2(rb.velocity.x / 4, rb.velocity.y);
+                if (rb.velocity.x < 0.1 || rb.velocity.x > -0.1)
                 {
-                    rb.velocity = new Vector2(0,rb.velocity.y);
+                    rb.velocity = new Vector2(0, rb.velocity.y);
                 }
             }
         }
-        else if(IsGrounded())
+        else if (IsGrounded())
         {
             animator.SetFloat("Speed", Mathf.Abs(dirX));
-            rb.velocity = new Vector2(rb.velocity.x/4,rb.velocity.y);
-            if(rb.velocity.x < 0.1 || rb.velocity.x>-0.1)
+            rb.velocity = new Vector2(rb.velocity.x / 4, rb.velocity.y);
+            if (rb.velocity.x < 0.1 || rb.velocity.x > -0.1)
             {
-                rb.velocity = new Vector2(0,rb.velocity.y);
+                rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
         previousDir = dirX;
@@ -214,17 +218,17 @@ public class PinkMovement : MonoBehaviour
     {
 
         //float wallJumpForce  = jumpForce / 1.5f;
-        float wallJumpForce  = jumpForce;
+        float wallJumpForce = jumpForce;
 
-        rb.velocity = new Vector2(0,0);
+        rb.velocity = new Vector2(0, 0);
 
         rb.AddForce(Vector2.up * wallJumpForce, ForceMode2D.Impulse);
 
-        if(sprite.flipX == false)
+        if (sprite.flipX == false)
         {
             rb.AddForce(Vector2.left * wallJumpForce / 1.5f, ForceMode2D.Impulse);
         }
-        else 
+        else
         {
             rb.AddForce(Vector2.right * wallJumpForce / 1.5f, ForceMode2D.Impulse);
         }
@@ -248,11 +252,11 @@ public class PinkMovement : MonoBehaviour
 
     public bool isFacingWall()
     {
-        if(sprite.flipX == false)
+        if (sprite.flipX == false)
         {
             return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.right, .1f, jumpableGround);
         }
-        else 
+        else
         {
             return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.left, .1f, jumpableGround);
         }
@@ -292,7 +296,7 @@ public class PinkMovement : MonoBehaviour
     // flips player sprit to maintain correct orientation.
     private void FlipPlayer()
     {
-        if(!(isFacingWall() && !IsGrounded() && rb.velocity.y < 0))
+        if (!(isFacingWall() && !IsGrounded() && rb.velocity.y < 0))
         {
             if (rb.velocity.x < -0.1f)
             {
@@ -303,18 +307,18 @@ public class PinkMovement : MonoBehaviour
                 sprite.flipX = false;
             }
         }
-            
+
     }
 
-/*** Environmental Collison's with player ***/ 
+    /*** Environmental Collison's with player ***/
     public void OnCollisionEnter2D(Collision2D other)
     {
-         // Environmental Collison's with player - Death by spike, Landing after jump, etc.
+        // Environmental Collison's with player - Death by spike, Landing after jump, etc.
         if (other.gameObject.CompareTag("Spike"))
         {
             PlayerDeath();
         }
-       
+
         // Environmental Collison with player - Death by laser.
         if (other.gameObject.CompareTag("LaserTrap"))
         {
@@ -325,15 +329,15 @@ public class PinkMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             animator.SetBool("isJumping", false);
-             // landed sound effect
-              landedSFX.Play();
-              sfxPrompt.NewSfxPrompt("Landing");
+            // landed sound effect
+            landedSFX.Play();
+            sfxPrompt.NewSfxPrompt("Landing");
         }
 
         // When player land on box fix player to box
         if (other.gameObject.CompareTag("Box"))
         {
-            if(other.transform.position.y < this.transform.position.y &&
+            if (other.transform.position.y < this.transform.position.y &&
                 other.transform.position.x < this.transform.position.x + 0.6f &&
                 other.transform.position.x > this.transform.position.x - 0.6f)
             {
@@ -349,18 +353,18 @@ public class PinkMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Button"))
         {
             animator.SetBool("isJumping", false);
-             // landed sound effect
-              landedSFX.Play();
-              sfxPrompt.NewSfxPrompt("Landing");
+            // landed sound effect
+            landedSFX.Play();
+            sfxPrompt.NewSfxPrompt("Landing");
         }
 
         // When player land on the ground, stop the jumping animation
         if (other.gameObject.CompareTag("Door"))
         {
             animator.SetBool("isJumping", false);
-             // landed sound effect
-              landedSFX.Play();
-              sfxPrompt.NewSfxPrompt("Landing");
+            // landed sound effect
+            landedSFX.Play();
+            sfxPrompt.NewSfxPrompt("Landing");
         }
 
         // Fix player postion on the movingplatforms
@@ -374,17 +378,19 @@ public class PinkMovement : MonoBehaviour
         }
 
         /***Player dies - falls off level respawn boundary ***/
-        if (other.gameObject.CompareTag("FallDeath")){
+        if (other.gameObject.CompareTag("FallDeath"))
+        {
             Debug.Log("FallThreshold met");
             PlayerDeath();
         }
     }
 
-    public void OnCollisionStay2D(Collision2D other){
+    public void OnCollisionStay2D(Collision2D other)
+    {
         // When player land on box fix player to box
         if (other.gameObject.CompareTag("Box"))
         {
-            if(other.transform.position.y < this.transform.position.y &&
+            if (other.transform.position.y < this.transform.position.y &&
                 other.transform.position.x < this.transform.position.x + 0.6f &&
                 other.transform.position.x > this.transform.position.x - 0.6f)
             {
@@ -405,7 +411,7 @@ public class PinkMovement : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("playerleave: "+ other.tag);
+        Debug.Log("playerleave: " + other.tag);
         // When player leave moving platform, move freely
         if (other.gameObject.CompareTag("movingPlatform"))
         {
@@ -415,28 +421,29 @@ public class PinkMovement : MonoBehaviour
         // When player no longer interacting with box
         if (other.gameObject.CompareTag("Box"))
         {
-            if(other.transform.position.y < this.transform.position.y &&
+            if (other.transform.position.y < this.transform.position.y &&
                 other.transform.position.x < this.transform.position.x + 0.8f &&
                 other.transform.position.x > this.transform.position.x - 0.8f)
             {
                 Debug.Log("leaving box");
-                
+
             }
             this.gameObject.transform.parent = null;
         }
     }
 
-   
-    public void OnCollisionExit2D(Collision2D other){
+
+    public void OnCollisionExit2D(Collision2D other)
+    {
         // When player no longer interacting with box
         if (other.gameObject.CompareTag("Box"))
         {
-            if(other.transform.position.y < this.transform.position.y &&
+            if (other.transform.position.y < this.transform.position.y &&
                 other.transform.position.x < this.transform.position.x + 0.8f &&
                 other.transform.position.x > this.transform.position.x - 0.8f)
             {
                 Debug.Log("leaving box");
-                
+
             }
             this.gameObject.transform.parent = null;
         }
@@ -460,11 +467,18 @@ public class PinkMovement : MonoBehaviour
         resp.respawnPlayer();
     }
 
-    public void CreateFeetParticles(){
+    public void CreateFeetParticles()
+    {
         feetParticles.Play();
     }
 
-    public void CreateSideParticles(){
+    public void CreateSideParticles()
+    {
         sideParticles.Play();
+    }
+
+    public int GetPlayerStatus()
+    {
+        return zone;
     }
 }
