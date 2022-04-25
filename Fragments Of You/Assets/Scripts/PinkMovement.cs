@@ -64,15 +64,16 @@ public class PinkMovement : MonoBehaviour
         resp.setRespawn(this.transform.position);
         Debug.Log("pos: " + this.transform.position);
 
-        if (zone > 1)
+        if (zone == 2)
         {
             loseArms();
             animator.SetBool("isArmless", true);
         }
-        if (zone > 2)
+        if (zone == 3)
         {
             loseLegs();
             animator.SetBool("isLegless", true);
+            //Debug.Log("isLegless set");
         }
     }
 
@@ -88,11 +89,11 @@ public class PinkMovement : MonoBehaviour
             {
                 Jump();
             }
-            if (!IsGrounded() && isFacingWall())
+            if (!IsGrounded() && isFacingWall() && hasLegs())
             {
                 WallJump();
             }
-            if (!IsGrounded() && wallcoyote > 0 && !isFacingWall())
+            if (!IsGrounded() && wallcoyote > 0 && !isFacingWall() && hasLegs())
             {
 
                 // if(sprite.flipX)
