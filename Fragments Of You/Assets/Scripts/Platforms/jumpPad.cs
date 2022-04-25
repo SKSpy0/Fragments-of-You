@@ -17,17 +17,14 @@ public class jumpPad : MonoBehaviour
             JumpPadSFX.Play();
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
 
-            if (collision.gameObject.GetComponent<PinkMovement>().GetPlayerStatus() == 2)
+            if (PlayerDirection == "R")
             {
-                if (PlayerDirection == "R")
-                {
-                    collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * (bounce / 2), ForceMode2D.Impulse);
-                }
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * (bounce / 2), ForceMode2D.Impulse);
+            }
 
-                if (PlayerDirection == "L")
-                {
-                    collision.gameObject.GetComponent<Rigidbody2D>().AddForce((-Vector2.right) * (bounce / 2), ForceMode2D.Impulse);
-                }
+            if (PlayerDirection == "L")
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce((-Vector2.right) * (bounce / 2), ForceMode2D.Impulse);
             }
         }
 
