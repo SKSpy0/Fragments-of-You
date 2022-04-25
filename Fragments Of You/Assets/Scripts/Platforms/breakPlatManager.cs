@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class breakPlatManager : MonoBehaviour {
 
+	public float breakCD;
 	public float respawnCD;
 	public static breakPlatManager Instance = null;
 
-	[SerializeField]
-	GameObject platformPrefab;
+	[SerializeField] GameObject platformPrefab;
 
 	void Awake()
 	{

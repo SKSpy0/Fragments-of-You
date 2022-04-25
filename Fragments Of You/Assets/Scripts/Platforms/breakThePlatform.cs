@@ -6,7 +6,7 @@ public class breakThePlatform : MonoBehaviour
 {
     // Declare variables
     private breakPlatManager breakPlatManager;
-    public float breakTimer;
+    float breakTimer;
     public GameObject prefab;
     public GameObject Left;
     public GameObject Center;
@@ -37,6 +37,7 @@ public class breakThePlatform : MonoBehaviour
         RightJoinColor = Right.GetComponent<SpriteRenderer>();
 
         breakPlatManager = GameObject.Find("BreakPlatManager").GetComponent<breakPlatManager>();
+        breakTimer = breakPlatManager.breakCD;
     }
 
     void Update()
