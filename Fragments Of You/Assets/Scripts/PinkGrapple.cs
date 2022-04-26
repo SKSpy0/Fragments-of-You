@@ -220,7 +220,7 @@ public class PinkGrapple : MonoBehaviour
     private void ArmReset()
     {
         Debug.Log("reset");
-        Debug.Log("Line 219");
+        //Debug.Log("Line 219");
         generateRope = true;
         isFired = false;
         animator.SetBool("isArmless", false);

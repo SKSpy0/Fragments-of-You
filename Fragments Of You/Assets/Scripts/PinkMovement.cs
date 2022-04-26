@@ -12,7 +12,8 @@ public class PinkMovement : MonoBehaviour
     private Animator animator;
     private PinkGrapple grapple;
     public ParticleSystem feetParticles;
-    public ParticleSystem sideParticles;
+    public ParticleSystem rightSideParticles;
+    public ParticleSystem leftSideParticles;
     public AudioSource jumpSFX;
     public AudioSource landedSFX;
     public AudioSource walkingSFX;
@@ -144,7 +145,11 @@ public class PinkMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 1.3f);
             animator.SetBool("isWallSlide", true);
             //Create particles on side of player
-            CreateSideParticles();
+            if(!sprite.flipX){
+                CreateRightSideParticles();
+            } else {
+                CreateLeftSideParticles();
+            }
         }
         else
         {
@@ -175,7 +180,7 @@ public class PinkMovement : MonoBehaviour
             if ((dirX > 0 && previousDir > 0) || (dirX < 0 && previousDir < 0))
             {
                 // modify velocity based on input
-                rb.AddForce(Vector2.right * dirX * moveSpeed, ForceMode2D.Force);
+                rb.AddForce(Vector2.right * dirX * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
                 // Play walk Animation
                 animator.SetFloat("Speed", Mathf.Abs(dirX));
                 // Play walking Sound Effect
@@ -473,9 +478,14 @@ public class PinkMovement : MonoBehaviour
         feetParticles.Play();
     }
 
-    public void CreateSideParticles()
+    public void CreateRightSideParticles()
     {
-        sideParticles.Play();
+        rightSideParticles.Play();
+    }
+
+    public void CreateLeftSideParticles()
+    {
+        leftSideParticles.Play();
     }
 
     public int GetPlayerStatus()
