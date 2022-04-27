@@ -36,6 +36,14 @@ public class GameManager : MonoBehaviour
         startTransition = GameObject.Find("Transition").GetComponent<StartTransition>();
     }
 
+    void Update()
+    {
+        if (startTransition.Stopwait)
+        {
+            ChangeScene(LevelName);
+        }
+    }
+
     public void StartButtonPress()
     {
         // play's start button sound effect
@@ -90,17 +98,6 @@ public class GameManager : MonoBehaviour
             // plays screen swipe sfx and changes the scene. This will play on awake.
             sceneSwitchSFX.Play();
             startTransition.StartFadeIn();
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (startTransition.Stopwait)
-            {
-                ChangeScene(LevelName);
-            }
         }
     }
 
