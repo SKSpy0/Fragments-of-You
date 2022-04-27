@@ -82,8 +82,20 @@ public class GameManager : MonoBehaviour
         {
             Destroy(GameObject.Find("MenuMusic"));
         }
-        // first cutscene        
+        if (sceneName == "Z2M2")
+        {
+            Destroy(GameObject.Find("MenuMusic"));
+        }
+        if (sceneName == "Z3M1")
+        {
+            Destroy(GameObject.Find("MenuMusic"));
+        }
+        // cutscenes        
         if (sceneName == "LoseArms_Cutscene")
+        {
+            Destroy(GameObject.Find("BGM_Music"));
+        }
+        if (sceneName == "LoseLegs_Cutscene")
         {
             Destroy(GameObject.Find("BGM_Music"));
         }
