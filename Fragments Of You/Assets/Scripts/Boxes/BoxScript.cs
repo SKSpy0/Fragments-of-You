@@ -158,7 +158,7 @@ public class BoxScript : MonoBehaviour
             this.gameObject.transform.parent = null;
         }
         // Reset's singleton check if rock leaves the ground
-        if(other.gameObject.CompareTag("Ground"))
+        if(other.gameObject.CompareTag("Rock_Landed"))
         {
                 singleton_check = false;
         }
