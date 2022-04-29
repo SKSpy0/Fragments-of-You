@@ -2131,9 +2131,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1201117331}
     m_Modifications:
     - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleSprite
+      value: 
+      objectReference: {fileID: 726599180}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: collectiblePickup
       value: 
       objectReference: {fileID: 1385366737}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleCollider
+      value: 
+      objectReference: {fileID: 350024008}
     - target: {fileID: 6306898106457627351, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: m_Name
       value: FilmReelCollectible (1)
@@ -2614,9 +2622,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1201117331}
     m_Modifications:
     - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleSprite
+      value: 
+      objectReference: {fileID: 2131719058}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: collectiblePickup
       value: 
       objectReference: {fileID: 1385366737}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleCollider
+      value: 
+      objectReference: {fileID: 859341967}
     - target: {fileID: 6306898106457627351, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: m_Name
       value: FilmReelCollectible (4)
@@ -11040,6 +11056,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!58 &350024008 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6306898106485560179, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 155827222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &350514669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11599,6 +11620,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
+--- !u!212 &382311134 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6306898107399414213, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 799913204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &386307200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14139,6 +14165,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
+--- !u!58 &607484068 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6306898106485560179, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 799913204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &608515519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18110,9 +18141,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1201117331}
     m_Modifications:
     - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleSprite
+      value: 
+      objectReference: {fileID: 800200805}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: collectiblePickup
       value: 
       objectReference: {fileID: 1385366737}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleCollider
+      value: 
+      objectReference: {fileID: 1619395937}
     - target: {fileID: 6306898106457627351, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: m_Name
       value: FilmReelCollectible (5)
@@ -18345,6 +18384,11 @@ Transform:
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 4898035476168792252, guid: db02c4470ee7b89438ceacfb69b6e169, type: 3}
   m_PrefabInstance: {fileID: 1829198081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &726599180 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6306898107399414213, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 155827222}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &729689311
 PrefabInstance:
@@ -19496,9 +19540,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleSprite
+      value: 
+      objectReference: {fileID: 382311134}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: collectiblePickup
       value: 
       objectReference: {fileID: 1385366737}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleCollider
+      value: 
+      objectReference: {fileID: 607484068}
     - target: {fileID: 6306898106457627351, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: m_Name
       value: FilmReelCollectible
@@ -19557,6 +19609,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6306898107909142998, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
   m_PrefabInstance: {fileID: 799913204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &800200805 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6306898107399414213, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 716634772}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &803846230
 PrefabInstance:
@@ -20510,6 +20567,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6877675655324266918, guid: db02c4470ee7b89438ceacfb69b6e169, type: 3}
   m_PrefabInstance: {fileID: 858723770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &859341967 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6306898106485560179, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 187743081}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &865458081
 GameObject:
@@ -34763,6 +34825,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 950267496836733647, guid: afab17cdb6eba30458e58e82969817b5, type: 3}
   m_PrefabInstance: {fileID: 1252318775}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &1619395937 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6306898106485560179, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 716634772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1632703204 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
@@ -43516,6 +43583,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
   m_PrefabInstance: {fileID: 1516539449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2131719058 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6306898107399414213, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 187743081}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2132333006 stripped
 Transform:
