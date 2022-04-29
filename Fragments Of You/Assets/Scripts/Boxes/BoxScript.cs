@@ -122,6 +122,11 @@ public class BoxScript : MonoBehaviour
              RockPushedSFX.Play();
             
         }
+        if(other.gameObject.CompareTag("Rock_Destroyer"))
+        {
+            respawn();
+            Debug.Log("Rock stuck at corner... It is respawned.");
+        }
         if(other.gameObject.CompareTag("Rock_Landed"))
         {
             // play sound effect only once.
@@ -141,10 +146,6 @@ public class BoxScript : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player Exist!");
-            // if(!isPickup)
-            // {
-            //     couldPickup = false;
-            // }
             // Rock being pushed sfx stops 
             RockPushedSFX.Stop();
             other.gameObject.transform.parent = null;
