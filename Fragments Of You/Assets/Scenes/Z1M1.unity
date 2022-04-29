@@ -16486,9 +16486,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1628406653}
     m_Modifications:
     - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleSprite
+      value: 
+      objectReference: {fileID: 1449325352}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: collectiblePickup
       value: 
       objectReference: {fileID: 483492357}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleCollider
+      value: 
+      objectReference: {fileID: 1449325351}
     - target: {fileID: 6306898106457627350, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: collectiblePickup
       value: 
@@ -16547,6 +16555,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+--- !u!58 &1449325351 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6306898106485560179, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 1449325350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1449325352 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6306898107399414213, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 1449325350}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1450649621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19579,9 +19597,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1628406653}
     m_Modifications:
     - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleSprite
+      value: 
+      objectReference: {fileID: 1914314379}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: collectiblePickup
       value: 
       objectReference: {fileID: 483492357}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleCollider
+      value: 
+      objectReference: {fileID: 1914314378}
     - target: {fileID: 6306898106457627350, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: collectiblePickup
       value: 
@@ -19640,6 +19666,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+--- !u!58 &1914314378 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6306898106485560179, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 1914314377}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1914314379 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6306898107399414213, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 1914314377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1931283484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19829,9 +19865,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1628406653}
     m_Modifications:
     - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleSprite
+      value: 
+      objectReference: {fileID: 1968048149}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: collectiblePickup
       value: 
       objectReference: {fileID: 483492357}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleCollider
+      value: 
+      objectReference: {fileID: 1968048148}
     - target: {fileID: 6306898106457627350, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: collectiblePickup
       value: 
@@ -19890,6 +19934,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+--- !u!58 &1968048148 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6306898106485560179, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 1968048147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1968048149 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6306898107399414213, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 1968048147}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1969125356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6018900992502295899, guid: 4dea5c306a86f48e884221f0ba4e9d6a, type: 3}
@@ -20679,9 +20733,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1628406653}
     m_Modifications:
     - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleSprite
+      value: 
+      objectReference: {fileID: 6306898106106239107}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: collectiblePickup
       value: 
       objectReference: {fileID: 483492357}
+    - target: {fileID: 2893448929727680218, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+      propertyPath: CollectibleCollider
+      value: 
+      objectReference: {fileID: 6306898106106239106}
     - target: {fileID: 6306898106457627350, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
       propertyPath: collectiblePickup
       value: 
@@ -20740,6 +20802,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+--- !u!58 &6306898106106239106 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6306898106485560179, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 6306898106106239105}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6306898106106239107 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6306898107399414213, guid: 17b407637beac014e955f0fba7460ee8, type: 3}
+  m_PrefabInstance: {fileID: 6306898106106239105}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7655561938865995815
 PrefabInstance:
   m_ObjectHideFlags: 0
