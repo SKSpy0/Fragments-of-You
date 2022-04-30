@@ -1,13 +1,16 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
+    public LineRenderer LaserBeam;
     public SpriteRenderer LaserSprite;
     public AudioSource LaserSFX;
     public BoxCollider2D LaserCollider;
     public float TimerInSeconds;
+    public GameObject StartVFX;
+    public GameObject EndVFX;
     bool EndTimer = false;
    
 
@@ -15,6 +18,9 @@ public class Laser : MonoBehaviour
 
     void Start(){
         // Starting volume for LaserSFX
+        StartVFX.SetActive(false);
+        EndVFX.SetActive(false);
+        LaserBeam.enabled = false;
         LaserSFX.volume = startingVolume;
     }
 
@@ -22,6 +28,9 @@ public class Laser : MonoBehaviour
     {
      //  Debug.Log("Laser is on");
         LaserSFX.Play();
+        StartVFX.SetActive(true);
+        EndVFX.SetActive(true);
+        LaserBeam.enabled = true;
         LaserSprite.enabled = true;
         LaserCollider.enabled = true;
         StartCoroutine(TurnOffLaser(TimerInSeconds));
@@ -29,6 +38,9 @@ public class Laser : MonoBehaviour
 
     public void LaserStop()
     {
+        StartVFX.SetActive(false);
+        EndVFX.SetActive(false);
+        LaserBeam.enabled = false;
         LaserSprite.enabled = false;
         LaserCollider.enabled = false;
         EndTimer = true;
@@ -39,6 +51,9 @@ public class Laser : MonoBehaviour
     {
         waitTime = TimerInSeconds;
            yield return new WaitForSeconds(waitTime);
+             StartVFX.SetActive(false);
+             EndVFX.SetActive(false);
+             LaserBeam.enabled = false;
              LaserSprite.enabled = false;
              LaserCollider.enabled = false;
            // Debug.Log("Laser is off");
