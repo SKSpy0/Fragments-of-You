@@ -41,7 +41,6 @@ public class PinkMovement : MonoBehaviour
     // Detect when you use the toggle, ensures music isn’t played multiple times
     private bool movementChange;
     // Check for sprite flipping particle effects
-
     private Respawn resp;
 
     private void Start()
@@ -460,6 +459,7 @@ public class PinkMovement : MonoBehaviour
         Debug.Log("Dead");
         FlipPlayer();
         DeathSFX.Play();
+        Collectible.CollectibleOnDeath = true;
         sfxPrompt.NewSfxPrompt("Death");
         StartCoroutine(PlayDeathAnim());
     }

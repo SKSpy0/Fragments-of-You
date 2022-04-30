@@ -12,6 +12,7 @@ public class Laser_Trigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            singleton_check = false;
             if(!singleton_check){
             
              foreach(Laser laserEffect in LaserObj){
