@@ -14,6 +14,7 @@ public class PinkMovement : MonoBehaviour
     public ParticleSystem feetParticles;
     public ParticleSystem rightSideParticles;
     public ParticleSystem leftSideParticles;
+    public ParticleSystem landingParticles;
     public AudioSource jumpSFX;
     public AudioSource landedSFX;
     public AudioSource walkingSFX;
@@ -40,6 +41,8 @@ public class PinkMovement : MonoBehaviour
     private bool Legs = true;
     // Detect when you use the toggle, ensures music isn’t played multiple times
     private bool movementChange;
+    // Check for landing particle effect has been played or not
+    private bool landingParticlePlay;
     // Check for sprite flipping particle effects
     private Respawn resp;
 
@@ -60,6 +63,9 @@ public class PinkMovement : MonoBehaviour
         walkingSFX.pitch = startingPitch;
         //Starting volume for walkingSFX
         walkingSFX.volume = startingVolume;
+
+        //Start landing particle play as false
+        landingParticlePlay = false;
 
         resp.setRespawn(this.transform.position);
         Debug.Log("pos: " + this.transform.position);
@@ -131,10 +137,15 @@ public class PinkMovement : MonoBehaviour
         // player should always have this
         if (IsGrounded())
         {
+            if(landingParticlePlay){
+                CreateLandingParticles();
+                landingParticlePlay = false;
+            }
             moveSpeed = groundedMoveSpeed;
         }
         else
         {
+            landingParticlePlay = true;
             moveSpeed = inAirMoveSpeed;
         }
         Move();
@@ -350,6 +361,7 @@ public class PinkMovement : MonoBehaviour
                 // landed sound effect
                 landedSFX.Play();
                 sfxPrompt.NewSfxPrompt("Landing");
+                //CreateLandingParticles();
                 this.gameObject.transform.parent = other.gameObject.transform;
             }
         }
@@ -361,6 +373,7 @@ public class PinkMovement : MonoBehaviour
             // landed sound effect
             landedSFX.Play();
             sfxPrompt.NewSfxPrompt("Landing");
+            CreateLandingParticles();
         }
 
         // When player land on the ground, stop the jumping animation
@@ -370,6 +383,7 @@ public class PinkMovement : MonoBehaviour
             // landed sound effect
             landedSFX.Play();
             sfxPrompt.NewSfxPrompt("Landing");
+            CreateLandingParticles();
         }
 
         // Fix player postion on the movingplatforms
@@ -379,6 +393,7 @@ public class PinkMovement : MonoBehaviour
             // landed sound effect
             landedSFX.Play();
             sfxPrompt.NewSfxPrompt("Landing");
+            CreateLandingParticles();
             this.gameObject.transform.parent = other.gameObject.transform;
         }
 
@@ -401,6 +416,9 @@ public class PinkMovement : MonoBehaviour
             {
                 animator.SetBool("isJumping", false);
                 // landed sound effect
+                //landedSFX.Play();
+                //sfxPrompt.NewSfxPrompt("Landing");
+                //CreateLandingParticles();
                 this.gameObject.transform.parent = other.gameObject.transform;
             }
         }
@@ -486,6 +504,11 @@ public class PinkMovement : MonoBehaviour
     public void CreateLeftSideParticles()
     {
         leftSideParticles.Play();
+    }
+
+    public void CreateLandingParticles()
+    {
+        landingParticles.Play();
     }
 
     public int GetPlayerStatus()
