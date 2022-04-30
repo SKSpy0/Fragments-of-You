@@ -15,7 +15,7 @@ public class Laser_Trigger : MonoBehaviour
             singleton_check = false;
             if(!singleton_check){
             
-             foreach(Laser laserEffect in LaserObj){
+            foreach(Laser laserEffect in LaserObj){
               laserEffect.LaserTimer();
               Debug.Log("LASER Activated!");
             }
@@ -28,13 +28,13 @@ public class Laser_Trigger : MonoBehaviour
     public void OnTriggerExit2D(Collider2D other)
     {
          if (other.gameObject.CompareTag("Player"))
-        {
+         {
              foreach(Laser laserEffect in LaserObj){
                  laserEffect.LaserStop();
                  Debug.Log("LASER Deactivated!");
              }
             //  singleton_check = false; 
-        }
+         }
     }
 
 }
