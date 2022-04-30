@@ -9,8 +9,10 @@ public class Laser : MonoBehaviour
     public AudioSource LaserSFX;
     public BoxCollider2D LaserCollider;
     public float TimerInSeconds;
-    public GameObject StartVFX;
-    public GameObject EndVFX;
+    public ParticleSystem StartParticles;
+    public ParticleSystem EndParticles;
+    public ParticleSystem StartBeam;
+    public ParticleSystem EndBeam;
     bool EndTimer = false;
    
 
@@ -18,9 +20,16 @@ public class Laser : MonoBehaviour
 
     void Start(){
         // Starting volume for LaserSFX
-        StartVFX.SetActive(false);
-        EndVFX.SetActive(false);
-        LaserBeam.enabled = false;
+        var startEm = StartParticles.emission;
+        var endEm = EndParticles.emission;
+        var startBeam = StartBeam.emission;
+        var endBeam = EndBeam.emission;
+
+        startEm.enabled = false;
+        endEm.enabled = false;
+        startBeam.enabled = false;
+        endBeam.enabled = false;
+
         LaserSFX.volume = startingVolume;
     }
 
@@ -28,8 +37,17 @@ public class Laser : MonoBehaviour
     {
      //  Debug.Log("Laser is on");
         LaserSFX.Play();
-        StartVFX.SetActive(true);
-        EndVFX.SetActive(true);
+
+        var startEm = StartParticles.emission;
+        var endEm = EndParticles.emission;
+        var startBeam = StartBeam.emission;
+        var endBeam = EndBeam.emission;
+
+        startEm.enabled = true;
+        endEm.enabled = true;
+        startBeam.enabled = true;
+        endBeam.enabled = true;
+
         LaserBeam.enabled = true;
         LaserSprite.enabled = true;
         LaserCollider.enabled = true;
@@ -38,8 +56,16 @@ public class Laser : MonoBehaviour
 
     public void LaserStop()
     {
-        StartVFX.SetActive(false);
-        EndVFX.SetActive(false);
+        var startEm = StartParticles.emission;
+        var endEm = EndParticles.emission;
+        var startBeam = StartBeam.emission;
+        var endBeam = EndBeam.emission;
+
+        startEm.enabled = false;
+        endEm.enabled = false;
+        startBeam.enabled = false;
+        endBeam.enabled = false;
+
         LaserBeam.enabled = false;
         LaserSprite.enabled = false;
         LaserCollider.enabled = false;
@@ -50,15 +76,23 @@ public class Laser : MonoBehaviour
     IEnumerator TurnOffLaser(float waitTime)
     {
         waitTime = TimerInSeconds;
-           yield return new WaitForSeconds(waitTime);
-             StartVFX.SetActive(false);
-             EndVFX.SetActive(false);
-             LaserBeam.enabled = false;
-             LaserSprite.enabled = false;
-             LaserCollider.enabled = false;
-           // Debug.Log("Laser is off");
-           LaserSFX.Stop();
-               StartCoroutine(TurnOnLaser(waitTime));       
+        yield return new WaitForSeconds(waitTime);
+        var startEm = StartParticles.emission;
+        var endEm = EndParticles.emission;
+        var startBeam = StartBeam.emission;
+        var endBeam = EndBeam.emission;
+
+        startEm.enabled = false;
+        endEm.enabled = false;
+        startBeam.enabled = false;
+        endBeam.enabled = false;
+
+        LaserBeam.enabled = false;
+        LaserSprite.enabled = false;
+        LaserCollider.enabled = false;
+        // Debug.Log("Laser is off");
+        LaserSFX.Stop();
+        StartCoroutine(TurnOnLaser(waitTime));       
     }
 
     // every certain amount of seconds turn on laser
