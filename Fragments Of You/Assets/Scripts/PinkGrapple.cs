@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,6 +43,8 @@ public class PinkGrapple : MonoBehaviour
     [SerializeField] private int numberOfLinks = 7;
 
     private PinkMovement pm;
+
+    public GameObject lockOn;
 
     //points between segments of rope
     public class PointClass {
@@ -154,6 +156,19 @@ public class PinkGrapple : MonoBehaviour
 
         SimulateRope();
         UpdateEndPoint();
+
+        if(IsAnyValidAnchor() && !isAnchored)
+        {
+            lockOn.SetActive(true);
+            GameObject nearbyAnchor;
+            nearbyAnchor = FindValidAnchor();
+            lockOn.transform.position = nearbyAnchor.transform.position;
+            lockOn.transform.Rotate(0f, 0f, 1f, Space.Self);
+        }
+        else
+        {
+            lockOn.SetActive(false);
+        }
     }
 
     void FixedUpdate()
@@ -278,6 +293,7 @@ public class PinkGrapple : MonoBehaviour
         }
         return false;
     }
+
     // for debugging purposes to see valid anchors nearby player
     private void AnchorRadar()
     {
