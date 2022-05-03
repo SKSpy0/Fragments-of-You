@@ -9699,6 +9699,7 @@ GameObject:
   - component: {fileID: 466408375022657332}
   - component: {fileID: 843996437}
   - component: {fileID: 843996438}
+  - component: {fileID: 6777019999002282111}
   m_Layer: 0
   m_Name: Pink
   m_TagString: Player
@@ -9993,17 +9994,17 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9843138, g: 0.8431373, b: 0.91372555, a: 1}
-      key1: {r: 0.9843137, g: 0.84313726, b: 0.9137255, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.9843137, g: 0.84313726, b: 0.9137255, a: 1}
+      key1: {r: 0.9618091, g: 0.89827967, b: 0.9300444, a: 1}
+      key2: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 0
+      ctime1: 53777
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -10018,7 +10019,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     numCornerVertices: 10
     numCapVertices: 10
@@ -10048,6 +10049,38 @@ SpringJoint2D:
   m_Distance: 2
   m_DampingRatio: 1
   m_Frequency: 2
+--- !u!114 &6777019999002282111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632065432075122504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: f97df6e700000000530bf9af
+  m_ShapePath:
+  - {x: -0.056980856, y: 0.0047995397, z: 0}
+  - {x: -0.030315166, y: -0.0024247025, z: 0}
+  - {x: -0.040770933, y: -0.055865433, z: 0}
+  - {x: -0.04077125, y: -0.15345278, z: 0}
+  - {x: 0.049845614, y: -0.1488057, z: 0}
+  - {x: 0.051007506, y: -0.053541888, z: 0}
+  - {x: 0.03822827, y: -0.0035864369, z: 0}
+  - {x: 0.07196863, y: 0.0003435757, z: 0}
+  - {x: 0.07159288, y: 0.09898005, z: 0}
+  - {x: -0.059532568, y: 0.09838352, z: 0}
+  m_ShapePathHash: 1312236365
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 302990
 --- !u!1 &4727013526775645904
 GameObject:
   m_ObjectHideFlags: 0
