@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 5699935330992802393}
   - component: {fileID: 4213491313792436392}
   - component: {fileID: 3903765698524444030}
+  - component: {fileID: 3861127419774752956}
   m_Layer: 0
   m_Name: Anchor Point
   m_TagString: Anchor
@@ -248,3 +249,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4bcada71cbb490db6806ed859e361f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3861127419774752956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5699935330992802394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: f97df6e700000000530bf9af
+  m_ShapePath:
+  - {x: -0.14999998, y: -0.14999999, z: 0}
+  - {x: 0.14999998, y: -0.14999999, z: 0}
+  - {x: 0.20531344, y: 0.038709283, z: -0.0000038146973}
+  - {x: 0.07758427, y: 0.14999998, z: 0}
+  - {x: -0.085630536, y: 0.14999998, z: 0}
+  - {x: -0.20504212, y: 0.06284785, z: -0.0000038146973}
+  m_ShapePathHash: 1722028933
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -424908
