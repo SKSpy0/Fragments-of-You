@@ -1,5 +1,77 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &338638877598378611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3783264123764167573}
+  - component: {fileID: 1219452224620563914}
+  m_Layer: 0
+  m_Name: Point Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3783264123764167573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338638877598378611}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.7027028, y: 2.4390244, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6306898107909142998}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1219452224620563914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338638877598378611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.181
+  m_Color: {r: 0.9528302, g: 0.8784814, b: 0.33708617, a: 1}
+  m_Intensity: 0.32
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &6306898106457627351
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,6 +104,7 @@ Transform:
   - {fileID: 6306898107399414210}
   - {fileID: 6306898106485560176}
   - {fileID: 282670297584717503}
+  - {fileID: 3783264123764167573}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -68,6 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d45f564cf6e67447b92b5c878fabde6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CollectibleSprite: {fileID: 0}
+  CollectibleCollider: {fileID: 0}
   collectiblePickup: {fileID: 6922924532350184663}
 --- !u!1 &6306898106485560177
 GameObject:
@@ -126,6 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6306898107399414210}
   - component: {fileID: 6306898107399414213}
+  - component: {fileID: 1865768330545833390}
   m_Layer: 0
   m_Name: FilmReelSprite
   m_TagString: Untagged
@@ -187,7 +263,7 @@ SpriteRenderer:
   m_SortingLayerID: -1342633133
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4e2dd6d497eef4080868f27e00dd5c3e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f0b68ba7d9e845bc865681ccfaad73b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -198,6 +274,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1865768330545833390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6306898107399414211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: f97df6e700000000530bf9af
+  m_ShapePath:
+  - {x: -0.980734, y: -1.4571745, z: 0}
+  - {x: 0.98072153, y: -1.4709541, z: 0}
+  - {x: 0.96546274, y: 1.1264896, z: 0}
+  - {x: -0.9502164, y: 1.1678233, z: 0}
+  m_ShapePathHash: -1085242305
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 409724
 --- !u!1 &7334744538962445319
 GameObject:
   m_ObjectHideFlags: 0
