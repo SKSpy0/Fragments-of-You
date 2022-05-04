@@ -26,18 +26,13 @@ public class Respawn : MonoBehaviour
         pinkGrapple = GetComponent<PinkGrapple>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // Respawn functions start --------------------------------------------------------------------
     // sets repawnpoint taking vector 2 as input
     // vector 3 can be converted to vector 2 implicitly
     // Note: not set by default.
     public void setRespawn(Vector2 newPoint)
     {
+        
         respawnPoint = newPoint;
         Debug.Log("resP: "+respawnPoint);
     }
@@ -54,6 +49,7 @@ public class Respawn : MonoBehaviour
         // Respawn sound effect can be added here.
         gm[0].GetComponent<BoxHandler>().resetAllBoxes();
         RespawnSFX.Play();
+        
         if(!pinkGrapple.generateRope){
             pinkGrapple.ReleaseArms();
         }
@@ -83,6 +79,7 @@ public class Respawn : MonoBehaviour
         if(!pinkGrapple.generateRope){
             pinkGrapple.ReleaseArms();
         }
+
     }
     // Respawn functions end ----------------------------------------------------------------------
 }

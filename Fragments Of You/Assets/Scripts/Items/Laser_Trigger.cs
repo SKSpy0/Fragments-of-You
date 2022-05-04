@@ -33,7 +33,7 @@ public class Laser_Trigger : MonoBehaviour
                  laserEffect.LaserStop();
                  Debug.Log("LASER Deactivated!");
              }
-            //  singleton_check = false; 
+             singleton_check = true; 
          }
     }
 
