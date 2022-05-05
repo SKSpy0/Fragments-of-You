@@ -5,11 +5,14 @@ using UnityEngine;
 public class SectionCam : MonoBehaviour
 {
     public GameObject virtualCam;
+    public GameObject sectionRespawnPoint;
+    Vector2 Respawnposition;
     private Respawn resp;
 
     void Start()
     {
         resp = GameObject.FindGameObjectWithTag("Player").GetComponent<Respawn>();
+        Respawnposition = new Vector2 (sectionRespawnPoint.transform.position.x, sectionRespawnPoint.transform.position.y);
     }
 
     // open the cam when player eneter
@@ -18,7 +21,7 @@ public class SectionCam : MonoBehaviour
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             virtualCam.SetActive(true);
-            resp.setRespawn(new Vector2(other.transform.position.x + 1f, other.transform.position.y));
+            resp.setRespawn(Respawnposition);
         }
     }
 
