@@ -36,21 +36,6 @@ public class Laser : MonoBehaviour
 
      public void LaserTimer()
     {
-        LaserSFX.Play();
-
-        var startEm = StartParticles.emission;
-        var endEm = EndParticles.emission;
-        var startBeam = StartBeam.emission;
-        var endBeam = EndBeam.emission;
-
-        startEm.enabled = true;
-        endEm.enabled = false;
-        startBeam.enabled = true;
-        endBeam.enabled = false;
-
-        LaserBeam.enabled = false;
-        LaserCollider.enabled = false;
-        EndTimer = false;
         StartCoroutine(ChargeLaser(ChargeInSeconds));
     }
 
@@ -76,13 +61,14 @@ public class Laser : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         LaserSFX.Play();
         var startEm = StartParticles.emission;
-        var endEm = EndParticles.emission;
         var startBeam = StartBeam.emission;
+        startBeam.enabled = true;
+        startEm.enabled = true;
+        yield return new WaitForSeconds(waitTime);
+        var endEm = EndParticles.emission;
         var endBeam = EndBeam.emission;
 
-        startEm.enabled = true;
         endEm.enabled = true;
-        startBeam.enabled = true;
         endBeam.enabled = true;
 
         LaserBeam.enabled = true;
@@ -93,16 +79,18 @@ public class Laser : MonoBehaviour
 
     // every certain amount of seconds turn off laser
     IEnumerator TurnOffLaser(float waitTime)
-    {
+    { 
         yield return new WaitForSeconds(waitTime);
+
         var startEm = StartParticles.emission;
-        var endEm = EndParticles.emission;
         var startBeam = StartBeam.emission;
+        startEm.enabled = false;
+        startBeam.enabled = false;
+
+        var endEm = EndParticles.emission;
         var endBeam = EndBeam.emission;
 
-        startEm.enabled = false;
         endEm.enabled = false;
-        startBeam.enabled = false;
         endBeam.enabled = false;
 
         LaserBeam.enabled = false;
@@ -121,7 +109,7 @@ public class Laser : MonoBehaviour
                yield break;
            }
            else{
-              LaserTimer();
+               LaserTimer();
               yield return new WaitForSeconds(waitTime);
            }
     }
