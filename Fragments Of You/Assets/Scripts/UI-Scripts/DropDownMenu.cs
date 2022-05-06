@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DropDownMenu : MonoBehaviour
 {
+  /* This script is still a work in progress */
+  
     //Colorblind colorblindScript;
 
     public void HandleInputData(int value)
