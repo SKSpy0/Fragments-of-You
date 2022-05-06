@@ -122,7 +122,11 @@ namespace Wilberforce
 			);
         }
     }
+}
 
+
+
+/*
 	// ensure unity editor is present - so it doesn't crash when running built project
 	#if UNITY_EDITOR 
 
@@ -161,4 +165,4 @@ namespace Wilberforce
 		}
 	}
 	#endif
-}
+} */
