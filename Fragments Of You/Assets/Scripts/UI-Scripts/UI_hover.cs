@@ -7,7 +7,9 @@ public class UI_hover : MonoBehaviour
 {
     int UILayer;
     bool mouseLeave = true;
-    public System.String str;
+
+    // public AudioSource HoverSFX;
+    public cursor cusorSprite;
 
     private void Start()
     {
@@ -17,7 +19,7 @@ public class UI_hover : MonoBehaviour
     private void Update()
     {
         // print(IsPointerOverUIElement() ? "Over UI" : "Not over UI");
-        PlaySound(str);
+        PlaySound();
     }
 
 
@@ -27,14 +29,16 @@ public class UI_hover : MonoBehaviour
         return IsPointerOverUIElement(GetEventSystemRaycastResults());
     }
 
-    public void PlaySound(string path)
+    public void PlaySound()
     {
         if (IsPointerOverUIElement() && mouseLeave)
         {
+            cusorSprite.handCursorSprite();
             mouseLeave = false;
         }
         if (IsPointerOverUIElement() != true)
         {
+            cusorSprite.normalCursorSprite();
             mouseLeave = true;
         }
     }

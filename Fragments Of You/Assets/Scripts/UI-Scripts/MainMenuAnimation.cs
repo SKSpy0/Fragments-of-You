@@ -19,6 +19,7 @@ public class MainMenuAnimation : MonoBehaviour
     public GameObject playButton;
     public GameObject optionButton;
     public GameObject quitButton;
+    public GameObject titleText;
 
 
     public void ClickToStart()
@@ -54,6 +55,16 @@ public class MainMenuAnimation : MonoBehaviour
     public void GameStart()
     {
         StartCoroutine(GameStartTransition());
+    }
+    public void CloseTitle()
+    {
+        StartCoroutine(CloseTitleTransition());
+    }
+
+    IEnumerator CloseTitleTransition()
+    {
+        yield return new WaitForSeconds(1.5f);
+        titleText.SetActive(false);
     }
 
     IEnumerator ClickTransition()
