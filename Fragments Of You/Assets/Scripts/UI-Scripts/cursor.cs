@@ -9,6 +9,7 @@ public class cursor : MonoBehaviour
     public Sprite normalCursor;
 
     public GameObject clickEffect;
+    Vector2 cursorPos;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class cursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        cursorPos = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y - 0.2f);
         transform.position = cursorPos;
 
         if (Input.GetMouseButtonDown(0))
