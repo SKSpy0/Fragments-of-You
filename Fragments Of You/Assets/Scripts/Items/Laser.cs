@@ -15,7 +15,6 @@ public class Laser : MonoBehaviour
     public ParticleSystem EndBeam;
     bool EndTimer = false;
    
-
     private float startingVolume = 1f;
 
     void Start(){
