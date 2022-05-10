@@ -71,8 +71,8 @@ public class Collectible : MonoBehaviour
             // Else, play captured effect and destroy the object   
             Debug.Log("The player survived for five seconds.");
             collectibleCaptured.Play();
-             // wait 1 second and then destroy the object
-            yield return new WaitForSeconds(1f);
+             // wait 2.2 seconds and then destroy the object
+            yield return new WaitForSeconds(2.2f);
             Destroy(this.gameObject);
            }
             yield break;
