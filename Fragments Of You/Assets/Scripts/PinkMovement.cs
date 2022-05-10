@@ -32,6 +32,7 @@ public class PinkMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float gravity = 9.81f;
+    [SerializeField] private float maxPlayerVelocity = 6f;
     /**set maxVelocity commented out for now**/
     // [SerializeField] private float maxXVelocity = 8.5f; does nothing!!!!!
 
@@ -184,17 +185,21 @@ public class PinkMovement : MonoBehaviour
     {
         // get input - Horizontal is set to 'a' and 'd' / left and right arrow keys.
         dirX = Input.GetAxisRaw("Horizontal");
+        Debug.Log("x velocity: " + rb.velocity.x);
 
         if (dirX > 0.1 || dirX < -0.1)
         {
-            if ((dirX > 0 && previousDir > 0) || (dirX < 0 && previousDir < 0))
+            if ((dirX > 0 && previousDir > 0) || (dirX < 0 && previousDir < 0) )
             {
-                // modify velocity based on input
-                rb.AddForce(Vector2.right * dirX * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
-                // Play walk Animation
-                animator.SetFloat("Speed", Mathf.Abs(dirX));
-                // Play walking Sound Effect
-                movementChange = true;
+                if(rb.velocity.x <= maxPlayerVelocity && rb.velocity.x >= -maxPlayerVelocity)
+                {
+                    // modify velocity based on input
+                    rb.AddForce(Vector2.right * dirX * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
+                    // Play walk Animation
+                    animator.SetFloat("Speed", Mathf.Abs(dirX));
+                    // Play walking Sound Effect
+                    movementChange = true;
+                }
             }
             else if (IsGrounded())
             {
@@ -242,11 +247,11 @@ public class PinkMovement : MonoBehaviour
 
         if (sprite.flipX == false)
         {
-            rb.AddForce(Vector2.left * wallJumpForce / 1.5f, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.left * wallJumpForce / 1.85f, ForceMode2D.Impulse);
         }
         else
         {
-            rb.AddForce(Vector2.right * wallJumpForce / 1.5f, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.right * wallJumpForce / 1.85f, ForceMode2D.Impulse);
         }
 
         // Play Jump Animation

@@ -9868,11 +9868,12 @@ MonoBehaviour:
   jumpableGround:
     serializedVersion: 2
     m_Bits: 8
-  inAirMoveSpeed: 7
+  inAirMoveSpeed: 14
   groundedMoveSpeed: 7
   moveSpeed: 5
   jumpForce: 7
   gravity: 9.81
+  maxPlayerVelocity: 6
 --- !u!114 &2451209812896764937
 MonoBehaviour:
   m_ObjectHideFlags: 0
