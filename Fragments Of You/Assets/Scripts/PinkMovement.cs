@@ -149,6 +149,10 @@ public class PinkMovement : MonoBehaviour
             landingParticlePlay = true;
             moveSpeed = inAirMoveSpeed;
         }
+        if(grapple.getAnchored())
+        {
+            moveSpeed = groundedMoveSpeed;
+        }
         Move();
         if (isFacingWall() && !IsGrounded() && rb.velocity.y < 0)
         {
@@ -247,11 +251,11 @@ public class PinkMovement : MonoBehaviour
 
         if (sprite.flipX == false)
         {
-            rb.AddForce(Vector2.left * wallJumpForce / 1.85f, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.left * wallJumpForce / 1.65f, ForceMode2D.Impulse);
         }
         else
         {
-            rb.AddForce(Vector2.right * wallJumpForce / 1.85f, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.right * wallJumpForce / 1.65f, ForceMode2D.Impulse);
         }
 
         // Play Jump Animation
