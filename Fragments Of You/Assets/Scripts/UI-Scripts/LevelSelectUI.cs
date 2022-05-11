@@ -41,26 +41,32 @@ public class LevelSelectUI : MonoBehaviour
     {
         if (level_Count == 0 && waitIsOver) 
         {
+            Destroy(GameObject.Find("MenuMusic"));
             SceneManager.LoadScene("Z1M1");
         }
         if (level_Count == 1 && waitIsOver)
         {
+            Destroy(GameObject.Find("MenuMusic"));
             SceneManager.LoadScene("Z1M2");
         }
         if (level_Count == 2 && waitIsOver)
         {
+            Destroy(GameObject.Find("MenuMusic"));
             SceneManager.LoadScene("Z1M3");
         }
         if (level_Count == 3 && waitIsOver)
         {
+            Destroy(GameObject.Find("MenuMusic"));
             SceneManager.LoadScene("Z2M1");
         }
         if (level_Count == 4 && waitIsOver)
         {
+            Destroy(GameObject.Find("MenuMusic"));
             SceneManager.LoadScene("Z2M2");
         }
         if (level_Count == 5 && waitIsOver)
         {
+            Destroy(GameObject.Find("MenuMusic"));
             SceneManager.LoadScene("Z3M1");
         }
     }
