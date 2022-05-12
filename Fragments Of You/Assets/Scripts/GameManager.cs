@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         /*** Handles level music transitions ***/
         // Going back to main menu screen from pause menu
-        if (sceneName == "Z1Tutorial")
+        if (sceneName == "Z0Tutorial")
         {
             Destroy(GameObject.Find("MenuMusic"));
         }
