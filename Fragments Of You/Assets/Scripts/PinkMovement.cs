@@ -189,7 +189,7 @@ public class PinkMovement : MonoBehaviour
     {
         // get input - Horizontal is set to 'a' and 'd' / left and right arrow keys.
         dirX = Input.GetAxisRaw("Horizontal");
-        Debug.Log("x velocity: " + rb.velocity.x);
+        //Debug.Log("x velocity: " + rb.velocity.x);
 
         if (dirX > 0.1 || dirX < -0.1)
         {

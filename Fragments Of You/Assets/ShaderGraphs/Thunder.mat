@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Thunder
+  m_Shader: {fileID: -6465566751694194690, guid: 69bed9177b91441588a9ce2115fd18e3, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_4bfedf54524a4c0786fa85e394bf6f2d: 2
+    - Vector1_62e48b29135a4d179457e1b7120c2d0a: 30
+    - Vector1_78af0c04914d43cba47bc2927f92454b: 1
+    - Vector1_84ca2bab1b1c45edbdc2ea2f336d7c02: -1.12
+    - Vector1_a7953245ab7b42af995effded8ff808a: 5
+    - Vector1_c264e625095f48d6a8a44790547a4682: 14.2
+    - Vector1_c8a8233458654242a0e775f923d842c0: 25
+    - Vector1_e06bb11da16d496c99724c414a44eda0: 2.15
+    - Vector1_eb44f603fdd448d5a7c27faf77657f83: 60
+    m_Colors:
+    - Color_1c7712753c704e94a9903c64d7006414: {r: 1, g: 1, b: 1, a: 0}
+    - Vector2_24609a23165a4e1f945a277d8c47aa9c: {r: -0.2, g: 0, b: 0, a: 0}
+    - Vector2_befeb7aa63dc41829761847282546a14: {r: -0.2, g: 0, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.7607843}
+  m_BuildTextureStacks: []
