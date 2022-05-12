@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554978614670254250}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -8, z: 0}
+  m_LocalPosition: {x: 0, y: -24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 554978615622032416}
@@ -135,7 +135,7 @@ LineRenderer:
   m_SortingOrder: 4
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: -8, z: 0}
+  - {x: 0, y: -24, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -174,8 +174,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.519412, g: 0.145098, b: 0.93333334, a: 1}
-      key1: {r: 0.519412, g: 0.145098, b: 0.93333334, a: 1}
+      key0: {r: 0, g: 0.82059526, b: 1, a: 1}
+      key1: {r: 0, g: 0.82059526, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 554978614878071979}
   - component: {fileID: 554978614878071980}
   m_Layer: 0
-  m_Name: Thunder Strike
+  m_Name: Thunder Strike (Cyan)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
   lineRendererObject: {fileID: 554978614688889898}
   startLocationObject: {fileID: 554978614552399234}
   endLocationObject: {fileID: 554978614670254250}
-  numberOfNode: 20
+  numberOfNode: 60
   offset: 0.3
   fadeSpeed: 1
 --- !u!114 &554978614878071980
@@ -297,7 +297,7 @@ MonoBehaviour:
   lineRendererObject: {fileID: 554978615302918569}
   startLocationObject: {fileID: 554978614552399234}
   endLocationObject: {fileID: 554978614670254250}
-  numberOfNode: 13
+  numberOfNode: 39
   offset: 0.5
   fadeSpeed: 1
 --- !u!1 &554978615302918569
@@ -374,7 +374,7 @@ LineRenderer:
   m_SortingOrder: 4
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: -8, z: 0}
+  - {x: 0, y: -24, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -413,8 +413,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.6924105, g: 0.4251958, b: 0.990566, a: 1}
-      key1: {r: 0.6924105, g: 0.4251958, b: 0.990566, a: 1}
+      key0: {r: 0.4765931, g: 0.87465286, b: 0.9622642, a: 1}
+      key1: {r: 0.4765931, g: 0.87465286, b: 0.9622642, a: 1}
       key2: {r: 0.519412, g: 0.145098, b: 0.93333334, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -690,7 +690,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.8585891, g: 0.05098039, b: 1, a: 1}
+      maxColor: {r: 0.05098039, g: 0.947712, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5697,7 +5697,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.7808453, g: 0.05098039, b: 1, a: 1}
+      maxColor: {r: 0.05098039, g: 0.85692227, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10618,7 +10618,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.99386007, g: 0.7028302, b: 1, a: 1}
+      maxColor: {r: 0.7019608, g: 0.97948664, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
