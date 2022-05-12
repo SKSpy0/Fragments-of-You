@@ -43,8 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae52883faed2441ed877984b66c4a1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequencyLow: 3
-  frequencyHigh: 7
+  frequencyLow: 10
+  frequencyHigh: 20
+  clusterFrequencyLow: 0.1
+  clusterFrequencyHigh: 0.3
+  searchRange: 8
+  searchDegreeOffset: 5
+  maxClusterSize: 4
   thunderObjects:
   - {fileID: 554978614878071977, guid: f2aebe1a3920e48999afa1aa918a02bc, type: 3}
   - {fileID: 554978614878071977, guid: 4048e05ddc1cb4cc4afaf48d67654fb8, type: 3}
