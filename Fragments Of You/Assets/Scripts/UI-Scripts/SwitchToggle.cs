@@ -3,34 +3,34 @@ using UnityEngine.UI;
 using DG.Tweening;
 
 public class SwitchToggle : MonoBehaviour {
+
    [SerializeField] RectTransform uiHandleRectTransform ;
    [SerializeField] Color backgroundActiveColor ;
    [SerializeField] Color handleActiveColor ;
 
    Image backgroundImage, handleImage ;
-
    Color backgroundDefaultColor, handleDefaultColor ;
 
    Toggle toggle ;
-
    bool savedToggle;
+   
 
    Vector2 handlePosition;
 
    GameManager gameManager;
 
    void Awake ( ) {
-      toggle = GetComponent <Toggle> ( ) ;
+      toggle = GetComponent <Toggle> ( );
 
-      handlePosition = uiHandleRectTransform.anchoredPosition ;
+      handlePosition = uiHandleRectTransform.anchoredPosition;
 
-      backgroundImage = uiHandleRectTransform.parent.GetComponent <Image> ( ) ;
-      handleImage = uiHandleRectTransform.GetComponent <Image> ( ) ;
+      backgroundImage = uiHandleRectTransform.parent.GetComponent <Image> ( );
+      handleImage = uiHandleRectTransform.GetComponent <Image> ( );
 
-      backgroundDefaultColor = backgroundImage.color ;
-      handleDefaultColor = handleImage.color ;
+      backgroundDefaultColor = backgroundImage.color;
+      handleDefaultColor = handleImage.color;
 
-      toggle.onValueChanged.AddListener (OnSwitch) ;
+      toggle.onValueChanged.AddListener(OnSwitch);
 
       gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -56,6 +56,23 @@ public class SwitchToggle : MonoBehaviour {
       }
    }
 
+   public void toggleGODMODE()
+   {
+      if (toggle.isOn == true)
+      {
+         OnSwitch (true);
+         GameManager.GodMode = true;
+         Debug.Log("God Mode is now turned on.");
+         PlayerPrefs.SetFloat(this.gameObject.name, 1);
+      }
+      else{
+         OnSwitch (false);
+         GameManager.GodMode = false;
+         Debug.Log("God Mode is now turned off.");
+         PlayerPrefs.SetFloat(this.gameObject.name, 0);
+      }
+   }
+   
    void OnSwitch (bool on) {
       // uiHandleRectTransform.anchoredPosition = on ? handlePosition * -1 : handlePosition ; // no anim
       uiHandleRectTransform.DOAnchorPos (on ? handlePosition * -1 : handlePosition, .4f).SetEase (Ease.InOutBack) ;

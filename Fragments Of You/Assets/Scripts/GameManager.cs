@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     private bool ToggleIsOn;
     private bool thisToggleOn;
 
+    // Accessibility Option - let's player play the game without the need to worry about environmentals
+    public static bool GodMode = false;
+
     float savedValue1 = 1;
     float savedValue2 = 1;
     float savedValue3 = 1;
@@ -151,6 +154,7 @@ public class GameManager : MonoBehaviour
         sfxSlider.value = PlayerPrefs.GetFloat("SavedSFXVolume", 0.70f);
     }
 
+    // Accessibility Option - Sound effect prompt toggle and God Mode toggle
     public bool LoadingButtonSettings(string ButtonName)
     {
         if (PlayerPrefs.GetFloat(ButtonName) == 1)

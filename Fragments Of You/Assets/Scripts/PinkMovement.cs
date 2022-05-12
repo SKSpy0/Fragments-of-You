@@ -46,7 +46,7 @@ public class PinkMovement : MonoBehaviour
     private bool landingParticlePlay;
     // Check for sprite flipping particle effects
     private Respawn resp;
-
+    
     private void Start()
     {
         // get component
@@ -339,14 +339,21 @@ public class PinkMovement : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D other)
     {
         // Environmental Collison's with player - Death by spike, Landing after jump, etc.
-        if (other.gameObject.CompareTag("Spike"))
+        if (other.gameObject.CompareTag("Spike") && !GameManager.GodMode)
         {
             PlayerDeath();
         }
 
         // Environmental Collison with player - Death by laser.
-        if (other.gameObject.CompareTag("LaserTrap"))
+        if (other.gameObject.CompareTag("LaserTrap") && !GameManager.GodMode)
         {
+            PlayerDeath();
+        }
+
+         /***Player dies - falls off level respawn boundary ***/
+        if (other.gameObject.CompareTag("FallDeath"))
+        {
+            Debug.Log("FallThreshold met");
             PlayerDeath();
         }
 
@@ -404,13 +411,6 @@ public class PinkMovement : MonoBehaviour
             sfxPrompt.NewSfxPrompt("Landing");
             CreateLandingParticles();
             this.gameObject.transform.parent = other.gameObject.transform;
-        }
-
-        /***Player dies - falls off level respawn boundary ***/
-        if (other.gameObject.CompareTag("FallDeath"))
-        {
-            Debug.Log("FallThreshold met");
-            PlayerDeath();
         }
     }
 

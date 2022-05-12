@@ -71,7 +71,10 @@ public class Laser : MonoBehaviour
         endBeam.enabled = true;
 
         LaserBeam.enabled = true;
-        LaserCollider.enabled = true;
+        // Accessibility Option - God Mode check
+        if(!GameManager.GodMode){
+         LaserCollider.enabled = true;
+        }
 
         StartCoroutine(TurnOffLaser(TimerInSeconds));
     }
