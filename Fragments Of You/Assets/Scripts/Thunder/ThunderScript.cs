@@ -16,7 +16,7 @@ public class ThunderScript : MonoBehaviour
     private LineRenderer thunderLineRenderer;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         thunderLineRenderer = lineRendererObject.GetComponent<LineRenderer>();
         GenerateThunder();
