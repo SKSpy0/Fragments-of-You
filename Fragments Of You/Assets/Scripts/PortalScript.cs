@@ -6,11 +6,10 @@ public class PortalScript : MonoBehaviour
 {
     public GameObject linkedPortalObject;
 
-
-
-    public bool isPinkUsingPortal = false;
-
-    public bool isReadyToRecivePink = false;
+    public bool isPortalLocked = false;
+    public bool expectPinkExist = false;
+    [Range (0f, 15f)]
+    public float boxPopOutVelocity = 1.5f;
 
     private PortalScript linkedPortalScript;
 
@@ -27,99 +26,47 @@ public class PortalScript : MonoBehaviour
         
     }
 
+    private void LateUpdate()
+    {
+        
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        /*
-        if(other.gameObject.CompareTag("Box"))
+        if((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Box"))  && !isPortalLocked)
         {
-            other.gameObject.transform.position = linkedPortalObject.transform.position + new Vector3(2f, 1.5f, 0);
+            isPortalLocked = true;
+            linkedPortalScript.isPortalLocked = true;
+            expectPinkExist = true;
+            other.gameObject.transform.position = linkedPortalObject.transform.position;
+
+            Rigidbody2D otherRB = other.gameObject.GetComponent<Rigidbody2D>();
+
+            if (other.gameObject.CompareTag("Box"))
+            {
+                if (otherRB.velocity.x >= 0f)
+                {
+                    otherRB.AddForce(transform.right * boxPopOutVelocity, ForceMode2D.Impulse);
+                }
+                else
+                {
+                    otherRB.AddForce(-transform.right * boxPopOutVelocity, ForceMode2D.Impulse);
+                }
+
+                otherRB.AddForce(transform.up * boxPopOutVelocity, ForceMode2D.Impulse);
+            }   
         }
-        */
-
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log(other.name + " entered " + this.name);
-
-            if (!isPinkUsingPortal && linkedPortalScript.GetPinkStatus())
-            {
-                Debug.Log(this.name + " isPinkUsingPortal: " + isPinkUsingPortal);
-                isReadyToRecivePink = false;
-            }
-            else
-            {
-                isPinkUsingPortal = true;
-                linkedPortalScript.SetPinkReciveStatus(true);
-                other.gameObject.transform.position = linkedPortalObject.transform.position;
-            }
-
-            if (Input.GetButtonDown("Jump"))
-            {
-
-            }
-        }
-
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log(other.name + " existed " + this.name);
-
-        if (other.gameObject.CompareTag("Player") && !GetPinkReciveStatus())
+        if((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Box")) && !expectPinkExist)
         {
-            isPinkUsingPortal = false;
-            linkedPortalScript.SetPinkStatus(false);
+            isPortalLocked = false;
+            linkedPortalScript.isPortalLocked = false;
+
+            linkedPortalScript.expectPinkExist = false;
         }
     }
-
-
-    public bool GetPinkStatus()
-    {
-        return isPinkUsingPortal;
-    }
-
-    public void SetPinkStatus(bool status)
-    {
-        isPinkUsingPortal = status;
-    }
-
-    public bool GetPinkReciveStatus()
-    {
-        return isReadyToRecivePink;
-    }
-
-    public void SetPinkReciveStatus(bool status)
-    {
-        isReadyToRecivePink = status;
-    }
-
-
-    /*
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-
-        if(other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log(this.name + "  enter trigger");
-            
-            if(!isPinkUsingPortal && linkedPortalScript.GetPinkStatus())
-            {
-                Debug.Log(this.name + " isPinkUsingPortal: " + isPinkUsingPortal);
-                isReadyToRecivePink = false;
-            }
-            else
-            {
-                isPinkUsingPortal = true;
-                linkedPortalScript.SetPinkReciveStatus(true);
-                other.gameObject.transform.position = linkedPortalObject.transform.position;
-            }
-
-            if (Input.GetButtonDown("Jump"))
-            {
-                
-            }
-        }
-    }
-
-    */
 }
+
