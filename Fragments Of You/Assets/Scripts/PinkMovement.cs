@@ -251,11 +251,11 @@ public class PinkMovement : MonoBehaviour
 
         if (sprite.flipX == false)
         {
-            rb.AddForce(Vector2.left * wallJumpForce / 1.65f, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.left * wallJumpForce / 1.5f, ForceMode2D.Impulse);
         }
         else
         {
-            rb.AddForce(Vector2.right * wallJumpForce / 1.65f, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.right * wallJumpForce / 1.5f, ForceMode2D.Impulse);
         }
 
         // Play Jump Animation
