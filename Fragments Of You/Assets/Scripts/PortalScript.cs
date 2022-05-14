@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PortalScript : MonoBehaviour
 {
@@ -14,10 +15,17 @@ public class PortalScript : MonoBehaviour
 
     [Range (0f, 15f)]
     public float boxPopOutVelocity = 1.5f;
+    public float teleportSpeed = 0.05f;
+    public float fadeSpeed = 0.02f;
+
     public ParticleSystem popOutParticle;
     public ParticleSystem ambientParticle;
     private PortalScript linkedPortalScript;
     private SpriteRenderer portalSprite;
+    private GameObject telePortTempObject;
+    private bool isReadyToTeleport = false;
+    private bool shouldLowerLight = false;
+    private float boxEnterVelocity = 0f;
 
 
     // Start is called before the first frame update
@@ -28,7 +36,7 @@ public class PortalScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(isBoxBlocking || linkedPortalScript.isBoxBlocking)
         {
@@ -36,7 +44,7 @@ public class PortalScript : MonoBehaviour
             {
                 ambientParticle.Stop();
                 Color tempColor = portalSprite.color;
-                tempColor.a -= 0.01f;
+                tempColor.a -= fadeSpeed;
                 portalSprite.color = tempColor;
             }
         }
@@ -44,11 +52,73 @@ public class PortalScript : MonoBehaviour
         {
             if(portalSprite.color.a < 1f)
             {
-                ambientParticle.Play();
                 Color tempColor = portalSprite.color;
-                tempColor.a += 0.01f;
+                tempColor.a += fadeSpeed;
                 portalSprite.color = tempColor;
             }
+
+            if (portalSprite.color.a > 0.1f)
+            {
+                ambientParticle.Play();
+            }
+        }
+        
+
+        if (isReadyToTeleport && telePortTempObject != null)
+        {
+            Light2D playerLight = telePortTempObject.GetComponent<Light2D>();
+
+            if (playerLight.intensity < 3 && !shouldLowerLight)
+            {
+                playerLight.intensity += teleportSpeed;
+            }
+
+            if (playerLight.intensity >= 3)
+            {
+                isReadyToTeleport = false;
+                telePortTempObject.transform.position = linkedPortalObject.transform.position;
+                shouldLowerLight = true;
+
+
+                if(telePortTempObject.CompareTag("Box"))
+                {
+                    Rigidbody2D otherRB = telePortTempObject.GetComponent<Rigidbody2D>();
+
+                    if (boxEnterVelocity < 0f)
+                    {
+                        Debug.Log("Push right");
+                        otherRB.AddForce(transform.right * boxPopOutVelocity, ForceMode2D.Impulse);
+                    }
+                    else
+                    {
+                        Debug.Log("Push left");
+                        otherRB.AddForce(-transform.right * boxPopOutVelocity, ForceMode2D.Impulse);
+                    }
+
+                    otherRB.AddForce(transform.up * boxPopOutVelocity, ForceMode2D.Impulse);
+                }
+
+            }
+
+            if (playerLight.intensity <= 0)
+            {
+                isReadyToTeleport = false;
+            }
+        }
+
+        if(telePortTempObject != null)
+        {
+            if(shouldLowerLight)
+            {
+                Light2D playerLight = telePortTempObject.GetComponent<Light2D>();
+                playerLight.intensity -= teleportSpeed;
+
+                if (playerLight.intensity <= 0)
+                {
+                    shouldLowerLight = false;
+                }
+            }
+
         }
         
     }
@@ -64,38 +134,62 @@ public class PortalScript : MonoBehaviour
         {
             popOutParticle.Play();
         }
-  
 
-        if ((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Box"))  && !isPortalLocked)
+        if(other.gameObject.CompareTag("Player") && !isPortalLocked)
         {
             isPortalLocked = true;
             linkedPortalScript.isPortalLocked = true;
             expectPinkExist = true;
-            
-            other.gameObject.transform.position = linkedPortalObject.transform.position;
 
+            telePortTempObject = other.gameObject;
+            isReadyToTeleport = true;
+        }
+  
+
+        if (other.gameObject.CompareTag("Box") && !isPortalLocked)
+        {
+            isPortalLocked = true;
+            linkedPortalScript.isPortalLocked = true;
+            expectPinkExist = true;
+
+
+            telePortTempObject = other.gameObject;
+            isReadyToTeleport = true;
+
+            
+        }
+
+        if(other.gameObject.CompareTag("Box"))
+        {
             Rigidbody2D otherRB = other.gameObject.GetComponent<Rigidbody2D>();
-
-            
-            if (other.gameObject.CompareTag("Box"))
-            {
-                if (otherRB.velocity.x >= 0f)
-                {
-                    otherRB.AddForce(transform.right * boxPopOutVelocity, ForceMode2D.Impulse);
-                }
-                else
-                {
-                    otherRB.AddForce(-transform.right * boxPopOutVelocity, ForceMode2D.Impulse);
-                }
-
-                otherRB.AddForce(transform.up * boxPopOutVelocity, ForceMode2D.Impulse);
-            }
+            boxEnterVelocity = -otherRB.velocity.x;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if((other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Box")) && !expectPinkExist)
+        if (other.gameObject.CompareTag("Player") && !expectPinkExist)
+        {
+            isPortalLocked = false;
+            linkedPortalScript.isPortalLocked = false;
+
+            linkedPortalScript.expectPinkExist = false;
+        }
+
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if(isReadyToTeleport && expectPinkExist)
+            {
+                isReadyToTeleport = false;
+                isPortalLocked = false;
+                linkedPortalScript.isPortalLocked = false;
+                expectPinkExist = false;
+
+                shouldLowerLight = true;
+            }
+        }
+
+        if (other.gameObject.CompareTag("Box") && !expectPinkExist)
         {
             isPortalLocked = false;
             linkedPortalScript.isPortalLocked = false;
@@ -107,6 +201,16 @@ public class PortalScript : MonoBehaviour
         {
             isBoxBlocking = false;
             linkedPortalScript.isBoxBlocking = false;
+
+            if (isReadyToTeleport && expectPinkExist)
+            {
+                isReadyToTeleport = false;
+                isPortalLocked = false;
+                linkedPortalScript.isPortalLocked = false;
+                expectPinkExist = false;
+
+                shouldLowerLight = true;
+            }
         }
     }
 
