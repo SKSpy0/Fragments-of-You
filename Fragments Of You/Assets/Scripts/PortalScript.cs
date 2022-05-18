@@ -27,6 +27,11 @@ public class PortalScript : MonoBehaviour
     private bool shouldLowerLight = false;
     private float boxEnterVelocity = 0f;
 
+    // Sound effects for Portal
+    public AudioSource portalSFX;
+    public AudioSource portalAmbienceSFX;
+    bool singleton_check = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +64,10 @@ public class PortalScript : MonoBehaviour
 
             if (portalSprite.color.a > 0.1f)
             {
+                if(!singleton_check){
+                 portalAmbienceSFX.Play();
+                 singleton_check = true;
+                }
                 ambientParticle.Play();
             }
         }
@@ -133,6 +142,11 @@ public class PortalScript : MonoBehaviour
         if(!(isBoxBlocking || linkedPortalScript.isBoxBlocking))
         {
             popOutParticle.Play();
+             if(!portalSFX.isPlaying){
+                // play's portal sound effect
+                portalSFX.Play();
+             }
+
         }
 
         if(other.gameObject.CompareTag("Player") && !isPortalLocked)
