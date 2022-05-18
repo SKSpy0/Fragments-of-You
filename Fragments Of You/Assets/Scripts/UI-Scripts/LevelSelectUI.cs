@@ -8,7 +8,7 @@ public class LevelSelectUI : MonoBehaviour
 {
     public Animator LevelMapPink;
     public int level_Count = 0;
-    bool waitIsOver = true;
+    public bool waitIsOver = true;
 
     public void moveFoward()
     {
@@ -76,7 +76,7 @@ public class LevelSelectUI : MonoBehaviour
         if (level_Count == 0)
         {
             LevelMapPink.SetBool("Arrive1-1", true);
-            yield return new WaitForSeconds(2.1f);
+            yield return new WaitForSeconds(1.2f);
             waitIsOver = true;
             LevelMapPink.SetBool("Arrive1-2", false);
         }
@@ -84,7 +84,7 @@ public class LevelSelectUI : MonoBehaviour
         if (level_Count == 1)
         {
             LevelMapPink.SetBool("Arrive1-2", true);
-            yield return new WaitForSeconds(2.1f);
+            yield return new WaitForSeconds(1.2f);
             waitIsOver = true;
             LevelMapPink.SetBool("Arrive1-1", false);
         }
@@ -92,7 +92,7 @@ public class LevelSelectUI : MonoBehaviour
         if (level_Count == 2)
         {
             LevelMapPink.SetBool("Arrive1-3", true);
-            yield return new WaitForSeconds(2.1f);
+            yield return new WaitForSeconds(1f);
             waitIsOver = true;
             LevelMapPink.SetBool("Arrive1-2", false);
         }
@@ -100,7 +100,7 @@ public class LevelSelectUI : MonoBehaviour
         if (level_Count == 3)
         {
             LevelMapPink.SetBool("Arrive2-1", true);
-            yield return new WaitForSeconds(2.1f);
+            yield return new WaitForSeconds(1.2f);
             waitIsOver = true;
             LevelMapPink.SetBool("Arrive1-3", false);
         }
@@ -108,7 +108,7 @@ public class LevelSelectUI : MonoBehaviour
         if (level_Count == 4)
         {
             LevelMapPink.SetBool("Arrive2-2", true);
-            yield return new WaitForSeconds(2.1f);
+            yield return new WaitForSeconds(1.2f);
             waitIsOver = true;
             LevelMapPink.SetBool("Arrive2-1", false);
         }
@@ -116,7 +116,7 @@ public class LevelSelectUI : MonoBehaviour
         if (level_Count == 5)
         {
             LevelMapPink.SetBool("Arrive3", true);
-            yield return new WaitForSeconds(2.1f);
+            yield return new WaitForSeconds(1.2f);
             waitIsOver = true;
             LevelMapPink.SetBool("Arrive2-2", false);
         }
