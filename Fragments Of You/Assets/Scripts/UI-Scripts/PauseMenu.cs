@@ -13,11 +13,18 @@ public class PauseMenu : MonoBehaviour
     private GameObject pausemenu;
     public AudioSource buttonSelectionSFX;
 
+    public Animator mouseFade;
 
     void Start()
     {
         pausemenu = GameObject.Find("PauseMenu");
         pausemenu.SetActive(false);
+        mouseFade = GameObject.Find("MouseCursor").GetComponent<Animator>();
+    }
+
+    void Update()
+    {
+        Cursor.visible = false;
     }
 
     public void ButtonSelection()
@@ -29,6 +36,7 @@ public class PauseMenu : MonoBehaviour
     public void pause()
     {
         pausemenu.SetActive(true);
+
         if (!pause_Anim.GetBool("Enter"))
         {
             menu_darken.SetTrigger("Start");
@@ -53,6 +61,7 @@ public class PauseMenu : MonoBehaviour
     private void Resume()
     {
         Time.timeScale = 1;
+        mouseFade.SetBool("Fade", true);
         StartCoroutine(ResumeTransition());
     }
 

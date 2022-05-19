@@ -49,7 +49,7 @@ ParticleSystem:
   looping: 1
   prewarm: 0
   playOnAwake: 1
-  useUnscaledTime: 0
+  useUnscaledTime: 1
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
   startDelay:
@@ -4778,7 +4778,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1342633133
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 99
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4816,6 +4816,7 @@ GameObject:
   - component: {fileID: 334630805811115290}
   - component: {fileID: 334630805811115268}
   - component: {fileID: 334630805811115271}
+  - component: {fileID: 6017791714644664083}
   m_Layer: 0
   m_Name: MouseCursor
   m_TagString: Untagged
@@ -4832,7 +4833,7 @@ Transform:
   m_GameObject: {fileID: 334630805811115291}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 52.548107, y: -33.50505, z: 0}
-  m_LocalScale: {x: 1.5264338, y: 1.5264338, z: 1.5264338}
+  m_LocalScale: {x: 0.66309816, y: 0.66309816, z: 0.66309816}
   m_Children:
   - {fileID: 334630805364084254}
   m_Father: {fileID: 0}
@@ -4854,7 +4855,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -4877,9 +4878,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1342633133
   m_SortingLayer: 1
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 99528a390e48c9f46b55ba3c94056f54, type: 3}
-  m_Color: {r: 1, g: 0.7529412, b: 0.79607844, a: 1}
+  m_SortingOrder: 100
+  m_Sprite: {fileID: -5842700155197028985, guid: f04443daf51bbad4cabced37ded7c0f1, type: 3}
+  m_Color: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4901,8 +4902,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9a9c5239c700e4392471a7c7c8e15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handCursor: {fileID: 21300000, guid: dbffeba48ef4c3d4cb4232da6078c8c0, type: 3}
-  normalCursor: {fileID: 21300000, guid: 99528a390e48c9f46b55ba3c94056f54, type: 3}
+  handCursor: {fileID: -7040181246394837205, guid: f04443daf51bbad4cabced37ded7c0f1, type: 3}
+  normalCursor: {fileID: -5842700155197028985, guid: f04443daf51bbad4cabced37ded7c0f1, type: 3}
   clickEffect: {fileID: 6369454830786250328, guid: 71a260d14a5312840bb631c1768f9554, type: 3}
 --- !u!114 &334630805811115271
 MonoBehaviour:
@@ -4917,3 +4918,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cusorSprite: {fileID: 334630805811115268}
+--- !u!95 &6017791714644664083
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334630805811115291}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a9a2297b85c3524ead8318b010a925d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

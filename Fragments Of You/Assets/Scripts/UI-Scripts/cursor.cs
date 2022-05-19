@@ -11,6 +11,7 @@ public class cursor : MonoBehaviour
     public GameObject clickEffect;
     Vector2 cursorPos;
 
+
     void Start()
     {
         Cursor.visible = false;
