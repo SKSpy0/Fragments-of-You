@@ -18,10 +18,12 @@ public class PinkMovement : MonoBehaviour
     public AudioSource jumpSFX;
     public AudioSource landedSFX;
     public AudioSource walkingSFX;
+    public AudioSource hoppingSFX;
     public AudioSource DeathSFX;
     public SFXPrompt sfxPrompt;
 
     private float startingPitch = 2.8f;
+    private float startingHoppingPitch = 1.5f;
     private float startingVolume = 0.3f;
     private float previousDir = 0f;
 
@@ -65,6 +67,9 @@ public class PinkMovement : MonoBehaviour
         //Starting volume for walkingSFX
         walkingSFX.volume = startingVolume;
 
+        //Initialize the pitch of hoppingSFX
+        hoppingSFX.pitch =  startingHoppingPitch;
+
         //Start landing particle play as false
         landingParticlePlay = false;
 
@@ -102,15 +107,6 @@ public class PinkMovement : MonoBehaviour
             }
             if (!IsGrounded() && wallcoyote > 0 && !isFacingWall() && hasLegs())
             {
-
-                // if(sprite.flipX)
-                // {
-                //     //sprite.flipX = false;
-                // }
-                // else
-                // {
-                //     //sprite.flipX = true;
-                // }
                 WallJump();
             }
 
@@ -126,6 +122,14 @@ public class PinkMovement : MonoBehaviour
                 {
                     // Walking Sound Effect here
                     walkingSFX.Play();
+                }
+            }
+            if (IsGrounded() && !hasLegs())
+            {
+                if (!hoppingSFX.isPlaying)
+                {
+                    // Hopping Sound Effect here
+                    hoppingSFX.Play();
                 }
             }
             movementChange = false;

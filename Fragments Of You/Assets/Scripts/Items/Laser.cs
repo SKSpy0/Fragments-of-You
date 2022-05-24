@@ -15,7 +15,7 @@ public class Laser : MonoBehaviour
     public ParticleSystem EndBeam;
     bool EndTimer = false;
    
-    private float startingVolume = 1f;
+    private float startingVolume = 0.5f;
 
     void Start(){
 
@@ -35,6 +35,8 @@ public class Laser : MonoBehaviour
 
      public void LaserTimer()
     {
+        // boolean to activate laser's
+        EndTimer = false;
         StartCoroutine(ChargeLaser(ChargeInSeconds));
     }
 
