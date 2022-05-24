@@ -6,6 +6,7 @@ public class Hands_Script : MonoBehaviour
 {
     public bool isHit = false;
     public bool isReset = false;
+    public ParticleSystem grappleParticles;
     
     public bool checkHit()
     {
@@ -22,12 +23,14 @@ public class Hands_Script : MonoBehaviour
         {
             Debug.Log("Anchor Collided!");
             isHit = true;
+            CreateGrappleParticles();
         }
         
         if(other.tag != "Player" && other.tag != "Anchor" && other.tag != "CameraBound")
         {
             isReset = true;
             Debug.Log("name: " + other.name);
+            
         }
     }
 
@@ -36,11 +39,17 @@ public class Hands_Script : MonoBehaviour
         if(other.tag == "Anchor")
         {
             isHit = false;
+            
         }
 
         if(other.tag != "Player" && other.tag != "Anchor")
         {
             isReset = false;
         }
+    }
+
+    public void CreateGrappleParticles()
+    {
+        grappleParticles.Play();
     }
 }
