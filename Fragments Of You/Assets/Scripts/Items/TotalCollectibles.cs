@@ -15,7 +15,7 @@ public class TotalCollectibles : MonoBehaviour
         collectibleCounter = GetComponent<TextMeshProUGUI>();
     }
 
-    void LateUpdate(){
+    void FixedUpdate(){
         // string interpolation used here and the entire text pulses
        collectibleCounter.SetText($"Memories: {collectiblesCollected}");
 
@@ -34,9 +34,9 @@ public class TotalCollectibles : MonoBehaviour
 
     private IEnumerator Pulse(){
         // first pulse - scales it
-        for (float i = 3f; i <= 3.5f; i += 0.01f){
+        for (float i = 3f; i <= 3.5f; i += 0.1f){
             collectibleCounter.rectTransform.localScale = new Vector3(i, i, i);
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
         collectibleCounter.rectTransform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
 
@@ -44,9 +44,9 @@ public class TotalCollectibles : MonoBehaviour
             collectiblesCollected += 1;
             
         // second pulse - lowers it
-        for (float i = 3.5f; i <= 3f; i -= 0.03f){
+        for (float i = 3.5f; i <= 3f; i -= 0.5f){
             collectibleCounter.rectTransform.localScale = new Vector3(i, i, i);
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
         // original text set-up
         collectibleCounter.rectTransform.localScale = new Vector3(3f, 3f, 3f);
