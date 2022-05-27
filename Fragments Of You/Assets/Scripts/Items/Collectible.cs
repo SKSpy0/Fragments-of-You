@@ -11,11 +11,16 @@ public class Collectible : MonoBehaviour
 
     public SpriteRenderer CollectibleSprite;
     public CircleCollider2D CollectibleCollider;
+    public ParticleSystem trailingEffect;
+    public ParticleSystem explodingEffect;
     public AudioSource collectiblePickup;
     public AudioSource collectibleCaptured;
     private IEnumerator coroutine;
     public static bool CollectibleOnDeath;
     bool collected;
+
+    // Gets light object and stores it here
+    public GameObject collectibleLight;
 
     private Transform target;
     private Vector2 originalPosition;
@@ -44,6 +49,7 @@ public class Collectible : MonoBehaviour
        }
        else if(!collected){
          this.transform.position = originalPosition;
+         trailingEffect.Stop();
        }
     }
 
@@ -70,20 +76,26 @@ public class Collectible : MonoBehaviour
            else{
             // Else, play captured effect and destroy the object   
             Debug.Log("The player survived for five seconds.");
+            trailingEffect.Stop();
             collectibleCaptured.Play();
+            CollectibleSprite.enabled = false;
+            collectibleLight.SetActive(false);
+             // trailing effect plays
+              explodingEffect.Play();
              // wait 2.2 seconds and then destroy the object
-            yield return new WaitForSeconds(2.2f);
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 3f);
            }
             yield break;
     }
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.CompareTag("Player")){
-            // boolean check
-            collected = true;
             Debug.Log("Collectible collected!");
             CollectibleCollider.enabled = false;
+             // trailing effect plays
+            trailingEffect.Play();
+            // boolean check
+            collected = true;
             // always set the boolean to false when player collides with collectible
             CollectibleOnDeath = false;
             // Start collectible timer    

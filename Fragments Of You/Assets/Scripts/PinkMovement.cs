@@ -5,7 +5,7 @@ using UnityEngine;
 public class PinkMovement : MonoBehaviour
 {
 
-    [SerializeField] private int zone = 1;
+    [SerializeField] public int zone = 1;
     private Rigidbody2D rb;
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
@@ -42,7 +42,7 @@ public class PinkMovement : MonoBehaviour
 
     private bool Arms = true;
     private bool Legs = true;
-    // Detect when you use the toggle, ensures music isn’t played multiple times
+    // boolean check for movement input
     private bool movementChange;
     // Check for landing particle effect has been played or not
     private bool landingParticlePlay;
@@ -80,12 +80,13 @@ public class PinkMovement : MonoBehaviour
         {
             loseArms();
             animator.SetBool("isArmless", true);
+            Debug.Log("NO ARMS");
         }
         if (zone == 3)
         {
             loseLegs();
             animator.SetBool("isLegless", true);
-            //Debug.Log("isLegless set");
+            Debug.Log("NO LEGS");
         }
     }
 
@@ -298,16 +299,12 @@ public class PinkMovement : MonoBehaviour
     public void loseArms()
     {
         Arms = false;
-        // preform sprite switch here
-
     }
 
     // function to lose legs
     public void loseLegs()
     {
         Legs = false;
-        // preform sprite switch here
-
     }
 
     public bool hasArms()
