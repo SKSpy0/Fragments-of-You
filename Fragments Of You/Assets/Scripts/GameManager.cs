@@ -133,7 +133,6 @@ public class GameManager : MonoBehaviour
     // When player click quit button, kill the game
     public void QuitGame()
     {
-        Debug.Log("Quit!");
         buttonSelectionSFX.Play();
         Application.Quit();
     }
