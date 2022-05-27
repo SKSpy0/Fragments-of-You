@@ -10,11 +10,13 @@ public class FirstButton : MonoBehaviour
     void Start()
     {
         button = GetComponent<Button>();
-        button.Select();
+        StartCoroutine(clickWait());
     }
     
-    public void selectAgain()
+    IEnumerator clickWait()
     {
+        yield return new WaitForSeconds(1f);
+        Debug.Log("Here");
         button.Select();
     }
 }
