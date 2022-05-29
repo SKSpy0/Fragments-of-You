@@ -11,10 +11,13 @@ public class PortalScript : MonoBehaviour
     public bool expectPinkExist = false;
 
     // isBoxBlocking is for VFX only, for other purpose use isPortalLocked
+    /*
     public bool isBoxBlocking = false;
-
+    */
+    /*
     [Range (0f, 15f)]
     public float boxPopOutVelocity = 1.5f;
+    */
     public float teleportSpeed = 0.05f;
     public float fadeSpeed = 0.02f;
 
@@ -28,8 +31,10 @@ public class PortalScript : MonoBehaviour
     private float boxEnterVelocity = 0f;
 
     // Sound effects for Portal
+    /*
     public AudioSource portalSFX;
     public AudioSource portalAmbienceSFX;
+    */
     bool singleton_check = false;
 
 
@@ -43,6 +48,7 @@ public class PortalScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        /*
         if(isBoxBlocking || linkedPortalScript.isBoxBlocking)
         {
             if(portalSprite.color.a > 0.1f)
@@ -71,7 +77,8 @@ public class PortalScript : MonoBehaviour
                 ambientParticle.Play();
             }
         }
-        
+        */
+
 
         if (isReadyToTeleport && telePortTempObject != null)
         {
@@ -88,7 +95,7 @@ public class PortalScript : MonoBehaviour
                 telePortTempObject.transform.position = linkedPortalObject.transform.position;
                 shouldLowerLight = true;
 
-
+                /*
                 if(telePortTempObject.CompareTag("Box"))
                 {
                     Rigidbody2D otherRB = telePortTempObject.GetComponent<Rigidbody2D>();
@@ -106,6 +113,7 @@ public class PortalScript : MonoBehaviour
 
                     otherRB.AddForce(transform.up * boxPopOutVelocity, ForceMode2D.Impulse);
                 }
+                */
 
             }
 
@@ -139,6 +147,7 @@ public class PortalScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        /*
         if(!(isBoxBlocking || linkedPortalScript.isBoxBlocking))
         {
             popOutParticle.Play();
@@ -148,6 +157,7 @@ public class PortalScript : MonoBehaviour
              }
 
         }
+        */
 
         if(other.gameObject.CompareTag("Player") && !isPortalLocked)
         {
@@ -159,7 +169,7 @@ public class PortalScript : MonoBehaviour
             isReadyToTeleport = true;
         }
   
-
+        /*
         if (other.gameObject.CompareTag("Box") && !isPortalLocked)
         {
             isPortalLocked = true;
@@ -178,6 +188,7 @@ public class PortalScript : MonoBehaviour
             Rigidbody2D otherRB = other.gameObject.GetComponent<Rigidbody2D>();
             boxEnterVelocity = -otherRB.velocity.x;
         }
+        */
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -203,6 +214,7 @@ public class PortalScript : MonoBehaviour
             }
         }
 
+        /*
         if (other.gameObject.CompareTag("Box") && !expectPinkExist)
         {
             isPortalLocked = false;
@@ -226,14 +238,17 @@ public class PortalScript : MonoBehaviour
                 shouldLowerLight = true;
             }
         }
+        */
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        /*
         if(other.gameObject.CompareTag("Box"))
         {
             isBoxBlocking = true;
         }
+        */
     }
 }
 
