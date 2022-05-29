@@ -20,6 +20,7 @@ public class ThunderScript : MonoBehaviour
     {
         thunderLineRenderer = lineRendererObject.GetComponent<LineRenderer>();
         GenerateThunder();
+        Destroy(gameObject, 5);
     }
 
     // Update is called once per frame
