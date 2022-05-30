@@ -121,14 +121,14 @@ public class GameManager : MonoBehaviour
     {
         // play's button selection sound effect
         buttonSelectionSFX.Play();
-        StartCoroutine(PlayGameTransition());
+        // StartCoroutine(PlayGameTransition());
     }
 
-    IEnumerator PlayGameTransition()
-    {
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Level_Select");
-    }
+    // IEnumerator PlayGameTransition()
+    // {
+    //     yield return new WaitForSeconds(2f);
+    //     SceneManager.LoadScene("Level_Select");
+    // }
 
     // When player click quit button, kill the game
     public void QuitGame()

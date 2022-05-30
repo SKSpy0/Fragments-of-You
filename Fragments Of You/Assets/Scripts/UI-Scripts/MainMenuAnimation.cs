@@ -16,10 +16,13 @@ public class MainMenuAnimation : MonoBehaviour
     public Animator quitMenuFade;
     public Animator interfaceFade;
     public Animator DarkTransition;
+    public Animator BG_Dark;
+    public Animator SaveLoadFade;
     public GameObject clickToStartObj;
     public GameObject playButton;
     public GameObject quitButton;
     public GameObject titleText;
+    public GameObject MainMenuInterface;
 
     public GameObject myEventSystem;
 
@@ -33,7 +36,7 @@ public class MainMenuAnimation : MonoBehaviour
     public void unSelectButtons()
     {
         clicked = false;
-        myEventSystem .GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
     }
 
     public void ClickToStart()
@@ -111,6 +114,23 @@ public class MainMenuAnimation : MonoBehaviour
     {
         StartCoroutine(GameStartTransition());
     }
+    public void BG_Darken()
+    {
+        if (BG_Dark.GetBool("Enter"))
+        {
+            BG_Dark.SetBool("Enter", false);
+        }
+        else
+        {
+            BG_Dark.SetBool("Enter", true);
+        }
+    }
+    public void ButtonsFade()
+    {
+        moreButtonFade.SetBool("Back", true);
+
+    }
+
     public void CloseTitle()
     {
         StartCoroutine(CloseTitleTransition());
@@ -187,6 +207,9 @@ public class MainMenuAnimation : MonoBehaviour
         playButtonFade.SetBool("Play", true);
 
         yield return new WaitForSeconds(1.0f);
-        DarkTransition.SetBool("Enter", true);
+        BG_Dark.SetBool("Enter", true);
+        SaveLoadFade.SetBool("Enter", true);
+        yield return new WaitForSeconds(0.5f);
+        MainMenuInterface.SetActive(false);
     }
 }
