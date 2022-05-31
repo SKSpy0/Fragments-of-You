@@ -9655,7 +9655,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.9528302, g: 0.20225172, b: 0.27814305, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -9864,6 +9864,7 @@ MonoBehaviour:
   jumpSFX: {fileID: 0}
   landedSFX: {fileID: 0}
   walkingSFX: {fileID: 0}
+  hoppingSFX: {fileID: 0}
   DeathSFX: {fileID: 0}
   sfxPrompt: {fileID: 0}
   jumpableGround:
@@ -9933,6 +9934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  mouseFade: {fileID: 0}
 --- !u!120 &843996437
 LineRenderer:
   m_ObjectHideFlags: 0
