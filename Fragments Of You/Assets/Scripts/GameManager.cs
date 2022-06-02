@@ -102,6 +102,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(GameObject.Find("BGM_Music"));
         }
+        if (sceneName == "Ending Chop")
+        {
+            Destroy(GameObject.Find("BGM_Music"));
+        }
     }
 
     // changes levels when player hits collider.
