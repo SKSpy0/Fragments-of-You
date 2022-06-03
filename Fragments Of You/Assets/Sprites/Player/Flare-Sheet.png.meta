@@ -1,61 +1,40 @@
 fileFormatVersion: 2
-guid: 989038c12cfb6384aadf3abf223b65dd
+guid: bf3db6b68ac8dc740970681305e68ee2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1719432951870848678
-    second: Checkpoint_Orb-Sheet_0
+      213: -8390162493033811134
+    second: Flare-Sheet_0
   - first:
-      213: -7295431116393854088
-    second: Checkpoint_Orb-Sheet_1
+      213: -7507799191853925593
+    second: Flare-Sheet_1
   - first:
-      213: -448433997919616351
-    second: Checkpoint_Orb-Sheet_2
+      213: 7844752819933174393
+    second: Flare-Sheet_2
   - first:
-      213: -2217721048353701254
-    second: Checkpoint_Orb-Sheet_3
+      213: 2418281496629810601
+    second: Flare-Sheet_3
   - first:
-      213: -7654323186488068780
-    second: Checkpoint_Orb-Sheet_4
+      213: 4636170439642238646
+    second: Flare-Sheet_4
   - first:
-      213: 5160732823788686967
-    second: Checkpoint_Orb-Sheet_5
+      213: 7000784309824767627
+    second: Flare-Sheet_5
   - first:
-      213: -1355233066209991702
-    second: Checkpoint_Orb-Sheet_6
+      213: -5791803261259189988
+    second: Flare-Sheet_6
   - first:
-      213: -3892630681137917022
-    second: Checkpoint_Orb-Sheet_7
+      213: 3018894128744024382
+    second: Flare-Sheet_7
   - first:
-      213: 4357161505380558887
-    second: Checkpoint_Orb-Sheet_8
+      213: -8453229206963614917
+    second: Flare-Sheet_8
   - first:
-      213: -6790056441670018318
-    second: Checkpoint_Orb-Sheet_9
+      213: 7313388677890820202
+    second: Flare-Sheet_9
   - first:
-      213: -6419998309517678944
-    second: Checkpoint_Orb-Sheet_10
-  - first:
-      213: 3840965564124713241
-    second: Checkpoint_Orb-Sheet_11
-  - first:
-      213: 927599611223777575
-    second: Checkpoint_Orb-Sheet_12
-  - first:
-      213: -2117948180780750288
-    second: Checkpoint_Orb-Sheet_13
-  - first:
-      213: 6449145163131828711
-    second: Checkpoint_Orb-Sheet_14
-  - first:
-      213: 9056611767092386999
-    second: Checkpoint_Orb-Sheet_15
-  - first:
-      213: -2684374750001292569
-    second: Checkpoint_Orb-Sheet_16
-  - first:
-      213: 2024650757663285359
-    second: Checkpoint_Orb-Sheet_17
+      213: -1191404202304044994
+    second: Flare-Sheet_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -86,7 +65,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -122,7 +101,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -134,19 +113,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -157,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Checkpoint_Orb-Sheet_0
+      name: Flare-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6aefc57e827acd710800000000000000
-      internalID: 1719432951870848678
+      spriteID: 243f9e26aa7209b80800000000000000
+      internalID: -8390162493033811134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint_Orb-Sheet_1
+      name: Flare-Sheet_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 29
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87b43007d0c61ca90800000000000000
-      internalID: -7295431116393854088
+      spriteID: 72bf49cb960fec790800000000000000
+      internalID: -7507799191853925593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint_Orb-Sheet_2
+      name: Flare-Sheet_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 62
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +180,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a20bc0a7a7d6c9f0800000000000000
-      internalID: -448433997919616351
+      spriteID: 97a5cde50292edc60800000000000000
+      internalID: 7844752819933174393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint_Orb-Sheet_3
+      name: Flare-Sheet_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 95
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,20 +201,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7288fdd4721931e0800000000000000
-      internalID: -2217721048353701254
+      spriteID: 9a5158565367f8120800000000000000
+      internalID: 2418281496629810601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint_Orb-Sheet_4
+      name: Flare-Sheet_4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 159
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,20 +222,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 455b751cd9166c590800000000000000
-      internalID: -7654323186488068780
+      spriteID: 6beca0d837cf65040800000000000000
+      internalID: 4636170439642238646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint_Orb-Sheet_5
+      name: Flare-Sheet_5
       rect:
         serializedVersion: 2
-        x: 160
+        x: 222
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,20 +243,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77e8f96192b9e9740800000000000000
-      internalID: 5160732823788686967
+      spriteID: b86cb30fc38c72160800000000000000
+      internalID: 7000784309824767627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint_Orb-Sheet_6
+      name: Flare-Sheet_6
       rect:
         serializedVersion: 2
-        x: 192
+        x: 257
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,20 +264,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae3a0b4e4be313de0800000000000000
-      internalID: -1355233066209991702
+      spriteID: c1172b3ce916f9fa0800000000000000
+      internalID: -5791803261259189988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint_Orb-Sheet_7
+      name: Flare-Sheet_7
       rect:
         serializedVersion: 2
-        x: 224
+        x: 287
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,20 +285,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a3dcf005099af9c0800000000000000
-      internalID: -3892630681137917022
+      spriteID: e39cc4e173445e920800000000000000
+      internalID: 3018894128744024382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint_Orb-Sheet_8
+      name: Flare-Sheet_8
       rect:
         serializedVersion: 2
-        x: 256
+        x: 315
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -339,20 +306,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 728e63dcd4fb77c30800000000000000
-      internalID: 4357161505380558887
+      spriteID: b3b0af9c2d810ba80800000000000000
+      internalID: -8453229206963614917
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint_Orb-Sheet_9
+      name: Flare-Sheet_9
       rect:
         serializedVersion: 2
-        x: 288
+        x: 346
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -360,20 +327,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fad76d34afd4c1a0800000000000000
-      internalID: -6790056441670018318
+      spriteID: a68cb0a21406e7560800000000000000
+      internalID: 7313388677890820202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Checkpoint_Orb-Sheet_10
+      name: Flare-Sheet_10
       rect:
         serializedVersion: 2
-        x: 320
+        x: 385
         y: 0
-        width: 32
-        height: 32
+        width: 37
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,29 +348,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a627965d8597e6a0800000000000000
-      internalID: -6419998309517678944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Checkpoint_Orb-Sheet_11
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 911592c84d9dd4530800000000000000
-      internalID: 3840965564124713241
+      spriteID: e3082c9b038477fe0800000000000000
+      internalID: -1191404202304044994
       vertices: []
       indices: 
       edges: []
