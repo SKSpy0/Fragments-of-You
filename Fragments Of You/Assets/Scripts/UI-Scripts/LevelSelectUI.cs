@@ -8,11 +8,17 @@ public class LevelSelectUI : MonoBehaviour
 {
     public Animator LevelMapPink;
     public int level_Count = 0;
+    public int level_Cap = 0;
     public bool waitIsOver = true;
+
+    void Start()
+    {   
+        level_Cap = PlayerPrefs.GetInt("level_reached" + SaveID.saveID);
+    }
 
     public void moveFoward()
     {
-        if (level_Count != 5 && waitIsOver)
+        if (level_Count != level_Cap && waitIsOver)
         {
             level_Count++;
             LevelMapPink.SetInteger("levelCount", level_Count);
@@ -39,7 +45,7 @@ public class LevelSelectUI : MonoBehaviour
 
     public void EnterLevel()
     {
-        if (level_Count == 0 && waitIsOver) 
+        if (level_Count == 0 && waitIsOver)
         {
             Destroy(GameObject.Find("MenuMusic"));
             SceneManager.LoadScene("Z1M1");

@@ -32,10 +32,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("loading....");
+        // Debug.Log("loading....");
         LoadingAudioSettings();
         sfxSaved = true;
-        Debug.Log("The toggle set to " + PlayerPrefs.GetFloat("SFXPToggle"));
+        // Debug.Log("The toggle set to " + PlayerPrefs.GetFloat("SFXPToggle"));
         startTransition = GameObject.Find("Transition").GetComponent<StartTransition>();
     }
 
@@ -45,6 +45,9 @@ public class GameManager : MonoBehaviour
         {
             ChangeScene(LevelName);
         }
+
+        // Debug.Log("Current SaveID:" + SaveID.saveID);
+        // Debug.Log("Current Level Reach:" + PlayerPrefs.GetInt("level_reached" + SaveID.saveID));
     }
 
     public void StartButtonPress()
@@ -62,13 +65,19 @@ public class GameManager : MonoBehaviour
     // Note: to import "sceneManagement" input library to work with LoadScence
     public void ChangeScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
         /*** Handles level music transitions ***/
         // Going back to main menu screen from pause menu
-         if (sceneName == "Beginning_Cutscene_1")
+        if (sceneName == "Beginning_Cutscene_1")
         {
             Destroy(GameObject.Find("MenuMusic"));
         }
+        LevelReachCheck(sceneName);
+        StartCoroutine(ChangeSceneTransition(sceneName));
+    }
+
+    IEnumerator ChangeSceneTransition(string sceneName)
+    {
+        yield return new WaitForSeconds(2f);
         if (sceneName == "Z0Tutorial")
         {
             Destroy(GameObject.Find("MenuMusic"));
@@ -111,6 +120,42 @@ public class GameManager : MonoBehaviour
         {
             Destroy(GameObject.Find("BGM_Music"));
         }
+
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void LevelReachCheck(string LevelName)
+    {
+        if (LevelName == "Z0Tutorial")
+        {
+            PlayerPrefs.SetFloat("tutorialed" + SaveID.saveID, 1);
+        }
+        if (LevelName == "Z1M2")
+        {
+            PlayerPrefs.SetInt("level_reached" + SaveID.saveID, 1);
+            PlayerPrefs.SetInt("1-2Unlock" + SaveID.saveID, 1);
+        }
+        if (LevelName == "Z1M3")
+        {
+            PlayerPrefs.SetInt("level_reached" + SaveID.saveID, 2);
+            PlayerPrefs.SetInt("1-3Unlock" + SaveID.saveID, 1);
+        }
+        if (LevelName == "Z2M1")
+        {
+            PlayerPrefs.SetInt("level_reached" + SaveID.saveID, 3);
+            PlayerPrefs.SetInt("2-1Unlock" + SaveID.saveID, 1);
+        }
+        if (LevelName == "Z2M2")
+        {
+            PlayerPrefs.SetInt("level_reached" + SaveID.saveID, 4);
+            PlayerPrefs.SetInt("2-2Unlock" + SaveID.saveID, 1);
+        }
+        if (LevelName == "Z3M1")
+        {
+            PlayerPrefs.SetInt("level_reached" + SaveID.saveID, 5);
+            PlayerPrefs.SetInt("3Unlock" + SaveID.saveID, 1);
+        }
+
     }
 
     // changes levels when player hits collider.
@@ -118,7 +163,7 @@ public class GameManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player has collided with next level collider.");
+            // Debug.Log("Player has collided with next level collider.");
             // plays screen swipe sfx and changes the scene. This will play on awake.
             sceneSwitchSFX.Play();
             startTransition.StartFadeIn();
@@ -132,12 +177,6 @@ public class GameManager : MonoBehaviour
         buttonSelectionSFX.Play();
         // StartCoroutine(PlayGameTransition());
     }
-
-    // IEnumerator PlayGameTransition()
-    // {
-    //     yield return new WaitForSeconds(2f);
-    //     SceneManager.LoadScene("Level_Select");
-    // }
 
     // When player click quit button, kill the game
     public void QuitGame()
@@ -194,13 +233,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetSaveID(int saveID)
+    {
+        SaveID.saveID = saveID;
+    }
+
     public void SetMasterVolume(float sliderValue)
     {
         // better volume management with exposed parameter - Mathematical formula used
         mixer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20);
         // Saves players last master volume audio settings
         PlayerPrefs.SetFloat("SavedMasterVolume", sliderValue);
-        Debug.Log("Master Volume saved!");
+        // Debug.Log("Master Volume saved!");
     }
     public void SetBGMVolume(float sliderValue)
     {
@@ -208,7 +252,7 @@ public class GameManager : MonoBehaviour
         mixer.SetFloat("BGMVolume", Mathf.Log10(sliderValue) * 20);
         // Saves players last background music audio settings
         PlayerPrefs.SetFloat("SavedBGMVolume", sliderValue);
-        Debug.Log("Music Volume saved!");
+        // Debug.Log("Music Volume saved!");
     }
     public void SetSFXVolume(float sliderValue)
     {
@@ -216,6 +260,6 @@ public class GameManager : MonoBehaviour
         mixer.SetFloat("SFXVolume", Mathf.Log10(sliderValue) * 20);
         // Saves players last sound effect settings
         PlayerPrefs.SetFloat("SavedSFXVolume", sliderValue);
-        Debug.Log("Sound Effect Volume saved!");
+        // Debug.Log("Sound Effect Volume saved!");
     }
 }
