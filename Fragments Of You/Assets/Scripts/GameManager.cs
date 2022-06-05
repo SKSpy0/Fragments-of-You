@@ -78,6 +78,12 @@ public class GameManager : MonoBehaviour
     IEnumerator ChangeSceneTransition(string sceneName)
     {
         yield return new WaitForSeconds(2f);
+
+         if (sceneName == "Level_Map")
+        {
+            Destroy(GameObject.Find("BGM_Music"));
+        }
+
         if (sceneName == "Z0Tutorial")
         {
             Destroy(GameObject.Find("MenuMusic"));
