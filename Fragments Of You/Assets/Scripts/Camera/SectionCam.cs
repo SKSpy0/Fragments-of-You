@@ -7,11 +7,11 @@ public class SectionCam : MonoBehaviour
     public GameObject virtualCam;
     public GameObject sectionRespawnPoint;
     Vector2 Respawnposition;
-    private Respawn resp;
+    public Respawn resp;
 
     void Start()
     {
-        resp = GameObject.FindGameObjectWithTag("Player").GetComponent<Respawn>();
+        resp = GameObject.Find("Pink").GetComponent<Respawn>();
         Respawnposition = new Vector2 (sectionRespawnPoint.transform.position.x, sectionRespawnPoint.transform.position.y);
     }
 

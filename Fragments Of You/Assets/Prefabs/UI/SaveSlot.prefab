@@ -282,7 +282,6 @@ GameObject:
   - component: {fileID: 3692115320967443992}
   - component: {fileID: 3692115320967443997}
   - component: {fileID: 3692115320967443996}
-  - component: {fileID: 3692115320967443987}
   m_Layer: 5
   m_Name: SaveSlot
   m_TagString: Untagged
@@ -395,7 +394,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3692115320967443987}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SaveLoadUI, Assembly-CSharp
         m_MethodName: Saved
         m_Mode: 1
@@ -438,21 +437,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &3692115320967443987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3692115320967443994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e57d2c8ad2b929b4e899b837388d019e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saveSlot_Empty: {fileID: 3692115322470915837}
-  saveSlot_Active: {fileID: 3692115321301988891}
-  DarkTransition: {fileID: 0}
 --- !u!1 &3692115321301988870
 GameObject:
   m_ObjectHideFlags: 0

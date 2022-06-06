@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEditor;
 
 public class PauseMenu : MonoBehaviour
 {
     public Animator pause_Anim;
     public Animator menu_darken;
+    Animator blackout;
     public Animator volumnMenuFade;
     public Animator quitMenuFade;
     public bool isPause;
@@ -17,9 +20,11 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         pausemenu = GameObject.Find("PauseMenu");
         pausemenu.SetActive(false);
         mouseFade = GameObject.Find("MouseCursor").GetComponent<Animator>();
+        blackout = GameObject.Find("Transition").GetComponent<Animator>();
     }
 
     void Update()
@@ -60,6 +65,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Resume()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         Time.timeScale = 1;
         mouseFade.SetBool("Fade", true);
         StartCoroutine(ResumeTransition());
@@ -129,6 +135,7 @@ public class PauseMenu : MonoBehaviour
             menu_darken.SetBool("isFade", true);
             pause_Anim.SetBool("isPause", true);
         }
+        blackout.SetBool("FadeIn", true);
 
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("MainMenu");
