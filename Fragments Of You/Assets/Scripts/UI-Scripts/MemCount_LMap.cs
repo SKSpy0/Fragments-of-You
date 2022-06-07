@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class MemCount_LMap : MonoBehaviour
@@ -12,6 +13,8 @@ public class MemCount_LMap : MonoBehaviour
     public TextMeshProUGUI count5;
     public TextMeshProUGUI count6;
     public TextMeshProUGUI TotalCount;
+    public GameObject totalMem_Image;
+    public GameObject pog;
 
     int num1;
     int num2;
@@ -41,6 +44,14 @@ public class MemCount_LMap : MonoBehaviour
         count4.text = num4 + "/8";
         count5.text = num5 + "/3";
         count6.text = num6 + "/42";
+        total = 70;
         TotalCount.text = total + "/70";
+
+        
+        if (total >= 70)
+        {
+            totalMem_Image.SetActive(false);
+            pog.SetActive(true);
+        }
     }
 }
