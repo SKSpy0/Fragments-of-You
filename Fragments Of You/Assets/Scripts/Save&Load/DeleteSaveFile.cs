@@ -66,5 +66,11 @@ public class DeleteSaveFile : MonoBehaviour
         PlayerPrefs.SetInt("2-2Unlock" + SaveID.saveID, 0);
         PlayerPrefs.SetInt("3Unlock" + SaveID.saveID, 0);
         PlayerPrefs.SetInt("level_reached" + SaveID.saveID, 0);
+        PlayerPrefs.SetInt("1-1Collectables" + SaveID.saveID, 0);
+        PlayerPrefs.SetInt("1-2Collectables" + SaveID.saveID, 0);
+        PlayerPrefs.SetInt("1-3Collectables" + SaveID.saveID, 0);
+        PlayerPrefs.SetInt("2-1Collectables" + SaveID.saveID, 0);
+        PlayerPrefs.SetInt("2-2Collectables" + SaveID.saveID, 0);
+        PlayerPrefs.SetInt("3Collectables" + SaveID.saveID, 0);
     }
 }

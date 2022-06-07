@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     float savedValue3 = 1;
 
     StartTransition startTransition;
+    TotalCollectibles totalCollectibles;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
         sfxSaved = true;
         // Debug.Log("The toggle set to " + PlayerPrefs.GetFloat("SFXPToggle"));
         startTransition = GameObject.Find("Transition").GetComponent<StartTransition>();
+        totalCollectibles = GameObject.Find("CollectibleTracker").GetComponent<TotalCollectibles>();
     }
 
     void Update()
@@ -79,7 +81,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
 
-         if (sceneName == "Level_Map")
+        if (sceneName == "Level_Map")
         {
             Destroy(GameObject.Find("BGM_Music"));
         }
@@ -130,7 +132,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(GameObject.Find("BGM_Music"));
         }
-         if (sceneName == "MainMenu")
+        if (sceneName == "MainMenu")
         {
             Destroy(GameObject.Find("EndCredits_Music"));
         }
@@ -148,26 +150,59 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("level_reached" + SaveID.saveID, 1);
             PlayerPrefs.SetInt("1-2Unlock" + SaveID.saveID, 1);
+            if (PlayerPrefs.GetInt(("1-1Collectables")) < totalCollectibles.getNum())
+            {
+                PlayerPrefs.SetInt("1-1Collectables" + SaveID.saveID, totalCollectibles.getNum());
+            }
+            TotalCollectibles.collectiblesCollected = 0;
         }
         if (LevelName == "Z1M3")
         {
             PlayerPrefs.SetInt("level_reached" + SaveID.saveID, 2);
             PlayerPrefs.SetInt("1-3Unlock" + SaveID.saveID, 1);
+            if (PlayerPrefs.GetInt(("1-2Collectables")) < totalCollectibles.getNum())
+            {
+                PlayerPrefs.SetInt("1-2Collectables" + SaveID.saveID, totalCollectibles.getNum());
+            }
+            TotalCollectibles.collectiblesCollected = 0;
         }
         if (LevelName == "Z2M1")
         {
             PlayerPrefs.SetInt("level_reached" + SaveID.saveID, 3);
             PlayerPrefs.SetInt("2-1Unlock" + SaveID.saveID, 1);
+            if (PlayerPrefs.GetInt(("1-3Collectables")) < totalCollectibles.getNum())
+            {
+                PlayerPrefs.SetInt("1-3Collectables" + SaveID.saveID, totalCollectibles.getNum());
+            }
+            TotalCollectibles.collectiblesCollected = 0;
         }
         if (LevelName == "Z2M2")
         {
             PlayerPrefs.SetInt("level_reached" + SaveID.saveID, 4);
             PlayerPrefs.SetInt("2-2Unlock" + SaveID.saveID, 1);
+            if (PlayerPrefs.GetInt(("2-1Collectables")) < totalCollectibles.getNum())
+            {
+                PlayerPrefs.SetInt("2-1Collectables" + SaveID.saveID, totalCollectibles.getNum());
+            }
+            TotalCollectibles.collectiblesCollected = 0;
         }
         if (LevelName == "Z3M1")
         {
             PlayerPrefs.SetInt("level_reached" + SaveID.saveID, 5);
             PlayerPrefs.SetInt("3Unlock" + SaveID.saveID, 1);
+            if (PlayerPrefs.GetInt(("2-2Collectables")) < totalCollectibles.getNum())
+            {
+                PlayerPrefs.SetInt("2-2Collectables" + SaveID.saveID, totalCollectibles.getNum());
+            }
+            TotalCollectibles.collectiblesCollected = 0;
+        }
+        if (LevelName == "Ending Chop")
+        {
+            if (PlayerPrefs.GetInt(("3Collectables")) < totalCollectibles.getNum())
+            {
+                PlayerPrefs.SetInt("3Collectables" + SaveID.saveID, totalCollectibles.getNum());
+            }
+            TotalCollectibles.collectiblesCollected = 0;
         }
 
     }
