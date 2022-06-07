@@ -126,6 +126,14 @@ public class GameManager : MonoBehaviour
         {
             Destroy(GameObject.Find("BGM_Music"));
         }
+        if (sceneName == "Ending_Credits")
+        {
+            Destroy(GameObject.Find("BGM_Music"));
+        }
+         if (sceneName == "MainMenu")
+        {
+            Destroy(GameObject.Find("EndCredits_Music"));
+        }
 
         SceneManager.LoadScene(sceneName);
     }

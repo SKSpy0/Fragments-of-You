@@ -10,10 +10,12 @@ public class Cutscene_Loader : MonoBehaviour
     public float fadeAnimationTime = 1f;
     private IEnumerator coroutine;
     bool time;
+    string sceneName;
 
     // Start is called before the first frame update
     void Start()
     {
+        sceneName = SceneManager.GetActiveScene().name;
         coroutine = TimeInCutScene(transitionTime);
         time = false;
         // Start cutscene timer    
@@ -30,7 +32,11 @@ public class Cutscene_Loader : MonoBehaviour
     }
 
     public void LoadNextCutScene(){
-        // pass in next Cutscene index and start timer for animation.
+        // This must be updated if a new scene is added in the build.
+       if(SceneManager.GetActiveScene().buildIndex + 1 == 22){
+           Destroy(GameObject.Find("BGM_Music"));
+        }
+         // pass in next Cutscene index and start timer for animation.
        StartCoroutine(LoadCutscene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
