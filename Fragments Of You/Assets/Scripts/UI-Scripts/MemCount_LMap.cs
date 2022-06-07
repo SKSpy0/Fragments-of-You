@@ -44,10 +44,8 @@ public class MemCount_LMap : MonoBehaviour
         count4.text = num4 + "/8";
         count5.text = num5 + "/3";
         count6.text = num6 + "/42";
-        total = 70;
         TotalCount.text = total + "/70";
 
-        
         if (total >= 70)
         {
             totalMem_Image.SetActive(false);
