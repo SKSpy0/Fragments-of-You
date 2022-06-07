@@ -22,7 +22,7 @@ public class MemCount_LMap : MonoBehaviour
     int num4;
     int num5;
     int num6;
-    int total;
+    public int total;
 
     void Start()
     {
@@ -33,6 +33,7 @@ public class MemCount_LMap : MonoBehaviour
         num5 = PlayerPrefs.GetInt("2-2Collectables" + SaveID.saveID);
         num6 = PlayerPrefs.GetInt("3Collectables" + SaveID.saveID);
         total = num1 + num2 + num3 + num4 + num5 + num6;
+        PlayerPrefs.SetInt("TotalCollected" + SaveID.saveID, total);
         updateCountText();
     }
 
