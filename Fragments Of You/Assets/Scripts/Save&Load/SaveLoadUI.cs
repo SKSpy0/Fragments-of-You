@@ -288,8 +288,7 @@ public class SaveLoadUI : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         if (PlayerPrefs.GetFloat("openingPass" + SaveID.saveID) == 1)
         {
-            // Changed starting point to tutorial
-            SceneManager.LoadScene("Z0Tutorial");
+            SceneManager.LoadScene("Level_Map");
         }
         else if (PlayerPrefs.GetFloat("openingPass" + SaveID.saveID) == 0)
         {
