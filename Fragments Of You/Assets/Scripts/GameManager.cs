@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
             }
             TotalCollectibles.collectiblesCollected = 0;
         }
-        if (LevelName == "Z2M1")
+        if (LevelName == "LoseArms_Cutscene")
         {
             PlayerPrefs.SetInt("level_reached" + SaveID.saveID, 3);
             PlayerPrefs.SetInt("2-1Unlock" + SaveID.saveID, 1);
@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
             }
             TotalCollectibles.collectiblesCollected = 0;
         }
-        if (LevelName == "Z3M1")
+        if (LevelName == "LoseLegs_Cutscene")
         {
             PlayerPrefs.SetInt("level_reached" + SaveID.saveID, 5);
             PlayerPrefs.SetInt("3Unlock" + SaveID.saveID, 1);
