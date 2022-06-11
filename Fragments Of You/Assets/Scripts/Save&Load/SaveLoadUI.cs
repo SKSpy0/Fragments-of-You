@@ -13,10 +13,17 @@ public class SaveLoadUI : MonoBehaviour
     public GameObject saveSlot3_Active;
     public Animator DarkTransition;
 
+    bool first = true;
+
+    int slot1Percent = 0;
+    int slot2Percent = 0;
+    int slot3Percent = 0;
+
     void Start()
     {
         // PlayerPrefs.GetInt("FirstTime") != 1
-        if (PlayerPrefs.GetInt("FirstTime") != 1)
+        
+        if (PlayerPrefs.GetInt("FirstTime") == 0)
         {
             PlayerPrefs.SetInt("SlotEmpty" + 1, 1);
             PlayerPrefs.SetInt("SlotEmpty" + 2, 1);
@@ -29,7 +36,6 @@ public class SaveLoadUI : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Current SaveSlot" + SaveID.saveID + " pass: " + PlayerPrefs.GetFloat("openingPass" + SaveID.saveID));
     }
 
     public void saveTextUpdate()
@@ -37,180 +43,219 @@ public class SaveLoadUI : MonoBehaviour
         if (PlayerPrefs.GetInt("1-2Unlock" + 1) == 0)
         {
             saveSlot1_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 1-1";
-            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "0%";
+            slot1Percent = 0;
+            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot1Percent + "%";
         }
         if (PlayerPrefs.GetInt("1-2Unlock" + 1) == 1)
         {
             saveSlot1_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 1-2";
-            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "15%";
+            slot1Percent = 15;
+            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot1Percent + "%";
         }
         if (PlayerPrefs.GetInt("1-3Unlock" + 1) == 1)
         {
             saveSlot1_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 1-3";
-            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "30%";
+            slot1Percent = 30;
+            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot1Percent + "%";
         }
         if (PlayerPrefs.GetInt("2-1Unlock" + 1) == 1)
         {
             saveSlot1_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 2-1";
-            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "45%";
+            slot1Percent = 45;
+            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot1Percent + "%";
         }
         if (PlayerPrefs.GetInt("2-2Unlock" + 1) == 1)
         {
             saveSlot1_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 2-2";
-            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "60%";
+            slot1Percent = 60;
+            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot1Percent + "%";
         }
         if (PlayerPrefs.GetInt("3Unlock" + 1) == 1)
         {
             saveSlot1_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 3";
-            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "93%";
+            slot1Percent = 93;
+            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot1Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 1) >= 10)
         {
-            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "94%";
+            slot1Percent += 1;
+            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot1Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 1) >= 20)
         {
-            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "95%";
+            slot1Percent += 1;
+            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot1Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 1) >= 30)
         {
-            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "96%";
+            slot1Percent += 1;
+            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot1Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 1) >= 40)
         {
-            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "97%";
+            slot1Percent += 1;
+            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot1Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 1) >= 50)
         {
-            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "98%";
+            slot1Percent += 1;
+            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot1Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 1) >= 60)
         {
-            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "99%";
+            slot1Percent += 1;
+            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot1Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 1) >= 70)
         {
-            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "100%";
+            slot1Percent += 1;
+            saveSlot1_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot1Percent + "%";
         }
 
         //---------------------------------------------
         if (PlayerPrefs.GetInt("1-2Unlock" + 2) == 0)
         {
             saveSlot2_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 1-1";
-            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "0%";
+            slot2Percent = 0;
+            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot2Percent + "%";
         }
         if (PlayerPrefs.GetInt("1-2Unlock" + 2) == 1)
         {
             saveSlot2_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 1-2";
-            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "15%";
+            slot2Percent = 15;
+            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot2Percent + "%";
         }
         if (PlayerPrefs.GetInt("1-3Unlock" + 2) == 1)
         {
             saveSlot2_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 1-3";
-            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "30%";
+            slot2Percent = 30;
+            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot2Percent + "%";
         }
         if (PlayerPrefs.GetInt("2-1Unlock" + 2) == 1)
         {
             saveSlot2_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 2-1";
-            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "45%";
+            slot2Percent = 45;
+            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot2Percent + "%";
         }
         if (PlayerPrefs.GetInt("2-2Unlock" + 2) == 1)
         {
             saveSlot2_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 2-2";
-            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "60%";
+            slot2Percent = 60;
+            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot2Percent + "%";
         }
         if (PlayerPrefs.GetInt("3Unlock" + 2) == 1)
         {
             saveSlot2_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 3";
-            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "93%";
+            slot2Percent = 93;
+            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot2Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 2) >= 10)
         {
-            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "94%";
+            slot2Percent += 1;
+            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot2Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 2) >= 20)
         {
-            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "95%";
+            slot2Percent += 1;
+            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot2Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 2) >= 30)
         {
-            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "96%";
+            slot2Percent += 1;
+            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot2Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 2) >= 40)
         {
-            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "97%";
+            slot2Percent += 1;
+            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot2Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 2) >= 50)
         {
-            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "98%";
+            slot2Percent += 1;
+            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot2Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 2) >= 60)
         {
-            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "99%";
+            slot2Percent += 1;
+            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot2Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 2) >= 70)
         {
-            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "100%";
+            slot2Percent += 1;
+            saveSlot2_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot2Percent + "%";
         }
 
         //---------------------------------------------
         if (PlayerPrefs.GetInt("1-2Unlock" + 3) == 0)
         {
             saveSlot3_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 1-1";
-            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "0%";
+            slot3Percent = 0;
+            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot3Percent + "%";
         }
         if (PlayerPrefs.GetInt("1-2Unlock" + 3) == 1)
         {
             saveSlot3_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 1-2";
-            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "15%";
+            slot3Percent = 15;
+            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot3Percent + "%";
         }
         if (PlayerPrefs.GetInt("1-3Unlock" + 3) == 1)
         {
             saveSlot3_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 1-3";
-            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "30%";
+            slot3Percent = 30;
+            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot3Percent + "%";
         }
         if (PlayerPrefs.GetInt("2-1Unlock" + 3) == 1)
         {
             saveSlot3_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 2-1";
-            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "45%";
+            slot3Percent = 45;
+            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot3Percent + "%";
         }
         if (PlayerPrefs.GetInt("2-2Unlock" + 3) == 1)
         {
             saveSlot3_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 2-2";
-            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "60%";
+            slot3Percent = 60;
+            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot3Percent + "%";
         }
         if (PlayerPrefs.GetInt("3Unlock" + 3) == 1)
         {
             saveSlot3_Active.transform.Find("CurrentLevel_Text").GetComponent<TextMeshProUGUI>().text = "Level 3";
-            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "93%";
+            slot3Percent = 93;
+            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot3Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 3) >= 10)
         {
-            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "94%";
+            slot3Percent += 1;
+            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot3Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 3) >= 20)
         {
-            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "95%";
+            slot3Percent += 1;
+            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot3Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 3) >= 30)
         {
-            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "96%";
+            slot3Percent += 1;
+            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot3Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 3) >= 40)
         {
-            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "97%";
+            slot3Percent += 1;
+            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot3Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 3) >= 50)
         {
-            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "98%";
+            slot3Percent += 1;
+            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot3Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 3) >= 60)
         {
-            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "99%";
+            slot3Percent += 1;
+            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot3Percent + "%";
         }
         if (PlayerPrefs.GetInt("TotalCollected" + 3) >= 70)
         {
-            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = "100%";
+            slot3Percent += 1;
+            saveSlot3_Active.transform.Find("ProgressPercent_Text").GetComponent<TextMeshProUGUI>().text = slot3Percent + "%";
         }
     }
 

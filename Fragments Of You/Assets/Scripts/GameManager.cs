@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
     float savedValue2 = 1;
     float savedValue3 = 1;
 
-    StartTransition startTransition;
-    TotalCollectibles totalCollectibles;
+    public StartTransition startTransition;
+    public TotalCollectibles totalCollectibles;
 
     void Start()
     {
@@ -215,6 +215,7 @@ public class GameManager : MonoBehaviour
             // Debug.Log("Player has collided with next level collider.");
             // plays screen swipe sfx and changes the scene. This will play on awake.
             sceneSwitchSFX.Play();
+            // ChangeScene(LevelName);
             startTransition.StartFadeIn();
         }
     }

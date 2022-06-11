@@ -4699,6 +4699,8 @@ MonoBehaviour:
   buttonSelectionSFX: {fileID: 1911449434}
   startButtonSFX: {fileID: 1900887901}
   testingSFX: {fileID: 1310844102}
+  startTransition: {fileID: 1064707801}
+  totalCollectibles: {fileID: 0}
 --- !u!1 &431932701
 GameObject:
   m_ObjectHideFlags: 0
@@ -12741,6 +12743,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1610362996}
         m_TargetAssemblyTypeName: SaveLoadUI, Assembly-CSharp
         m_MethodName: saveSlotUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1610362996}
+        m_TargetAssemblyTypeName: SaveLoadUI, Assembly-CSharp
+        m_MethodName: saveTextUpdate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
