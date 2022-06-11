@@ -33,7 +33,7 @@ public class Cutscene_Loader : MonoBehaviour
 
     public void LoadNextCutScene(){
         // This must be updated if a new scene is added in the build.
-       if(SceneManager.GetActiveScene().buildIndex + 1 == 22){
+       if(SceneManager.GetActiveScene().buildIndex + 1 == 21){
            Destroy(GameObject.Find("BGM_Music"));
         }
          // pass in next Cutscene index and start timer for animation.
