@@ -11,6 +11,9 @@ public class BinocularScript : MonoBehaviour
     private CinemachineBrain cB;
     public GameObject sectionCam;
     private GameObject player;
+
+    public AudioSource telescopeSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,7 @@ public class BinocularScript : MonoBehaviour
             sectionCam = GetActiveVCamObject();
             sectionCam.SetActive(false);
             target.SetActive(true);
+            telescopeSFX.Play();
         }
     }
 
